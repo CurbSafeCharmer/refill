@@ -19,7 +19,7 @@ Here is another one: <ref name="named" group="nb">http://example.com</ref>
 
 Here is one that doesn't work: <ref name="404">http://example.com/nonexistant</ref>
 
-Not a bare reference: <ref>[http://example.com not a bear ref]</ref></textarea>
+Not a bare reference: <ref>[http://example.com not a bare ref]</ref></textarea>
 		<input name="method-wikitext" type="submit" value="Fix wikitext"/>
 	</form>
 	<h2>Fetch content from wiki</h2>
