@@ -62,7 +62,7 @@ function fetchWiki( $page ) { // bug-prone
 		if ( isset( $page['missing'] ) )
 			return;
 		else {
-			return utf8_decode( $page['revisions'][0]['*'] );
+			return $page['revisions'][0]['*'] ;
 		}
 	}
 }

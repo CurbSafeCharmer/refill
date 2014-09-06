@@ -34,7 +34,7 @@ Not a bare reference: <ref>[http://example.com not a bare ref]</ref></textarea>
 		} elseif ( isset( $_POST['method-wikitext'] ) ) {
 			$text = fixRef( $_POST['text'] );
 		}
-		$stext = htmlentities( $text );
+		$stext = htmlspecialchars( $text );
 		echo "<h2>Result</h2><pre id='result'>$stext</pre>";
 	?>
 	<small><a href="https://github.com/zhaofengli/reflinks">Source</a> ♦ <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li">Zhaofeng Li</a> ♦ Original Reflinks by Dispenser</small>
