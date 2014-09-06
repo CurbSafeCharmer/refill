@@ -1,0 +1,25 @@
+h1, h2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input, textarea {
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	padding: 7px;
+	transition: background .1s, border .1s;
+	-moz-transition: background .1s, border .1s;
+	-webkit-transition: background .1s, border .1s;
+	-o-transition: background .1s, border .1s;
+}
+
+input:hover, input:focus, textarea:hover, textarea:focus {
+	border: 1px solid #aaa;
+	background: #eee;
+}
+
+#result {
+	padding: 10px;
+	margin: 10px;
+	background: #ccc;
+	overflow-x: scroll;
+}
