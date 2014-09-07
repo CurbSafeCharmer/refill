@@ -12,7 +12,7 @@ if ( isset( $_POST['method-wikitext'] ) ) { // Manual wikitext input
 	}
 }
 
-$result = fixRef( $source );
+$result = fixRef( $source, isset( $_POST['config-plainlink'] ) ? true : false );
 
 // santize for displaying
 $sresult = htmlspecialchars( $result );

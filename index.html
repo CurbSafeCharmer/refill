@@ -10,8 +10,10 @@
 	
 	<h2>Fetch content from wiki</h2>
 	<form id="form-wiki" method="post" action="result.php">
-		<input type="text" name="page" placeholder="Page name"/>
+		<input name="page" type="text" placeholder="Page name"/>
 		<input name="method-wiki" type="submit" value="Fix page"/>
+		<input name="config-plainlink" id="checkbox-plainlink-wiki" type="checkbox"/>
+		<label for="checkbox-plainlink-wiki">Use plain links instead of <code>{{cite web}}</code></label>
 	</form>
 	
 	<p id="or">or</p>
@@ -20,6 +22,8 @@
 	<form id="form-wikitext" method="post" action="result.php">
 		<textarea name="text" rows="10" cols="100"></textarea>
 		<input name="method-wikitext" type="submit" value="Fix wikitext"/>
+		<input name="config-plainlink" id="checkbox-plainlink-wikitext" type="checkbox"/>
+		<label for="checkbox-plainlink-wikitext">Use plain links instead of <code>{{cite web}}</code></label>
 	</form>
 	<footer>
 		<a href="https://github.com/zhaofengli/reflinks">Source</a> ♦ <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li">Zhaofeng Li</a> ♦ Original Reflinks by Dispenser

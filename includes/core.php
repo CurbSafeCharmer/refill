@@ -22,7 +22,7 @@
 */
 require __DIR__ . "/config.php";
 
-function fixRef( $text ) {
+function fixRef( $text, $plainlink = false ) {
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
 	$status = 0;
@@ -40,7 +40,12 @@ function fixRef( $text ) {
 				continue;
 			}
 			$title = ltrim( rtrim( $titlenodes->item( 0 )->nodeValue ) );
-			$replacement = str_replace( $ref, generateCiteTemplate( $ref, $title ), $matches[0][$key] ); // for good measure
+			if ( $plainlink ) { // use plain links
+				$core = generatePlainLink( $ref, $title );
+			} else {
+				$core = generateCiteTemplate( $ref, $title );
+			}
+			$replacement = str_replace( $ref, $core, $matches[0][$key] ); // for good measure
 			$text = str_replace( $matches[0][$key], $replacement, $text );
 		}
 	}

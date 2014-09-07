@@ -50,6 +50,10 @@ textarea {
 	margin-bottom: 5px;
 }
 
+label {
+	color: #555;
+}
+
 #form-wikitext input[type="submit"] {
 	display: block;
 }
