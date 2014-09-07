@@ -44,6 +44,7 @@ $utitle = urlencode( $title );
 			echo "<p>$counter reference(s) fixed!</p>";
 		}
 		echo "<textarea name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
+		echo "<input type='hidden' name='wpSummary' value='{$config['summary']}'/>";
 		if ( !empty( $title ) ) {
 			echo "<input type='submit' name='wpPreview' value='Preview / Save on wiki'/>";
 		}
