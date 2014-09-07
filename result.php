@@ -10,6 +10,11 @@ if ( isset( $_POST['method-wikitext'] ) ) { // Manual wikitext input
 		echo "Error: No page is specified!";
 		die;
 	}
+} elseif ( isset( $_GET['page'] ) ) {
+	$source = fetchWiki( $_GET['page'], $title );
+} else {
+	echo "Error: No source is specified!";
+	die;
 }
 
 $counter = 0;
