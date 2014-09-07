@@ -152,11 +152,11 @@ function extractMetadata( $html ) {
 }
 
 function getFirstNodeValue( $nodelist ) {
-	return ltrim( rtrim( $nodelist->item( 0 )->nodeValue ) );
+	return trim( $nodelist->item( 0 )->nodeValue );
 }
 
 function getFirstNodeAttrContent( $nodelist ) {
-	return ltrim( rtrim( $nodelist->item( 0 )->attributes->getNamedItem( "content" )->nodeValue ) );
+	return trim( $nodelist->item( 0 )->attributes->getNamedItem( "content" )->nodeValue );
 }
 
 function generatePlainLink( $url, $metadata ) {
@@ -183,3 +183,4 @@ function generateCiteTemplate( $url, $metadata ) {
 	$core .= $config['citeextra'] . "}}";
 	return $core;
 }
+
