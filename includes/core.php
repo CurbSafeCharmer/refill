@@ -165,6 +165,7 @@ function generatePlainLink( $url, $metadata ) {
 }
 
 function generateCiteTemplate( $url, $metadata ) {
+	global $config;
 	$date = date( "j F Y" );
 	$stitle = str_replace( "|", "-", $metadata['title'] );
 	$core = "{{cite web|url=$url|title=$stitle";
@@ -178,6 +179,7 @@ function generateCiteTemplate( $url, $metadata ) {
 		$core .= "|work=" . $metadata['work'];
 	}
 	// Let's not use guesswork now, as it's unstable
-	$core .= "|accessdate=$date}}";
+	$core .= "|accessdate=$date";
+	$core .= $config['citeextra'] . "}}";
 	return $core;
 }
