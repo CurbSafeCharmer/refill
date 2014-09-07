@@ -7,24 +7,23 @@
 </head>
 <body>
 	<h1>Reflinks</h1>
-	<h2>Enter wikitext</h2>
-	<form method="post" action="result.php">
-		<textarea name="text" rows="10" cols="100">
-Here is a bare reference: <ref>https://en.wikipedia.org</ref>
-
-Here is another one: <ref name="named" group="nb">http://example.com</ref>
-
-Here is one that doesn't work: <ref name="404">http://example.com/nonexistant</ref>
-
-Not a bare reference: <ref>[http://example.com not a bare ref]</ref></textarea>
-		<input name="method-wikitext" type="submit" value="Fix wikitext"/>
-	</form>
+	
 	<h2>Fetch content from wiki</h2>
-	<form method="post" action="result.php">
+	<form id="form-wiki" method="post" action="result.php">
 		<input type="text" name="page" placeholder="Page name"/>
 		<input name="method-wiki" type="submit" value="Fix page"/>
 	</form>
-	<small><a href="https://github.com/zhaofengli/reflinks">Source</a> ♦ <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li">Zhaofeng Li</a> ♦ Original Reflinks by Dispenser</small>
+	
+	<p id="or">or</p>
+	
+	<h2>Enter wikitext</h2>
+	<form id="form-wikitext" method="post" action="result.php">
+		<textarea name="text" rows="10" cols="100"></textarea>
+		<input name="method-wikitext" type="submit" value="Fix wikitext"/>
+	</form>
+	<footer>
+		<a href="https://github.com/zhaofengli/reflinks">Source</a> ♦ <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li">Zhaofeng Li</a> ♦ Original Reflinks by Dispenser
+	</footer>
 </body>
 </html>
 

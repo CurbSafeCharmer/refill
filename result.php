@@ -35,13 +35,16 @@ $utitle = urlencode( $title );
 		} else {
 			echo "<h1>Reflinks</h1>";
 		}
-		echo "<form id='editform' name='editform' method='post' action='{$config['indexphp']}?title=$stitle&action=submit' enctype='multipart/form-data'>";
+		echo "<form id='form-wikitext' name='editform' method='post' action='{$config['indexphp']}?title=$stitle&action=submit' enctype='multipart/form-data'>";
 		echo "<textarea name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
 		if ( !empty( $title ) ) {
 			echo "<input type='submit' name='wpPreview' value='Preview your changes on wiki'/>";
 		}
 		echo "</form>";
 	?>
+	<footer>
+		<a href="https://github.com/zhaofengli/reflinks">Source</a> ♦ <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li">Zhaofeng Li</a> ♦ Original Reflinks by Dispenser
+	</footer>
 </body>
 </html>
 		
