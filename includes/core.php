@@ -34,17 +34,11 @@ function fixRef( $text, $plainlink = false, &$counter = 0 ) {
 			if ( !$html || $status != 200 ) { // failed
 				continue;
 			}
-			$dom = new DOMDocument();
-			$dom->loadHTML( $html );
-			$titlenodes = $dom->getElementsByTagName( "title" );
-			if ( !$titlenodes->length ) { // no title found
-				continue;
-			}
-			$title = ltrim( rtrim( $titlenodes->item( 0 )->nodeValue ) );
+			$metadata = extractMetadata( $html );
 			if ( $plainlink ) { // use plain links
-				$core = generatePlainLink( $ref, $title );
+				$core = generatePlainLink( $ref, $metadata );
 			} else {
-				$core = generateCiteTemplate( $ref, $title );
+				$core = generateCiteTemplate( $ref, $metadata );
 			}
 			$replacement = str_replace( $ref, $core, $matches[0][$key] ); // for good measure
 			$text = str_replace( $matches[0][$key], $replacement, $text );
@@ -75,7 +69,7 @@ function fetchWiki( $page, &$actualname = "" ) { // bug-prone
 	}
 }
 
-function fetchWeb( $url, $referer, &$status ) {
+function fetchWeb( $url, $referer = "", &$status = "" ) {
 	global $config;
 	$curl = curl_init( $url );
 	curl_setopt( $curl, CURLOPT_USERAGENT, $config['useragent'] );
@@ -103,12 +97,87 @@ function fetchWeb( $url, $referer, &$status ) {
 	return $content;
 }
 
-function generatePlainLink( $url, $caption ) {
-	return "[$url $caption]";
+function extractMetadata( $html ) {
+	$dom = new DOMDocument();
+	$dom->preserveWhiteSpace = false;
+	$dom->loadHTML( $html );
+	$xpath = new DOMXPath( $dom );
+	
+	$result = array();
+	
+	// Extract title to ['title']
+	$titlenodes = $dom->getElementsByTagName( "title" );
+	if ( $titlenodes->length ) { // title found
+		$result['title'] = getFirstNodeValue( $titlenodes );
+	}
+	
+	// Extract author to ['author']
+	$authornodes = $xpath->query( "//*[@itemprop='author']" ); // 1st try - schema.org
+	if ( $authornodes->length ) { // author found
+		$result['author'] = getFirstNodeValue( $authornodes );
+	} else { // 2nd try - <meta name="author">
+		$authornodes = $xpath->query( "//meta[@name='author']" );
+		if ( $authornodes->length ) {
+			$result['author'] = getFirstNodeAttrContent( $authornodes );
+		}
+	}
+	
+	// Extract publication date to ['date']
+	$datenodes = $xpath->query( "//*[@itemprop='datePublished'] | //meta[@name='date' or @name='article:published_time' or @name='sailthru.date']" );
+	if ( $datenodes->length ) { // date found
+		$date = getFirstNodeAttrContent( $datenodes );
+		if ( $timestamp = strtotime( $date ) ) { // successfully parsed
+			$result['date'] = date( "j F Y", $timestamp );
+		}
+	}
+
+	
+	// Extract website name to ['work']
+	$worknodes = $xpath->query( "//meta[@property='og:site_name']" );
+	if ( $worknodes->length ) {
+		$result['work'] = getFirstNodeAttrContent( $worknodes );
+	}
+	
+	// Guess website name from title to ['guessedwork']
+	if ( isset( $result['title'] ) ) {
+		// Is it something like "Article name & whatever - Site name"?
+		$workpattern = "/.+ [\-\|] ([^\-\|]*)$/";
+		$matches = array();
+		if ( preg_match( $workpattern, $result['title'], $matches ) ) {
+			$result['guessedwork'] = $matches[1][0];
+		}
+	}
+	
+	return $result; // Done! ;)
 }
 
-function generateCiteTemplate( $url, $caption ) {
+function getFirstNodeValue( $nodelist ) {
+	return ltrim( rtrim( $nodelist->item( 0 )->nodeValue ) );
+}
+
+function getFirstNodeAttrContent( $nodelist ) {
+	return ltrim( rtrim( $nodelist->item( 0 )->attributes->getNamedItem( "content" )->nodeValue ) );
+}
+
+function generatePlainLink( $url, $metadata ) {
+	$title = $metadata['title'];
+	return "[$url $title]";
+}
+
+function generateCiteTemplate( $url, $metadata ) {
 	$date = date( "j F Y" );
-	$scaption = str_replace( "|", "-", $caption );
-	return "{{cite web|url=$url|title=$scaption|accessdate=$date}}";
+	$stitle = str_replace( "|", "-", $metadata['title'] );
+	$core = "{{cite web|url=$url|title=$stitle";
+	if ( isset( $metadata['author'] ) ) {
+		$core .= "|author=" . $metadata['author'];
+	}
+	if ( isset( $metadata['date'] ) ) {
+		$core .= "|date=" . $metadata['date'];
+	}
+	if ( isset( $metadata['work'] ) ) {
+		$core .= "|work=" . $metadata['work'];
+	}
+	// Let's not use guesswork now, as it's unstable
+	$core .= "|accessdate=$date}}";
+	return $core;
 }
