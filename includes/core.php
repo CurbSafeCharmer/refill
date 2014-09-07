@@ -47,7 +47,7 @@ function fixRef( $text ) {
 	return $text;
 }
 
-function fetchWiki( $page ) { // bug-prone
+function fetchWiki( $page, &$actualname = "" ) { // bug-prone
 	global $config;
 	$url = $config['api'] . "?action=query&prop=revisions&rvlimit=1&rvprop=content&format=json&titles=" . urlencode( $page );
 	$curl = curl_init( $url );
@@ -62,6 +62,7 @@ function fetchWiki( $page ) { // bug-prone
 		if ( isset( $page['missing'] ) )
 			return;
 		else {
+			$actualname = $page['title'];
 			return $page['revisions'][0]['*'] ;
 		}
 	}
