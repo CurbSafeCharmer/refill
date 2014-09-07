@@ -40,7 +40,7 @@ function fixRef( $text ) {
 				continue;
 			}
 			$title = ltrim( rtrim( $titlenodes->item( 0 )->nodeValue ) );
-			$replacement = str_replace( $ref, "[$ref $title]", $matches[0][$key] ); // for good measure
+			$replacement = str_replace( $ref, generateCiteTemplate( $ref, $title ), $matches[0][$key] ); // for good measure
 			$text = str_replace( $matches[0][$key], $replacement, $text );
 		}
 	}
@@ -93,4 +93,14 @@ function fetchWeb( $url, $referer, &$status ) {
 	curl_close( $curl );
 	$status = $header['http_code'];
 	return $content;
+}
+
+function generatePlainLink( $url, $caption ) {
+	return "[$url $caption]";
+}
+
+function generateCiteTemplate( $url, $caption ) {
+	$date = date( "j F Y" );
+	$scaption = str_replace( "|", "-", $caption );
+	return "{{cite web|url=$url|title=$scaption|accessdate=$date}}";
 }
