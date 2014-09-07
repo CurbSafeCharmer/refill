@@ -37,7 +37,12 @@ $utitle = urlencode( $title );
 			echo "<h1>Reflinks</h1>";
 		}
 		echo "<form id='form-wikitext' name='editform' method='post' action='{$config['indexphp']}?title=$stitle&action=submit' enctype='multipart/form-data'>";
-		echo "<h2>Result</h2><p>$counter reference(s) fixed!</p>";
+		echo "<h2>Result</h2>";
+		if ( !$counter ) {
+			echo "<p>No changes made.</p>";
+		} else {
+			echo "<p>$counter reference(s) fixed!</p>";
+		}
 		echo "<textarea name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
 		if ( !empty( $title ) ) {
 			echo "<input type='submit' name='wpPreview' value='Preview / Save on wiki'/>";
