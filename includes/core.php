@@ -22,10 +22,11 @@
 */
 require __DIR__ . "/config.php";
 
-function fixRef( $text, $plainlink = false ) {
+function fixRef( $text, $plainlink = false, &$counter = 0 ) {
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
 	$status = 0;
+	$counter = 0;
 	preg_match_all( $pattern, $text, $matches );
 	foreach ( $matches[1] as $key => $ref ) {
 		if ( filter_var( $ref, FILTER_VALIDATE_URL ) && strpos( $ref, "http" ) === 0 ) { // a bare link
@@ -47,6 +48,7 @@ function fixRef( $text, $plainlink = false ) {
 			}
 			$replacement = str_replace( $ref, $core, $matches[0][$key] ); // for good measure
 			$text = str_replace( $matches[0][$key], $replacement, $text );
+			$counter++;
 		}
 	}
 	return $text;
