@@ -40,7 +40,7 @@ $utitle = urlencode( $title );
 		echo "<h2>Result</h2><p>$counter reference(s) fixed!</p>";
 		echo "<textarea name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
 		if ( !empty( $title ) ) {
-			echo "<input type='submit' name='wpPreview' value='Preview your changes on wiki'/>";
+			echo "<input type='submit' name='wpPreview' value='Preview / Save on wiki'/>";
 		}
 		echo "</form>";
 	?>
