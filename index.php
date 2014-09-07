@@ -23,19 +23,16 @@ Not a bare reference: <ref>[http://example.com not a bare ref]</ref></textarea>
 		<input name="method-wikitext" type="submit" value="Fix wikitext"/>
 	</form>
 	<h2>Fetch content from wiki</h2>
-	<form method="post" action="index.php">
+	<form method="get" action="article.php">
 		<input type="text" name="page" placeholder="Page name"/>
 		<input name="method-wiki" type="submit" value="Fix page"/>
 	</form>
 	<?php
-		if ( isset( $_POST['method-wiki'] ) ) {
-			$content = fetchWiki( $_POST['page'] );
-			$text = fixRef( $content );
-		} elseif ( isset( $_POST['method-wikitext'] ) ) {
+		if ( isset( $_POST['method-wikitext'] ) ) {
 			$text = fixRef( $_POST['text'] );
+			$stext = htmlspecialchars( $text );
+			echo "<h2>Result</h2><textarea id='result' rows='10' cols='100'>$stext</textarea>";
 		}
-		$stext = htmlspecialchars( $text );
-		echo "<h2>Result</h2><textarea id='result' rows='10' cols='100'>$stext</textarea>";
 	?>
 	<small><a href="https://github.com/zhaofengli/reflinks">Source</a> ♦ <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li">Zhaofeng Li</a> ♦ Original Reflinks by Dispenser</small>
 </body>
