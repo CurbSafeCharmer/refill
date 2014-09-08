@@ -26,7 +26,7 @@ define( "SKIPPED_NOTBARE", 1 ); // UNUSED
 define( "SKIPPED_HTTPERROR", 2 );
 define( "SKIPPED_EMPTY", 3 );
 
-function fixRef( $text, &$log = "", $plainlink = false ) {
+function fixRef( $text, &$log = "", $plainlink = false, $nofixplain = false ) {
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
 	$status = 0;
@@ -35,19 +35,19 @@ function fixRef( $text, &$log = "", $plainlink = false ) {
 		'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
 	);
 	preg_match_all( $pattern, $text, $matches );
-	foreach ( $matches[1] as $key => $ref ) {
-		if ( filter_var( $ref, FILTER_VALIDATE_URL ) && strpos( $ref, "http" ) === 0 ) { // a bare link
-			$html = fetchWeb( $ref, null, $status );
+	foreach ( $matches[1] as $key => $core ) {
+		if ( filter_var( $core, FILTER_VALIDATE_URL ) && strpos( $core, "http" ) === 0 ) { // a bare link
+			$html = fetchWeb( $core, null, $status );
 			if ( $status != 200 ) { // failed
 				$log['skipped'][] = array(
-					'ref' => $ref,
+					'ref' => $core,
 					'reason' => SKIPPED_HTTPERROR,
 					'status' => $status,
 				);
 				continue;
 			} elseif ( !$html ) {
 				$log['skipped'][] = array(
-					'ref' => $ref,
+					'ref' => $core,
 					'reason' => SKIPPED_EMPTY,
 					'status' => $status,
 				);
@@ -55,14 +55,14 @@ function fixRef( $text, &$log = "", $plainlink = false ) {
 			}
 			$metadata = extractMetadata( $html );
 			if ( $plainlink ) { // use plain links
-				$core = generatePlainLink( $ref, $metadata );
+				$newcore = generatePlainLink( $core, $metadata );
 			} else {
-				$core = generateCiteTemplate( $ref, $metadata );
+				$newcore = generateCiteTemplate( $core, $metadata );
 			}
-			$replacement = str_replace( $ref, $core, $matches[0][$key] ); // for good measure
+			$replacement = str_replace( $core, $newcore, $matches[0][$key] ); // for good measure
 			$text = str_replace( $matches[0][$key], $replacement, $text );
 			$log['fixed'][] = array(
-				'url' => $ref,
+				'url' => $core,
 			);
 		}
 	}
