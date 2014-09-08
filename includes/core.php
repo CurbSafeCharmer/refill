@@ -282,7 +282,7 @@ function getSkippedReason( $code ) {
 
 // Remove all bare URL tags. Use only if all bare links are fixed.
 function removeBareUrlTags( $source ) {
-	$pattern = "/\{\{(Bare|Bare links|Barelinks|Bare references|Bare refs|Bare URLs|Cleanup link rot|Cleanup link-rot|Cleanup-link-rot|Cleanup-linkrot|Link rot|Linkrot)([^\}])*\}\}/i";
+	$pattern = "/\{\{(Bare|Bare links|Barelinks|Bare references|Bare refs|Bare URLs|Cleanup link rot|Cleanup link-rot|Cleanup-link-rot|Cleanup-linkrot|Link rot|Linkrot|Cleanup-bare URLs)([^\}])*\}\}/i";
 	return preg_replace( $pattern, "", $source );
 }
 
