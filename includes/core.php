@@ -154,7 +154,7 @@ function extractMetadata( $html ) {
 			$result['author'] = getFirstNodeAttrContent( $authornodes );
 		}
 	}
-	$result['author'] = preg_replace( "/by (.+)/i", "$1", $result['author'] ); // clean it up a bit
+	$result['author'] = preg_replace( "/(?:by|from)\s+(.+)/i", "$1", $result['author'] ); // clean it up a bit
 	
 	// Extract publication date to ['date']
 	$datenodes = $xpath->query( "//*[@itemprop='datePublished'] | //meta[@name='date' or @name='article:published_time' or @name='sailthru.date']" );
