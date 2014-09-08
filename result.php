@@ -19,6 +19,7 @@ if ( isset( $_POST['method-wikitext'] ) ) { // Manual wikitext input
 
 $counter = 0;
 $result = fixRef( $source, isset( $_POST['config-plainlink'] ) ? true : false, $counter );
+$timestamp = generateWikiTimestamp();
 
 // santize for displaying
 $sresult = htmlspecialchars( $result );
@@ -50,6 +51,7 @@ $utitle = urlencode( $title );
 		}
 		echo "<textarea name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
 		echo "<input type='hidden' name='wpSummary' value='{$config['summary']}'/>";
+		echo "<input type='hidden' name='wpStarttime' value='$timestamp'/>";
 		if ( !empty( $title ) ) {
 			echo "<input type='submit' name='wpPreview' value='Preview / Save on wiki'/>";
 		}

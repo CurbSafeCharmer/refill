@@ -4,3 +4,4 @@ $config['api'] = "https://en.wikipedia.org/w/api.php";
 $config['indexphp'] = "https://en.wikipedia.org/w/index.php";
 $config['citeextra'] = "|publisher=";
 $config['summary'] = "Filled in bare references with [[User:Zhaofeng Li/Reflinks]]";
+date_default_timezone_set( "UTC" );

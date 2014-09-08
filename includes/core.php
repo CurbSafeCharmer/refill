@@ -184,3 +184,6 @@ function generateCiteTemplate( $url, $metadata ) {
 	return $core;
 }
 
+function generateWikiTimestamp() {
+	return date( "YmdHis" );
+}
