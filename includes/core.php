@@ -140,7 +140,14 @@ function extractMetadata( $html ) {
 	// Extract author to ['author']
 	$authornodes = $xpath->query( "//*[@itemprop='author']" ); // 1st try - schema.org
 	if ( $authornodes->length ) { // author found
-		$result['author'] = getFirstNodeValue( $authornodes );
+		if ( $authornodes->item( 0 )->childNodes->length ) { // It has child nodes!
+			$authornodes = $xpath->query( "//*[@itemprop='author']//*[@itemprop='name']" ); // dirty...
+			if ( $authornodes->length ) {
+				$result['author'] = getFirstNodeValue( $authornodes );
+			}
+		} else { // Okay, simple one...
+			$result['author'] = getFirstNodeValue( $authornodes );
+		}
 	} else { // 2nd try - <meta name="author">
 		$authornodes = $xpath->query( "//meta[@name='author']" );
 		if ( $authornodes->length ) {
