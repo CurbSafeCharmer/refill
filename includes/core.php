@@ -194,7 +194,9 @@ function generatePlainLink( $url, $metadata ) {
 function generateCiteTemplate( $url, $metadata ) {
 	global $config;
 	$date = date( "j F Y" );
-	$stitle = str_replace( "|", "-", $metadata['title'] );
+	foreach ( $metadata as &$field ) { // we don't want | here
+		$field = str_replace( "|", "-", $field );
+	}
 	$core = "{{cite web|url=$url|title=$stitle";
 	if ( isset( $metadata['author'] ) ) {
 		$core .= "|author=" . $metadata['author'];
