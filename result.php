@@ -1,5 +1,8 @@
 <?php
 require __DIR__ . "/includes/core.php";
+require __DIR__ . "/includes/php-diff/lib/Diff.php";
+require __DIR__ . "/includes/php-diff/lib/Diff/Renderer/Html/SideBySide.php";
+
 $title = "";
 if ( isset( $_POST['method-wikitext'] ) ) { // Manual wikitext input
 	$source = $_POST['text'];
@@ -20,6 +23,12 @@ if ( isset( $_POST['method-wikitext'] ) ) { // Manual wikitext input
 $log = array();
 $result = fixRef( $source, isset( $_POST['config-plainlink'] ) ? true : false, $log );
 $timestamp = generateWikiTimestamp();
+
+// initialize diff class
+$a = explode( "\n", $source );
+$b = explode( "\n", $result );
+$diff = new Diff( $a, $b, $config['diffconfig'] );
+$diffrenderer = new Diff_Renderer_Html_SideBySide;
 
 // santize for displaying
 $sresult = htmlspecialchars( $result );
@@ -50,6 +59,7 @@ $utitle = urlencode( $title );
 		} else {
 			echo "<p>$counter reference(s) fixed!</p>";
 		}
+		echo $diff->render( $diffrenderer ); // show diff
 		if ( count( $log['skipped'] ) ) {
 			echo "<p>The following references are skipped:<ul id='skipped-refs'>";
 			foreach( $log['skipped'] as $skipped ) {

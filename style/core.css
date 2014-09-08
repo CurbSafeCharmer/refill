@@ -67,3 +67,15 @@ label {
 	font-style: italic;
 	font-weight: bolder;
 }
+
+.Differences {
+	background: #a7d9f9;
+}
+
+.ChangeReplace del {
+	color: red;
+}
+
+.ChangeReplace ins {
+	color: green;
+}
