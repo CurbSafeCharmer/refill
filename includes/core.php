@@ -22,7 +22,7 @@
 */
 require __DIR__ . "/config.php";
 
-define( "SKIPPED_NOTBARE", 1 );
+define( "SKIPPED_NOTBARE", 1 ); // UNUSED
 define( "SKIPPED_HTTPERROR", 2 );
 define( "SKIPPED_EMPTY", 3 );
 
@@ -63,11 +63,6 @@ function fixRef( $text, $plainlink = false, &$log = "" ) {
 			$text = str_replace( $matches[0][$key], $replacement, $text );
 			$log['fixed'][] = array(
 				'url' => $ref,
-			);
-		} else {
-			$log['skipped'][] = array(
-				'ref' => $ref,
-				'reason' => SKIPPED_NOTBARE,
 			);
 		}
 	}
@@ -231,8 +226,6 @@ function generateWikiTimestamp() {
 
 function getSkippedReason( $code ) {
 	switch ( $code ) {
-		case SKIPPED_NOTBARE:
-			return "Not a bare reference";
 		case SKIPPED_HTTPERROR:
 			return "HTTP Error";
 		case SKIPPED_EMPTY:
@@ -240,4 +233,10 @@ function getSkippedReason( $code ) {
 		default:
 			return "Unknown error";
 	}
+}
+
+// Remove all bare URL tags. Use only if all bare links are fixed.
+function removeBareUrlTags( $source ) {
+	$pattern = "/\{\{(Bare|Bare links|Barelinks|Bare references|Bare refs|Bare URLs|Cleanup link rot|Cleanup link-rot|Cleanup-link-rot|Cleanup-linkrot|Link rot|Linkrot)([^\}])*\}\}/i";
+	return preg_replace( $pattern, "", $source );
 }

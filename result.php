@@ -24,6 +24,11 @@ $log = array();
 $result = fixRef( $source, isset( $_POST['config-plainlink'] ) ? true : false, $log );
 $timestamp = generateWikiTimestamp();
 
+// remove link rot tags
+if ( !count( $log['skipped'] ) && !isset( $_POST['config-noremovetag'] ) && !isset( $_GET['noremovetag'] ) ) { // Hurray! All fixed!
+	$result = removeBareUrlTags( $result );
+}
+
 // initialize diff class
 $a = explode( "\n", $source );
 $b = explode( "\n", $result );
@@ -63,11 +68,9 @@ $utitle = urlencode( $title );
 		if ( count( $log['skipped'] ) ) {
 			echo "<p>The following references are skipped:<ul id='skipped-refs'>";
 			foreach( $log['skipped'] as $skipped ) {
-				if ( $skipped['reason'] != SKIPPED_NOTBARE ) {
-					$sref = htmlspecialchars( $skipped['ref'] );
-					$reason = getSkippedReason( $skipped['reason'] );
-					echo "<li><code class='url'>$sref</code> <span class='reason'>$reason ({$skipped['status']})</span></li>";
-				}
+				$sref = htmlspecialchars( $skipped['ref'] );
+				$reason = getSkippedReason( $skipped['reason'] );
+				echo "<li><code class='url'>$sref</code> <span class='reason'>$reason ({$skipped['status']})</span></li>";
 			}
 			echo "</ul></p>";
 		}
