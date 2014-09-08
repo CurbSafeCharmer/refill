@@ -88,6 +88,9 @@ $utitle = urlencode( $title );
 			echo "<input type='submit' name='wpPreview' value='Preview / Save on wiki'/>";
 		}
 		echo "</form>";
+		if ( isset( $_GET['page'] ) ) {
+			echo "<a href='index.html' class='back'>More options...</a>";
+		}
 	?>
 	<footer>
 		<a href="https://github.com/zhaofengli/reflinks">Source</a> ♦ <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li/Reflinks">Info</a> ♦ by <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li">Zhaofeng Li</a> ♦ Original Reflinks by <a href="https://en.wikipedia.org/wiki/User:Dispenser">Dispenser</a>
