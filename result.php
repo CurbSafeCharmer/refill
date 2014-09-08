@@ -64,7 +64,7 @@ $utitle = urlencode( $title );
 		echo "<textarea name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
 		echo "<input type='hidden' name='wpSummary' value='{$config['summary']}'/>";
 		echo "<input type='hidden' name='wpStarttime' value='$timestamp'/>";
-		if ( !empty( $title ) ) {
+		if ( !empty( $title ) && count ( $log['fixed'] ) ) {
 			echo "<input type='submit' name='wpPreview' value='Preview / Save on wiki'/>";
 		}
 		echo "</form>";
