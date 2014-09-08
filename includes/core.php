@@ -197,7 +197,10 @@ function generateCiteTemplate( $url, $metadata ) {
 	foreach ( $metadata as &$field ) { // we don't want | here
 		$field = str_replace( "|", "-", $field );
 	}
-	$core = "{{cite web|url=$url|title=$stitle";
+	$core = "{{cite web|url=$url";
+	if ( isset( $metadata['title'] ) ) {
+		$core .= "|title=" . $metadata['title'];
+	}
 	if ( isset( $metadata['author'] ) ) {
 		$core .= "|author=" . $metadata['author'];
 	}
