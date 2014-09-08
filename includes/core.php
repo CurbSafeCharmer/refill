@@ -119,6 +119,7 @@ function extractMetadata( $html ) {
 		$authornodes = $xpath->query( "//meta[@name='author']" );
 		if ( $authornodes->length ) {
 			$result['author'] = getFirstNodeAttrContent( $authornodes );
+			$result['author'] = preg_replace( "/by (.+)/i", "$1", $result['author'] ); // clean it up a bit
 		}
 	}
 	
