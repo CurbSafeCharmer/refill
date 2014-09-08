@@ -26,6 +26,9 @@ define( "SKIPPED_NOTBARE", 1 ); // UNUSED
 define( "SKIPPED_HTTPERROR", 2 );
 define( "SKIPPED_EMPTY", 3 );
 
+define( "DATE_DMY", false ); // default
+define( "DATE_MDY", true );
+
 function fixRef( $text, &$log = "", $plainlink = false, $nofixuplain = false, $nofixcplain = true, $nouseoldcaption = false ) {
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
@@ -34,6 +37,7 @@ function fixRef( $text, &$log = "", $plainlink = false, $nofixuplain = false, $n
 		'fixed' => array(), // ['url'] contains the original link
 		'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
 	);
+	$dateformat = detectDateFormat( $text );
 	preg_match_all( $pattern, $text, $matches );
 	foreach ( $matches[1] as $key => $core ) {
 		$oldref = array();
@@ -86,9 +90,9 @@ function fixRef( $text, &$log = "", $plainlink = false, $nofixuplain = false, $n
 		
 		// Generate cite template
 		if ( $plainlink ) { // use captioned plain link
-			$newcore = generatePlainLink( $oldref['url'], $metadata );
+			$newcore = generatePlainLink( $oldref['url'], $metadata, $dateformat );
 		} else { // use {{cite web}}
-			$newcore = generateCiteTemplate( $oldref['url'], $metadata );
+			$newcore = generateCiteTemplate( $oldref['url'], $metadata, $dateformat );
 		}
 		
 		// Replace the old core
@@ -186,10 +190,7 @@ function extractMetadata( $html ) {
 	// Extract publication date to ['date']
 	$datenodes = $xpath->query( "//*[@itemprop='datePublished'] | //meta[@name='date' or @name='article:published_time' or @name='sailthru.date']" );
 	if ( $datenodes->length ) { // date found
-		$date = getFirstNodeAttrContent( $datenodes );
-		if ( $timestamp = strtotime( $date ) ) { // successfully parsed
-			$result['date'] = date( "j F Y", $timestamp );
-		}
+		$result['date'] = getFirstNodeAttrContent( $datenodes );
 	}
 
 	
@@ -220,40 +221,52 @@ function getFirstNodeAttrContent( $nodelist ) {
 	return trim( $nodelist->item( 0 )->attributes->getNamedItem( "content" )->nodeValue );
 }
 
-function generatePlainLink( $url, $metadata ) {
+function generatePlainLink( $url, $metadata, $dateformat = DATE_DMY ) {
 	$title = $metadata['title'];
-	return "[$url $title]";
+	$core = "[$url $title] Retrieved on " . generateDate( $dateformat ) . ".";
+	return $core;
 }
 
-function generateCiteTemplate( $url, $metadata ) {
+function generateCiteTemplate( $url, $metadata, $dateformat = DATE_DMY ) {
 	global $config;
 	$date = date( "j F Y" );
 	foreach ( $metadata as &$field ) { // we don't want | here
 		$field = str_replace( "|", "-", $field );
 	}
 	$core = "{{cite web|url=$url";
-	if ( isset( $metadata['title'] ) ) {
+	if ( !empty( $metadata['title'] ) ) {
 		$core .= "|title=" . $metadata['title'];
 	}
-	if ( isset( $metadata['author'] ) ) {
+	if ( !empty( $metadata['author'] ) ) {
 		$core .= "|author=" . $metadata['author'];
 	}
-	if ( isset( $metadata['date'] ) ) {
-		$core .= "|date=" . $metadata['date'];
+	if ( !empty( $metadata['date'] ) && $timestamp = strtotime( $metadata['date'] ) ) { // successfully parsed
+		$core .= "|date=" . generateDate( $dateformat, $metadata['date'] );
 	}
-	if ( isset( $metadata['work'] ) ) {
+	if ( !empty( $metadata['work'] ) ) {
 		$core .= "|work=" . $metadata['work'];
 	} else { // no |work= extracted , add an empty |publisher=
 		$core .= "|publisher=";
 	}
 	// Let's not use guesswork now, as it's unstable
-	$core .= "|accessdate=$date";
+	$core .= "|accessdate=" . generateDate( $dateformat );
 	$core .= $config['citeextra'] . "}}";
 	return $core;
 }
 
 function generateWikiTimestamp() {
 	return date( "YmdHis" );
+}
+
+function generateDate( $format, $timestamp = 0 ) {
+	if ( !$timestamp ) {
+		$timestamp = time();
+	}
+	if ( $format == DATE_MDY ) { // mdy
+		return date( "F j, Y", $timestamp );
+	} else { // dmy (default)
+		return date( "j F Y", $timestamp );
+	}
 }
 
 function getSkippedReason( $code ) {
@@ -271,4 +284,13 @@ function getSkippedReason( $code ) {
 function removeBareUrlTags( $source ) {
 	$pattern = "/\{\{(Bare|Bare links|Barelinks|Bare references|Bare refs|Bare URLs|Cleanup link rot|Cleanup link-rot|Cleanup-link-rot|Cleanup-linkrot|Link rot|Linkrot)([^\}])*\}\}/i";
 	return preg_replace( $pattern, "", $source );
+}
+
+// DATE_DMY if dmy (default), DATE_MDY if mdy
+function detectDateFormat( $source ) {
+	if ( stripos( $source, "{{Use mdy dates" ) !== false ) {
+		return DATE_MDY;
+	} else {
+		return DATE_DMY;
+	}
 }
