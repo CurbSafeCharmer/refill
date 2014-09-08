@@ -178,6 +178,8 @@ function generateCiteTemplate( $url, $metadata ) {
 	}
 	if ( isset( $metadata['work'] ) ) {
 		$core .= "|work=" . $metadata['work'];
+	} else { // no |work= extracted , add an empty |publisher=
+		$core .= "|publisher=";
 	}
 	// Let's not use guesswork now, as it's unstable
 	$core .= "|accessdate=$date";
