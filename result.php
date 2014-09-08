@@ -17,8 +17,8 @@ if ( isset( $_POST['method-wikitext'] ) ) { // Manual wikitext input
 	die;
 }
 
-$counter = 0;
-$result = fixRef( $source, isset( $_POST['config-plainlink'] ) ? true : false, $counter );
+$log = array();
+$result = fixRef( $source, isset( $_POST['config-plainlink'] ) ? true : false, $log );
 $timestamp = generateWikiTimestamp();
 
 // santize for displaying
@@ -49,6 +49,17 @@ $utitle = urlencode( $title );
 			echo "<p>No changes made.</p>";
 		} else {
 			echo "<p>$counter reference(s) fixed!</p>";
+		}
+		if ( count( $log['skipped'] ) ) {
+			echo "<p>The following references are skipped:<ul id='skipped-refs'>";
+			foreach( $log['skipped'] as $skipped ) {
+				if ( $skipped['reason'] != SKIPPED_NOTBARE ) {
+					$sref = htmlspecialchars( $skipped['ref'] );
+					$reason = getSkippedReason( $skipped['reason'] );
+					echo "<li><code class='url'>$sref</code> <span class='reason'>$reason ({$skipped['status']})</span></li>";
+				}
+			}
+			echo "</ul></p>";
 		}
 		echo "<textarea name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
 		echo "<input type='hidden' name='wpSummary' value='{$config['summary']}'/>";

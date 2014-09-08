@@ -22,17 +22,34 @@
 */
 require __DIR__ . "/config.php";
 
-function fixRef( $text, $plainlink = false, &$counter = 0 ) {
+define( "SKIPPED_NOTBARE", 1 );
+define( "SKIPPED_HTTPERROR", 2 );
+define( "SKIPPED_EMPTY", 3 );
+
+function fixRef( $text, $plainlink = false, &$log = "" ) {
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
 	$status = 0;
-	$counter = 0;
+	$log = array(
+		'fixed' => array(), // ['url'] contains the original link
+		'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
+	);
 	preg_match_all( $pattern, $text, $matches );
 	foreach ( $matches[1] as $key => $ref ) {
 		if ( filter_var( $ref, FILTER_VALIDATE_URL ) && strpos( $ref, "http" ) === 0 ) { // a bare link
 			$html = fetchWeb( $ref, null, $status );
-			if ( !$html || $status != 200 ) { // failed
-				continue;
+			if ( $status != 200 ) { // failed
+				$log['skipped'][] = array(
+					'ref' => $ref,
+					'reason' => SKIPPED_HTTPERROR,
+					'status' => $status,
+				);
+			} elseif ( !$html ) {
+				$log['skipped'][] = array(
+					'ref' => $ref,
+					'reason' => SKIPPED_EMPTY,
+					'status' => $status,
+				);
 			}
 			$metadata = extractMetadata( $html );
 			if ( $plainlink ) { // use plain links
@@ -42,7 +59,14 @@ function fixRef( $text, $plainlink = false, &$counter = 0 ) {
 			}
 			$replacement = str_replace( $ref, $core, $matches[0][$key] ); // for good measure
 			$text = str_replace( $matches[0][$key], $replacement, $text );
-			$counter++;
+			$log['fixed'][] = array(
+				'url' => $ref,
+			);
+		} else {
+			$log['skipped'][] = array(
+				'ref' => $ref,
+				'reason' => SKIPPED_NOTBARE,
+			);
 		}
 	}
 	return $text;
@@ -189,4 +213,17 @@ function generateCiteTemplate( $url, $metadata ) {
 
 function generateWikiTimestamp() {
 	return date( "YmdHis" );
+}
+
+function getSkippedReason( $code ) {
+	switch ( $code ) {
+		case SKIPPED_NOTBARE:
+			return "Not a bare reference";
+		case SKIPPED_HTTPERROR:
+			return "HTTP Error";
+		case SKIPPED_EMPTY:
+			return "Empty response or not HTML";
+		default:
+			return "Unknown error";
+	}
 }
