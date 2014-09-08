@@ -19,7 +19,7 @@ h1 {
 	border-bottom-right-radius: 10px;
 }
 
-h2, h3, h4 {
+h2 {
 	border-bottom: 2px solid #a7d7f9;
 }
 
@@ -66,6 +66,11 @@ label {
 .notice {
 	font-style: italic;
 	font-weight: bolder;
+}
+
+.optionul {
+	list-style-type: none;
+	padding-left: 0;
 }
 
 .Differences {

@@ -26,7 +26,7 @@ define( "SKIPPED_NOTBARE", 1 ); // UNUSED
 define( "SKIPPED_HTTPERROR", 2 );
 define( "SKIPPED_EMPTY", 3 );
 
-function fixRef( $text, &$log = "", $plainlink = false, $nofixplain = false ) {
+function fixRef( $text, &$log = "", $plainlink = false, $nofixuplain = false, $nofixcplain = true, $nouseoldcaption = false ) {
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
 	$status = 0;
@@ -36,35 +36,67 @@ function fixRef( $text, &$log = "", $plainlink = false, $nofixplain = false ) {
 	);
 	preg_match_all( $pattern, $text, $matches );
 	foreach ( $matches[1] as $key => $core ) {
-		if ( filter_var( $core, FILTER_VALIDATE_URL ) && strpos( $core, "http" ) === 0 ) { // a bare link
-			$html = fetchWeb( $core, null, $status );
-			if ( $status != 200 ) { // failed
-				$log['skipped'][] = array(
-					'ref' => $core,
-					'reason' => SKIPPED_HTTPERROR,
-					'status' => $status,
-				);
-				continue;
-			} elseif ( !$html ) {
-				$log['skipped'][] = array(
-					'ref' => $core,
-					'reason' => SKIPPED_EMPTY,
-					'status' => $status,
-				);
-				continue;
-			}
-			$metadata = extractMetadata( $html );
-			if ( $plainlink ) { // use plain links
-				$newcore = generatePlainLink( $core, $metadata );
+		$oldref = array();
+		// Let's find out what kind of reference it is...
+		if ( filter_var( $core, FILTER_VALIDATE_URL ) && strpos( $core, "http" ) === 0 ) {
+			// a bare link (consists of only a URL)
+			$oldref['url'] = $core;
+		} elseif ( preg_match( "/^\[(http[^\] ]+) ([^\]]+)\]/i", $core, $cmatches ) ) {
+			// a captioned plain link (consists of a URL and a caption, surrounded with [], possibly with other stuff after it)
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$nofixcplain ) {
+				$oldref['url'] = $cmatches[1];
+				$oldref['caption'] = $cmatches[2];
 			} else {
-				$newcore = generateCiteTemplate( $core, $metadata );
+				continue;
 			}
-			$replacement = str_replace( $core, $newcore, $matches[0][$key] ); // for good measure
-			$text = str_replace( $matches[0][$key], $replacement, $text );
-			$log['fixed'][] = array(
-				'url' => $core,
-			);
+		} elseif ( preg_match( "/^\[(http[^ ]+)\]$/i", $core, $cmatches ) ) {
+			// an uncaptioned plain link (consists of only a URL, surrounded with [])
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$nofixuplain ) {
+				$oldref['url'] = $cmatches[1];
+			} else {
+				continue;
+			}
+		} else {
+			// probably already filled in, let's skip it
+			continue;
 		}
+		
+		// Fetch the webpage and extract the metadata
+		$html = fetchWeb( $oldref['url'], null, $status );
+		if ( $status != 200 ) { // failed
+			$log['skipped'][] = array(
+				'ref' => $core,
+				'reason' => SKIPPED_HTTPERROR,
+				'status' => $status,
+			);
+			continue;
+		} elseif ( !$html ) { // empty response
+			$log['skipped'][] = array(
+				'ref' => $core,
+				'reason' => SKIPPED_EMPTY,
+				'status' => $status,
+			);
+			continue;
+		}
+		$metadata = extractMetadata( $html );
+		if ( isset( $oldref['caption'] ) && !$nouseoldcaption ) {
+			// Use the original caption
+			$metadata['title'] = $oldref['caption'];
+		}
+		
+		// Generate cite template
+		if ( $plainlink ) { // use captioned plain link
+			$newcore = generatePlainLink( $oldref['url'], $metadata );
+		} else { // use {{cite web}}
+			$newcore = generateCiteTemplate( $oldref['url'], $metadata );
+		}
+		
+		// Replace the old core
+		$replacement = str_replace( $core, $newcore, $matches[0][$key] ); // for good measure
+		$text = str_replace( $matches[0][$key], $replacement, $text );
+		$log['fixed'][] = array(
+			'url' => $oldref['url'],
+		);
 	}
 	return $text;
 }
