@@ -126,7 +126,7 @@ function fetchWeb( $url, $referer = "", &$status = "" ) {
 function extractMetadata( $html ) {
 	$dom = new DOMDocument();
 	$dom->preserveWhiteSpace = false;
-	$dom->loadHTML( $html );
+	$dom->loadHTML( "<?xml encoding='utf-8'?>" . $html );
 	$xpath = new DOMXPath( $dom );
 	
 	$result = array();
