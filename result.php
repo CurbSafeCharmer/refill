@@ -21,7 +21,7 @@ if ( isset( $_POST['method-wikitext'] ) ) { // Manual wikitext input
 }
 
 $log = array();
-$result = fixRef( $source, isset( $_POST['config-plainlink'] ) ? true : false, $log );
+$result = fixRef( $source, $log, isset( $_POST['config-plainlink'] ) ? true : false );
 $timestamp = generateWikiTimestamp();
 
 // remove link rot tags

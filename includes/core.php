@@ -26,7 +26,7 @@ define( "SKIPPED_NOTBARE", 1 ); // UNUSED
 define( "SKIPPED_HTTPERROR", 2 );
 define( "SKIPPED_EMPTY", 3 );
 
-function fixRef( $text, $plainlink = false, &$log = "" ) {
+function fixRef( $text, &$log = "", $plainlink = false ) {
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
 	$status = 0;
