@@ -44,12 +44,14 @@ function fixRef( $text, $plainlink = false, &$log = "" ) {
 					'reason' => SKIPPED_HTTPERROR,
 					'status' => $status,
 				);
+				continue;
 			} elseif ( !$html ) {
 				$log['skipped'][] = array(
 					'ref' => $ref,
 					'reason' => SKIPPED_EMPTY,
 					'status' => $status,
 				);
+				continue;
 			}
 			$metadata = extractMetadata( $html );
 			if ( $plainlink ) { // use plain links
