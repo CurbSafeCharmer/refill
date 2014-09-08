@@ -62,3 +62,8 @@ label {
 	font-style: italic;
 	color: #555;
 }
+
+.notice {
+	font-style: italic;
+	font-weight: bolder;
+}

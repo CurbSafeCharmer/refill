@@ -44,6 +44,7 @@ $utitle = urlencode( $title );
 		}
 		echo "<form id='form-wikitext' name='editform' method='post' action='{$config['indexphp']}?title=$stitle&action=submit' enctype='multipart/form-data'>";
 		echo "<h2>Result</h2>";
+		echo "<p class='notice'>You are responsible for every edit you make. Please double check the edit before saving!</p>";
 		if ( !$counter ) {
 			echo "<p>No changes made.</p>";
 		} else {
