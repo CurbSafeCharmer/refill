@@ -41,6 +41,11 @@ function fixRef( $text, &$log = "", $plainlink = false, $nofixuplain = false, $n
 	preg_match_all( $pattern, $text, $matches );
 	foreach ( $matches[1] as $key => $core ) {
 		$oldref = array();
+		// Let's check if we are supposed to mess with it first...
+		if ( preg_match( "/\{\{(Dead link|404|dl|dead|Broken link)/i", $core ) ) { // dead link tag
+			continue;
+		}
+ 
 		// Let's find out what kind of reference it is...
 		if ( filter_var( $core, FILTER_VALIDATE_URL ) && strpos( $core, "http" ) === 0 ) {
 			// a bare link (consists of only a URL)
