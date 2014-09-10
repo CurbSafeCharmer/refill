@@ -241,7 +241,7 @@ function generateCiteTemplate( $url, $metadata, $dateformat = DATE_DMY ) {
 		$core .= "|author=" . $metadata['author'];
 	}
 	if ( !empty( $metadata['date'] ) && $timestamp = strtotime( $metadata['date'] ) ) { // successfully parsed
-		$core .= "|date=" . generateDate( $dateformat, $metadata['date'] );
+		$core .= "|date=" . generateDate( $dateformat, $timestamp );
 	}
 	if ( !empty( $metadata['work'] ) ) {
 		$core .= "|work=" . $metadata['work'];
