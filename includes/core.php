@@ -168,9 +168,14 @@ function extractMetadata( $html ) {
 	$result = array();
 	
 	// Extract title to ['title']
-	$titlenodes = $dom->getElementsByTagName( "title" );
+	$titlenodes = $xpath->query( "//*[@itemprop='headline']" );
 	if ( $titlenodes->length ) { // title found
 		$result['title'] = getFirstNodeValue( $titlenodes );
+	} else {
+		$titlenodes = $xpath->query( "//h1 | //title" );
+		if ( $titlenodes->length ) {
+			$result['title'] = getFirstNodeValue( $titlenodes );
+		}
 	}
 	
 	// Extract author to ['author']
