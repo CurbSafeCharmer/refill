@@ -85,6 +85,7 @@ $utitle = urlencode( $title );
 		echo "<input type='hidden' name='wpSummary' value='{$config['summary']}'/>";
 		echo "<input type='hidden' name='wpAutoSummary' value='y'/>";
 		echo "<input type='hidden' name='wpStarttime' value='$timestamp'/>";
+		echo "<input type='hidden' name='wpWatchthis' value='y'/>";
 		if ( !empty( $title ) && count ( $log['fixed'] ) ) {
 			echo "<input type='submit' name='wpPreview' value='Preview / Save on wiki'/>";
 		}
