@@ -1,7 +1,7 @@
 <?php
-require __DIR__ . "/includes/core.php";
-require __DIR__ . "/includes/php-diff/lib/Diff.php";
-require __DIR__ . "/includes/php-diff/lib/Diff/Renderer/Html/SideBySide.php";
+require_once __DIR__ . "/includes/core.php";
+require_once __DIR__ . "/includes/php-diff/lib/Diff.php";
+require_once __DIR__ . "/includes/php-diff/lib/Diff/Renderer/Html/SideBySide.php";
 
 $title = "";
 if ( isset( $_POST['method-wikitext'] ) ) { // Manual wikitext input
