@@ -29,7 +29,7 @@ define( "SKIPPED_EMPTY", 3 );
 define( "DATE_DMY", false ); // default
 define( "DATE_MDY", true );
 
-function fixRef( $text, &$log = "", $plainlink = false, $nofixuplain = false, $nofixcplain = true, $nouseoldcaption = false ) {
+function fixRef( $source, &$log = "", $plainlink = false, $nofixuplain = false, $nofixcplain = true, $nouseoldcaption = false ) {
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
 	$status = 0;
@@ -37,8 +37,8 @@ function fixRef( $text, &$log = "", $plainlink = false, $nofixuplain = false, $n
 		'fixed' => array(), // ['url'] contains the original link
 		'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
 	);
-	$dateformat = detectDateFormat( $text );
-	preg_match_all( $pattern, $text, $matches );
+	$dateformat = detectDateFormat( $source );
+	preg_match_all( $pattern, $source, $matches );
 	foreach ( $matches[1] as $key => $core ) {
 		$oldref = array();
 		// Let's check if we are supposed to mess with it first...
@@ -102,12 +102,12 @@ function fixRef( $text, &$log = "", $plainlink = false, $nofixuplain = false, $n
 		
 		// Replace the old core
 		$replacement = str_replace( $core, $newcore, $matches[0][$key] ); // for good measure
-		$text = str_replace( $matches[0][$key], $replacement, $text );
+		$source = str_replace( $matches[0][$key], $replacement, $source );
 		$log['fixed'][] = array(
 			'url' => $oldref['url'],
 		);
 	}
-	return $text;
+	return $source;
 }
 
 function fetchWiki( $page, &$actualname = "" ) { // bug-prone
