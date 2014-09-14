@@ -222,7 +222,24 @@ function extractMetadata( $html ) {
 		}
 	}
 	
+	// A dirty way to make those case-by-case adjustments
+	$result = fixMetadata( $result );
+	
 	return $result; // Done! ;)
+}
+
+function fixMetadata( $metadata ) {
+	// |work=Google Books
+	if ( $metadata['work'] == "Google Books" ) {
+		unset( $metadata['work'] );
+	}
+	
+	// |work=Los Angeles Times Articles -> |work=Los Angeles Times
+	if ( $metadata['work'] == "Los Angeles Times Articles" ) {
+		$metadata['work'] = "Los Angeles Times";
+	}
+	
+	return $metadata;
 }
 
 function getFirstNodeValue( $nodelist ) {
