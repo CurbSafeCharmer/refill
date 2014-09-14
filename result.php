@@ -3,35 +3,23 @@ require_once __DIR__ . "/includes/core.php";
 require_once __DIR__ . "/includes/php-diff/lib/Diff.php";
 require_once __DIR__ . "/includes/php-diff/lib/Diff/Renderer/Html/SideBySide.php";
 
+$options = getOptions();
 $title = "";
-if ( isset( $_POST['method-wikitext'] ) ) { // Manual wikitext input
+if ( !empty( $options['text'] ) ) { // Manual wikitext input
 	$source = $_POST['text'];
-} elseif ( isset( $_POST['method-wiki'] ) ) { // Fetch from wiki (API)
-	if ( isset( $_POST['page'] ) ) { // Page name set
-		$source = fetchWiki( $_POST['page'], $title );
-	} else {
-		echo "Error: No page is specified!";
-		die;
-	}
-} elseif ( isset( $_GET['page'] ) ) {
-	$source = fetchWiki( $_GET['page'], $title );
+} elseif ( !empty( $options['page'] ) ) { // Fetch from wiki (API)
+	$source = fetchWiki( $options['page'], $title );
 } else {
 	echo "Error: No source is specified!";
 	die;
 }
 
 $log = array();
-$options = array(
-	'plainlink' => isset( $_POST['config-plainlink'] ),
-	'nofixplain' => isset( $_POST['config-nofixuplain'] ),
-	'nofixcplain' => isset( $_POST['config-nofixcplain'] ),
-	'nouseoldcaption' => isset( $_POST['config-nouseoldcaption'] ),
-);
 $result = fixRef( $source, $log, $options );
 $timestamp = generateWikiTimestamp();
 
 // remove link rot tags
-if ( !count( $log['skipped'] ) && !isset( $_POST['config-noremovetag'] ) && !isset( $_GET['noremovetag'] ) ) { // Hurray! All fixed!
+if ( !count( $log['skipped'] ) && !isset( $options['noremovetag'] ) ) { // Hurray! All fixed!
 	$result = removeBareUrlTags( $result );
 }
 

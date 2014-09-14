@@ -306,3 +306,20 @@ function detectDateFormat( $source ) {
 		return DATE_DMY;
 	}
 }
+
+function getOption( $option ) {
+	if ( isset( $_GET[$option] ) ) {
+		return empty( $_GET[$option] ) ? true : $_GET[$option];
+	} elseif ( isset( $_POST[$option] ) ) {
+		return empty( $_POST[$option] ) ? true : $_POST[$option];
+	}
+}
+
+function getOptions() {
+	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag' );
+	$options = array();
+	foreach( $optionlist as $option ) {
+		$options[$option] = getOption( $option );
+	}
+	return $options;
+}
