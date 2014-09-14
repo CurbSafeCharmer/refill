@@ -52,7 +52,7 @@ $utitle = urlencode( $title );
 		}
 		echo "<form id='form-wikitext' name='editform' method='post' action='{$config['indexphp']}?title=$utitle&action=submit' enctype='multipart/form-data'>";
 		echo "<h2>Result</h2>";
-		echo "<p class='notice'>You are responsible for every edit you make. Please double check the edit before saving!</p>";
+		echo "<p class='notice'>You are responsible for every edit you make. Please double-check the edit before saving!</p>";
 		echo "<p>Note: The publisher field is intentionally left blank for filling out manually.</p>";
 		if ( !$counter = count( $log['fixed'] ) ) {
 			echo "<p>No changes made.</p>";
