@@ -94,7 +94,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		}
 		
 		// Generate cite template
-		if ( $options['plainlink'] ) { // use captioned plain link
+		if ( isset( $options['plainlink'] ) ) { // use captioned plain link
 			$newcore = generatePlainLink( $oldref['url'], $metadata, $dateformat );
 		} else { // use {{cite web}}
 			$newcore = generateCiteTemplate( $oldref['url'], $metadata, $dateformat );
@@ -312,6 +312,8 @@ function getOption( $option ) {
 		return empty( $_GET[$option] ) ? true : $_GET[$option];
 	} elseif ( isset( $_POST[$option] ) ) {
 		return empty( $_POST[$option] ) ? true : $_POST[$option];
+	} else {
+		return null;
 	}
 }
 
@@ -319,7 +321,9 @@ function getOptions() {
 	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag' );
 	$options = array();
 	foreach( $optionlist as $option ) {
-		$options[$option] = getOption( $option );
+		if ( null !== $o = getOption( $option ) ) {
+			$options[$option] = $o;
+		}
 	}
 	return $options;
 }
