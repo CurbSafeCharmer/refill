@@ -29,7 +29,7 @@ define( "SKIPPED_EMPTY", 3 );
 define( "DATE_DMY", false ); // default
 define( "DATE_MDY", true );
 
-function fixRef( $source, &$log = "", $plainlink = false, $nofixuplain = false, $nofixcplain = true, $nouseoldcaption = false ) {
+function fixRef( $source, &$log = "", $options = array() ) {
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
 	$status = 0;
@@ -52,7 +52,7 @@ function fixRef( $source, &$log = "", $plainlink = false, $nofixuplain = false, 
 			$oldref['url'] = $core;
 		} elseif ( preg_match( "/^\[(http[^\] ]+) ([^\]]+)\]/i", $core, $cmatches ) ) {
 			// a captioned plain link (consists of a URL and a caption, surrounded with [], possibly with other stuff after it)
-			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$nofixcplain ) {
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixcplain'] ) {
 				$oldref['url'] = $cmatches[1];
 				$oldref['caption'] = $cmatches[2];
 			} else {
@@ -60,7 +60,7 @@ function fixRef( $source, &$log = "", $plainlink = false, $nofixuplain = false, 
 			}
 		} elseif ( preg_match( "/^\[(http[^ ]+)\]$/i", $core, $cmatches ) ) {
 			// an uncaptioned plain link (consists of only a URL, surrounded with [])
-			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$nofixuplain ) {
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixuplain'] ) {
 				$oldref['url'] = $cmatches[1];
 			} else {
 				continue;
@@ -88,13 +88,13 @@ function fixRef( $source, &$log = "", $plainlink = false, $nofixuplain = false, 
 			continue;
 		}
 		$metadata = extractMetadata( $html );
-		if ( isset( $oldref['caption'] ) && !$nouseoldcaption ) {
+		if ( isset( $oldref['caption'] ) && !$options['nouseoldcaption'] ) {
 			// Use the original caption
 			$metadata['title'] = $oldref['caption'];
 		}
 		
 		// Generate cite template
-		if ( $plainlink ) { // use captioned plain link
+		if ( $options['plainlink'] ) { // use captioned plain link
 			$newcore = generatePlainLink( $oldref['url'], $metadata, $dateformat );
 		} else { // use {{cite web}}
 			$newcore = generateCiteTemplate( $oldref['url'], $metadata, $dateformat );

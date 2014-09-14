@@ -21,14 +21,13 @@ if ( isset( $_POST['method-wikitext'] ) ) { // Manual wikitext input
 }
 
 $log = array();
-$result = fixRef(
-	$source,
-	$log,
-	isset( $_POST['config-plainlink'] ),
-	isset( $_POST['config-nofixuplain'] ),
-	isset( $_POST['config-nofixcplain'] ),
-	isset( $_POST['config-nouseoldcaption'] )
-);	
+$options = array(
+	'plainlink' => isset( $_POST['config-plainlink'] ),
+	'nofixplain' => isset( $_POST['config-nofixuplain'] ),
+	'nofixcplain' => isset( $_POST['config-nofixcplain'] ),
+	'nouseoldcaption' => isset( $_POST['config-nouseoldcaption'] ),
+);
+$result = fixRef( $source, $log, $options );
 $timestamp = generateWikiTimestamp();
 
 // remove link rot tags
