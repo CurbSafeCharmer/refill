@@ -192,10 +192,12 @@ function extractMetadata( $html ) {
 	} else { // 2nd try - <meta name="author">
 		$authornodes = $xpath->query( "//meta[@name='author']" );
 		if ( $authornodes->length ) {
-			$result['author'] = getFirstNodeAttrContent( $authornodes );
+			$author = getFirstNodeAttrContent( $authornodes );
+			if ( !preg_match( "/(www.|.com|\w{5,}.\w{2,3})/", $author ) ) { // does not look like a domain name (Actually, there are exceptions, like will.i.am)
+				$result['author'] = preg_replace( "/(?:by|from)\s+(.+)/i", "$1", $author ); // clean it up a bit
+			}
 		}
 	}
-	$result['author'] = preg_replace( "/(?:by|from)\s+(.+)/i", "$1", $result['author'] ); // clean it up a bit
 	
 	// Extract publication date to ['date']
 	$datenodes = $xpath->query( "//*[@itemprop='datePublished'] | //meta[@name='date' or @name='article:published_time' or @name='sailthru.date']" );
