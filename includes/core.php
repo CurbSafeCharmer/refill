@@ -25,6 +25,7 @@ require_once __DIR__ . "/config.php";
 define( "SKIPPED_NOTBARE", 1 ); // UNUSED
 define( "SKIPPED_HTTPERROR", 2 );
 define( "SKIPPED_EMPTY", 3 );
+define( "SKIPPED_NOTITLE", 4 );
 
 define( "DATE_DMY", false ); // default
 define( "DATE_MDY", true );
@@ -91,6 +92,15 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		if ( isset( $oldref['caption'] ) && !$options['nouseoldcaption'] ) {
 			// Use the original caption
 			$metadata['title'] = $oldref['caption'];
+		}
+		
+		if ( empty( $metadata['title'] ) ) {
+			$log['skipped'][] = array(
+				'ref' => $core,
+				'reason' => SKIPPED_NOTITLE,
+				'status' => $status,
+			);
+			continue;
 		}
 		
 		// Generate cite template
@@ -317,6 +327,8 @@ function getSkippedReason( $code ) {
 			return "HTTP Error";
 		case SKIPPED_EMPTY:
 			return "Empty response or not HTML";
+		case SKIPPED_NOTITLE:
+			return "No title is found";
 		default:
 			return "Unknown error";
 	}
