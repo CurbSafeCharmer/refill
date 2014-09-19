@@ -48,10 +48,11 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		}
  
 		// Let's find out what kind of reference it is...
-		if ( filter_var( $core, FILTER_VALIDATE_URL ) && strpos( $core, "http" ) === 0 ) {
+		$tcore = trim( $core );
+		if ( filter_var( $tcore, FILTER_VALIDATE_URL ) && strpos( $tcore, "http" ) === 0 ) {
 			// a bare link (consists of only a URL)
-			$oldref['url'] = $core;
-		} elseif ( preg_match( "/^\[(http[^\] ]+) ([^\]]+)\]/i", $core, $cmatches ) ) {
+			$oldref['url'] = $tcore;
+		} elseif ( preg_match( "/^\[(http[^\] ]+) ([^\]]+)\]/i", $tcore, $cmatches ) ) {
 			// a captioned plain link (consists of a URL and a caption, surrounded with [], possibly with other stuff after it)
 			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixcplain'] ) {
 				$oldref['url'] = $cmatches[1];
@@ -59,7 +60,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 			} else {
 				continue;
 			}
-		} elseif ( preg_match( "/^\[(http[^ ]+)\]$/i", $core, $cmatches ) ) {
+		} elseif ( preg_match( "/^\[(http[^ ]+)\]$/i", $tcore, $cmatches ) ) {
 			// an uncaptioned plain link (consists of only a URL, surrounded with [])
 			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixuplain'] ) {
 				$oldref['url'] = $cmatches[1];
