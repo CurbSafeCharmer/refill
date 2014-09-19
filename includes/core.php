@@ -173,17 +173,21 @@ function extractMetadata( $html ) {
 		$result['title'] = getFirstNodeValue( $titlenodes );
 	}
 	
-	$titlenodes = $xpath->query( "//*[@itemprop='headline']" );
-	if ( $titlenodes->length ) { // title found
-		$result['title'] = getFirstNodeValue( $titlenodes );
-	} else {
-		$titlenodes = $xpath->query( "//h1" );
-		if ( $titlenodes->length ) {
-			for ( $i = 0; $i < $titlenodes->length; $i++ ) { // Let's assume the author doesn't know how to properly use <h1>s...
-				if ( strpos( $result['title'], $h1title = trim( $titlenodes->item( $i )->nodeValue ) ) === 0 ) {
-					$result['title'] = $h1title;
-				}
-			}
+	$titles = array();
+	$titlenodes = $xpath->query( "//*[@itemprop='headline'] | //h1" );
+	if ( $titlenodes->length ) {
+		for ( $i = 0; $i < $titlenodes->length; $i++ ) {
+			$titles[] = trim( $titlenodes->item( $i )->nodeValue );
+		}
+	}
+	$titlenodes = $xpath->query( "//meta[@property='og:title']" );
+	if ( $titlenodes->length ) {
+		$titles[] = getFirstNodeAttrContent( $titlenodes );
+	}
+	
+	foreach ( $titles as $title ) { // loop through the titles we found...
+		if ( !empty( $title ) && strlen( $title ) < strlen( $result['title'] ) && strpos( $result['title'], $title ) === 0 ) {
+			$result['title'] = $title;
 		}
 	}
 	
