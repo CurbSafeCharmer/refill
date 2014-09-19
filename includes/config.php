@@ -17,4 +17,12 @@ $config['summary'] = "Filled in bare references with [[User:Zhaofeng Li/Reflinks
 // Options for php-diff, see its documentations for more info
 $config['diffconfig'] = array();
 
+// Host blacklist, they are regex fragments which have /^ and $/ added to them at runtime
+$config['hostblacklist'] = array(
+	"localhost",
+	"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}",
+	".+\.local",
+	".+\.nytimes\.com",
+);
+
 date_default_timezone_set( "UTC" );

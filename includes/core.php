@@ -26,11 +26,13 @@ define( "SKIPPED_NOTBARE", 1 ); // UNUSED
 define( "SKIPPED_HTTPERROR", 2 );
 define( "SKIPPED_EMPTY", 3 );
 define( "SKIPPED_NOTITLE", 4 );
+define( "SKIPPED_HOSTBL", 5 );
 
 define( "DATE_DMY", false ); // default
 define( "DATE_MDY", true );
 
 function fixRef( $source, &$log = "", $options = array() ) {
+	global $config;
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
 	$status = 0;
@@ -70,6 +72,18 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		} else {
 			// probably already filled in, let's skip it
 			continue;
+		}
+		
+		// Check if it's blacklisted
+		foreach( $config['hostblacklist'] as $blentry ) {
+			if ( preg_match( "/^" . $blentry . "$/", parse_url( $oldref['url'], PHP_URL_HOST ) ) ) { // blacklisted
+				$log['skipped'][] = array(
+					'ref' => $core,
+					'reason' => SKIPPED_HOSTBL,
+					'status' => $status,
+				);
+				continue 2;
+			}
 		}
 		
 		// Fetch the webpage and extract the metadata
@@ -330,6 +344,8 @@ function getSkippedReason( $code ) {
 			return "Empty response or not HTML";
 		case SKIPPED_NOTITLE:
 			return "No title is found";
+		case SKIPPED_HOSTBL:
+			return "Host blacklisted";
 		default:
 			return "Unknown error";
 	}
