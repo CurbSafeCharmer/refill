@@ -168,13 +168,22 @@ function extractMetadata( $html ) {
 	$result = array();
 	
 	// Extract title to ['title']
+	$titlenodes = $xpath->query( "//title" );
+	if ( $titlenodes->length ) {
+		$result['title'] = getFirstNodeValue( $titlenodes );
+	}
+	
 	$titlenodes = $xpath->query( "//*[@itemprop='headline']" );
 	if ( $titlenodes->length ) { // title found
 		$result['title'] = getFirstNodeValue( $titlenodes );
 	} else {
-		$titlenodes = $xpath->query( "//h1 | //title" );
+		$titlenodes = $xpath->query( "//h1" );
 		if ( $titlenodes->length ) {
-			$result['title'] = getFirstNodeValue( $titlenodes );
+			for ( $i = 0; $i < $titlenodes->length; $i++ ) { // Let's assume the author doesn't know how to properly use <h1>s...
+				if ( strpos( $result['title'], $h1title = $titlenodes->item( $i )->nodeValue ) === 0 ) {
+					$result['title'] = $h1title;
+				}
+			}
 		}
 	}
 	
