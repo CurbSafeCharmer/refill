@@ -180,7 +180,7 @@ function extractMetadata( $html ) {
 		$titlenodes = $xpath->query( "//h1" );
 		if ( $titlenodes->length ) {
 			for ( $i = 0; $i < $titlenodes->length; $i++ ) { // Let's assume the author doesn't know how to properly use <h1>s...
-				if ( strpos( $result['title'], $h1title = $titlenodes->item( $i )->nodeValue ) === 0 ) {
+				if ( strpos( $result['title'], $h1title = trim( $titlenodes->item( $i )->nodeValue ) ) === 0 ) {
 					$result['title'] = $h1title;
 				}
 			}
