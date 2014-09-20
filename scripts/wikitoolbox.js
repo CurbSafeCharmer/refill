@@ -87,6 +87,6 @@ function rlInit() {
 }
 
 $( document ).ready( function() {
-	var rlPortlet = mw.util.addPortletLink( "p-tb", rlServer + "/result.php?page=" + encodeURI( wgPageName ), "Reflinks");
+	var rlPortlet = mw.util.addPortletLink( "p-tb", rlServer + "/result.php?page=" + encodeURIComponent( wgPageName ), "Reflinks");
 	$( rlPortlet ).append( "<sup><a href='#' onclick='rlInit()'>(options)</a></sup>" );
 } );
