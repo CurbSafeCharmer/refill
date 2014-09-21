@@ -171,7 +171,7 @@ function fetchWeb( $url, $referer = "", &$status = "" ) {
 	curl_setopt( $curl, CURLOPT_NOBODY, true );
 	curl_exec( $curl );
 	$header = curl_getinfo( $curl );
-	if ( strpos( $header['content_type'], "text/html" ) !== 0 || $header['content_type'] === null ) {
+	if ( strpos( $header['content_type'], "text/html" ) !== 0 && $header['content_type'] != null ) {
 		return;
 	}
 	
