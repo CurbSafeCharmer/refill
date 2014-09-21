@@ -59,7 +59,7 @@ function rlSetUpForm( pagename ) {
 				<label for='checkbox-nofixuplain'>Do not expand uncaptioned plain links (surrounded with [ ])</label>\
 			</li>\
 			<li>\
-				<input name='nofixcplain' id='checkbox-nofixcplain' type='checkbox'/>\
+				<input name='nofixcplain' id='checkbox-nofixcplain' type='checkbox' checked=''/>\
 				<label for='checkbox-nofixcplain'>Do not expand captioned plain links</label>\
 			</li>\
 			<li>\
@@ -87,6 +87,6 @@ function rlInit() {
 }
 
 $( document ).ready( function() {
-	var rlPortlet = mw.util.addPortletLink( "p-tb", rlServer + "/result.php?page=" + encodeURIComponent( wgPageName ), "Reflinks");
+	var rlPortlet = mw.util.addPortletLink( "p-tb", rlServer + "/result.php?nofixcplain=y&page=" + encodeURIComponent( wgPageName ), "Reflinks");
 	$( rlPortlet ).append( "<sup><a href='#' onclick='rlInit()'>(options)</a></sup>" );
 } );
