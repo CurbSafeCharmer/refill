@@ -290,7 +290,7 @@ function getFirstNodeAttrContent( $nodelist ) {
 
 function generatePlainLink( $url, $metadata, $dateformat = DATE_DMY ) {
 	$title = $metadata['title'];
-	$core = "[$url $title] Retrieved on " . generateDate( $dateformat ) . ".";
+	$core = "[$url \"$title\"]. Retrieved on " . generateDate( $dateformat ) . ".";
 	return $core;
 }
 
