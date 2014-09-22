@@ -48,7 +48,7 @@ function rlSetUpForm( pagename ) {
 		<ul id='form-wiki-options' class='optionul'>\
 			<li>\
 				<input name='plainlink' id='checkbox-plainlink' type='checkbox'/>\
-				<label for='checkbox-plainlink'>Use plain links instead of <code>{{cite web}}</code></label>\
+				<label for='checkbox-plainlink'>Use plain formatting instead of <code>{{cite web}}</code></label>\
 			</li>\
 			<li>\
 				<input name='noremovetag' id='checkbox-noremovetag' type='checkbox'/>\
