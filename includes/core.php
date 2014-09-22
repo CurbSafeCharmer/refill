@@ -41,6 +41,9 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
 	);
 	$dateformat = detectDateFormat( $source );
+	if ( isset( $options['plainlink'] ) ) {
+		$options['nofixcplain'] = true;
+	}
 	preg_match_all( $pattern, $source, $matches );
 	foreach ( $matches[1] as $key => $core ) {
 		$oldref = array();
