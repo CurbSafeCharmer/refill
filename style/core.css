@@ -79,6 +79,10 @@ label {
 	padding-left: 0;
 }
 
+.inputerror {
+	border: 1px solid red;
+}
+
 .Differences {
 	background: #a7d9f9;
 	margin: 10px 10px 10px -10px;
@@ -93,3 +97,4 @@ label {
 .ChangeReplace ins {
 	color: green;
 }
+
