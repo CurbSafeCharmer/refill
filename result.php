@@ -51,6 +51,7 @@ $diff = new Diff( $a, $b, $config['diffconfig'] );
 $diffrenderer = new Diff_Renderer_Html_SideBySide;
 
 // santize for displaying
+$ssource = htmlspecialchars( $source, ENT_QUOTES );
 $sresult = htmlspecialchars( $result );
 $stitle = htmlspecialchars( $title );
 $utitle = urlencode( $title );
@@ -63,6 +64,8 @@ $utitle = urlencode( $title );
 	<title>Reflinks</title>
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="style/core.css"/>
+	<script src="scripts/jquery-1.11.1.min.js"/></script>
+	<?php echo "<script src='" . $config['wdiff'] . "'></script>";?>
 </head>
 <body>
 	<?php
@@ -71,6 +74,7 @@ $utitle = urlencode( $title );
 		} else {
 			echo "<h1>Reflinks</h1>";
 		}
+		echo "<input id='wikitext-old' type='hidden' value='" . $ssource . "'/>";
 		echo "<form id='form-wikitext' name='editform' method='post' action='{$config['indexphp']}?title=$utitle&action=submit' enctype='multipart/form-data'>";
 		echo "<h2>Result</h2>";
 		echo "<p class='notice'>You are responsible for every edit you make. Please double-check the edit before saving!</p>";
@@ -82,6 +86,7 @@ $utitle = urlencode( $title );
 			echo "<p>$counter reference(s) fixed!</p>";
 		}
 		echo $diff->render( $diffrenderer ); // show diff
+		echo "<div id='wdiff'></div>";
 		if ( count( $log['skipped'] ) ) {
 			echo "<p>The following references are skipped:<ul id='skipped-refs'>";
 			foreach( $log['skipped'] as $skipped ) {
@@ -91,7 +96,7 @@ $utitle = urlencode( $title );
 			}
 			echo "</ul></p>";
 		}
-		echo "<textarea name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
+		echo "<textarea id='wikitext-new' name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
 		echo "<input type='hidden' name='wpSummary' value='{$config['summary']}'/>";
 		echo "<input type='hidden' name='wpAutoSummary' value='y'/>";
 		echo "<input type='hidden' name='wpStarttime' value='$timestamp'/>";
@@ -105,6 +110,7 @@ $utitle = urlencode( $title );
 	<footer>
 		<a href="https://github.com/zhaofengli/reflinks">Source</a> ♦ <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li/Reflinks">Info</a> ♦ by <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li">Zhaofeng Li</a> ♦ Original Reflinks by <a href="https://en.wikipedia.org/wiki/User:Dispenser">Dispenser</a>
 	</footer>
+	<script src="scripts/result.js"></script>
 </body>
 </html>
 		

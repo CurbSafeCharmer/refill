@@ -25,4 +25,7 @@ $config['hostblacklist'] = array(
 	".+\.nytimes\.com",
 );
 
+// Path to Cacycle's wDiff script. The repository includes a copy of it, but it may not always be the latest version.
+$config['wdiff'] = "scripts/diff.js";
+
 date_default_timezone_set( "UTC" );
