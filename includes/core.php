@@ -72,6 +72,13 @@ function fixRef( $source, &$log = "", $options = array() ) {
 			} else {
 				continue;
 			}
+		} elseif ( preg_match( "/^\{\{cite web\s*\|\s*url=(http[^ \|]+)\s*\}\}$/i", $tcore, $cmatches ) ) {
+			// an uncaptioned {{cite web}} template (Please improve the regex)
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixutemplate'] ) {
+				$oldref['url'] = $cmatches[1];
+			} else {
+				continue;
+			}
 		} else {
 			// probably already filled in, let's skip it
 			continue;
@@ -380,7 +387,7 @@ function getOption( $option ) {
 }
 
 function getOptions() {
-	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag' );
+	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag', "nofixutemplate" );
 	$options = array();
 	foreach( $optionlist as $option ) {
 		if ( null !== $o = getOption( $option ) ) {
