@@ -350,6 +350,13 @@ function generateDate( $format, $timestamp = 0 ) {
 	}
 }
 
+function generateShortDate( $timestamp = 0 ) {
+	if ( !$timestamp ) {
+		$timestamp = date();
+	}
+	return date( "F Y", $timestamp );
+}
+
 function getSkippedReason( $code ) {
 	switch ( $code ) {
 		case SKIPPED_HTTPERROR:
