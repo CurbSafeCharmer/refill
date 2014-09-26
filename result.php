@@ -99,7 +99,7 @@ $utitle = urlencode( $title );
 		echo $diff->render( $diffrenderer ); // show diff
 		echo "<div id='wdiff'></div>";
 		if ( count( $log['skipped'] ) ) {
-			echo "<p>The following references are skipped:<ul id='skipped-refs'>";
+			echo "<p>The following reference(s) could not be filled:<ul id='skipped-refs'>";
 			foreach( $log['skipped'] as $skipped ) {
 				$sref = htmlspecialchars( $skipped['ref'] );
 				$reason = getSkippedReason( $skipped['reason'] );
