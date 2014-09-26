@@ -145,9 +145,9 @@ function fixRef( $source, &$log = "", $options = array() ) {
 	return $source;
 }
 
-function fetchWiki( $page, &$actualname = "" ) { // bug-prone
+function fetchWiki( $page, &$actualname = "", &$timestamp = 0 ) { // bug-prone
 	global $config;
-	$url = $config['api'] . "?action=query&prop=revisions&rvlimit=1&rvprop=content&format=json&titles=" . urlencode( $page );
+	$url = $config['api'] . "?action=query&prop=revisions&rvlimit=1&rvprop=content|timestamp&format=json&titles=" . urlencode( $page );
 	$curl = curl_init( $url );
 	curl_setopt( $curl, CURLOPT_USERAGENT, $config['useragent'] );
 	curl_setopt( $curl, CURLOPT_HEADER, false );
@@ -161,6 +161,7 @@ function fetchWiki( $page, &$actualname = "" ) { // bug-prone
 			return;
 		else {
 			$actualname = $page['title'];
+			$timestamp = strtotime( $page['revisions'][0]['timestamp'] );
 			return $page['revisions'][0]['*'] ;
 		}
 	}
