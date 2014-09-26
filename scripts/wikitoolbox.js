@@ -50,9 +50,8 @@ function rlIsWatching() {
 function rlSetUpForm( pagename ) {
 	$( "#mw-content-text" ).prepend( "\
 <div id='reflinks' style='border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;'>\
-	<form id='reflinks-form' method='post' action='" + rlServer + "/result.php'>\
+	<form id='reflinks-form' method='post' action='" + rlServer + "/result.php?page=" + encodeURIComponent( pagename ) + "'>\
 		<h1>Reflinks</h1>\
-		<input name='page' id='hidden-page' type='hidden'/>\
 		<h3>Options</h3>\
 		<ul id='form-wiki-options' class='optionul'>\
 			<li>\
@@ -88,7 +87,6 @@ function rlSetUpForm( pagename ) {
 		var nowatch = $( "<input>" ).name( "nowatch" ).type( "hidden" ).value( "y" );
 		$( "#reflinks-form" ).append( nowatch );
 	}
-	$( "#hidden-page" ).attr( "value", pagename );
 	$( "html, body" ).animate( {
 		scrollTop: $( "#reflinks" ).offset().top - 10
 	}, 250 );
