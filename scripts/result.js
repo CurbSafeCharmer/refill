@@ -1,6 +1,6 @@
 function initDiff() {
 	$( ".Differences" ).hide();
-	$( "#wdiff" ).html( "<div id='diffcontent'></div>" );
+	$( "#wdiff" ).html( "<div id='diffcontent'></div><small>Colours: <span class='wDiffInsert'>Blue</span> = Added; <span class='wDiffDelete'>Orange</span> = Removed</small>" );
 	$( "#wikitext-new" ).keyup( function() {
 		updateDiff();
 	} );
