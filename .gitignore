@@ -2,3 +2,4 @@
 *.swp
 includes/config.php
 includes/banner.php
+scripts/diff.js
