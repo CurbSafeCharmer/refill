@@ -112,7 +112,9 @@ $utitle = urlencode( $title );
 		echo "<input type='hidden' name='wpAutoSummary' value='y'/>";
 		echo "<input type='hidden' name='wpStarttime' value='$timestamp'/>";
 		echo "<input type='hidden' name='wpEdittime' value='$edittimestamp'/>";
-		echo "<input type='hidden' name='wpWatchthis' value='y'/>";
+		if ( !isset( $options['nowatch'] ) ) { // Let's watch this!
+			echo "<input type='hidden' name='wpWatchthis' value='y'/>";
+		}
 		if ( !empty( $title ) && count ( $log['fixed'] ) ) {
 			echo "<input type='submit' name='wpDiff' value='Preview / Save on wiki'/>";
 		}

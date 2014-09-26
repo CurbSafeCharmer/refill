@@ -398,7 +398,7 @@ function getOption( $option ) {
 }
 
 function getOptions() {
-	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag', "nofixutemplate" );
+	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag', 'nofixutemplate', 'nowatch' );
 	$options = array();
 	foreach( $optionlist as $option ) {
 		if ( null !== $o = getOption( $option ) ) {
