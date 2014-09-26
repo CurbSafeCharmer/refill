@@ -9,6 +9,12 @@
 </head>
 <body>
 	<h1>Reflinks</h1>
+
+	<?php
+		if ( file_exists( __DIR__ . "/includes/banner.php" ) ) {
+			include __DIR__ . "/includes/banner.php";
+		}
+	?>
 	
 	<h2>Fetch content from wiki</h2>
 	<form id="form-wiki" method="post" action="result.php">

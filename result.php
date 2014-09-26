@@ -74,6 +74,9 @@ $utitle = urlencode( $title );
 		} else {
 			echo "<h1>Reflinks</h1>";
 		}
+		if ( file_exists( __DIR__ . "/includes/banner.php" ) ) {
+			include __DIR__ . "/includes/banner.php";
+		}
 		echo "<input id='wikitext-old' type='hidden' value='" . $ssource . "'/>";
 		echo "<form id='form-wikitext' name='editform' method='post' action='{$config['indexphp']}?title=$utitle&action=submit' enctype='multipart/form-data'>";
 		echo "<h2>Result</h2>";
