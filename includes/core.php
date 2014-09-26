@@ -35,7 +35,6 @@ function fixRef( $source, &$log = "", $options = array() ) {
 	global $config;
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
-	$status = 0;
 	$log = array(
 		'fixed' => array(), // ['url'] contains the original link
 		'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
@@ -46,6 +45,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 	}
 	preg_match_all( $pattern, $source, $matches );
 	foreach ( $matches[1] as $key => $core ) {
+		$status = 0;
 		$oldref = array();
 		// Let's check if we are supposed to mess with it first...
 		if ( preg_match( "/\{\{(Dead link|404|dl|dead|Broken link)/i", $core ) ) { // dead link tag
