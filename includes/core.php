@@ -331,8 +331,11 @@ function generateCiteTemplate( $url, $metadata, $dateformat = DATE_DMY ) {
 	return $core;
 }
 
-function generateWikiTimestamp() {
-	return date( "YmdHis" );
+function generateWikiTimestamp( $timestamp = 0 ) {
+	if ( !$timestamp ) {
+		$timestamp = time();
+	}
+	return date( "YmdHis", $timestamp );
 }
 
 function generateDate( $format, $timestamp = 0 ) {
