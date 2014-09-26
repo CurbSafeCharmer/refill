@@ -69,7 +69,7 @@ $utitle = urlencode( $title );
 </head>
 <body>
 	<?php
-		If ( !empty( $title ) ) {
+		if ( !empty( $title ) ) {
 			echo "<h1>Reflinks - $stitle</h1>";
 		} else {
 			echo "<h1>Reflinks</h1>";
