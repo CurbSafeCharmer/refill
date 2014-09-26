@@ -64,6 +64,10 @@ label {
 	color: #555;
 }
 
+#wikitext-new {
+	margin-top: 5px;
+}
+
 .back {
 	font-style: italic;
 	font-weight: bolder;
