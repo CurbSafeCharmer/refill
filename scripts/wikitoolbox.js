@@ -38,6 +38,15 @@
 
 var rlServer = "https://tools.wmflabs.org/fengtools/reflinks";
 
+function rlIsWatching() {
+	// Let's use a little hack to determine whether the current page is watched or not
+	if ( $( "#ca-unwatch" ).length != 0 ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function rlSetUpForm( pagename ) {
 	$( "#mw-content-text" ).prepend( "\
 <div id='reflinks' style='border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;'>\
@@ -75,6 +84,10 @@ function rlSetUpForm( pagename ) {
 		<a href='" + rlServer + "' style='color: #555;'>Tool homepage</a>\
 	</form>\
 </div>" );
+	if ( !rlIsWatching() ) {
+		var nowatch = $( "<input>" ).name( "nowatch" ).type( "hidden" ).value( "y" );
+		$( "#reflinks-form" ).append( nowatch );
+	}
 	$( "#hidden-page" ).attr( "value", pagename );
 	$( "html, body" ).animate( {
 		scrollTop: $( "#reflinks" ).offset().top - 10
@@ -91,6 +104,10 @@ function rlInit() {
 }
 
 $( document ).ready( function() {
-	var rlPortlet = mw.util.addPortletLink( "p-tb", rlServer + "/result.php?nofixcplain=y&page=" + encodeURIComponent( wgPageName ), "Reflinks");
+	var link = rlServer + "/result.php?nofixcplain=y&page=" + encodeURIComponent( wgPageName );
+	if ( !rlIsWatching() ) {
+		link += "&nowatch=y";
+	}
+	var rlPortlet = mw.util.addPortletLink( "p-tb", link, "Reflinks");
 	$( rlPortlet ).append( "<sup><a href='#' onclick='rlInit()'>(options)</a></sup>" );
 } );
