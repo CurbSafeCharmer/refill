@@ -66,6 +66,10 @@ function rlSetUpForm( pagename ) {
 				<input name='nouseoldcaption' id='checkbox-nouseoldcaption' type='checkbox'/>\
 				<label for='checkbox-nouseoldcaption'>Do not use old captions</label>\
 			</li>\
+			<li>\
+				<input name='nofixutemplate' id='checkbox-nofixutemplate' type='checkbox'/>\
+				<label for='checkbox-nofixutemplate'>Do not expand <code>{{cite web}}</code> templates with a URL only</label>\
+			</li>\
 		</ul>\
 		<input name='method-wiki' type='submit' value='Fix page'/>\
 		<a href='" + rlServer + "' style='color: #555;'>Tool homepage</a>\
