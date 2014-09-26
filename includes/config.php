@@ -12,7 +12,8 @@ $config['indexphp'] = "https://en.wikipedia.org/w/index.php";
 $config['citeextra'] = "";
 
 // Default edit summary for the generated edit
-$config['summary'] = "Filled in bare references with [[User:Zhaofeng Li/Reflinks]]";
+// Use %numfixed% to show how many references are fixed, and %numskipped% for skipped.
+$config['summary'] = "Filled in %numfixed% bare reference(s) with [[User:Zhaofeng Li/Reflinks]]";
 
 // Options for php-diff, see its documentations for more info
 $config['diffconfig'] = array();

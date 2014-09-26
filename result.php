@@ -52,6 +52,12 @@ $b = explode( "\n", $result );
 $diff = new Diff( $a, $b, $config['diffconfig'] );
 $diffrenderer = new Diff_Renderer_Html_SideBySide;
 
+// generate default summary
+$counter = count( $log['fixed'] );
+$counterskipped = count( $log['skipped'] );
+$summary = str_replace( "%numfixed%", $counter, $config['summary'] );
+$summary = str_replace( "%numskipped%", $counterskipped, $summary );
+
 // santize for displaying
 $ssource = htmlspecialchars( $source, ENT_QUOTES );
 $sresult = htmlspecialchars( $result );
@@ -85,7 +91,7 @@ $utitle = urlencode( $title );
 		echo "<p class='notice'>You are responsible for every edit you make. Please double-check the edit before saving!</p>";
 		if ( !isset( $options['plainlink'] ) )
 			echo "<p>Note: The publisher field is intentionally left blank for filling out manually.</p>";
-		if ( !$counter = count( $log['fixed'] ) ) {
+		if ( !$counter ) {
 			echo "<p>No changes made.</p>";
 		} else {
 			echo "<p>$counter reference(s) fixed!</p>";
@@ -102,7 +108,7 @@ $utitle = urlencode( $title );
 			echo "</ul></p>";
 		}
 		echo "<textarea id='wikitext-new' name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
-		echo "<input type='hidden' name='wpSummary' value='{$config['summary']}'/>";
+		echo "<input type='hidden' name='wpSummary' value='$summary'/>";
 		echo "<input type='hidden' name='wpAutoSummary' value='y'/>";
 		echo "<input type='hidden' name='wpStarttime' value='$timestamp'/>";
 		echo "<input type='hidden' name='wpEdittime' value='$edittimestamp'/>";
