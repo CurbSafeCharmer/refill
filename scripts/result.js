@@ -1,8 +1,9 @@
 function initDiff() {
 	$( ".Differences" ).hide();
 	$( "#wdiff" ).html( "<div id='diffcontent'></div>" );
-	$( "#wdiff" ).click( updateDiff() );
-	$( "#wikitext-new" ).keyup( updateDiff() );
+	$( "#wikitext-new" ).keyup( function() {
+		updateDiff();
+	} );
 	updateDiff();
 }
 
