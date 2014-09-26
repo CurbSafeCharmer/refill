@@ -108,7 +108,7 @@ $utitle = urlencode( $title );
 		echo "<input type='hidden' name='wpEdittime' value='$edittimestamp'/>";
 		echo "<input type='hidden' name='wpWatchthis' value='y'/>";
 		if ( !empty( $title ) && count ( $log['fixed'] ) ) {
-			echo "<input type='submit' name='wpPreview' value='Preview / Save on wiki'/>";
+			echo "<input type='submit' name='wpDiff' value='Preview / Save on wiki'/>";
 		}
 		echo "</form>";
 	?>
