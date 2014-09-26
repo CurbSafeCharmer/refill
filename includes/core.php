@@ -59,7 +59,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 			$oldref['url'] = $tcore;
 		} elseif ( preg_match( "/^\[(http[^\] ]+) ([^\]]+)\]/i", $tcore, $cmatches ) ) {
 			// a captioned plain link (consists of a URL and a caption, surrounded with [], possibly with other stuff after it)
-			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixcplain'] ) {
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !isset( $options['nofixcplain'] ) ) {
 				$oldref['url'] = $cmatches[1];
 				$oldref['caption'] = $cmatches[2];
 			} else {
@@ -67,14 +67,14 @@ function fixRef( $source, &$log = "", $options = array() ) {
 			}
 		} elseif ( preg_match( "/^\[(http[^ ]+)\]$/i", $tcore, $cmatches ) ) {
 			// an uncaptioned plain link (consists of only a URL, surrounded with [])
-			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixuplain'] ) {
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !isset( $options['nofixuplain'] ) ) {
 				$oldref['url'] = $cmatches[1];
 			} else {
 				continue;
 			}
 		} elseif ( preg_match( "/^\{\{cite web\s*\|\s*url=(http[^ \|]+)\s*\}\}$/i", $tcore, $cmatches ) ) {
 			// an uncaptioned {{cite web}} template (Please improve the regex)
-			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixutemplate'] ) {
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !isset( $options['nofixutemplate'] ) ) {
 				$oldref['url'] = $cmatches[1];
 			} else {
 				continue;
@@ -114,7 +114,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 			continue;
 		}
 		$metadata = extractMetadata( $html );
-		if ( isset( $oldref['caption'] ) && !$options['nouseoldcaption'] ) {
+		if ( isset( $oldref['caption'] ) && !isset( $options['nouseoldcaption'] ) ) {
 			// Use the original caption
 			$metadata['title'] = $oldref['caption'];
 		}
