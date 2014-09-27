@@ -107,6 +107,7 @@ $utitle = urlencode( $title );
 			}
 			echo "</ul></p>";
 		}
+		echo "<h3>New wikitext</h3>";
 		echo "<textarea id='wikitext-new' name='wpTextbox1' rows='10' cols='100'>$sresult</textarea>";
 		echo "<input type='hidden' name='wpSummary' value='$summary'/>";
 		echo "<input type='hidden' name='wpAutoSummary' value='y'/>";
