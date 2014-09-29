@@ -67,7 +67,7 @@ function rlSetUpForm( pagename ) {
 				<label for='checkbox-nofixuplain'>Do not expand uncaptioned plain links (surrounded with [ ])</label>\
 			</li>\
 			<li>\
-				<input name='nofixcplain' id='checkbox-nofixcplain' type='checkbox' checked=''/>\
+				<input name='nofixcplain' id='checkbox-nofixcplain' type='checkbox'/>\
 				<label for='checkbox-nofixcplain'>Do not expand captioned plain links</label>\
 			</li>\
 			<li>\

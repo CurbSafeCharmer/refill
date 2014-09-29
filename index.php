@@ -35,7 +35,7 @@
 				<label for="checkbox-nofixuplain-wiki">Do not expand uncaptioned plain links (surrounded with [ ])</label>
 			</li>
 			<li>
-				<input name="nofixcplain" id="checkbox-nofixcplain-wiki" type="checkbox" checked=""/>
+				<input name="nofixcplain" id="checkbox-nofixcplain-wiki" type="checkbox"/>
 				<label for="checkbox-nofixcplain-wiki">Do not expand captioned plain links</label>
 			</li>
 			<li>
@@ -70,7 +70,7 @@
 				<label for="checkbox-nofixuplain-wikitext">Do not expand uncaptioned plain links (surrounded with [ ])</label>
 			</li>
 			<li>
-				<input name="nofixcplain" id="checkbox-nofixcplain-wikitext" type="checkbox" checked=""/>
+				<input name="nofixcplain" id="checkbox-nofixcplain-wikitext" type="checkbox"/>
 				<label for="checkbox-nofixcplain-wikitext">Do not expand captioned plain links</label>
 			</li>
 			<li>
