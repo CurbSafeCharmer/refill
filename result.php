@@ -122,9 +122,9 @@ $utitle = urlencode( $title );
 		echo "</form>";
 	?>
 	<a href='index.php' class='back'>Fix another page...</a>
-	<footer>
-		<a href="https://github.com/zhaofengli/reflinks">Source</a> ♦ <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li/Reflinks">Info</a> ♦ by <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li">Zhaofeng Li</a> ♦ Original Reflinks by <a href="https://en.wikipedia.org/wiki/User:Dispenser">Dispenser</a>
-	</footer>
+	<?php
+		include __DIR__ . "/includes/footer.php";
+	?>
 	<script src="scripts/result.js"></script>
 </body>
 </html>
