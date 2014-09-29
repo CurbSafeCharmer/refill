@@ -28,6 +28,17 @@ function checkForm( element, event ) {
 	}
 }
 
+function showAdvanced() {
+	$( "#advanced" ).show();
+	$( ".showadv" ).remove();
+}
+
+function hideAdvanced() {
+	var unhideLink = $( "<button>" ).html( "Show advanced input" ).addClass( "showadv" ).attr( "href", "#" ).click( function() { showAdvanced(); } );
+	$( "#advanced" ).before( unhideLink );
+	$( "#advanced" ).hide();
+}
+
 $( document ).ready( function() {
 	$( "#form-wiki" ).submit( function( event ) {
 		checkForm( $( "input[name=page]" ), event );
@@ -35,4 +46,5 @@ $( document ).ready( function() {
 	$( "#form-wikitext" ).submit( function( event ) {
 		checkForm( $( "textarea[name=text]" ), event );
 	} );
+	hideAdvanced();
 } );

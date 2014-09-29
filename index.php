@@ -49,40 +49,42 @@
 		</ul>
 	</form>
 	
-	<p id="or">or</p>
-	
-	<h2>Enter wikitext</h2>
-	<form id="form-wikitext" method="post" action="result.php">
-		<textarea name="text" rows="10" cols="100"></textarea>
-		<input name="method-wikitext" type="submit" value="Fix wikitext"/>
-		<h3>Options</h3>
-		<ul id="form-wikitext-options" class="optionul">
-			<li>
-				<input name="plainlink" id="checkbox-plainlink-wikitext" type="checkbox"/>
-				<label for="checkbox-plainlink-wikitext">Use plain formatting instead of <code>{{cite web}}</code></label>
-			</li>
-			<li>
-				<input name="noremovetag" id="checkbox-noremovetag-wikitext" type="checkbox"/>
-				<label for="checkbox-noremovetag-wikitext">Do not remove link rot tags</label>
-			</li>
-			<li>
-				<input name="nofixuplain" id="checkbox-nofixuplain-wikitext" type="checkbox"/>
-				<label for="checkbox-nofixuplain-wikitext">Do not expand uncaptioned plain links (surrounded with [ ])</label>
-			</li>
-			<li>
-				<input name="nofixcplain" id="checkbox-nofixcplain-wikitext" type="checkbox"/>
-				<label for="checkbox-nofixcplain-wikitext">Do not expand captioned plain links</label>
-			</li>
-			<li>
-				<input name="nouseoldcaption" id="checkbox-nouseoldcaption-wikitext" type="checkbox"/>
-				<label for="checkbox-nouseoldcaption-wikitext">Do not use old captions</label>
-			</li>
-			<li>
-				<input name="nofixutemplate" id="checkbox-nofixutemplate-wikitext" type="checkbox"/>
-				<label for="checkbox-nofixutemplate-wikitext">Do not expand <code>{{cite web}}</code> templates with a URL only</label>
-			</li>
-		</ul>
-	</form>
+	<div id="advanced">
+		<p id="or">or</p>
+		
+		<h2>Enter wikitext</h2>
+		<form id="form-wikitext" method="post" action="result.php">
+			<textarea name="text" rows="10" cols="100"></textarea>
+			<input name="method-wikitext" type="submit" value="Fix wikitext"/>
+			<h3>Options</h3>
+			<ul id="form-wikitext-options" class="optionul">
+				<li>
+					<input name="plainlink" id="checkbox-plainlink-wikitext" type="checkbox"/>
+					<label for="checkbox-plainlink-wikitext">Use plain formatting instead of <code>{{cite web}}</code></label>
+				</li>
+				<li>
+					<input name="noremovetag" id="checkbox-noremovetag-wikitext" type="checkbox"/>
+					<label for="checkbox-noremovetag-wikitext">Do not remove link rot tags</label>
+				</li>
+				<li>
+					<input name="nofixuplain" id="checkbox-nofixuplain-wikitext" type="checkbox"/>
+					<label for="checkbox-nofixuplain-wikitext">Do not expand uncaptioned plain links (surrounded with [ ])</label>
+				</li>
+				<li>
+					<input name="nofixcplain" id="checkbox-nofixcplain-wikitext" type="checkbox"/>
+					<label for="checkbox-nofixcplain-wikitext">Do not expand captioned plain links</label>
+				</li>
+				<li>
+					<input name="nouseoldcaption" id="checkbox-nouseoldcaption-wikitext" type="checkbox"/>
+					<label for="checkbox-nouseoldcaption-wikitext">Do not use old captions</label>
+				</li>
+				<li>
+					<input name="nofixutemplate" id="checkbox-nofixutemplate-wikitext" type="checkbox"/>
+					<label for="checkbox-nofixutemplate-wikitext">Do not expand <code>{{cite web}}</code> templates with a URL only</label>
+				</li>
+			</ul>
+		</form>
+	</div>
 	<footer>
 		<a href="https://github.com/zhaofengli/reflinks">Source</a> ♦ <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li/Reflinks">Info</a> ♦ by <a href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li">Zhaofeng Li</a> ♦ Original Reflinks by <a href="https://en.wikipedia.org/wiki/User:Dispenser">Dispenser</a>
 	</footer>
