@@ -57,8 +57,8 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		if ( filter_var( $tcore, FILTER_VALIDATE_URL ) && strpos( $tcore, "http" ) === 0 ) {
 			// a bare link (consists of only a URL)
 			$oldref['url'] = $tcore;
-		} elseif ( preg_match( "/^\[(http[^\] ]+) ([^\]]+)\]/i", $tcore, $cmatches ) ) {
-			// a captioned plain link (consists of a URL and a caption, surrounded with [], possibly with other stuff after it)
+		} elseif ( preg_match( "/^\[(http[^\] ]+) ([^\]]+)\]$/i", $tcore, $cmatches ) ) {
+			// a captioned plain link (consists of a URL and a caption, surrounded with [], with /no/ other stuff after it)
 			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !isset( $options['nofixcplain'] ) ) {
 				$oldref['url'] = $cmatches[1];
 				$oldref['caption'] = $cmatches[2];
