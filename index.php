@@ -41,7 +41,7 @@ require_once __DIR__ . "/includes/config.php";
 			-->
 			<li>
 				<input name="nofixcplain" id="checkbox-nofixcplain-wiki" type="checkbox"/>
-				<label for="checkbox-nofixcplain-wiki">Do not expand captioned plain links</label>
+				<label for="checkbox-nofixcplain-wiki">Do not expand references with a captioned external link only</label>
 			</li>
 			<li>
 				<input name="nouseoldcaption" id="checkbox-nouseoldcaption-wiki" type="checkbox"/>
@@ -77,7 +77,7 @@ require_once __DIR__ . "/includes/config.php";
 				</li>
 				<li>
 					<input name="nofixcplain" id="checkbox-nofixcplain-wikitext" type="checkbox"/>
-					<label for="checkbox-nofixcplain-wikitext">Do not expand captioned plain links</label>
+					<label for="checkbox-nofixcplain-wikitext">Do not expand references with a captioned external link only</label>
 				</li>
 				<li>
 					<input name="nouseoldcaption" id="checkbox-nouseoldcaption-wikitext" type="checkbox"/>

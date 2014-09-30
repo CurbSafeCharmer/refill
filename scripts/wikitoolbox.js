@@ -70,7 +70,7 @@ function rlSetUpForm( pagename ) {
 			-->\
 			<li>\
 				<input name='nofixcplain' id='checkbox-nofixcplain' type='checkbox'/>\
-				<label for='checkbox-nofixcplain'>Do not expand captioned plain links</label>\
+				<label for='checkbox-nofixcplain'>Do not expand references with a captioned external link only</label>\
 			</li>\
 			<li>\
 				<input name='nouseoldcaption' id='checkbox-nouseoldcaption' type='checkbox'/>\
