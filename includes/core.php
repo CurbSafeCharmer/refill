@@ -317,9 +317,13 @@ function generateCiteTemplate( $url, $metadata, $dateformat = DATE_DMY, $options
 	}
 	if ( !empty( $metadata['author'] ) ) {
 		$core .= "|author=" . $metadata['author'];
+	} elseif ( isset( $options['addblankmetadata'] ) ) { // add a blank field
+		$core .= "|author=";
 	}
 	if ( !empty( $metadata['date'] ) && $timestamp = strtotime( $metadata['date'] ) ) { // successfully parsed
 		$core .= "|date=" . generateDate( $dateformat, $timestamp );
+	} elseif ( isset( $options['addblankmetadata'] ) ) { // add a blank field
+		$core .= "|date=";
 	}
 	if ( !empty( $metadata['work'] ) ) {
 		$core .= "|work=" . $metadata['work'];
@@ -398,7 +402,7 @@ function getOption( $option ) {
 }
 
 function getOptions() {
-	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag', 'nofixutemplate', 'nowatch' );
+	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag', 'nofixutemplate', 'nowatch', 'addblankmetadata' );
 	$options = array();
 	foreach( $optionlist as $option ) {
 		if ( null !== $o = getOption( $option ) ) {

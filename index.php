@@ -51,6 +51,10 @@ require_once __DIR__ . "/includes/config.php";
 				<input name="nofixutemplate" id="checkbox-nofixutemplate-wiki" type="checkbox"/>
 				<label for="checkbox-nofixutemplate-wiki">Do not expand <code>{{cite web}}</code> templates with a URL only</label>
 			</li>
+			<li>
+				<input name="addblankmetadata" id="checkbox-addblankmetadata-wiki" type="checkbox"/>
+				<label for="checkbox-addblankmetadata-wiki">Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>
+			</li>
 		</ul>
 	</form>
 	
@@ -86,6 +90,10 @@ require_once __DIR__ . "/includes/config.php";
 				<li>
 					<input name="nofixutemplate" id="checkbox-nofixutemplate-wikitext" type="checkbox"/>
 					<label for="checkbox-nofixutemplate-wikitext">Do not expand <code>{{cite web}}</code> templates with a URL only</label>
+				</li>
+				<li>
+					<input name="addblankmetadata" id="checkbox-addblankmetadata-wiki" type="checkbox"/>
+					<label for="checkbox-addblankmetadata-wiki">Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>
 				</li>
 			</ul>
 		</form>
