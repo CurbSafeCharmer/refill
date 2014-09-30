@@ -62,10 +62,12 @@ function rlSetUpForm( pagename ) {
 				<input name='noremovetag' id='checkbox-noremovetag' type='checkbox'/>\
 				<label for='checkbox-noremovetag'>Do not remove link rot tags</label>\
 			</li>\
+			<!--\
 			<li>\
 				<input name='nofixuplain' id='checkbox-nofixuplain' type='checkbox'/>\
 				<label for='checkbox-nofixuplain'>Do not expand uncaptioned plain links (surrounded with [ ])</label>\
 			</li>\
+			-->\
 			<li>\
 				<input name='nofixcplain' id='checkbox-nofixcplain' type='checkbox'/>\
 				<label for='checkbox-nofixcplain'>Do not expand captioned plain links</label>\

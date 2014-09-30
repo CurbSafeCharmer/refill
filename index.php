@@ -33,10 +33,12 @@ require_once __DIR__ . "/includes/config.php";
 				<input name="noremovetag" id="checkbox-noremovetag-wiki" type="checkbox"/>
 				<label for="checkbox-noremovetag-wiki">Do not remove link rot tags</label>
 			</li>
+			<!--
 			<li>
 				<input name="nofixuplain" id="checkbox-nofixuplain-wiki" type="checkbox"/>
 				<label for="checkbox-nofixuplain-wiki">Do not expand uncaptioned plain links (surrounded with [ ])</label>
 			</li>
+			-->
 			<li>
 				<input name="nofixcplain" id="checkbox-nofixcplain-wiki" type="checkbox"/>
 				<label for="checkbox-nofixcplain-wiki">Do not expand captioned plain links</label>
