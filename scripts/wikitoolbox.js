@@ -104,7 +104,7 @@ function rlInit() {
 }
 
 $( document ).ready( function() {
-	var link = rlServer + "/result.php?nofixcplain=y&page=" + encodeURIComponent( wgPageName );
+	var link = rlServer + "/result.php?page=" + encodeURIComponent( wgPageName );
 	if ( !rlIsWatching() ) {
 		link += "&nowatch=y";
 	}
