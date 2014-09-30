@@ -2,6 +2,9 @@
 // The useragent used when fetching web pages and accessing MediaWiki API
 $config['useragent'] = "Reflinks/0.1 (by Zhaofeng Li: https://en.wikipedia.org/wiki/User:Zhaofeng_Li)";
 
+// The name of the wiki
+$config['wiki']['name'] = "English Wikipedia";
+
 // The URL to the MediaWiki API
 $config['wiki']['api'] = "https://en.wikipedia.org/w/api.php";
 

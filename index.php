@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . "/includes/config.php";
+?>
 <!doctype html>
 <html>
 <head>
@@ -16,7 +19,7 @@
 		}
 	?>
 	
-	<h2>Fetch content from wiki</h2>
+	<h2>Fetch content from <?php echo $config['wiki']['name']; ?></h2>
 	<form id="form-wiki" method="post" action="result.php">
 		<input name="page" type="text" placeholder="Page name"/>
 		<input name="method-wiki" type="submit" value="Fix page"/>
