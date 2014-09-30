@@ -92,8 +92,8 @@ require_once __DIR__ . "/includes/config.php";
 					<label for="checkbox-nofixutemplate-wikitext">Do not expand <code>{{cite web}}</code> templates with a URL only</label>
 				</li>
 				<li>
-					<input name="addblankmetadata" id="checkbox-addblankmetadata-wiki" type="checkbox"/>
-					<label for="checkbox-addblankmetadata-wiki">Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>
+					<input name="addblankmetadata" id="checkbox-addblankmetadata-wikitext" type="checkbox"/>
+					<label for="checkbox-addblankmetadata-wikitext">Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>
 				</li>
 			</ul>
 		</form>

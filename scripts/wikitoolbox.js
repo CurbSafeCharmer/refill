@@ -81,8 +81,8 @@ function rlSetUpForm( pagename ) {
 				<label for='checkbox-nofixutemplate'>Do not expand <code>{{cite web}}</code> templates with a URL only</label>\
 			</li>\
 			<li>\
-				<input name='addblankmetadata' id='checkbox-addblankmetadata-wiki' type='checkbox'/>\
-				<label for='checkbox-addblankmetadata-wiki'>Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>\
+				<input name='addblankmetadata' id='checkbox-addblankmetadata' type='checkbox'/>\
+				<label for='checkbox-addblankmetadata'>Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>\
 			</li>\
 		</ul>\
 		<input name='method-wiki' type='submit' value='Fix page'/>\
