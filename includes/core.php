@@ -130,9 +130,9 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		
 		// Generate cite template
 		if ( isset( $options['plainlink'] ) ) { // use captioned plain link
-			$newcore = generatePlainLink( $oldref['url'], $metadata, $dateformat );
+			$newcore = generatePlainLink( $oldref['url'], $metadata, $dateformat, $options );
 		} else { // use {{cite web}}
-			$newcore = generateCiteTemplate( $oldref['url'], $metadata, $dateformat );
+			$newcore = generateCiteTemplate( $oldref['url'], $metadata, $dateformat, $options );
 		}
 		
 		// Replace the old core
@@ -299,13 +299,13 @@ function getFirstNodeAttrContent( $nodelist ) {
 	return trim( $nodelist->item( 0 )->attributes->getNamedItem( "content" )->nodeValue );
 }
 
-function generatePlainLink( $url, $metadata, $dateformat = DATE_DMY ) {
+function generatePlainLink( $url, $metadata, $dateformat = DATE_DMY, $options = array() ) {
 	$title = $metadata['title'];
 	$core = "[$url \"$title\"]. Retrieved on " . generateDate( $dateformat ) . ".";
 	return $core;
 }
 
-function generateCiteTemplate( $url, $metadata, $dateformat = DATE_DMY ) {
+function generateCiteTemplate( $url, $metadata, $dateformat = DATE_DMY, $options = array() ) {
 	global $config;
 	$date = date( "j F Y" );
 	foreach ( $metadata as &$field ) { // we don't want | here
