@@ -147,7 +147,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 
 function fetchWiki( $page, &$actualname = "", &$timestamp = 0 ) { // bug-prone
 	global $config;
-	$url = $config['api'] . "?action=query&prop=revisions&rvlimit=1&rvprop=content|timestamp&format=json&titles=" . urlencode( $page );
+	$url = $config['wiki']['api'] . "?action=query&prop=revisions&rvlimit=1&rvprop=content|timestamp&format=json&titles=" . urlencode( $page );
 	$curl = curl_init( $url );
 	curl_setopt( $curl, CURLOPT_USERAGENT, $config['useragent'] );
 	curl_setopt( $curl, CURLOPT_HEADER, false );

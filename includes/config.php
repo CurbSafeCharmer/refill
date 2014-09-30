@@ -3,10 +3,10 @@
 $config['useragent'] = "Reflinks/0.1 (by Zhaofeng Li: https://en.wikipedia.org/wiki/User:Zhaofeng_Li)";
 
 // The URL to the MediaWiki API
-$config['api'] = "https://en.wikipedia.org/w/api.php";
+$config['wiki']['api'] = "https://en.wikipedia.org/w/api.php";
 
 // The URL to the index.php of the wiki, used to generate a link to the submit page
-$config['indexphp'] = "https://en.wikipedia.org/w/index.php";
+$config['wiki']['indexphp'] = "https://en.wikipedia.org/w/index.php";
 
 // Stuff to insert into the end of a cite template
 $config['citeextra'] = "";

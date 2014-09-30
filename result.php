@@ -86,7 +86,7 @@ $utitle = urlencode( $title );
 			include __DIR__ . "/includes/banner.php";
 		}
 		echo "<input id='wikitext-old' type='hidden' value='" . $ssource . "'/>";
-		echo "<form id='form-wikitext' name='editform' method='post' action='{$config['indexphp']}?title=$utitle&action=submit' enctype='multipart/form-data'>";
+		echo "<form id='form-wikitext' name='editform' method='post' action='{$config['wiki']['indexphp']}?title=$utitle&action=submit' enctype='multipart/form-data'>";
 		echo "<h2>Result</h2>";
 		echo "<p class='notice'>You are responsible for every edit you make. Please double-check the edit before saving!</p>";
 		if ( !isset( $options['plainlink'] ) )
