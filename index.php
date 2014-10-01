@@ -63,7 +63,7 @@ require_once __DIR__ . "/includes/config.php";
 		
 		<h2>Enter wikitext</h2>
 		<form id="form-wikitext" method="post" action="result.php">
-			<textarea name="text" rows="10" cols="100"></textarea>
+			<textarea name="text" class="wikitext"></textarea>
 			<input name="method-wikitext" type="submit" value="Fix wikitext"/>
 			<h3>Options</h3>
 			<ul id="form-wikitext-options" class="optionul">
