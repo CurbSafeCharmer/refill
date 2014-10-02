@@ -20,16 +20,17 @@
 	OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
+/*
+	Core
+*/
+
 require_once __DIR__ . "/config.default.php";
-
-define( "SKIPPED_NOTBARE", 1 ); // UNUSED
-define( "SKIPPED_HTTPERROR", 2 );
-define( "SKIPPED_EMPTY", 3 );
-define( "SKIPPED_NOTITLE", 4 );
-define( "SKIPPED_HOSTBL", 5 );
-
-define( "DATE_DMY", false ); // default
-define( "DATE_MDY", true );
+require_once __DIR__ . "/constants.php";
+require_once __DIR__ . "/citegen.php";
+require_once __DIR__ . "/source.php";
+require_once __DIR__ . "/metadata.php";
+require_once __DIR__ . "/date.php";
 
 function fixRef( $source, &$log = "", $options = array() ) {
 	global $config;
@@ -145,222 +146,6 @@ function fixRef( $source, &$log = "", $options = array() ) {
 	return $source;
 }
 
-function fetchWiki( $page, &$actualname = "", &$timestamp = 0 ) { // bug-prone
-	global $config;
-	$url = $config['wiki']['api'] . "?action=query&prop=revisions&rvlimit=1&rvprop=content|timestamp&format=json&titles=" . urlencode( $page );
-	$curl = curl_init( $url );
-	curl_setopt( $curl, CURLOPT_USERAGENT, $config['useragent'] );
-	curl_setopt( $curl, CURLOPT_HEADER, false );
-	curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
-	curl_setopt( $curl, CURLOPT_FOLLOWLOCATION, true );
-	curl_setopt( $curl, CURLOPT_MAXREDIRS, 10 );
-	$result = json_decode( curl_exec( $curl ), true );
-	curl_close( $curl );
-	foreach( $result['query']['pages'] as $page ) {
-		if ( isset( $page['missing'] ) )
-			return;
-		else {
-			$actualname = $page['title'];
-			$timestamp = strtotime( $page['revisions'][0]['timestamp'] );
-			return $page['revisions'][0]['*'] ;
-		}
-	}
-}
-
-function fetchWeb( $url, $referer = "", &$status = "" ) {
-	global $config;
-	$curl = curl_init( $url );
-	curl_setopt( $curl, CURLOPT_USERAGENT, $config['useragent'] );
-	curl_setopt( $curl, CURLOPT_HEADER, true );
-	curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
-	curl_setopt( $curl, CURLOPT_FOLLOWLOCATION, true );
-	curl_setopt( $curl, CURLOPT_MAXREDIRS, 10 );
-	curl_setopt( $curl, CURLOPT_TIMEOUT, 10 );
-	if ( $referer ) curl_setopt( $curl, CURLOPT_REFERER, $referer );
-	
-	// step 1: make sure it's text/html
-	curl_setopt( $curl, CURLOPT_NOBODY, true );
-	curl_exec( $curl );
-	$header = curl_getinfo( $curl );
-	if ( strpos( $header['content_type'], "text/html" ) !== 0 && $header['content_type'] != null ) {
-		return;
-	}
-	
-	// step 2: actually fetch the page
-	curl_setopt( $curl, CURLOPT_NOBODY, false );
-	$content = curl_exec( $curl );
-	$header = curl_getinfo( $curl );
-	curl_close( $curl );
-	$status = $header['http_code'];
-	return $content;
-}
-
-function extractMetadata( $html ) {
-	$dom = new DOMDocument();
-	$dom->preserveWhiteSpace = false;
-	@$dom->loadHTML( "<?xml encoding='utf-8'?>" . $html );
-	$xpath = new DOMXPath( $dom );
-	
-	$result = array();
-	
-	// Extract title to ['title']
-	$titlenodes = $xpath->query( "//title" );
-	if ( $titlenodes->length ) {
-		$result['title'] = getFirstNodeValue( $titlenodes );
-	}
-	
-	$titles = array();
-	$titlenodes = $xpath->query( "//*[@itemprop='headline'] | //h1" );
-	if ( $titlenodes->length ) {
-		for ( $i = 0; $i < $titlenodes->length; $i++ ) {
-			$titles[] = trim( $titlenodes->item( $i )->nodeValue );
-		}
-	}
-	$titlenodes = $xpath->query( "//meta[@property='og:title']" );
-	if ( $titlenodes->length ) {
-		$titles[] = getFirstNodeAttrContent( $titlenodes );
-	}
-	
-	foreach ( $titles as $title ) { // loop through the titles we found...
-		if ( !empty( $title ) && strlen( $title ) < strlen( $result['title'] ) && strpos( $result['title'], $title ) === 0 ) {
-			$result['title'] = $title;
-		}
-	}
-	
-	// Extract author to ['author']
-	$authornodes = $xpath->query( "//*[@itemprop='author']" ); // 1st try - schema.org
-	if ( $authornodes->length ) { // author found
-		if ( $authornodes->item( 0 )->childNodes->length ) { // It has child nodes!
-			$authornodes = $xpath->query( "//*[@itemprop='author']//*[@itemprop='name']" ); // dirty...
-			if ( $authornodes->length ) {
-				$result['author'] = getFirstNodeValue( $authornodes );
-			}
-		} else { // Okay, simple one...
-			$result['author'] = getFirstNodeValue( $authornodes );
-		}
-	} else { // 2nd try - <meta name="author">
-		$authornodes = $xpath->query( "//meta[@name='author']" );
-		if ( $authornodes->length ) {
-			$author = getFirstNodeAttrContent( $authornodes );
-			if ( !preg_match( "/(www.|.com|\w{5,}.\w{2,3})/", $author ) ) { // does not look like a domain name (Actually, there are exceptions, like will.i.am)
-				$result['author'] = preg_replace( "/(?:by|from)\s+(.+)/i", "$1", $author ); // clean it up a bit
-			}
-		}
-	}
-	
-	// Extract publication date to ['date']
-	$datenodes = $xpath->query( "//*[@itemprop='datePublished'] | //meta[@name='date' or @name='article:published_time' or @name='sailthru.date']" );
-	if ( $datenodes->length ) { // date found
-		$result['date'] = getFirstNodeAttrContent( $datenodes );
-	}
-
-	
-	// Extract website name to ['work']
-	$worknodes = $xpath->query( "//meta[@property='og:site_name']" );
-	if ( $worknodes->length ) {
-		$result['work'] = getFirstNodeAttrContent( $worknodes );
-	}
-	
-	// Guess website name from title to ['guessedwork']
-	if ( isset( $result['title'] ) ) {
-		// Is it something like "Article name & whatever - Site name"?
-		$workpattern = "/.+ [\-\|] ([^\-\|]*)$/";
-		$matches = array();
-		if ( preg_match( $workpattern, $result['title'], $matches ) ) {
-			$result['guessedwork'] = $matches[1][0];
-		}
-	}
-	
-	// A dirty way to make those case-by-case adjustments
-	$result = fixMetadata( $result );
-	
-	return $result; // Done! ;)
-}
-
-function fixMetadata( $metadata ) {
-	// |work=Google Books
-	if ( $metadata['work'] == "Google Books" ) {
-		unset( $metadata['work'] );
-	}
-	
-	// |work=Los Angeles Times Articles -> |work=Los Angeles Times
-	if ( $metadata['work'] == "Los Angeles Times Articles" ) {
-		$metadata['work'] = "Los Angeles Times";
-	}
-	
-	return $metadata;
-}
-
-function getFirstNodeValue( $nodelist ) {
-	return trim( $nodelist->item( 0 )->nodeValue );
-}
-
-function getFirstNodeAttrContent( $nodelist ) {
-	return trim( $nodelist->item( 0 )->attributes->getNamedItem( "content" )->nodeValue );
-}
-
-function generatePlainLink( $url, $metadata, $dateformat = DATE_DMY, $options = array() ) {
-	$title = $metadata['title'];
-	$core = "[$url \"$title\"]. Retrieved on " . generateDate( $dateformat ) . ".";
-	return $core;
-}
-
-function generateCiteTemplate( $url, $metadata, $dateformat = DATE_DMY, $options = array() ) {
-	global $config;
-	$date = date( "j F Y" );
-	foreach ( $metadata as &$field ) { // we don't want | here
-		$field = str_replace( "|", "-", $field );
-	}
-	$core = "{{cite web|url=$url";
-	if ( !empty( $metadata['title'] ) ) {
-		$core .= "|title=" . $metadata['title'];
-	}
-	if ( !empty( $metadata['author'] ) ) {
-		$core .= "|author=" . $metadata['author'];
-	} elseif ( isset( $options['addblankmetadata'] ) ) { // add a blank field
-		$core .= "|author=";
-	}
-	if ( !empty( $metadata['date'] ) && $timestamp = strtotime( $metadata['date'] ) ) { // successfully parsed
-		$core .= "|date=" . generateDate( $dateformat, $timestamp );
-	} elseif ( isset( $options['addblankmetadata'] ) ) { // add a blank field
-		$core .= "|date=";
-	}
-	if ( !empty( $metadata['work'] ) ) {
-		$core .= "|work=" . $metadata['work'];
-	} else { // no |work= extracted , add an empty |publisher=
-		$core .= "|publisher=";
-	}
-	// Let's not use guesswork now, as it's unstable
-	$core .= "|accessdate=" . generateDate( $dateformat );
-	$core .= $config['citeextra'] . "}}";
-	return $core;
-}
-
-function generateWikiTimestamp( $timestamp = 0 ) {
-	if ( !$timestamp ) {
-		$timestamp = time();
-	}
-	return date( "YmdHis", $timestamp );
-}
-
-function generateDate( $format, $timestamp = 0 ) {
-	if ( !$timestamp ) {
-		$timestamp = time();
-	}
-	if ( $format == DATE_MDY ) { // mdy
-		return date( "F j, Y", $timestamp );
-	} else { // dmy (default)
-		return date( "j F Y", $timestamp );
-	}
-}
-
-function generateShortDate( $timestamp = 0 ) {
-	if ( !$timestamp ) {
-		$timestamp = date();
-	}
-	return date( "F Y", $timestamp );
-}
-
 function getSkippedReason( $code ) {
 	switch ( $code ) {
 		case SKIPPED_HTTPERROR:
@@ -380,15 +165,6 @@ function getSkippedReason( $code ) {
 function removeBareUrlTags( $source ) {
 	$pattern = "/\{\{(Bare|Bare links|Barelinks|Bare references|Bare refs|Bare URLs|Cleanup link rot|Cleanup link-rot|Cleanup-link-rot|Cleanup-linkrot|Link rot|Linkrot|Cleanup-bare URLs)([^\}])*\}\}/i";
 	return preg_replace( $pattern, "", $source );
-}
-
-// DATE_DMY if dmy (default), DATE_MDY if mdy
-function detectDateFormat( $source ) {
-	if ( stripos( $source, "{{Use mdy dates" ) !== false ) {
-		return DATE_MDY;
-	} else {
-		return DATE_DMY;
-	}
 }
 
 function getOption( $option ) {
