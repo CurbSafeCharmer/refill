@@ -44,6 +44,10 @@ There are more configuations available, please check out `includes/config.defaul
 By default, the tool uses the [wDiff library](https://en.wikipedia.org/w/index.php?title=User:Cacycle/diff.js&action=raw&ctype=text/javascript) from Cacycle's user page on English Wikipedia.
 For easy offline development, you may want to download a copy of the script from the above link and store it in `scripts/diff.js`. This file is ignored by git.
 Beware though, you won't get updates of wDiff automatically in this way.
+To enable the local version, insert this into `includes/config.php`:
+```php
+$config['wdiff'] = "scripts/diff.js";
+```
 
 ## Reporting bugs
 If you have found a bug, please [report it on Wikipedia](https://en.wikipedia.org/wiki/User_talk:Zhaofeng_Li) or [create an issue on GitHub](https://github.com/zhaofengli/reflinks/issues).
