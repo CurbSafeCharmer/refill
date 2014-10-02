@@ -31,9 +31,11 @@ require_once __DIR__ . "/citegen.php";
 require_once __DIR__ . "/source.php";
 require_once __DIR__ . "/metadata.php";
 require_once __DIR__ . "/date.php";
+require_once __DIR__ . "/spam.php";
 
 function fixRef( $source, &$log = "", $options = array() ) {
 	global $config;
+	initSpamBlacklist();
 	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
 	$matches = array();
 	$log = array(
@@ -96,6 +98,14 @@ function fixRef( $source, &$log = "", $options = array() ) {
 				continue 2;
 			}
 		}
+		if ( checkSpam( $oldref['url'] ) ) {
+			$log['skipped'][] = array(
+				'ref' => $core,
+				'reason' => SKIPPED_SPAM,
+				'status' => $status,
+			);
+			continue;
+		}
 		
 		// Fetch the webpage and extract the metadata
 		$html = fetchWeb( $oldref['url'], null, $status );
@@ -156,6 +166,8 @@ function getSkippedReason( $code ) {
 			return "No title is found";
 		case SKIPPED_HOSTBL:
 			return "Host blacklisted";
+		case SKIPPED_SPAM:
+			return "Spam blacklist";
 		default:
 			return "Unknown error";
 	}

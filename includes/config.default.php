@@ -37,6 +37,15 @@ $config['hostblacklist'] = array(
 	".+\.local",
 );
 
+// Enable spam blacklist
+$config['spam']['enable'] = false;
+
+// A path to the /local/ blacklist file, used by Extension:SpamBlacklist on MediaWiki.
+$config['spam']['file'] = __DIR__ . "/blacklist";
+
+// The actual array for blacklist regexes, for reference only. You should not set this one manually.
+$config['spam']['blacklist'] = array();
+
 // Path to Cacycle's wDiff script. For easy offline development, download a copy to scripts/diff.js which is ignored by git.
 $config['wdiff'] = "https://en.wikipedia.org/w/index.php?title=User:Cacycle/diff.js&action=raw&ctype=text/javascript";
 

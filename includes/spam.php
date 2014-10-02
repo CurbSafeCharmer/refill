@@ -22,31 +22,57 @@
 */
 
 /*
-	Constants
+	Spam blacklist
 */
 
-/*
-	Reasons for skipping references
-*/
+require_once __DIR__ . "/constants.php";
 
-// [UNUSED] Not a bare reference
-define( "SKIPPED_NOTBARE", 1 );
-// HTTP Error
-define( "SKIPPED_HTTPERROR", 2 );
-// Empty response or not HTML
-define( "SKIPPED_EMPTY", 3 );
-// No title found
-define( "SKIPPED_NOTITLE", 4 );
-// Host blacklisted in $config['hostblacklist']
-define( "SKIPPED_HOSTBL", 5 );
-// Spam blacklist
-define( "SKIPPED_SPAM", 6 );
+function initSpamBlacklist() {
+	global $config;
+	if ( $config['spam']['enable'] ) {
+		return loadSpamBlacklist();
+	} else {
+		return false;
+	}
+}
 
-/*
-	Date formats
-*/
+// Use initSpamBlacklist() instead
+function loadSpamBlacklist() {
+	global $config;
+	$file = fopen( $config['spam']['file'], "r" );
+	if ( $file ) {
+		while ( false !== $line = fgets( $file ) ) { 
+			addSpamRegex( $line );
+		}
+		fclose( $file );
+		return countSpamBlacklist();
+	} else {
+		return false;
+	}
+}
 
-// [DEFAULT] DMY (e.g. 15 January 2001)
-define( "DATE_DMY", false );
-// MDY (e.g. January 15, 2001)
-define( "DATE_MDY", true );
+function addSpamRegex( $line ) {
+	global $config;
+	// Remove comments from the line, and trim the whitespaces
+	$line = trim( preg_replace( "/#.*$/", "", $line ) );
+	if ( !empty( $line ) ) { // Okay, we've got a regex
+		$config['spam']['blacklist'][] = $line;
+	}
+}
+
+function checkSpam( $url ) {
+	global $config;
+	foreach( $config['spam']['blacklist'] as $oregex ) {
+		// Those entries on the list are fragments, let's complete them
+		$regex = "|^https?\:\/\/[A-Za-z0-9\-\_\.]*" . $oregex . "|";
+		if ( @preg_match( $regex, $url ) ) { // Gotcha!
+			return true;
+		}
+	}
+	return false;
+}
+
+function countSpamBlacklist() {
+	global $config;
+	return count( $config['spam']['blacklist'] );
+}
