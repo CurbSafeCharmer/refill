@@ -35,7 +35,6 @@ $config['hostblacklist'] = array(
 	"localhost",
 	"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}",
 	".+\.local",
-	".+\.nytimes\.com",
 );
 
 // Path to Cacycle's wDiff script. For easy offline development, download a copy to scripts/diff.js which is ignored by git.
