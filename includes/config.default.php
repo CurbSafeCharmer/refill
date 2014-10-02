@@ -1,4 +1,13 @@
 <?php
+/*
+	This is the default configuation of Reflinks.
+
+	Please don't edit this file, unless you want to change the 
+	default configuations and submit it to the code repository.
+
+	To override these configuations, create a file named "config.php"
+*/
+
 // The useragent used when fetching web pages and accessing MediaWiki API
 $config['useragent'] = "Reflinks/0.1 (by Zhaofeng Li: https://en.wikipedia.org/wiki/User:Zhaofeng_Li)";
 
@@ -33,3 +42,5 @@ $config['hostblacklist'] = array(
 $config['wdiff'] = "https://en.wikipedia.org/w/index.php?title=User:Cacycle/diff.js&action=raw&ctype=text/javascript";
 
 date_default_timezone_set( "UTC" );
+
+@include __DIR__ . "/config.php";
