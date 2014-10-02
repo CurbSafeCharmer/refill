@@ -25,11 +25,26 @@
 	Constants
 */
 
+/*
+	Reasons for skipping references
+*/
+
+// [UNUSED] Not a bare reference
 define( "SKIPPED_NOTBARE", 1 );
+// HTTP Error
 define( "SKIPPED_HTTPERROR", 2 );
+// Empty response or not HTML
 define( "SKIPPED_EMPTY", 3 );
+// No title found
 define( "SKIPPED_NOTITLE", 4 );
+// Host blacklisted in $config['hostblacklist']
 define( "SKIPPED_HOSTBL", 5 );
 
-define( "DATE_DMY", false ); // default
+/*
+	Date formats
+*/
+
+// [DEFAULT] DMY (e.g. 15 January 2001)
+define( "DATE_DMY", false );
+// MDY (e.g. January 15, 2001)
 define( "DATE_MDY", true );
