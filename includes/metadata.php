@@ -54,7 +54,9 @@ function extractMetadata( $html ) {
 	}
 	
 	foreach ( $titles as $title ) { // loop through the titles we found...
-		if ( !empty( $title ) && strlen( $title ) < strlen( $result['title'] ) && strpos( $result['title'], $title ) === 0 ) {
+		if ( empty( $result['title'] ) ) {
+			$result['title'] = $title;
+		} elseif ( !empty( $title ) && strlen( $title ) < strlen( $result['title'] ) && strpos( $result['title'], $title ) === 0 ) {
 			$result['title'] = $title;
 		}
 	}
