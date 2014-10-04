@@ -34,7 +34,7 @@ function showAdvanced() {
 }
 
 function hideAdvanced() {
-	var unhideLink = $( "<button>" ).html( "Show advanced input" ).addClass( "showadv" ).attr( "href", "#" ).click( function() { showAdvanced(); } );
+	var unhideLink = $( "<a>" ).html( "[+] Show advanced input" ).addClass( "showadv", "link" ).attr( "href", "#" ).click( function() { showAdvanced(); } );
 	$( "#advanced" ).before( unhideLink );
 	$( "#advanced" ).hide();
 }
