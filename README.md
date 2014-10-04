@@ -1,4 +1,4 @@
-# Reflinks
+# Reflinks [![Build Status](https://travis-ci.org/zhaofengli/reflinks.svg?branch=master)](https://travis-ci.org/zhaofengli/reflinks)
 A quick-and-dirty rewrite of Dispenser's Reflinks. A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/reflinks/).
 There is also an [experimental version](https://tools.wmflabs.org/fengtools/reflinkstest/), automatically pulled from the latest commit.
 
