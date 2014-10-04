@@ -110,14 +110,15 @@ function extractMetadata( $html ) {
 }
 
 function fixMetadata( $metadata ) {
-	// |work=Google Books
-	if ( $metadata['work'] == "Google Books" ) {
-		unset( $metadata['work'] );
-	}
-	
-	// |work=Los Angeles Times Articles -> |work=Los Angeles Times
-	if ( $metadata['work'] == "Los Angeles Times Articles" ) {
-		$metadata['work'] = "Los Angeles Times";
+	if ( !empty( $metadata['work'] ) ) {
+		// |work=Google Books
+		if ( $metadata['work'] == "Google Books" ) {
+			unset( $metadata['work'] );
+		}
+		// |work=Los Angeles Times Articles -> |work=Los Angeles Times
+		if ( $metadata['work'] == "Los Angeles Times Articles" ) {
+			$metadata['work'] = "Los Angeles Times";
+		}
 	}
 	
 	return $metadata;
