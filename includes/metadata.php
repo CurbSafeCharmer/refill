@@ -64,7 +64,7 @@ function extractMetadata( $html ) {
 	// Extract author to ['author']
 	$authornodes = $xpath->query( "//*[@itemprop='author']" ); // 1st try - schema.org
 	if ( $authornodes->length ) { // author found
-		if ( $authornodes->item( 0 )->childNodes->length ) { // It has child nodes!
+		if ( $authornodes->item( 0 )->childNodes->length > 1 ) { // It has child nodes!
 			$authornodes = $xpath->query( "//*[@itemprop='author']//*[@itemprop='name']" ); // dirty...
 			if ( $authornodes->length ) {
 				$result['author'] = getFirstNodeValue( $authornodes );
