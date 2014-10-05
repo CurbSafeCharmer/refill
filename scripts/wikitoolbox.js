@@ -40,7 +40,7 @@ var rlServer = "https://tools.wmflabs.org/fengtools/reflinks";
 
 function rlIsWatching() {
 	// Let's use a little hack to determine whether the current page is watched or not
-	if ( $( "#ca-unwatch" ).length != 0 ) {
+	if ( $( "#ca-unwatch" ).length !== 0 ) {
 		return true;
 	} else {
 		return false;

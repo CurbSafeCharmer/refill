@@ -20,7 +20,7 @@
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 function checkForm( element, event ) {
-	if ( $( element ).val().length == 0 ) {
+	if ( $( element ).val().length === 0 ) {
 		$( element ).addClass( "inputerror" );
 		event.preventDefault();
 	} else {
