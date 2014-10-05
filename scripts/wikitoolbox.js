@@ -28,6 +28,7 @@
 */
 
 /*global wgPageName, wDiff, mw */
+/*jshint multistr: true */
 
 // ==UserScript==
 // @name        Reflinks
