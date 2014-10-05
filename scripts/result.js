@@ -20,6 +20,8 @@
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*global wDiff */
+
 function initDiff() {
 	$( ".Differences" ).hide();
 	$( "#wdiff" ).html( "<small>Colours: <span class='wDiffInsert'>Blue</span> = Added; <span class='wDiffDelete'>Orange</span> = Removed</small><div id='diffcontent'></div>" );
