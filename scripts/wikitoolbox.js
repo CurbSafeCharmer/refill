@@ -116,5 +116,8 @@ $( document ).ready( function() {
 		link += "&nowatch=y";
 	}
 	var rlPortlet = mw.util.addPortletLink( "p-tb", link, "Reflinks");
-	$( rlPortlet ).append( "<sup><a href='#' onclick='rlInit()'>(options)</a></sup>" );
+	var optionLink = $( "<a>" ).attr( "href", "#" ).html( "(options)" ).click( function() {
+		rlInit();
+	} );
+	$( rlPortlet ).append( $( "<sup>").html( optionLink ) );
 } );
