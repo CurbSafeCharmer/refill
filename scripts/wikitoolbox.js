@@ -27,6 +27,8 @@
 	Please change the metadata and configuations below to suit your needs.
 */
 
+/*global wgPageName, wDiff, mw */
+
 // ==UserScript==
 // @name        Reflinks
 // @description Adds a toolbox link to the Reflinks tool
