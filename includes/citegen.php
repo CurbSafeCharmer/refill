@@ -27,9 +27,41 @@
 
 require_once __DIR__ . "/constants.php";
 
+// Per https://en.wikipedia.org/wiki/Help:Citation_Style_1
 function generatePlainLink( $url, $metadata, $dateformat = DATE_DMY, $options = array() ) {
-	$title = $metadata['title'];
-	$core = "[$url \"$title\"]. Retrieved on " . generateDate( $dateformat ) . ".";
+	$core = "";
+	if ( !empty( $metadata['date'] ) && $timestamp = strtotime( $metadata['date'] ) ) {
+		$date = generateDate( $dateformat, $timestamp );
+	}
+	// Author (Date).
+	if ( !empty( $metadata['author'] ) ) {
+		$core .= $metadata['author'];
+		if ( !empty( $date ) ) {
+			$core .= " ($date)";
+		}
+		$core .= ". ";
+	}
+	// "Title".
+	$core .= "[$url \"{$metadata['title']}\"]. ";
+	
+	// ''Work'' (Publisher).
+	if ( !empty( $metadata['work'] ) ) {
+		$core .= "''{$metadata['work']}''";
+		if ( !empty( $metadata['publisher'] ) ) {
+			$core .= " ({$metadata['publisher']})";
+		}
+		$core .= ". ";
+	} elseif ( !empty( $metadata['publisher'] ) ) { // Publisher
+		$core .= $metadata['publisher'] . ". ";
+	}
+	
+	// Date. <-- When without author
+	if ( empty( $metadata['author'] ) && !empty( $date ) ) {
+		$core .= "{$date}. ";
+	}
+	
+	// Retrived on
+	$core .= "Retrieved on " . generateDate( $dateformat ) . ".";
 	return $core;
 }
 
