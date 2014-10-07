@@ -87,6 +87,10 @@ function rlSetUpForm( pagename ) {
 				<input name='addblankmetadata' id='checkbox-addblankmetadata' type='checkbox'/>\
 				<label for='checkbox-addblankmetadata'>Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>\
 			</li>\
+			<li>\
+				<input name='noaccessdate' id='checkbox-noaccessdate' type='checkbox'/>\
+				<label for='checkbox-noaccessdate-wiki'>Do not add access dates in the result</label>\
+			</li>\
 		</ul>\
 		<input name='method-wiki' type='submit' value='Fix page'/>\
 		<a href='" + rlServer + "' style='color: #555;'>Tool homepage</a>\

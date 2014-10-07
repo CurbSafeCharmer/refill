@@ -77,6 +77,10 @@ require_once __DIR__ . "/includes/core.php";
 				<input name="addblankmetadata" id="checkbox-addblankmetadata-wiki" type="checkbox"/>
 				<label for="checkbox-addblankmetadata-wiki">Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>
 			</li>
+			<li>
+				<input name="noaccessdate" id="checkbox-noaccessdate-wiki" type="checkbox"/>
+				<label for="checkbox-noaccessdate-wiki">Do not add access dates in the result</label>
+			</li>
 		</ul>
 	</form>
 	
@@ -116,6 +120,10 @@ require_once __DIR__ . "/includes/core.php";
 				<li>
 					<input name="addblankmetadata" id="checkbox-addblankmetadata-wikitext" type="checkbox"/>
 					<label for="checkbox-addblankmetadata-wikitext">Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>
+				</li>
+				<li>
+					<input name="noaccessdate" id="checkbox-noaccessdate-wikitext" type="checkbox"/>
+					<label for="checkbox-noaccessdate-wikitext">Do not add access dates in the result</label>
 				</li>
 			</ul>
 		</form>

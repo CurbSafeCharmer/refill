@@ -190,7 +190,7 @@ function getOption( $option ) {
 }
 
 function getOptions() {
-	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag', 'nofixutemplate', 'nowatch', 'addblankmetadata' );
+	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag', 'nofixutemplate', 'nowatch', 'addblankmetadata', 'noaccessdate' );
 	$options = array();
 	foreach( $optionlist as $option ) {
 		if ( null !== $o = getOption( $option ) ) {

@@ -60,8 +60,10 @@ function generatePlainLink( $url, $metadata, $dateformat = DATE_DMY, $options = 
 		$core .= "{$date}. ";
 	}
 	
-	// Retrived on
-	$core .= "Retrieved on " . generateDate( $dateformat ) . ".";
+	if ( !isset( $options['noaccessdate'] ) ) {
+		// Retrived on
+		$core .= "Retrieved on " . generateDate( $dateformat ) . ".";
+	}
 	return $core;
 }
 
@@ -91,7 +93,9 @@ function generateCiteTemplate( $url, $metadata, $dateformat = DATE_DMY, $options
 		$core .= "|publisher=";
 	}
 	// Let's not use guesswork now, as it's unstable
-	$core .= "|accessdate=" . generateDate( $dateformat );
+	if ( !isset( $options['noaccessdate'] ) ) {
+		$core .= "|accessdate=" . generateDate( $dateformat );
+	}
 	$core .= $config['citeextra'] . "}}";
 	return $core;
 }
