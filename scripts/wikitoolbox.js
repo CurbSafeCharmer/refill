@@ -88,7 +88,7 @@ function rlSetUpForm( pagename ) {
 				<label for='checkbox-addblankmetadata'>Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>\
 			</li>\
 			<li>\
-				<input name='noaccessdate' id='checkbox-noaccessdate' type='checkbox'/>\
+				<input name='noaccessdate' id='checkbox-noaccessdate' type='checkbox' checked=''/>\
 				<label for='checkbox-noaccessdate-wiki'>Do not add access dates in the result</label>\
 			</li>\
 		</ul>\
