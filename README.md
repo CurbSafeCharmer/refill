@@ -1,4 +1,4 @@
-# Reflinks [![Build Status](https://travis-ci.org/zhaofengli/reflinks.svg?branch=master)](https://travis-ci.org/zhaofengli/reflinks)
+# Reflinks [![Build Status](https://travis-ci.org/zhaofengli/reflinks.svg?branch=master)](https://travis-ci.org/zhaofengli/reflinks) [![Code Climate](https://codeclimate.com/github/zhaofengli/reflinks/badges/gpa.svg)](https://codeclimate.com/github/zhaofengli/reflinks)
 [Reflinks](https://en.wikipedia.org/wiki/User:Zhaofeng_Li/Reflinks) is a tool for Wikipedia that adds information (page title, work/website, author and publication date, etc.) to [bare references](https://en.wikipedia.org/wiki/WP:BURL) semi-automatically. This is a rewrite of the closed-source original tool by [Dispenser](https://en.wikipedia.org/wiki/User:Dispenser).
 A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/reflinks/), and there is also an [experimental version](https://tools.wmflabs.org/fengtools/reflinkstest/), automatically pulled from the latest commit.
 
