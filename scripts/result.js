@@ -20,7 +20,7 @@
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*global wDiff */
+/*global WikEdDiff */
 
 function initDiff() {
 	$( ".Differences" ).hide();
@@ -32,9 +32,11 @@ function initDiff() {
 }
 
 function updateDiff() {
+	var wikEdDiff = new WikEdDiff();
 	var oldText = $( "#wikitext-old" ).val();
 	var newText = $( "#wikitext-new" ).val();
-	var diff = wDiff.Diff( oldText, newText );
+	var diff = wikEdDiff.diff( oldText, newText );
 	$( "#diffcontent" ).html( diff );
 }
+
 $( document ).ready( initDiff() );
