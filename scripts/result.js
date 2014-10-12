@@ -24,7 +24,7 @@
 
 function initDiff() {
 	$( ".Differences" ).hide();
-	$( "#wdiff" ).html( "<small>Colours: <span class='wDiffInsert'>Blue</span> = Added; <span class='wDiffDelete'>Orange</span> = Removed</small><div id='diffcontent'></div>" );
+	$( "#wdiff" ).html( "<small>Colours: <span class='wikEdDiffInsert'>Blue</span> = Added; <span class='wikEdDiffDelete'>Orange</span> = Removed</small><div id='diffcontent'></div>" );
 	$( "#wikitext-new" ).keyup( function() {
 		updateDiff();
 	} );
