@@ -92,7 +92,7 @@ $utitle = urlencode( $title );
 		if ( !isset( $options['plainlink'] ) )
 			echo "<p>Note: The publisher field is intentionally left blank for filling out manually.</p>";
 		if ( !$counter ) {
-			echo "<p>No changes made.</p>";
+			echo "<p>No reference fixed.</p>";
 		} else {
 			echo "<p>$counter reference(s) fixed!</p>";
 		}
