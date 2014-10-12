@@ -21,8 +21,6 @@
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 require_once __DIR__ . "/includes/core.php";
-require_once __DIR__ . "/includes/php-diff/lib/Diff.php";
-require_once __DIR__ . "/includes/php-diff/lib/Diff/Renderer/Html/SideBySide.php";
 
 $options = getOptions();
 $title = "";
@@ -45,12 +43,6 @@ $edittimestamp = generateWikiTimestamp( $edittimestamp );
 if ( !count( $log['skipped'] ) && !isset( $options['noremovetag'] ) ) { // Hurray! All fixed!
 	$result = removeBareUrlTags( $result );
 }
-
-// initialize diff class
-$a = explode( "\n", $source );
-$b = explode( "\n", $result );
-$diff = new Diff( $a, $b, $config['diffconfig'] );
-$diffrenderer = new Diff_Renderer_Html_SideBySide;
 
 // generate default summary
 $counter = count( $log['fixed'] );
@@ -99,7 +91,6 @@ $utitle = urlencode( $title );
 		} else {
 			echo "<p>$counter reference(s) fixed!</p>";
 		}
-		echo $diff->render( $diffrenderer ); // show diff
 		echo "<div id='wdiff'></div>";
 		if ( count( $log['skipped'] ) ) {
 			echo "<p>The following reference(s) could not be filled:<ul id='skipped-refs'>";

@@ -27,9 +27,6 @@ $config['citeextra'] = "";
 // Use %numfixed% to show how many references are fixed, and %numskipped% for skipped.
 $config['summary'] = "Filled in %numfixed% bare reference(s) with [[User:Zhaofeng Li/Reflinks]]";
 
-// Options for php-diff, see its documentations for more info
-$config['diffconfig'] = array();
-
 // Host blacklist, they are regex fragments which have /^ and $/ added to them at runtime
 $config['hostblacklist'] = array(
 	"localhost",

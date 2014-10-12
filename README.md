@@ -59,8 +59,6 @@ Patches are always welcome! To contribute, simply create a fork of the repo, mak
 Reflinks is licensed under the BSD 2-Clause License. See `LICENSE` for details.
 
 ### External libraries
-This program incorporates code from [php-diff](https://github.com/chrisboulton/php-diff) in the form of a git submodule. Please refer to `README.md` in its repo for licensing information.
-
 This repository includes a copy of [jQuery](http://jquery.com), licensed under the [MIT License](http://jquery.org/license/).
 
 This program uses [wDiff](https://en.wikipedia.org/wiki/User:Cacycle/diff) by [Cacycle](https://en.wikipedia.org/wiki/User:Cacycle), released into public domain.

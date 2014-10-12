@@ -1,3 +1,0 @@
-[submodule "includes/php-diff"]
-	path = includes/php-diff
-	url = https://github.com/chrisboulton/php-diff.git
