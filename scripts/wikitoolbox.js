@@ -27,7 +27,7 @@
 	Please change the metadata and configuations below to suit your needs.
 */
 
-/*global wgPageName, wDiff, mw */
+/*global wgPageName, rlServer, mw */
 /*jshint multistr: true */
 
 // ==UserScript==
