@@ -116,7 +116,7 @@ $utitle = urlencode( $title );
 		if ( !isset( $options['nowatch'] ) ) { // Let's watch this!
 			echo "<input type='hidden' name='wpWatchthis' value='y'/>";
 		}
-		if ( !empty( $title ) && count ( $log['fixed'] ) ) {
+		if ( !empty( $title ) && $source != $result ) {
 			echo "<input type='submit' name='wpDiff' value='Preview / Save on wiki'/>";
 		}
 		echo "</form>";
