@@ -32,6 +32,7 @@ require_once __DIR__ . "/source.php";
 require_once __DIR__ . "/metadata.php";
 require_once __DIR__ . "/date.php";
 require_once __DIR__ . "/spam.php";
+require_once __DIR__ . "/options.php";
 
 function fixRef( $source, &$log = "", $options = array() ) {
 	global $config;
@@ -179,23 +180,4 @@ function removeBareUrlTags( $source ) {
 	return preg_replace( $pattern, "", $source );
 }
 
-function getOption( $option ) {
-	if ( isset( $_GET[$option] ) ) {
-		return empty( $_GET[$option] ) ? true : $_GET[$option];
-	} elseif ( isset( $_POST[$option] ) ) {
-		return empty( $_POST[$option] ) ? true : $_POST[$option];
-	} else {
-		return null;
-	}
-}
 
-function getOptions() {
-	$optionlist = array( 'text', 'page', 'plainlink', 'nofixuplain', 'nofixcplain', 'nouseoldcaption', 'noremovetag', 'nofixutemplate', 'nowatch', 'addblankmetadata', 'noaccessdate' );
-	$options = array();
-	foreach( $optionlist as $option ) {
-		if ( null !== $o = getOption( $option ) ) {
-			$options[$option] = $o;
-		}
-	}
-	return $options;
-}
