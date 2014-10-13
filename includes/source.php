@@ -64,9 +64,7 @@ function fetchWeb( $url, $referer = "", &$status = "" ) {
 	curl_setopt( $curl, CURLOPT_NOBODY, true );
 	curl_exec( $curl );
 	$header = curl_getinfo( $curl );
-	if ( $header['http_code'] == 0 && $config['curlfallback'] ) { // Probably "Connection reset by peer"
-		return file_get_contents( $url );
-	} elseif ( strpos( $header['content_type'], "text/html" ) !== 0 && $header['content_type'] != null ) {
+	if ( strpos( $header['content_type'], "text/html" ) !== 0 && $header['content_type'] != null ) {
 		return;
 	}
 	

@@ -46,9 +46,6 @@ $config['spam']['blacklist'] = array();
 // Path to Cacycle's wDiff script. For easy offline development, download a copy to scripts/diff.js which is ignored by git.
 $config['wdiff'] = "https://en.wikipedia.org/w/index.php?title=User:Cacycle/diff.js&action=raw&ctype=text/javascript";
 
-// Whether to fall back to file_get_contents() when cURL has failed
-$config['curlfallback'] = false;
-
 date_default_timezone_set( "UTC" );
 
 @include __DIR__ . "/config.php";
