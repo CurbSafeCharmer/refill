@@ -137,7 +137,11 @@ function generateForm( $suffix, $advanced = false ) {
 						$result .= "checked=''";
 					}
 					$result .= "/>";
-					$result .= "<label for='checkbox-$option-$suffix'>{$details['name']}</label></li>";
+					$result .= "<label for='checkbox-$option-$suffix' ";
+					if ( !empty( $details['description'] ) ) {
+						$result .= "title='{$details['description']}'";
+					}
+					$result .= ">{$details['name']}</label></li>";
 				} elseif ( $details['default'] ) {
 					$result .= "<input type='hidden' name='$option' id='checkbox-$option-$suffix' value='ok'/>";
 				}
