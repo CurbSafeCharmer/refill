@@ -46,42 +46,10 @@ require_once __DIR__ . "/includes/core.php";
 		<input name="page" type="text" placeholder="Page name"/>
 		<input name="method-wiki" type="submit" value="Fix page"/>
 		<h3>Options</h3>
-		<ul id="form-wiki-options" class="optionul">
-			<li>
-				<input name="plainlink" id="checkbox-plainlink-wiki" type="checkbox"/>
-				<label for="checkbox-plainlink-wiki">Use plain formatting instead of <code>{{cite web}}</code></label>
-			</li>
-			<li>
-				<input name="noremovetag" id="checkbox-noremovetag-wiki" type="checkbox"/>
-				<label for="checkbox-noremovetag-wiki">Do not remove link rot tags</label>
-			</li>
-			<!--
-			<li>
-				<input name="nofixuplain" id="checkbox-nofixuplain-wiki" type="checkbox"/>
-				<label for="checkbox-nofixuplain-wiki">Do not expand uncaptioned plain links (surrounded with [ ])</label>
-			</li>
-			-->
-			<li>
-				<input name="nofixcplain" id="checkbox-nofixcplain-wiki" type="checkbox"/>
-				<label for="checkbox-nofixcplain-wiki">Do not expand references with a captioned external link only</label>
-			</li>
-			<li>
-				<input name="nouseoldcaption" id="checkbox-nouseoldcaption-wiki" type="checkbox"/>
-				<label for="checkbox-nouseoldcaption-wiki">Do not use old captions</label>
-			</li>
-			<li>
-				<input name="nofixutemplate" id="checkbox-nofixutemplate-wiki" type="checkbox"/>
-				<label for="checkbox-nofixutemplate-wiki">Do not expand <code>{{cite web}}</code> templates with a URL only</label>
-			</li>
-			<li>
-				<input name="addblankmetadata" id="checkbox-addblankmetadata-wiki" type="checkbox"/>
-				<label for="checkbox-addblankmetadata-wiki">Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>
-			</li>
-			<li>
-				<input name="noaccessdate" id="checkbox-noaccessdate-wiki" type="checkbox" checked=""/>
-				<label for="checkbox-noaccessdate-wiki">Do not add access dates in the result</label>
-			</li>
-		</ul>
+		<?php
+			echo generateForm( "wiki", false );
+		?>
+	
 	</form>
 	
 	<div id="advanced">
@@ -92,41 +60,10 @@ require_once __DIR__ . "/includes/core.php";
 			<textarea name="text" class="wikitext"></textarea>
 			<input name="method-wikitext" type="submit" value="Fix wikitext"/>
 			<h3>Options</h3>
-			<ul id="form-wikitext-options" class="optionul">
-				<li>
-					<input name="plainlink" id="checkbox-plainlink-wikitext" type="checkbox"/>
-					<label for="checkbox-plainlink-wikitext">Use plain formatting instead of <code>{{cite web}}</code></label>
-				</li>
-				<li>
-					<input name="noremovetag" id="checkbox-noremovetag-wikitext" type="checkbox"/>
-					<label for="checkbox-noremovetag-wikitext">Do not remove link rot tags</label>
-				</li>
-				<li>
-					<input name="nofixuplain" id="checkbox-nofixuplain-wikitext" type="checkbox"/>
-					<label for="checkbox-nofixuplain-wikitext">Do not expand uncaptioned plain links (surrounded with [ ])</label>
-				</li>
-				<li>
-					<input name="nofixcplain" id="checkbox-nofixcplain-wikitext" type="checkbox"/>
-					<label for="checkbox-nofixcplain-wikitext">Do not expand references with a captioned external link only</label>
-				</li>
-				<li>
-					<input name="nouseoldcaption" id="checkbox-nouseoldcaption-wikitext" type="checkbox"/>
-					<label for="checkbox-nouseoldcaption-wikitext">Do not use old captions</label>
-				</li>
-				<li>
-					<input name="nofixutemplate" id="checkbox-nofixutemplate-wikitext" type="checkbox"/>
-					<label for="checkbox-nofixutemplate-wikitext">Do not expand <code>{{cite web}}</code> templates with a URL only</label>
-				</li>
-				<li>
-					<input name="addblankmetadata" id="checkbox-addblankmetadata-wikitext" type="checkbox"/>
-					<label for="checkbox-addblankmetadata-wikitext">Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>
-				</li>
-				<li>
-					<input name="noaccessdate" id="checkbox-noaccessdate-wikitext" type="checkbox" checked=""/>
-					<label for="checkbox-noaccessdate-wikitext">Do not add access dates in the result</label>
-				</li>
-			</ul>
-		</form>
+			<?php
+				echo generateForm( "wikitext", true );
+			?>
+			</form>
 	</div>
 	<?php
 		include __DIR__ . "/includes/footer.php";

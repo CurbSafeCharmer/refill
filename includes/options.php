@@ -125,3 +125,25 @@ function getOptions() {
 	return $options;
 }
 
+function generateForm( $suffix, $advanced = false ) {
+	global $alloptions;
+	$result = "<ul id='form-$suffix-optuons' class='optionul'>";
+	foreach( $alloptions as $option => $details ) {
+		switch( $details['type'] ) {
+			case OPTION_TYPE_CHECKBOX:
+				if ( !$details['advanced'] || $advanced ) {
+					$result .= "<li><input type='checkbox' name='$option' id='checkbox-$option-$suffix' ";
+					if ( $details['default'] ) {
+						$result .= "checked=''";
+					}
+					$result .= "/>";
+					$result .= "<label for='checkbox-$option-$suffix'>{$details['name']}</label></li>";
+				} elseif ( $details['default'] ) {
+					$result .= "<input type='hidden' name='$option' id='checkbox-$option-$suffix' value='ok'/>";
+				}
+				break;
+		}
+	}
+	$result .= "</ul>";
+	return $result;
+}
