@@ -94,21 +94,6 @@ label {
 	border: 1px solid red;
 }
 
-.Differences {
-	background: #a7d9f9;
-	margin: 10px 10px 10px -10px;
-	padding: 10px;
-	font-family: monospace;
-}
-
-.ChangeReplace del {
-	color: red;
-}
-
-.ChangeReplace ins {
-	color: green;
-}
-
 .banner {
 	border: 2px solid #a7d7f9;
 	padding: 5px;
