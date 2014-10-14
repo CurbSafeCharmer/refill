@@ -127,7 +127,7 @@ function getOptions() {
 
 function generateForm( $suffix, $advanced = false ) {
 	global $alloptions;
-	$result = "<ul id='form-$suffix-optuons' class='optionul'>";
+	$result = "<ul id='form-$suffix-options' class='optionul'>";
 	foreach( $alloptions as $option => $details ) {
 		switch( $details['type'] ) {
 			case OPTION_TYPE_CHECKBOX:
