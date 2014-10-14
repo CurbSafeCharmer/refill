@@ -44,7 +44,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
 	);
 	$dateformat = detectDateFormat( $source );
-	if ( isset( $options['plainlink'] ) ) {
+	if ( $options['plainlink'] ) {
 		$options['nofixcplain'] = true;
 	}
 	preg_match_all( $pattern, $source, $matches );
@@ -63,7 +63,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 			$oldref['url'] = $tcore;
 		} elseif ( preg_match( "/^\[(http[^\] ]+) ([^\]]+)\]$/i", $tcore, $cmatches ) ) {
 			// a captioned plain link (consists of a URL and a caption, surrounded with [], with /no/ other stuff after it)
-			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !isset( $options['nofixcplain'] ) ) {
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixcplain'] ) {
 				$oldref['url'] = $cmatches[1];
 				$oldref['caption'] = $cmatches[2];
 			} else {
@@ -71,14 +71,14 @@ function fixRef( $source, &$log = "", $options = array() ) {
 			}
 		} elseif ( preg_match( "/^\[(http[^ ]+)\]$/i", $tcore, $cmatches ) ) {
 			// an uncaptioned plain link (consists of only a URL, surrounded with [])
-			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !isset( $options['nofixuplain'] ) ) {
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixuplain'] ) {
 				$oldref['url'] = $cmatches[1];
 			} else {
 				continue;
 			}
 		} elseif ( preg_match( "/^\{\{cite web\s*\|\s*url=(http[^ \|]+)\s*\}\}$/i", $tcore, $cmatches ) ) {
 			// an uncaptioned {{cite web}} template (Please improve the regex)
-			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !isset( $options['nofixutemplate'] ) ) {
+			if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options['nofixutemplate'] ) {
 				$oldref['url'] = $cmatches[1];
 			} else {
 				continue;
@@ -126,7 +126,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 			continue;
 		}
 		$metadata = extractMetadata( $html );
-		if ( isset( $oldref['caption'] ) && !isset( $options['nouseoldcaption'] ) ) {
+		if ( isset( $oldref['caption'] ) && !$options['nouseoldcaption'] ) {
 			// Use the original caption
 			$metadata['title'] = $oldref['caption'];
 		}
@@ -141,7 +141,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		}
 		
 		// Generate cite template
-		if ( isset( $options['plainlink'] ) ) { // use captioned plain link
+		if ( $options['plainlink'] ) { // use captioned plain link
 			$newcore = generatePlainLink( $oldref['url'], $metadata, $dateformat, $options );
 		} else { // use {{cite web}}
 			$newcore = generateCiteTemplate( $oldref['url'], $metadata, $dateformat, $options );

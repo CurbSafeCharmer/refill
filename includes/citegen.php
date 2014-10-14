@@ -60,7 +60,7 @@ function generatePlainLink( $url, $metadata, $dateformat = DATE_DMY, $options = 
 		$core .= "{$date}. ";
 	}
 	
-	if ( !isset( $options['noaccessdate'] ) ) {
+	if ( !$options['noaccessdate'] ) {
 		// Retrived on
 		$core .= "Retrieved on " . generateDate( $dateformat ) . ".";
 	}
@@ -79,12 +79,12 @@ function generateCiteTemplate( $url, $metadata, $dateformat = DATE_DMY, $options
 	}
 	if ( !empty( $metadata['author'] ) ) {
 		$core .= "|author=" . $metadata['author'];
-	} elseif ( isset( $options['addblankmetadata'] ) ) { // add a blank field
+	} elseif ( $options['addblankmetadata'] ) { // add a blank field
 		$core .= "|author=";
 	}
 	if ( !empty( $metadata['date'] ) && $timestamp = strtotime( $metadata['date'] ) ) { // successfully parsed
 		$core .= "|date=" . generateDate( $dateformat, $timestamp );
-	} elseif ( isset( $options['addblankmetadata'] ) ) { // add a blank field
+	} elseif ( $options['addblankmetadata'] ) { // add a blank field
 		$core .= "|date=";
 	}
 	if ( !empty( $metadata['work'] ) ) {
@@ -93,7 +93,7 @@ function generateCiteTemplate( $url, $metadata, $dateformat = DATE_DMY, $options
 		$core .= "|publisher=";
 	}
 	// Let's not use guesswork now, as it's unstable
-	if ( !isset( $options['noaccessdate'] ) ) {
+	if ( !$options['noaccessdate'] ) {
 		$core .= "|accessdate=" . generateDate( $dateformat );
 	}
 	$core .= $config['citeextra'] . "}}";

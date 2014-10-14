@@ -50,3 +50,9 @@ define( "SKIPPED_SPAM", 6 );
 define( "DATE_DMY", false );
 // MDY (e.g. January 15, 2001)
 define( "DATE_MDY", true );
+
+/*
+	Option types
+*/
+define( "OPTION_TYPE_SPECIAL", 0 );
+define( "OPTION_TYPE_CHECKBOX", 1 );

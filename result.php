@@ -40,7 +40,7 @@ $timestamp = generateWikiTimestamp();
 $edittimestamp = generateWikiTimestamp( $edittimestamp );
 
 // remove link rot tags
-if ( !count( $log['skipped'] ) && !isset( $options['noremovetag'] ) ) { // Hurray! All fixed!
+if ( !count( $log['skipped'] ) && !$options['noremovetag'] ) { // Hurray! All fixed!
 	$result = removeBareUrlTags( $result );
 }
 
@@ -81,10 +81,10 @@ $utitle = urlencode( $title );
 		echo "<form id='form-wikitext' name='editform' method='post' action='{$config['wiki']['indexphp']}?title=$utitle&action=submit' enctype='multipart/form-data'>";
 		echo "<h2>Result</h2>";
 		echo "<p class='notice'>You are responsible for every edit you make. Please double-check the edit before saving!</p>";
-		if ( isset( $options['noaccessdate'] ) ) {
+		if ( $options['noaccessdate'] ) {
 			echo "<p>Note: Dates of access are omitted in the result. Please verify whether the references still support the statements, and add the dates where appropriate.</p>";
 		}
-		if ( !isset( $options['plainlink'] ) )
+		if ( !$options['plainlink'] )
 			echo "<p>Note: The publisher field is intentionally left blank for filling out manually.</p>";
 		if ( !$counter ) {
 			echo "<p>No reference fixed.</p>";
@@ -107,7 +107,7 @@ $utitle = urlencode( $title );
 		echo "<input type='hidden' name='wpAutoSummary' value='y'/>";
 		echo "<input type='hidden' name='wpStarttime' value='$timestamp'/>";
 		echo "<input type='hidden' name='wpEdittime' value='$edittimestamp'/>";
-		if ( !isset( $options['nowatch'] ) ) { // Let's watch this!
+		if ( !$options['nowatch'] ) { // Let's watch this!
 			echo "<input type='hidden' name='wpWatchthis' value='y'/>";
 		}
 		if ( !empty( $title ) && $source != $result ) {
