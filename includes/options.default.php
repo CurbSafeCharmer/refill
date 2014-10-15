@@ -23,6 +23,8 @@
 
 /*
 	Options
+
+	To change default options, create options.php
 */
 
 require_once __DIR__ . "/constants.php";
@@ -98,6 +100,7 @@ $alloptions = array(
 		"default" => true,
 	),
 );
+@include __DIR__ . "/options.php";
 
 function getOption( $option, $details ) {
 	if ( isset( $_GET[$option] ) ) {

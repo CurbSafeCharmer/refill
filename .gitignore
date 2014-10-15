@@ -1,5 +1,6 @@
 *~
 *.swp
 includes/config.php
+includes/options.php
 includes/banner.php
 scripts/diff.js
