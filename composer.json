@@ -1,0 +1,12 @@
+{
+    "name": "zhaofengli/reflinks",
+    "description": "Wikipedia tool that expands bare references",
+    "license": "BSD 2-Clause License",
+    "authors": [
+        {
+            "name": "Zhaofeng Li",
+            "email": "hello@zhaofeng.li"
+        }
+    ],
+    "require": {}
+}
