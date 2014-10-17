@@ -40,7 +40,7 @@ class LintTest extends PHPUnit_Framework_TestCase {
 		$list = scandir( $path );
 		foreach( $list as $entry ) {
 			$fullpath = $path . "/" . $entry;
-			if ( is_dir( $fullpath ) && substr( $entry, 0, 1 ) != "." ) { // directories
+			if ( is_dir( $fullpath ) && substr( $entry, 0, 1 ) != "." && $entry != "vendor" ) { // directories
 				$result = $this->listPhpFiles( $fullpath, $result );
 			} else { // regular files
 				if ( fnmatch( "*.php", $entry ) ) {
