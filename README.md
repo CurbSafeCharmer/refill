@@ -3,7 +3,7 @@
 A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/reflinks/), and there is also an [experimental version](https://tools.wmflabs.org/fengtools/reflinkstest/), automatically pulled from the latest commit.
 
 ## Setting up
-Setting up your Reflinks instance is fairly simple. First, clone this repo with:
+Setting up your Reflinks instance is fairly simple. You will need [Composer](http://getcomposer.org) to install the dependencies. First, clone this repo with:
 ```sh
 git clone https://github.com/zhaofengli/reflinks.git
 ```
@@ -12,6 +12,7 @@ The complete source code of Reflinks is now cloned in the `reflinks` directory. 
 ```sh
 git submodule init
 git submodule update
+php composer.phar install
 ```
 This will fetch the required libraries for you. That's it, you now have a working copy of Reflinks!
 
