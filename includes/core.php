@@ -33,6 +33,7 @@ require_once __DIR__ . "/source.php";
 require_once __DIR__ . "/metadata.php";
 require_once __DIR__ . "/date.php";
 require_once __DIR__ . "/spam.php";
+require_once __DIR__ . "/utils.php";
 require_once __DIR__ . "/../vendor/autoload.php"; // Composer
 
 function fixRef( $source, &$log = "", $options = array() ) {
@@ -139,6 +140,10 @@ function fixRef( $source, &$log = "", $options = array() ) {
 				'status' => $status,
 			);
 			continue;
+		}
+
+		if ( empty( $metadata['work'] ) && $options['usedomainaswork'] ) { // Use the base domain as work
+			$metadata['work'] = getBaseDomain( $oldref['url'] );
 		}
 		
 		// Generate cite template

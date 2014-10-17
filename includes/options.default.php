@@ -99,6 +99,12 @@ $alloptions = array(
 		"advanced" => false,
 		"default" => true,
 	),
+	"usedomainaswork" => array(
+		"type" => OPTION_TYPE_CHECKBOX,
+		"name" => "Use the base domain name as work when this information cannot be parsed",
+		"advanced" => false,
+		"default" => false,
+	),
 );
 @include __DIR__ . "/options.php";
 

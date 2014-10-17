@@ -8,5 +8,7 @@
             "email": "hello@zhaofeng.li"
         }
     ],
-    "require": {}
+    "require": {
+        "jeremykendall/php-domain-parser": "~1.3"
+    }
 }

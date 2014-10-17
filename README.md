@@ -63,3 +63,5 @@ Reflinks is licensed under the BSD 2-Clause License. See `LICENSE` for details.
 This repository includes a copy of [jQuery](http://jquery.com), licensed under the [MIT License](http://jquery.org/license/).
 
 This program uses [wDiff](https://en.wikipedia.org/wiki/User:Cacycle/diff) by [Cacycle](https://en.wikipedia.org/wiki/User:Cacycle), released into public domain.
+
+[PHP Domain Parser](https://github.com/jeremykendall/php-domain-parser/) is added as a Composer dependency.
