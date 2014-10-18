@@ -79,7 +79,7 @@ function extractMetadata( $html ) {
 		}
 	}
 	if ( !empty( $result['author'] ) ) {
-		if ( !preg_match( "/(www.|.com|\w{5,}.\w{2,3})/", $result['author'] ) ) { // does not look like a domain name (Actually, there are exceptions, like will.i.am)
+		if ( !preg_match( "/(www.|.com|\w{5,}\.\w{2,3})/", $result['author'] ) ) { // does not look like a domain name (Actually, there are exceptions, like will.i.am)
 			$result['author'] = preg_replace( "/(?:by|from)\s+(.+)/i", "$1", $result['author'] ); // clean it up a bit
 		} else {
 			$result['author'] = "";
