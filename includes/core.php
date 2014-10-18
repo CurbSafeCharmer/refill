@@ -39,7 +39,7 @@ require_once __DIR__ . "/../vendor/autoload.php"; // Composer
 function fixRef( $source, &$log = "", $options = array() ) {
 	global $config;
 	initSpamBlacklist();
-	$pattern = "/\<ref[^\>]*\>([^\<\>]+)\<\/ref\>/i";
+	$pattern = "/(\<ref[^\>]*\>)([^\<\>]+)(\<\/ref\>)/i";
 	$matches = array();
 	$log = array(
 		'fixed' => array(), // ['url'] contains the original link
@@ -50,7 +50,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		$options['nofixcplain'] = true;
 	}
 	preg_match_all( $pattern, $source, $matches );
-	foreach ( $matches[1] as $key => $core ) {
+	foreach ( $matches[2] as $key => $core ) {
 		$status = 0;
 		$oldref = array();
 		// Let's check if we are supposed to mess with it first...
@@ -154,7 +154,7 @@ function fixRef( $source, &$log = "", $options = array() ) {
 		}
 		
 		// Replace the old core
-		$replacement = str_replace( $core, $newcore, $matches[0][$key] ); // for good measure
+		$replacement = $matches[1][$key] . $newcore . $matches[3][$key]; // for good measure
 		$source = str_replace( $matches[0][$key], $replacement, $source );
 		$log['fixed'][] = array(
 			'url' => $oldref['url'],
