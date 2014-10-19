@@ -87,10 +87,9 @@ function rlInit( json ) {
 }
 
 $( document ).ready( function() {
-	var script = $( "<script>" );
-	script.attr( "src", rlServer + "/scripts/toolboxform.php" );
-	script.attr( "type", "text/javascript" );
-	$( "head" ).append( script );
+	$.getJSON( rlServer + "/scripts/toolboxform.php?callback=?", function ( json ) {
+		rlInit( json );
+	} );
 
 	var link = rlServer + "/result.php?page=" + encodeURIComponent( wgPageName );
 	if ( !rlIsWatching() ) {

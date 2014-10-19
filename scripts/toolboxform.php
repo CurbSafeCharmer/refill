@@ -35,4 +35,4 @@ $result = array();
 $result['form'] = $app->optionsProvider->generateForm( "toolbox", false );
 
 $json = json_encode( $result );
-echo "rlInit( $json );";
+echo $_GET['callback'] . "(" . $json . ")";
