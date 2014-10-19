@@ -1,7 +1,7 @@
 {
     "name": "zhaofengli/reflinks",
     "description": "Wikipedia tool that expands bare references",
-    "license": "BSD 2-Clause License",
+    "license": "BSD-2-Clause",
     "authors": [
         {
             "name": "Zhaofeng Li",
