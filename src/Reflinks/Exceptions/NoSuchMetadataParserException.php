@@ -21,58 +21,13 @@
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*
-	Spam blacklist
-*/
+namespace Reflinks\Exceptions;
 
-require_once __DIR__ . "/constants.php";
-
-function initSpamBlacklist() {
-	global $config;
-	if ( $config['spam']['enable'] ) {
-		return loadSpamBlacklist();
-	} else {
-		return false;
+class NoSuchMetadataParserException extends MetadataParserException {
+	public function __constuct( $field, $code = 0, Exception $previous = null ) {
+		parent::__construct( $field, $code, $previous );
 	}
-}
-
-// Use initSpamBlacklist() instead
-function loadSpamBlacklist() {
-	global $config;
-	$file = fopen( $config['spam']['file'], "r" );
-	if ( $file ) {
-		while ( false !== $line = fgets( $file ) ) { 
-			addSpamRegex( $line );
-		}
-		fclose( $file );
-		return countSpamBlacklist();
-	} else {
-		return false;
+	public function __toString() {
+		return __CLASS__ . ": No such metadata parser: " . $this->message;
 	}
-}
-
-function addSpamRegex( $line ) {
-	global $config;
-	// Remove comments from the line, and trim the whitespaces
-	$line = trim( preg_replace( "/#.*$/", "", $line ) );
-	if ( !empty( $line ) ) { // Okay, we've got a regex
-		$config['spam']['blacklist'][] = $line;
-	}
-}
-
-function checkSpam( $url ) {
-	global $config;
-	foreach( $config['spam']['blacklist'] as $oregex ) {
-		// Those entries on the list are fragments, let's complete them
-		$regex = "|^https?\:\/\/[A-Za-z0-9\-\_\.]*" . $oregex . "|";
-		if ( @preg_match( $regex, $url ) ) { // Gotcha!
-			return true;
-		}
-	}
-	return false;
-}
-
-function countSpamBlacklist() {
-	global $config;
-	return count( $config['spam']['blacklist'] );
 }

@@ -22,39 +22,38 @@
 */
 
 /*
-	PHP syntax tests
+	Metadata fixer as a parser
+	
+	This parser, when used in a MetadataParserChain,  cleans up the metadata
+	using hard-coded rules.
 */
 
-class LintTest extends PHPUnit_Framework_TestCase {
-	// false == success, string == failure
-	public function checkSyntax( $file ) {
-		$output = shell_exec( "php -l '$file'" );
-		if ( strpos( $output, "Errors parsing" ) !== false ) {
-			return $output;
-		} else {
-			return false;
+namespace Reflinks\MetadataParsers;
+
+use Reflinks\MetadataParser;
+use Reflinks\Metadata;
+
+class FixerMetadataParser extends MetadataParser {
+	public function parse( \DOMDocument $dom ) {}
+	public function chain( \DOMDocument $dom, Metadata &$metadata ) {
+		if ( $metadata->work == "Google Books" ) {
+			unset( $metadata->work );
 		}
-	}
-	
-	public function listPhpFiles( $path, $result = array() ) {
-		$list = scandir( $path );
-		foreach( $list as $entry ) {
-			$fullpath = $path . "/" . $entry;
-			if ( is_dir( $fullpath ) && substr( $entry, 0, 1 ) != "." && $entry != "vendor" ) { // directories
-				$result = $this->listPhpFiles( $fullpath, $result );
-			} else { // regular files
-				if ( fnmatch( "*.php", $entry ) ) {
-					$result[] = $fullpath;
-				}
+		
+		if ( $metadata->work == "Los Angeles Times Articles" ) {
+			$metadata->work = "Los Angeles Times";
+		}
+		
+		if ( $metadata->exists( "author" ) ) {
+			$metadata->author = preg_replace( "/(?:by|from)\s+(.+)/i", "$1", $metadata->author ); // clean it up a bit
+			if ( preg_match( "/(www.|.com|\w{5,}\.\w{2,3})/", $metadata->author ) ) { // looks like a domain name (Actually, there are exceptions, like will.i.am)
+				unset( $metadata->author );
 			}
 		}
-		return $result;
-	}
-	
-	public function testLint() {
-		$files = $this->listPhpFiles( __DIR__ . "/.." );
-		foreach( $files as $file ) {
-			$this->assertFalse( $this->checkSyntax( $file ) );
+		
+		if ( $metadata->author == $metadata->publisher ) {
+			unset( $metadata->author );
 		}
 	}
 }
+

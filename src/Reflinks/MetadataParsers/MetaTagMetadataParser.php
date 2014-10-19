@@ -22,42 +22,31 @@
 */
 
 /*
-	Date & time
+	Unusual <meta> metadata parser
 */
 
-require_once __DIR__ . "/constants.php";
+namespace Reflinks\MetadataParsers;
 
-function generateWikiTimestamp( $timestamp = 0 ) {
-	if ( !$timestamp ) {
-		$timestamp = time();
-	}
-	return date( "YmdHis", $timestamp );
-}
+use Reflinks\MetadataParser;
+use Reflinks\Metadata;
+use Reflinks\Utils;
 
-function generateDate( $format, $timestamp = 0 ) {
-	if ( !$timestamp ) {
-		$timestamp = time();
-	}
-	if ( $format == DATE_MDY ) { // mdy
-		return date( "F j, Y", $timestamp );
-	} else { // dmy (default)
-		return date( "j F Y", $timestamp );
-	}
-}
-
-function generateShortDate( $timestamp = 0 ) {
-	if ( !$timestamp ) {
-		$timestamp = date();
-	}
-	return date( "F Y", $timestamp );
-}
-
-// DATE_DMY if dmy (default), DATE_MDY if mdy
-function detectDateFormat( $source ) {
-	if ( stripos( $source, "{{Use mdy dates" ) !== false ) {
-		return DATE_MDY;
-	} else {
-		return DATE_DMY;
+class MetaTagMetadataParser extends MetadataParser {
+	public function parse( \DOMDocument $dom ) {
+		$xpath = Utils::getXpath( $dom );
+		$result = new Metadata();
+		
+		$datenodes = $xpath->query( "//x:meta[@name='date']" );
+		if ( $datenodes->length ) { // date found
+			$result->date = Utils::getFirstNodeAttrContent( $datenodes );
+		}
+		
+		$authornodes = $xpath->query( "//x:meta[@name='author']" );
+		if ( $authornodes->length ) {
+			$result->author = Utils::getFirstNodeAttrContent( $authornodes );
+		}
+		
+		return $result;
 	}
 }
 

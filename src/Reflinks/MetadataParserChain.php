@@ -22,37 +22,46 @@
 */
 
 /*
-	Constants
+	Metadata parser chain
 */
 
-/*
-	Reasons for skipping references
-*/
+namespace Reflinks;
 
-// [UNUSED] Not a bare reference
-define( "SKIPPED_NOTBARE", 1 );
-// HTTP Error
-define( "SKIPPED_HTTPERROR", 2 );
-// Empty response or not HTML
-define( "SKIPPED_EMPTY", 3 );
-// No title found
-define( "SKIPPED_NOTITLE", 4 );
-// Host blacklisted in $config['hostblacklist']
-define( "SKIPPED_HOSTBL", 5 );
-// Spam blacklist
-define( "SKIPPED_SPAM", 6 );
+use Reflinks\Exceptions\MetadataParserException;
+use Reflinks\Exceptions\NoSuchMetadataParserException;
 
-/*
-	Date formats
-*/
+class MetadataParserChain {
+	private $chain = array();
+	function __construct( array $chain = array() ) {
+		foreach ( $chain as $parser ) {
+			$this->append( $parser );
+		}
+	}
+	public function append( $parser ) {
+		if ( is_subclass_of( $parser, "MetadataParser" ) ) {
+			$this->chain[] = $parser;
+		} elseif ( is_string( $parser ) ) {
+			// The autoloader doesn't automatically resolve the namespace here, so...
+			if ( strpos( $parser, '\\' ) ) { // absolute namespace
+				$class = $parser;
+			} else { // Let's assume it's under Reflinks\
+				$class = '\\Reflinks\\MetadataParsers\\' . $parser;
+			}
+			if ( class_exists( $class ) ) {
+				$this->chain[] = new $class();
+			} else {
+				throw new NoSuchMetadataParserException( $class );
+			}
+		} else {
+			throw new ErroneousParserException();
+		}
+	}
+	public function parse( \DOMDocument $dom ) {
+		$result = new Metadata();
+		foreach ( $this->chain as $parser ) {
+			$parser->chain( $dom, $result );
+		}
+		return $result;
+	}
+}
 
-// [DEFAULT] DMY (e.g. 15 January 2001)
-define( "DATE_DMY", false );
-// MDY (e.g. January 15, 2001)
-define( "DATE_MDY", true );
-
-/*
-	Option types
-*/
-define( "OPTION_TYPE_SPECIAL", 0 );
-define( "OPTION_TYPE_CHECKBOX", 1 );

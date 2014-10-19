@@ -20,41 +20,32 @@
 	OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-require_once __DIR__ . "/includes/core.php";
+namespace Reflinks;
+require_once __DIR__ . "/vendor/autoload.php";
+require_once __DIR__ . "/src/config.default.php";
 
-$options = getOptions();
-$title = "";
-$edittimestamp = 0;
-if ( !empty( $options['text'] ) ) { // Manual wikitext input
-	$source = $_POST['text'];
-} elseif ( !empty( $options['page'] ) ) { // Fetch from wiki (API)
-	$source = fetchWiki( $options['page'], $title, $edittimestamp );
-} else {
-	echo "Error: No source is specified!";
-	die;
+$app = new Reflinks();
+$result = $app->getResult();
+
+if ( $result['status'] !== Reflinks::STATUS_SUCCESS ) {
+	switch ( $result['failure'] ) {
+		case Reflinks::FAILURE_NOSOURCE:
+			echo "Error: No source is specified!";
+			die;
+		case Reflinks::FAILURE_PAGENOTFOUND:
+			echo "Error: Page not found!";
+			die;
+	}
 }
 
-$log = array();
-$result = fixRef( $source, $log, $options );
-$timestamp = generateWikiTimestamp();
-$edittimestamp = generateWikiTimestamp( $edittimestamp );
-
-// remove link rot tags
-if ( !count( $log['skipped'] ) && !$options['noremovetag'] ) { // Hurray! All fixed!
-	$result = removeBareUrlTags( $result );
-}
-
-// generate default summary
-$counter = count( $log['fixed'] );
-$counterskipped = count( $log['skipped'] );
-$summary = str_replace( "%numfixed%", $counter, $config['summary'] );
-$summary = str_replace( "%numskipped%", $counterskipped, $summary );
-
+$counter = count( $result['log']['fixed'] );
 // santize for displaying
-$ssource = htmlspecialchars( $source, ENT_QUOTES );
-$sresult = htmlspecialchars( $result );
-$stitle = htmlspecialchars( $title );
-$utitle = urlencode( $title );
+$sold = htmlspecialchars( $result['old'], ENT_QUOTES );
+$sresult = htmlspecialchars( $result['new'] );
+if ( $result['source'] == Reflinks::SOURCE_WIKI ) {
+	$stitle = htmlspecialchars( $result['actualname'] );
+	$utitle = urlencode( $result['actualname'] );
+}
 
 // display the result
 ?>
@@ -69,55 +60,56 @@ $utitle = urlencode( $title );
 </head>
 <body>
 	<?php
-		if ( !empty( $title ) ) {
+		if ( $result['source'] == Reflinks::SOURCE_WIKI ) {
 			echo "<h1>Reflinks - $stitle</h1>";
 		} else {
 			echo "<h1>Reflinks</h1>";
 		}
-		if ( file_exists( __DIR__ . "/includes/banner.php" ) ) {
-			include __DIR__ . "/includes/banner.php";
+		if ( file_exists( __DIR__ . "/config/banner.php" ) ) {
+			include __DIR__ . "/config/banner.php";
 		}
-		echo "<input id='wikitext-old' type='hidden' value='" . $ssource . "'/>";
-		echo "<form id='form-wikitext' name='editform' method='post' action='{$config['wiki']['indexphp']}?title=$utitle&action=submit' enctype='multipart/form-data'>";
+		echo "<input id='wikitext-old' type='hidden' value='" . $sold . "'/>";
+		echo "<form id='form-wikitext' name='editform' method='post' action='{$result['indexphp']}?title=$utitle&action=submit' enctype='multipart/form-data'>";
 		echo "<h2>Result</h2>";
 		echo "<p class='notice'>You are responsible for every edit you make. Please double-check the edit before saving!</p>";
-		if ( $options['noaccessdate'] ) {
+		if ( $app->options->get( "noaccessdate" ) ) {
 			echo "<p>Note: Dates of access are omitted in the result. Please verify whether the references still support the statements, and add the dates where appropriate.</p>";
 		}
-		if ( !$options['plainlink'] )
+		if ( !$app->options->get( "plainlink" ) ) {
 			echo "<p>Note: The publisher field is intentionally left blank for filling out manually.</p>";
+		}
 		if ( !$counter ) {
 			echo "<p>No reference fixed.</p>";
 		} else {
 			echo "<p>$counter reference(s) fixed!</p>";
 		}
 		echo "<div id='wdiff'></div>";
-		if ( count( $log['skipped'] ) ) {
+		if ( count( $result['log']['skipped'] ) ) {
 			echo "<p>The following reference(s) could not be filled:<ul id='skipped-refs'>";
-			foreach( $log['skipped'] as $skipped ) {
+			foreach( $result['log']['skipped'] as $skipped ) {
 				$sref = htmlspecialchars( $skipped['ref'] );
-				$reason = getSkippedReason( $skipped['reason'] );
+				$reason = $app->getSkippedReason( $skipped['reason'] );
 				echo "<li><code class='url'>$sref</code> <span class='reason'>$reason ({$skipped['status']})</span></li>";
 			}
 			echo "</ul></p>";
 		}
 		echo "<h3>New wikitext</h3>";
 		echo "<textarea id='wikitext-new' class='wikitext' name='wpTextbox1'>$sresult</textarea>";
-		echo "<input type='hidden' name='wpSummary' value='$summary'/>";
+		echo "<input type='hidden' name='wpSummary' value='{$result['summary']}'/>";
 		echo "<input type='hidden' name='wpAutoSummary' value='y'/>";
-		echo "<input type='hidden' name='wpStarttime' value='$timestamp'/>";
-		echo "<input type='hidden' name='wpEdittime' value='$edittimestamp'/>";
-		if ( !$options['nowatch'] ) { // Let's watch this!
+		echo "<input type='hidden' name='wpStarttime' value='{$result['timestamp']}'/>";
+		echo "<input type='hidden' name='wpEdittime' value='{$result['edittimestamp']}'/>";
+		if ( !$app->options->get( "nowatch" ) ) { // Let's watch this!
 			echo "<input type='hidden' name='wpWatchthis' value='y'/>";
 		}
-		if ( !empty( $title ) && $source != $result ) {
+		if ( $result['source'] == Reflinks::SOURCE_WIKI && $result['old'] != $result['new'] ) {
 			echo "<input type='submit' name='wpDiff' value='Preview / Save on wiki'/>";
 		}
 		echo "</form>";
 	?>
 	<a href='index.php' class='back'>Fix another page...</a>
 	<?php
-		include __DIR__ . "/includes/footer.php";
+		include __DIR__ . "/src/footer.php";
 	?>
 	<script src="scripts/result.js"></script>
 </body>
