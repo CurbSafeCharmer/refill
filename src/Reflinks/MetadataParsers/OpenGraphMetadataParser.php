@@ -22,13 +22,25 @@
 */
 
 /*
-	Utilities
+	OpenGraph/Facebook metadata parser
 */
-require_once __DIR__ . "/../vendor/autoload.php"; // Composer
 
-function getBaseDomain( $url ) {
-	$pslManager = new Pdp\PublicSuffixListManager();
-	$parser = new Pdp\Parser( $pslManager->getList()  );
-	$result = $parser->parseUrl( $url );
-	return $result->host->registerableDomain;
+namespace Reflinks\MetadataParsers;
+
+use Reflinks\MetadataParser;
+use Reflinks\Metadata;
+use Reflinks\Utils;
+
+class OpenGraphMetadataParser extends MetadataParser {
+	public function parse( \DOMDocument $dom ) {
+		$xpath = Utils::getXpath( $dom );
+		$result = new Metadata();
+		
+		$worknodes = $xpath->query( "//x:meta[@property='og:site_name']" );
+		if ( $worknodes->length ) {
+			$result->work = Utils::getFirstNodeAttrContent( $worknodes );
+		}
+		return $result;
+	}
 }
+

@@ -21,7 +21,11 @@
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once __DIR__ . "/includes/core.php";
+namespace Reflinks;
+require_once __DIR__ . "/vendor/autoload.php";
+require_once __DIR__ . "/src/config.default.php";
+
+$app = new Reflinks();
 ?>
 <!doctype html>
 <html>
@@ -36,18 +40,25 @@ require_once __DIR__ . "/includes/core.php";
 	<h1>Reflinks</h1>
 
 	<?php
-		if ( file_exists( __DIR__ . "/includes/banner.php" ) ) {
-			include __DIR__ . "/includes/banner.php";
+		if ( file_exists( __DIR__ . "/config/banner.php" ) ) {
+			include __DIR__ . "/config/banner.php";
 		}
 	?>
 	
-	<h2>Fetch content from <?php echo $config['wiki']['name']; ?></h2>
+	<h2>Fetch content from wiki</h2>
 	<form id="form-wiki" method="post" action="result.php">
 		<input name="page" type="text" placeholder="Page name"/>
+		<select name="wiki">
+			<?php
+				foreach ( $app->wikiProvider->listWikis() as $wiki ) {
+					echo "<option value='$wiki'>$wiki</option>";
+				}
+			?>
+		</select>
 		<input name="method-wiki" type="submit" value="Fix page"/>
 		<h3>Options</h3>
 		<?php
-			echo generateForm( "wiki", false );
+			echo $app->optionsProvider->generateForm( "wiki", false );
 		?>
 	
 	</form>
@@ -61,12 +72,12 @@ require_once __DIR__ . "/includes/core.php";
 			<input name="method-wikitext" type="submit" value="Fix wikitext"/>
 			<h3>Options</h3>
 			<?php
-				echo generateForm( "wikitext", true );
+				echo $app->optionsProvider->generateForm( "wikitext", true );
 			?>
 			</form>
 	</div>
 	<?php
-		include __DIR__ . "/includes/footer.php";
+		include __DIR__ . "/src/footer.php";
 	?>
 </body>
 </html>

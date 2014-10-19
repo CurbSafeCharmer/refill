@@ -43,6 +43,8 @@ if ( typeof rlServer === "undefined" ) {
 	var rlServer = "https://tools.wmflabs.org/fengtools/reflinks";
 }
 
+var rlOptionLink = "", rlPortlet = "";
+
 function rlIsWatching() {
 	// Let's use a little hack to determine whether the current page is watched or not
 	if ( $( "#ca-unwatch" ).length !== 0 ) {
@@ -52,48 +54,13 @@ function rlIsWatching() {
 	}
 }
 
-function rlSetUpForm( pagename ) {
+function rlSetUpForm( json ) {
+	rlTearDownForm();
+	var form = json.form;
 	$( "#mw-content-text" ).prepend( "\
 <div id='reflinks' style='border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;'>\
-	<form id='reflinks-form' method='post' action='" + rlServer + "/result.php?page=" + encodeURIComponent( pagename ) + "'>\
-		<h1>Reflinks</h1>\
-		<h3>Options</h3>\
-		<ul id='form-wiki-options' class='optionul'>\
-			<li>\
-				<input name='plainlink' id='checkbox-plainlink' type='checkbox'/>\
-				<label for='checkbox-plainlink'>Use plain formatting instead of <code>{{cite web}}</code></label>\
-			</li>\
-			<li>\
-				<input name='noremovetag' id='checkbox-noremovetag' type='checkbox'/>\
-				<label for='checkbox-noremovetag'>Do not remove link rot tags</label>\
-			</li>\
-			<!--\
-			<li>\
-				<input name='nofixuplain' id='checkbox-nofixuplain' type='checkbox'/>\
-				<label for='checkbox-nofixuplain'>Do not expand uncaptioned plain links (surrounded with [ ])</label>\
-			</li>\
-			-->\
-			<li>\
-				<input name='nofixcplain' id='checkbox-nofixcplain' type='checkbox'/>\
-				<label for='checkbox-nofixcplain'>Do not expand references with a captioned external link only</label>\
-			</li>\
-			<li>\
-				<input name='nouseoldcaption' id='checkbox-nouseoldcaption' type='checkbox'/>\
-				<label for='checkbox-nouseoldcaption'>Do not use old captions</label>\
-			</li>\
-			<li>\
-				<input name='nofixutemplate' id='checkbox-nofixutemplate' type='checkbox'/>\
-				<label for='checkbox-nofixutemplate'>Do not expand <code>{{cite web}}</code> templates with a URL only</label>\
-			</li>\
-			<li>\
-				<input name='addblankmetadata' id='checkbox-addblankmetadata' type='checkbox'/>\
-				<label for='checkbox-addblankmetadata'>Add blank <code>|author=</code> and <code>|date=</code> fields if the information is unavailable</label>\
-			</li>\
-			<li>\
-				<input name='noaccessdate' id='checkbox-noaccessdate' type='checkbox' checked=''/>\
-				<label for='checkbox-noaccessdate-wiki'>Do not add access dates in the result</label>\
-			</li>\
-		</ul>\
+	<h2>Options</h1>\
+	<form id='reflinks-form' method='post' action='" + rlServer + "/result.php?page=" + encodeURIComponent( wgPageName ) + "'>" + form + "\
 		<input name='method-wiki' type='submit' value='Fix page'/>\
 		<a href='" + rlServer + "' style='color: #555;'>Tool homepage</a>\
 	</form>\
@@ -111,19 +78,24 @@ function rlTearDownForm() {
 	$( "#reflinks" ).remove();
 }
 
-function rlInit() {
+function rlInit( json ) {
 	rlTearDownForm();
-	rlSetUpForm( wgPageName );
+	rlOptionLink = $( "<a>" ).attr( "href", "#" ).html( "(options)" ).click( function() {
+		rlSetUpForm( json );
+	} );
+	$( rlPortlet ).append( $( "<sup>").html( rlOptionLink ) );
 }
 
 $( document ).ready( function() {
+	var script = $( "<script>" );
+	script.attr( "src", rlServer + "/scripts/toolboxform.php" );
+	script.attr( "type", "text/javascript" );
+	$( "head" ).append( script );
+
 	var link = rlServer + "/result.php?page=" + encodeURIComponent( wgPageName );
 	if ( !rlIsWatching() ) {
 		link += "&nowatch=y";
 	}
-	var rlPortlet = mw.util.addPortletLink( "p-tb", link, "Reflinks");
-	var optionLink = $( "<a>" ).attr( "href", "#" ).html( "(options)" ).click( function() {
-		rlInit();
-	} );
-	$( rlPortlet ).append( $( "<sup>").html( optionLink ) );
+	rlPortlet = mw.util.addPortletLink( "p-tb", link, "Reflinks");
+	
 } );
