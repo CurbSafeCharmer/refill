@@ -35,7 +35,7 @@ class Reflinks {
 	public $optionsProvider = null;
 	public $options = null;
 	public $spider = null;
-	public $parserChain = null;
+	public $metadataParserChain = null;
 	public $spamFilter = null;
 	public $wikiProvider = null;
 	
@@ -54,7 +54,7 @@ class Reflinks {
 	const SOURCE_TEXT = 0;
 	const SOURCE_WIKI = 1;
 	
-	function __construct( UserOptionsProvider $optionsProvider = null, UserOptions $options = null, Spider $spider = null, MetadataParserChain $parserChain = null, SpamFilter $spamFilter = null, $wikiProvider = null ) {
+	function __construct( UserOptionsProvider $optionsProvider = null, UserOptions $options = null, Spider $spider = null, MetadataParserChain $metadataParserChain = null, SpamFilter $spamFilter = null, $wikiProvider = null ) {
 		global $config;
 		if ( $optionsProvider !== null ) {
 			$this->optionsProvider = $optionsProvider;
@@ -76,10 +76,10 @@ class Reflinks {
 			$this->spider = new Spider( $config['useragent'] );
 		}
 		
-		if ( $parserChain !== null ) {
-			$this->parserChain = $parserChain;
+		if ( $metadataParserChain !== null ) {
+			$this->metadataParserChain = $metadataParserChain;
 		} else {
-			$this->parserChain = new MetadataParserChain( $config['parserchain'] );
+			$this->metadataParserChain = new MetadataParserChain( $config['parserchain'] );
 		}
 		
 		if ( $spamFilter !== null ) {
@@ -186,7 +186,7 @@ class Reflinks {
 			}
 			$html5 = new HTML5();
 			$dom = $html5->loadHTML( $response->html );
-			$metadata->merge( $this->parserChain->parse( $dom ) );
+			$metadata->merge( $this->metadataParserChain->parse( $dom ) );
 			
 			if ( !empty( $oldref['caption'] ) && !$this->options->get( "nouseoldcaption" ) ) {
 				// Use the original caption
