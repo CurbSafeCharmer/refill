@@ -54,42 +54,42 @@ class Reflinks {
 	const SOURCE_TEXT = 0;
 	const SOURCE_WIKI = 1;
 	
-	function __construct( UserOptionsProvider $optionsProvider = null, UserOptions $options = null, Spider $spider = null, MetadataParserChain $metadataParserChain = null, SpamFilter $spamFilter = null, $wikiProvider = null ) {
+	function __construct( array $objects = array() ) {
 		global $config;
-		if ( $optionsProvider !== null ) {
-			$this->optionsProvider = $optionsProvider;
+		if ( $objects['optionsProvider'] !== null ) {
+			$this->optionsProvider = $objects['optionsProvider'];
 		} else {
 			$this->optionsProvider = new UserOptionsProvider();
 		}
 		
-		if ( $options !== null ) {
-			$this->options = $options;
+		if ( $objects['options'] !== null ) {
+			$this->options = $objects['options'];
 		} else {
 			$this->options = new UserOptions( $this->optionsProvider );
 			$this->options->load( $_GET );
 			$this->options->load( $_POST );
 		}
 		
-		if ( $spider !== null ) {
-			$this->spider = $spider;
+		if ( $objects['spider'] !== null ) {
+			$this->spider = $objects['spider'];
 		} else {
 			$this->spider = new Spider( $config['useragent'] );
 		}
 		
-		if ( $metadataParserChain !== null ) {
-			$this->metadataParserChain = $metadataParserChain;
+		if ( $objects['metadataParserChain'] !== null ) {
+			$this->metadataParserChain = $objects['metadataParserChain'];
 		} else {
 			$this->metadataParserChain = new MetadataParserChain( $config['parserchain'] );
 		}
 		
-		if ( $spamFilter !== null ) {
-			$this->spamFilter = $spamFilter;
+		if ( $objects['spamFilter'] !== null ) {
+			$this->spamFilter = $objects['spamFilter'];
 		} else {
 			$this->spamFilter = new SpamFilter();
 		}
 		
-		if ( $wikiProvider !== null ) {
-			$this->wikiProvider = $wikiProvider;
+		if ( $objects['wikiProvider'] !== null ) {
+			$this->wikiProvider = $objects['wikiProvider'];
 		} else {
 			$this->wikiProvider = new WikiProvider();
 		}
