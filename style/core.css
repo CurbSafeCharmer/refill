@@ -68,6 +68,10 @@ input:hover, input:focus, textarea:hover, textarea:focus {
 	background: #eee;
 }
 
+input[name=page] {
+	min-width: 250px;
+}
+
 .wikitext {
 	margin-bottom: 5px;
         -moz-box-sizing: border-box;
