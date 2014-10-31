@@ -39,12 +39,19 @@ function hideAdvanced() {
 	$( "#advanced" ).hide();
 }
 
+function resizeInput( element ) {
+	$( element ).attr( "size", $( element ).val().length );
+}
+
 $( document ).ready( function() {
 	$( "#form-wiki" ).submit( function( event ) {
 		checkForm( $( "input[name=page]" ), event );
 	} );
 	$( "#form-wikitext" ).submit( function( event ) {
 		checkForm( $( "textarea[name=text]" ), event );
+	} );
+	$( "input[name=page]" ).keyup( function() {
+		resizeInput( this );
 	} );
 	hideAdvanced();
 } );
