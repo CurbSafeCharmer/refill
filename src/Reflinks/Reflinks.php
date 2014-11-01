@@ -56,13 +56,13 @@ class Reflinks {
 	
 	function __construct( array $objects = array() ) {
 		global $config;
-		if ( $objects['optionsProvider'] !== null ) {
+		if ( isset( $objects['optionsProvider'] ) ) {
 			$this->optionsProvider = $objects['optionsProvider'];
 		} else {
 			$this->optionsProvider = new UserOptionsProvider();
 		}
 		
-		if ( $objects['options'] !== null ) {
+		if ( isset( $objects['options'] ) ) {
 			$this->options = $objects['options'];
 		} else {
 			$this->options = new UserOptions( $this->optionsProvider );
@@ -70,25 +70,25 @@ class Reflinks {
 			$this->options->load( $_POST );
 		}
 		
-		if ( $objects['spider'] !== null ) {
+		if ( isset( $objects['spider'] ) ) {
 			$this->spider = $objects['spider'];
 		} else {
 			$this->spider = new Spider( $config['useragent'] );
 		}
 		
-		if ( $objects['metadataParserChain'] !== null ) {
+		if ( isset( $objects['metadataParserChain'] ) ) {
 			$this->metadataParserChain = $objects['metadataParserChain'];
 		} else {
 			$this->metadataParserChain = new MetadataParserChain( $config['parserchain'] );
 		}
 		
-		if ( $objects['spamFilter'] !== null ) {
+		if ( isset( $objects['spamFilter'] ) ) {
 			$this->spamFilter = $objects['spamFilter'];
 		} else {
 			$this->spamFilter = new SpamFilter();
 		}
 		
-		if ( $objects['wikiProvider'] !== null ) {
+		if ( isset( $objects['wikiProvider'] ) ) {
 			$this->wikiProvider = $objects['wikiProvider'];
 		} else {
 			$this->wikiProvider = new WikiProvider();
