@@ -67,12 +67,8 @@ class UserOptions {
 		if ( null !== $details = $this->provider->getDetails( $option ) ) {
 			switch ( $details['type'] ) {
 				case UserOptionsProvider::TYPE_CHECKBOX:
-					if ( !isset( $this->rawOptions[$option] ) ) { // not specified - use the default value
-						if ( isset( $details['default'] ) ) {
-							return $details['default'];
-						} else {
-							return false;
-						}
+					if ( !isset( $this->rawOptions[$option] ) ) { // not specified - return false (not selected)
+						return false;
 					} else { // specified
 						return $this->rawOptions[$option];
 					}
