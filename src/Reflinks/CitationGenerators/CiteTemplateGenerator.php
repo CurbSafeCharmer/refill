@@ -31,6 +31,7 @@ use Reflinks\CitationGenerator;
 use Reflinks\UserOptions;
 use Reflinks\Metadata;
 use Reflinks\DateFormat;
+use Reflinks\Utils;
 
 class CiteTemplateGenerator extends CitationGenerator {
 	public $options;
