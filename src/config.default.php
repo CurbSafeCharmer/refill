@@ -77,14 +77,14 @@ $config['options'] = array(
 	"nofixuplain" => array(
 		"type" => UserOptionsProvider::TYPE_CHECKBOX,
 		"name" => "Do not expand uncaptioned plain links (surrounded with [ ])",
-		"description" => "If selected, references with a URL surrounded by square brackets only will be skipped. This is for debugging onlyand should not be used.",
+		"description" => "If selected, references with a URL surrounded by square brackets only will be skipped. This is for debugging only and should not be used.",
 		"advanced" => true,
 		"default" => false,
 	),
 	"nofixcplain" => array(
 		"type" => UserOptionsProvider::TYPE_CHECKBOX,
 		"name" => "Do not expand references with a captioned external link only",
-		"description" => "If selected, references consisting of a captioned wxternal link only will be skilled.",
+		"description" => "If selected, references consisting of a captioned external link only will be expanded.",
 		"advanced" => false,
 		"default" => false,
 	),
