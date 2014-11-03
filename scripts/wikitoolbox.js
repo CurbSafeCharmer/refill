@@ -87,9 +87,13 @@ function rlInit( json ) {
 }
 
 $( document ).ready( function() {
-	$.getJSON( rlServer + "/scripts/toolboxform.php?callback=?", function ( json ) {
-		rlInit( json );
-	} );
+	if ( typeof rlOptions === "undefined" ) {
+		$.getJSON( rlServer + "/scripts/toolboxform.php?callback=?", function ( json ) {
+			rlInit( json );
+		} );
+	} else {
+		rlInit( rlOptions );
+	}
 
 	var link = rlServer + "/result.php?page=" + encodeURIComponent( wgPageName );
 	if ( !rlIsWatching() ) {
