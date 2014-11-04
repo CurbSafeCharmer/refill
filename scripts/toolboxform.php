@@ -35,9 +35,4 @@ $result = array();
 $result['form'] = $app->optionsProvider->generateForm( "toolbox", false );
 
 $json = json_encode( $result );
-
-if ( isset( $_GET["complete"] ) ) {
-	echo "var rlServer=" . $json . ";" . file_get_contents( __DIR__ . "/wikitoolbox.js" );
-} else {
-	echo $_GET['callback'] . "(" . $json . ")";
-}
+echo $_GET['callback'] . "(" . $json . ")";
