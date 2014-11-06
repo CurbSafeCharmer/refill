@@ -27,7 +27,7 @@
 	Please change the metadata and configuations below to suit your needs.
 */
 
-/*global wgPageName, rlServer, mw */
+/*global wgPageName, rlServer, rlWiki, mw */
 /*jshint multistr: true */
 
 // ==UserScript==
@@ -61,6 +61,9 @@ function rlGetSubmitUrl( defaults ) {
 	}
 	if ( !rlIsWatching() ) {
 		url += "&nowatch=y";
+	}
+	if ( typeof rlWiki !== "undefined" ) {
+		url += "&wiki=" + encodeURIComponent( rlWiki );
 	}
 	return url;
 }
