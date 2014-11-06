@@ -54,13 +54,24 @@ function rlIsWatching() {
 	}
 }
 
+function rlGetSubmitUrl( defaults ) {
+	var url = rlServer + "/result.php?page=" + encodeURIComponent( wgPageName );
+	if ( defaults ) {
+		url += "&defaults=y";
+	}
+	if ( !rlIsWatching() ) {
+		url += "&nowatch=y";
+	}
+	return url;
+}
+
 function rlSetUpForm( json ) {
 	rlTearDownForm();
 	var form = json.form;
 	$( "#mw-content-text" ).prepend( "\
 <div id='reflinks' style='border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;'>\
 	<h2>Options</h1>\
-	<form id='reflinks-form' method='post' action='" + rlServer + "/result.php?page=" + encodeURIComponent( wgPageName ) + "'>" + form + "\
+	<form id='reflinks-form' method='post' action='" + rlGetSubmitUrl( false ) + "'>" + form + "\
 		<input name='method-wiki' type='submit' value='Fix page'/>\
 		<a href='" + rlServer + "' style='color: #555;'>Tool homepage</a>\
 	</form>\
@@ -86,15 +97,10 @@ function rlInit( json ) {
 	$( rlPortlet ).append( $( "<sup>").html( rlOptionLink ) );
 }
 
+
 $( document ).ready( function() {
 	$.getJSON( rlServer + "/scripts/toolboxform.php?callback=?", function ( json ) {
 		rlInit( json );
 	} );
-
-	var link = rlServer + "/result.php?page=" + encodeURIComponent( wgPageName );
-	if ( !rlIsWatching() ) {
-		link += "&nowatch=y";
-	}
-	rlPortlet = mw.util.addPortletLink( "p-tb", link, "Reflinks");
-	
+	rlPortlet = mw.util.addPortletLink( "p-tb", rlGetSubmitUrl( true ), "Reflinks");
 } );
