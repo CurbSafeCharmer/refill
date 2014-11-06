@@ -46,6 +46,9 @@ class UserOptions {
 				$this->set( $option, $array[$option] );
 			}
 		}
+		if ( isset( $array['defaults'] ) ) {
+			$this->rawOptions['defaults'] = true;
+		}
 	}
 	public function set( $option, $value ) {
 		$details = $this->provider->getDetails( $option );
@@ -68,6 +71,9 @@ class UserOptions {
 			switch ( $details['type'] ) {
 				case UserOptionsProvider::TYPE_CHECKBOX:
 					if ( !isset( $this->rawOptions[$option] ) ) { // not specified - return false (not selected)
+						if ( isset( $this->rawOptions['defaults'] ) && isset( $details['default'] ) ) {
+							return $details['default'];
+						}
 						return false;
 					} else { // specified
 						return $this->rawOptions[$option];
