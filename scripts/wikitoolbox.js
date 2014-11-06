@@ -68,13 +68,13 @@ function rlGetSubmitUrl( defaults ) {
 	return url;
 }
 
-function rlSetUpForm( json ) {
+function rlSetUpForm() {
 	rlTearDownForm();
-	var form = json.form;
 	$( "#mw-content-text" ).prepend( "\
 <div id='reflinks' style='border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;'>\
 	<h2>Options</h1>\
-	<form id='reflinks-form' method='post' action='" + rlGetSubmitUrl( false ) + "'>" + form + "\
+	<form id='reflinks-form' method='post' action='" + rlGetSubmitUrl( false ) + "'>\
+		<div id='reflinks-options'>Loading options...</div>\
 		<input name='method-wiki' type='submit' value='Fix page'/>\
 		<a href='" + rlServer + "' style='color: #555;'>Tool homepage</a>\
 	</form>\
@@ -88,22 +88,21 @@ function rlSetUpForm( json ) {
 	}, 250 );
 }
 
+function rlLoadRemoteOptions() {
+	$.getJSON( rlServer + "/scripts/toolboxform.php?callback=?", function ( json ) {
+		$( "#reflinks-options" ).html( json.form );
+	} );
+}
+
 function rlTearDownForm() {
 	$( "#reflinks" ).remove();
 }
 
-function rlInit( json ) {
-	rlTearDownForm();
+$( document ).ready( function() {
+	rlPortlet = mw.util.addPortletLink( "p-tb", rlGetSubmitUrl( true ), "Reflinks" );
 	rlOptionLink = $( "<a>" ).attr( "href", "#" ).html( "(options)" ).click( function() {
-		rlSetUpForm( json );
+		rlSetUpForm();
+		rlLoadRemoteOptions();
 	} );
 	$( rlPortlet ).append( $( "<sup>").html( rlOptionLink ) );
-}
-
-
-$( document ).ready( function() {
-	$.getJSON( rlServer + "/scripts/toolboxform.php?callback=?", function ( json ) {
-		rlInit( json );
-	} );
-	rlPortlet = mw.util.addPortletLink( "p-tb", rlGetSubmitUrl( true ), "Reflinks");
 } );
