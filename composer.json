@@ -16,5 +16,10 @@
         "psr-0": {
             "Reflinks": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "Reflinks": "tests/"
+        }
     }
 }
