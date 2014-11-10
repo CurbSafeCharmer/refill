@@ -49,6 +49,9 @@ $config['spam']['file'] = __DIR__ . "/blacklist";
 // The actual array for blacklist regexes, for reference only. You should not set this one manually.
 $config['spam']['blacklist'] = array();
 
+// The maximum execution time of result.php, in seconds
+$config['maxtime'] = 300;
+
 // Path to Cacycle's wDiff script. For easy offline development, download a copy to scripts/diff.js which is ignored by git.
 $config['wdiff'] = "https://en.wikipedia.org/w/index.php?title=User:Cacycle/diff.js&action=raw&ctype=text/javascript";
 

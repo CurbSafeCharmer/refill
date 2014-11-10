@@ -24,6 +24,8 @@ namespace Reflinks;
 require_once __DIR__ . "/vendor/autoload.php";
 require_once __DIR__ . "/src/config.default.php";
 
+set_time_limit( $config['maxtime'] );
+
 $app = new Reflinks();
 $result = $app->getResult();
 
