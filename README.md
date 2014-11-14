@@ -21,6 +21,7 @@ This will fetch the required libraries for you. That's it, you now have a workin
 ### Configuring
 After setting up Reflinks, you may wish to add your local wiki for testing. To do so, create `config/config.php` and insert:
 ```php
+<?php
 $config['wikis']['mywiki'] = array(
 	"identifiers" => array( // A list of wikis of this type
 		"wmflike", "baremw",
