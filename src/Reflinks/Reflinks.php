@@ -186,7 +186,7 @@ class Reflinks {
 			}
 			$html5 = new HTML5();
 			$dom = $html5->loadHTML( $response->html );
-			$metadata->merge( $this->metadataParserChain->parse( $dom ) );
+			$metadata = $this->metadataParserChain->parse( $dom, $metadata );
 			
 			if ( !empty( $oldref['caption'] ) && !$this->options->get( "nouseoldcaption" ) ) {
 				// Use the original caption
