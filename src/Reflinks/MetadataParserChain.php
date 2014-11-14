@@ -56,8 +56,12 @@ class MetadataParserChain {
 			throw new ErroneousParserException();
 		}
 	}
-	public function parse( \DOMDocument $dom ) {
-		$result = new Metadata();
+	public function parse( \DOMDocument $dom, Metadata $baseMetadata = null ) {
+		if ( $baseMetadata ) {
+			$result = $baseMetadata;
+		} else {
+			$result = new Metadata();
+		}
 		foreach ( $this->chain as $parser ) {
 			$parser->chain( $dom, $result );
 		}
