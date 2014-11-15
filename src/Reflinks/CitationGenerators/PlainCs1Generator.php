@@ -40,9 +40,23 @@ class PlainCs1Generator extends CitationGenerator {
 	}
 	public function getCitation( Metadata $metadata, DateFormat $format ) {
 		$core = "";
+		// Is the page archived or not?
+		if ( $metadata->exists( "archiveurl" ) ) {
+			$url = $metadata->archiveurl;
+			$isArchived = true;
+		} else {
+			$url = $metadata->url;
+			$isArchived = false;
+		}
+		
+		// Generate dates
 		if ( $timestamp = strtotime( $metadata->date ) ) {
 			$date = Utils::generateDate( $timestamp, $format );
 		}
+		if ( $archivets = strtotime( $metadata->archivedate ) ) {
+			$archivedate = Utils::generateDate( $archivets, $format );
+		}
+		
 		// Author (Date).
 		if ( $metadata->exists( "author" ) ) {
 			$core .= $metadata->author;
@@ -51,9 +65,10 @@ class PlainCs1Generator extends CitationGenerator {
 			}
 			$core .= ". ";
 		}
+		
 		// "Title".
-		$core .= "[" . $metadata->url . ' "' . $metadata->title . '"]. ';
-	
+		$core .= "[" . $url . ' "' . $metadata->title . '"]. ';
+		
 		// ''Work'' (Publisher).
 		if ( $metadata->exists( "work" ) ) {
 			$core .= "''" . $metadata->work . "''";
@@ -64,12 +79,18 @@ class PlainCs1Generator extends CitationGenerator {
 		} elseif ( $metadata->exists( "publisher" ) ) { // Publisher
 			$core .= $metadata->publisher . ". ";
 		}
-	
+		
 		// Date. <-- When without author
 		if ( !$metadata->exists( "author" ) && !empty( $date ) ) {
 			$core .= $date . ". ";
 		}
-	
+		
+		// Archived from
+		if ( $isArchived ) {
+			$core .= "Archived from [{$metadata->url} the original] on $archivedate. ";
+		}
+		
+		// Retrived on
 		if ( !$this->options->get( "noaccessdate" ) ) {
 			// Retrived on
 			$core .= "Retrieved on " . Utils::generateDate( 0, $dateformat ) . ".";
