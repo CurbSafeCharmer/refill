@@ -92,8 +92,7 @@ class PlainCs1Generator extends CitationGenerator {
 		
 		// Retrived on
 		if ( !$this->options->get( "noaccessdate" ) ) {
-			// Retrived on
-			$core .= "Retrieved on " . Utils::generateDate( 0, $dateformat ) . ".";
+			$core .= "Retrieved on " . Utils::generateDate( 0, $format ) . ".";
 		}
 		return $core;
 	}
