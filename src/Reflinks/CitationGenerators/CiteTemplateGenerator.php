@@ -44,6 +44,9 @@ class CiteTemplateGenerator extends CitationGenerator {
 			$field = str_replace( "|", "-", $field );
 		}
 		$core = "{{cite web|url=" . $metadata->url;
+		if ( $metadata->exists( "archiveurl" ) ) {
+			$core .= "|archiveurl=" . $metadata->archiveurl;
+		}
 		if ( $metadata->exists( "title" ) ) {
 			$core .= "|title=" . $metadata->title;
 		}
@@ -52,10 +55,13 @@ class CiteTemplateGenerator extends CitationGenerator {
 		} elseif ( $this->options->get( "addblankmetadata" ) ) { // add a blank field
 			$core .= "|author=";
 		}
-		if ( $timestamp = strtotime( $metadata->date ) ) { // successfully parsed
+		if ( $timestamp = strtotime( $metadata->date ) ) { // date
 			$core .= "|date=" . Utils::generateDate( $timestamp, $format );
 		} elseif ( $this->options->get( "addblankmetadata" ) ) { // add a blank field
 			$core .= "|date=";
+		}
+		if ( $archivets = strtotime( $metadata->archivedate ) ) { // archivedate
+			$core .= "|archivedate=" . Utils::generateDate( $archivets, $format );
 		}
 		if ( $metadata->exists( "work" ) ) {
 			$core .= "|work=" . $metadata->work;
