@@ -27,6 +27,8 @@
 
 namespace Reflinks;
 
+use Reflinks\CitationGenerators\CiteTemplateGenerator;
+use Reflinks\CitationGenerators\PlainCs1Generator;
 use Masterminds\HTML5;
 
 require_once __DIR__ . "/../vendor/autoload.php";
@@ -98,5 +100,18 @@ $metadata = $chain->parse( $dom, $metadata );
 	
 	<h2>Result</h2>
 	<pre><?php var_dump( $metadata );?></pre>
+	
+	<h2>Generated references</h2>
+	<h3>CiteTemplateGenerator</h3>
+	<pre><?php
+		$generator = new CiteTemplateGenerator( new UserOptions() );
+		echo $generator->getCitation( $metadata, new DateFormat() );
+	?></pre>
+	
+	<h3>PlainCs1Generator</h3>
+	<pre><?php
+		$generator = new PlainCs1Generator( new UserOptions() );
+		echo $generator->getCitation( $metadata, new DateFormat() );
+	?></pre>
 </body>
 </html>
