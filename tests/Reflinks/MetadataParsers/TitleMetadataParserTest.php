@@ -45,6 +45,15 @@ class TitleMetadataParserTest extends MetadataParserTestCase {
 		$this->assertTitleEquals( "", "<h1>Test title</h1>", "Test title" );
 	}
 
+	/**
+	  * @depends testHeadTitle
+	  * @depends testMetaTagTitle
+	  * @depends testH1Title
+	  */
+	public function testSuffixedTitle() {
+		$this->assertTitleEquals( "<title>Test title - MySite</title>", "<h1>MySite</h1><h1>Test title</h1>", "Test title" );
+	}
+
 	public function assertTitleEquals( $head = "", $body = "", $expected ) {
 		$result = $this->parse( $head, $body );
 		$this->assertEquals( $expected, $result->title );
