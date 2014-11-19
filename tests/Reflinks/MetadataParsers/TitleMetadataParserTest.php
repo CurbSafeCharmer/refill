@@ -47,6 +47,6 @@ class TitleMetadataParserTest extends MetadataParserTestCase {
 
 	public function assertTitleEquals( $head = "", $body = "", $expected ) {
 		$result = $this->parse( $head, $body );
-		$this->assertEquals( $result->title, $expected );
+		$this->assertEquals( $expected, $result->title );
 	}
 }
