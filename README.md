@@ -64,10 +64,12 @@ Patches are always welcome! To contribute, simply create a fork of the repo, mak
 Reflinks is licensed under the BSD 2-Clause License. See `LICENSE` for details.
 
 ### External libraries
-This repository includes a copy of [jQuery](http://jquery.com), licensed under the [MIT License](http://jquery.org/license/).
-
 This program uses [wDiff](https://en.wikipedia.org/wiki/User:Cacycle/diff) by [Cacycle](https://en.wikipedia.org/wiki/User:Cacycle), released into public domain.
 
 Composer dependencies of this program:
 - [PHP Domain Parser](https://github.com/jeremykendall/php-domain-parser/)
 - [HTML5-PHP](https://github.com/Masterminds/html5-php)
+
+Bower dependencies of this program:
+- [jQuery](http://jquery.com)
+- [Chosen](http://harvesthq.github.io/chosen/)
