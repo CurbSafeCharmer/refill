@@ -7,7 +7,7 @@ The program is now revamped to adapt an object-oriented structure.
 Old configuations may not work. See the `Configuring` secton for details.
 
 ## Setting up
-Setting up your Reflinks instance is fairly simple. You will need [Composer](http://getcomposer.org) to install the dependencies. First, clone this repo with:
+Setting up your Reflinks instance is fairly simple. You will need [Composer](http://getcomposer.org) and [Bower](http://bower.io) to install the dependencies. First, clone this repo with:
 ```sh
 git clone https://github.com/zhaofengli/reflinks.git
 ```
@@ -15,6 +15,7 @@ git clone https://github.com/zhaofengli/reflinks.git
 The complete source code of Reflinks is now cloned in the `reflinks` directory. `cd` into it, and:
 ```sh
 php composer.phar install
+bower install
 ```
 This will fetch the required libraries for you. That's it, you now have a working copy of Reflinks!
 

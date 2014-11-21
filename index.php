@@ -33,7 +33,7 @@ $app = new Reflinks();
 	<title>Reflinks</title>
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="style/core.css"/>
-	<script src="scripts/jquery-1.11.1.min.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="scripts/index.js"></script>
 </head>
 <body>
