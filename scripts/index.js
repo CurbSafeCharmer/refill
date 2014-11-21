@@ -53,5 +53,6 @@ $( document ).ready( function() {
 	$( "input[name=page]" ).keyup( function() {
 		resizeInput( this );
 	} );
+	$( "select[name=wiki]" ).chosen();
 	hideAdvanced();
 } );

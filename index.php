@@ -33,7 +33,9 @@ $app = new Reflinks();
 	<title>Reflinks</title>
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="style/core.css"/>
+	<link rel="stylesheet" href="bower_components/chosen/chosen.css"/>
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/chosen/chosen.jquery.min.js"></script>
 	<script src="scripts/index.js"></script>
 </head>
 <body>
@@ -48,7 +50,7 @@ $app = new Reflinks();
 	<h2>Fetch content from wiki</h2>
 	<form id="form-wiki" method="post" action="result.php">
 		<input name="page" type="text" placeholder="Page name"/>
-		<select name="wiki">
+		<select name="wiki" data-placeholder="Wiki">
 			<?php
 				foreach ( $app->wikiProvider->listWikis() as $wiki ) {
 					echo "<option value='$wiki'>$wiki</option>";
