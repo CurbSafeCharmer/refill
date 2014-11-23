@@ -2,10 +2,6 @@
 [Reflinks](https://en.wikipedia.org/wiki/User:Zhaofeng_Li/Reflinks) is a tool for Wikipedia that adds information (page title, work/website, author and publication date, etc.) to [bare references](https://en.wikipedia.org/wiki/WP:BURL) semi-automatically. This is a rewrite of the closed-source original tool by [Dispenser](https://en.wikipedia.org/wiki/User:Dispenser).
 A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/reflinks/), and there is also an [experimental version](https://tools.wmflabs.org/fengtools/reflinkstest/), automatically pulled from the latest commit.
 
-## NOTICE
-The program is now revamped to adapt an object-oriented structure.
-Old configuations may not work. See the `Configuring` secton for details.
-
 ## Setting up
 Setting up your Reflinks instance is fairly simple. You will need [Composer](http://getcomposer.org) and [Bower](http://bower.io) to install the dependencies. First, clone this repo with:
 ```sh
