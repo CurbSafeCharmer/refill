@@ -80,7 +80,7 @@ function rlSetUpForm() {
 	</form>\
 </div>" );
 	if ( !rlIsWatching() ) {
-		var nowatch = $( "<input>" ).name( "nowatch" ).type( "hidden" ).value( "y" );
+		var nowatch = $( "<input>" ).attr( "name", "nowatch" ).attr( "type", "hidden" ).val( "y" );
 		$( "#reflinks-form" ).append( nowatch );
 	}
 	$( "html, body" ).animate( {
