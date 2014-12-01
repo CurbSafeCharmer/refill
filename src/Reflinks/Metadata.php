@@ -30,7 +30,7 @@ namespace Reflinks;
 use Reflinks\Exceptions\MetadataException;
 use Reflinks\Exceptions\NoSuchMetadataFieldException;
 
-class Metadata {
+class Metadata implements \Iterator {
 	public $rawMetadata = array();
 	public static $fields = array(
 		"url", "title", "date", "accessdate", "author", "publisher", "work", "archiveurl", "archivedate", "deadurl"
@@ -39,6 +39,24 @@ class Metadata {
 	function __construct( array $rawMetadata = array() ) {
 		$this->load( $rawMetadata );
 	}
+	// Iterator interface
+	public function rewind() {
+		reset( $this->rawMetadata );
+	}
+	public function current() {
+		return current( $this->rawMetadata );
+	}
+	public function key() {
+		return key( $this->rawMetadata );
+	}
+	public function next() {
+		return next( $this->rawMetadata );
+	}
+	public function valid() {
+		$key = key( $this->rawMetadata );
+		return $this->validField( $key );
+	}
+
 	public static function validField( $name ) {
 		return in_array( $name, self::$fields );
 	}
