@@ -40,9 +40,12 @@ class CiteTemplateGenerator extends CitationGenerator {
 	}
 	public function getCitation( Metadata $metadata, DateFormat $format ) {
 		global $config;
-		foreach ( $metadata as &$field ) { // we don't want | here
-			$field = str_replace( "|", "-", $field );
+		foreach ( $metadata->dump() as $key => &$value ) { // we don't want | here
+			if ( $key != "url" ) {
+				$metadata->__set( $key, str_replace( "|", "-", $value ) );
+			}
 		}
+		$metadata->url = str_replace( "|", "%7c", $metadata->url );
 		$core = "{{cite web|url=" . $metadata->url;
 		if ( $metadata->exists( "archiveurl" ) ) {
 			$core .= "|archiveurl=" . $metadata->archiveurl;
