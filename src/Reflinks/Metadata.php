@@ -77,6 +77,9 @@ class Metadata implements \Iterator {
 			$this->rawMetadata[$name] = $value;
 		}
 	}
+	public function set( $name, $value ) {
+		return $this->__set( $name, $value );
+	}
 	public function __get( $name ) {
 		if ( !self::validField( $name ) ) {
 			throw new NoSuchMetadataFieldException( $name );
@@ -85,6 +88,9 @@ class Metadata implements \Iterator {
 		} else {
 			return $this->rawMetadata[$name];
 		}
+	}
+	public function get( $name ) {
+		return $this->__get( $name );
 	}
 	public function __unset( $name ) {
 		if ( !self::validField( $name ) ) {
