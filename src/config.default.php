@@ -31,6 +31,7 @@ $config['parserchain'] = array(
 	"SchemaOrgMetadataParser",
 	"MetaTagMetadataParser",
 	"WaybackMachineFixerMetadataParser",
+	"PublisherFixerMetadataParser",
 	"FixerMetadataParser",
 );
 
