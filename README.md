@@ -49,6 +49,8 @@ To enable the local version, insert this into `config/config.php`:
 ```php
 $config['wdiff'] = "scripts/diff.js";
 ```
+## Unit tests
+The program includes an incomplete set of unit tests under `tests`, which can be ran with PHPUnit. Please help cover untested code by adding new tests.
 
 ## Reporting bugs
 If you have found a bug, please [report it on Wikipedia](https://en.wikipedia.org/wiki/User_talk:Zhaofeng_Li) or [create an issue on GitHub](https://github.com/zhaofengli/reflinks/issues).
