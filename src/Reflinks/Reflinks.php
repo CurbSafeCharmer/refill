@@ -188,11 +188,6 @@ class Reflinks {
 			$dom = $html5->loadHTML( $response->html );
 			$metadata = $this->metadataParserChain->parse( $dom, $metadata );
 			
-			if ( !empty( $oldref['caption'] ) && !$this->options->get( "nouseoldcaption" ) ) {
-				// Use the original caption
-				$metadata->title = $oldref['caption'];
-			}
-			
 			if ( empty( $metadata->title ) ) {
 				$log['skipped'][] = array(
 					'ref' => $core,

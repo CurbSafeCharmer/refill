@@ -93,13 +93,6 @@ $config['options'] = array(
 		"advanced" => false,
 		"default" => false,
 	),
-	"nouseoldcaption" => array(
-		"type" => UserOptionsProvider::TYPE_CHECKBOX,
-		"name" => "Do not reuse existing captions from original references",
-		"If selected, the tool will use the page title fetched from the server as the caption, overwriting the existing ones.",
-		"advanced" => false,
-		"default" => false,
-	),
 	"noremovetag" => array(
 		"type" => UserOptionsProvider::TYPE_CHECKBOX,
 		"name" => "Do not remove link rot tags",
