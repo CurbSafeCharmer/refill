@@ -77,9 +77,6 @@ if ( $result['source'] == Reflinks::SOURCE_WIKI ) {
 		if ( $app->options->get( "noaccessdate" ) ) {
 			echo "<p>Note: Dates of access are omitted in the result. Please verify whether the references still support the statements, and add the dates where appropriate.</p>";
 		}
-		if ( !$app->options->get( "plainlink" ) ) {
-			echo "<p>Note: The publisher field is intentionally left blank for filling out manually.</p>";
-		}
 		if ( !$counter ) {
 			echo "<p>No reference fixed.</p>";
 		} else {
