@@ -66,9 +66,12 @@ class CiteTemplateGenerator extends CitationGenerator {
 		if ( $archivets = strtotime( $metadata->archivedate ) ) { // archivedate
 			$core .= "|archivedate=" . Utils::generateDate( $archivets, $format );
 		}
+		if ( $metadata->exists( "publisher" ) ) {
+			$core .= "|publisher=" . $metadata->publisher;
+		}
 		if ( $metadata->exists( "work" ) ) {
 			$core .= "|work=" . $metadata->work;
-		} else { // no |work= extracted , add an empty |publisher=
+		} elseif( !$metadata->exists( "publisher" ) ) { // no |work= or |publisher= extracted, add an empty |publisher=
 			$core .= "|publisher=";
 		}
 		if ( !$this->options->get( "noaccessdate" ) ) {
