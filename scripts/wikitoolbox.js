@@ -35,7 +35,7 @@
 // @description Adds a toolbox link to the Reflinks tool
 // @namespace   https://en.wikipedia.org/wiki/User:Zhaofeng_Li
 // @include     *://en.wikipedia.org/*
-// @version     4
+// @version     5
 // @grant       none
 // ==/UserScript==
 
