@@ -36,7 +36,7 @@ class DateFormat {
 	
 	private $format = self::DMY;
 	
-	function __construct( $format ) {
+	function __construct( $format = self::DMY ) {
 		$this->set( $format );
 	}
 	public function set( $format ) {
