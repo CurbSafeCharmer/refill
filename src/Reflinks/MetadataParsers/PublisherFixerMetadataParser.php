@@ -32,6 +32,7 @@ namespace Reflinks\MetadataParsers;
 
 use Reflinks\MetadataParser;
 use Reflinks\Metadata;
+use Reflinks\Utils;
 
 class PublisherFixerMetadataParser extends MetadataParser {
 	public $publishers = array(
@@ -54,11 +55,9 @@ class PublisherFixerMetadataParser extends MetadataParser {
 	public function parse( \DOMDocument $dom ) {}
 	public function chain( \DOMDocument $dom, Metadata &$metadata ) {
 		if ( empty( $metadata->url ) ) return;
-		$psl = new \Pdp\PublicSuffixListManager();
-		$pdp = new \Pdp\Parser( $psl->getList() );
-		$url = $pdp->parseUrl( $metadata->url );
+		$domain = Utils::getBaseDomain( $metadata->url );
 		foreach ( $this->publishers as $publisher => $domains ) {
-			if ( in_array( $url->host->registerableDomain, $domains ) ) {
+			if ( in_array( $domain, $domains ) ) {
 				$metadata->publisher = $publisher;
 				return;
 			}
