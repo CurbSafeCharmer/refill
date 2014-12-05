@@ -31,24 +31,53 @@ class MetadataParserChainTest extends \PHPUnit_Framework_TestCase {
 		$mock = $this->getMock( "MetadataParser" );
 		$chain->append( $mock );
 	}
+
 	public function testAppendClassName() {
 		$chain = new MetadataParserChain();
 		$chain->append( "Reflinks\UnitTestMockMetadataParserA" );
 		$chain->append( "UnitTestMockMetadataParserB" );
 	}
+
+	/**
+	 * @depends testAppendClassName
+	 * @expectedException Reflinks\Exceptions\NoSuchMetadataParserException
+	 */
+	public function testAppendNonExistantClassName() {
+		$chain = new MetadataParserChain();
+		$chain->append( "NoSuchNamespace\ThisIsANonExistantMetadataParser" . time() );
+	}
+
+	/**
+	 * @depends testAppendObject
+	 * @expectedException Reflinks\Exceptions\ErroneousMetadataParserException
+	 */
+	public function testAppendErroneousObject() {
+		$chain = new MetadataParserChain();
+		$object = new \stdClass();
+		$chain->append( $object );
+	}
+
+	/**
+	 * @depends testAppendClassName
+	 */
+	public function testConstructArray() {
+		$chain = new MetadataParserChain( array( "UnitTestMockMetadataParserB" ) );
+	}
+
 	/**
 	 * @depends testAppendObject
 	 * @depends testAppendClassName
 	 */
 	public function testChainCall() {
 		$chain = new MetadataParserChain();
-		$mock = $this->getMock( "MetadataParser", array( "chain" ) );
+		$metadata = $this->getMock( "Reflinks\\Metadata" );
+		$mock = $this->getMock( "MetadataParser", array( "chain", "parse" ) );
 		$mock->expects( $this->once() )
 		     ->method( "chain" )
 		     ->with( $this->isInstanceOf( "DOMDocument" ),
-		             $this->isInstanceOf( "Reflinks\Metadata" ) );
+		             $this->identicalTo( $metadata ) );
 		$chain->append( $mock );
-		$chain->parse( new \DOMDocument() );
+		$chain->parse( new \DOMDocument(), $metadata );
 	}
 }
 
