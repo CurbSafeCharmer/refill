@@ -29,6 +29,7 @@ namespace Reflinks;
 
 use Reflinks\Exceptions\MetadataParserException;
 use Reflinks\Exceptions\NoSuchMetadataParserException;
+use Reflinks\Exceptions\ErroneousMetadataParserException;
 
 class MetadataParserChain {
 	private $chain = array();
@@ -53,7 +54,7 @@ class MetadataParserChain {
 				throw new NoSuchMetadataParserException( $class );
 			}
 		} else {
-			throw new ErroneousParserException();
+			throw new ErroneousMetadataParserException();
 		}
 	}
 	public function parse( \DOMDocument $dom, Metadata $baseMetadata = null ) {
