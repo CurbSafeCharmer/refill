@@ -3,4 +3,5 @@
 /config/
 /vendor/
 /scripts/diff.js
-bower_components
+/bower_components
+/build
