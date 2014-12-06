@@ -23,6 +23,8 @@
 
 namespace Reflinks;
 
+use Reflinks\Metadata;
+
 require_once __DIR__ . "/MetadataParserMock.php";
 
 class MetadataParserChainTest extends \PHPUnit_Framework_TestCase {
@@ -68,13 +70,36 @@ class MetadataParserChainTest extends \PHPUnit_Framework_TestCase {
 	 * @depends testAppendObject
 	 * @depends testAppendClassName
 	 */
-	public function testChainCall() {
+	public function testChainCallWithoutBaseMetadata() {
 		$chain = new MetadataParserChain();
-		$metadata = $this->getMock( "Reflinks\\Metadata" );
-		$mock = $this->getMock( "MetadataParser", array( "chain", "parse" ) );
+		$mock = $this->getMockBuilder( "MetadataParser" )
+		             ->setMethods( array( "chain" ) )
+			     ->getMock();
 		$mock->expects( $this->once() )
 		     ->method( "chain" )
 		     ->with( $this->isInstanceOf( "DOMDocument" ),
+		             $this->isInstanceOf( "Reflinks\\Metadata" ) );
+		$chain->append( $mock );
+		$chain->parse( new \DOMDocument() );
+	}
+
+	/**
+	 * @depends testChainCallWithoutBaseMetadata
+	 */
+	public function testChainCallWithBaseMetadata() {
+		if ( defined( "HHVM_VERSION" ) ) {
+			$this->markTestSkipped( "Can't mock Metadata in HHVM." );
+			return;
+		}
+		$chain = new MetadataParserChain();
+		$metadata = $this->getMockBuilder( "Reflinks\\Metadata" )
+		                 ->getMock();
+		$mock = $this->getMockBuilder( "MetadataParser" )
+		             ->setMethods( array( "chain" ) )
+		             ->getMock();
+		$mock->expects( $this->once() )
+		     ->method( "chain" )
+		     ->with( $this->anything(),
 		             $this->identicalTo( $metadata ) );
 		$chain->append( $mock );
 		$chain->parse( new \DOMDocument(), $metadata );
