@@ -55,6 +55,7 @@ footer, footer a {
 
 input, textarea {
 	border: 1px solid #ccc;
+	background: #eee;
 	border-radius: 2px;
 	padding: 7px;
 	transition: background .1s, border .1s;
@@ -65,7 +66,7 @@ input, textarea {
 
 input:hover, input:focus, textarea:hover, textarea:focus {
 	border: 1px solid #aaa;
-	background: #eee;
+	background: #ddd;
 }
 
 input[name=page] {
