@@ -152,7 +152,7 @@ class Reflinks {
 			} catch ( LinkHandlerException $e ) {
 				$message = $e->getMessage();
 				if ( !empty( $message ) ) {
-					$description = $message();
+					$description = $message;
 				} else {
 					$description = $handler->explainErrorCode( $e->getCode() );
 				}

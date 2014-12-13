@@ -80,19 +80,22 @@ EOF;
 				$result['success'] = false;
 				$result['error'] = $e->getCode();
 				$result['description'] = empty( $e->getMessage() ) ? $handler->explainErrorCode() : $e->getMessage();
+				$unsuccessful = true;
 			}
-			if ( !$metadata->exists( "title" ) ) {
-				$result['success'] = false;
-				$result['description'] = "No title found.";
-			} else {
-				$citegen = "Reflinks\\CitationGenerators\\" . $_GET['format'];
-				if ( class_exists( $citegen ) ) {
-					$result['success'] = true;
-					$generator = new $citegen( new UserOptions() );
-					$result['citation'] = $generator->getCitation( $metadata, new DateFormat() );
-				} else {
+			if ( !isset( $unsuccessful ) ) {
+				if ( !$metadata->exists( "title" ) ) {
 					$result['success'] = false;
-					$result['description'] = "No such citation generator.";
+					$result['description'] = "No title found.";
+				} else {
+					$citegen = "Reflinks\\CitationGenerators\\" . $_GET['format'];
+					if ( class_exists( $citegen ) ) {
+						$result['success'] = true;
+						$generator = new $citegen( new UserOptions() );
+						$result['citation'] = $generator->getCitation( $metadata, new DateFormat() );
+					} else {
+						$result['success'] = false;
+						$result['description'] = "No such citation generator.";
+					}
 				}
 			}
 		}
