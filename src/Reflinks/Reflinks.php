@@ -27,23 +27,22 @@
 
 namespace Reflinks;
 
+use Reflinks\Exceptions\LinkHandlerException;
+
+// Let's leave them hard-coded for now...
 use Reflinks\CitationGenerators\CiteTemplateGenerator;
 use Reflinks\CitationGenerators\PlainCs1Generator;
-use Masterminds\HTML5;
+use Reflinks\LinkHandlers\StandaloneLinkHandler;
 
 class Reflinks {
 	public $optionsProvider = null;
 	public $options = null;
-	public $spider = null;
-	public $metadataParserChain = null;
 	public $spamFilter = null;
 	public $wikiProvider = null;
 	
+	const SKIPPED_UNKNOWN = 0;
 	const SKIPPED_NOTITLE = 1;
-	const SKIPPED_SPAM = 2;
-	const SKIPPED_FETCHERROR = 3;
-	const SKIPPED_HTTPERROR = 4;
-	const SKIPPED_EMPTY = 5;
+	const SKIPPED_HANDLER = 2;
 	
 	const STATUS_SUCCESS = 0;
 	const STATUS_FAILED = 1;
@@ -74,12 +73,6 @@ class Reflinks {
 			$this->spider = $objects['spider'];
 		} else {
 			$this->spider = new Spider( $config['useragent'] );
-		}
-		
-		if ( isset( $objects['metadataParserChain'] ) ) {
-			$this->metadataParserChain = $objects['metadataParserChain'];
-		} else {
-			$this->metadataParserChain = new MetadataParserChain( $config['parserchain'] );
 		}
 		
 		if ( isset( $objects['spamFilter'] ) ) {
@@ -153,41 +146,24 @@ class Reflinks {
 				continue;
 			}
 		
-			// Fetch the webpage
-			$response = $this->spider->fetch( $oldref['url'] );
-			if ( !$response->successful ) { // failed
+			$handler = new StandaloneLinkHandler( $this->spider );
+			try {
+				$metadata = $handler->getMetadata( $oldref['url'] );
+			} catch ( LinkHandlerException $e ) {
+				if ( !empty( $e->getMessage() ) ) {
+					$description = $e->getMessage();
+				} else {
+					$description = $handler->explainErrorCode( $e->getCode() );
+				}
 				$log['skipped'][] = array(
 					'ref' => $core,
-					'reason' => self::SKIPPED_FETCHERROR,
-					'failure' => $response->header['failure'],
-				);
-				continue;
-			} elseif ( $response->header['http_code'] != 200 ) { // http error
-				$log['skipped'][] = array(
-					'ref' => $core,
-					'reason' => self::SKIPPED_HTTPERROR,
-					'status' => $response->header['http_code'],
-				);
-				continue;
-			} elseif ( empty( $response->html ) ) { // empty response
-				$log['skipped'][] = array(
-					'ref' => $core,
-					'reason' => self::SKIPPED_EMPTY,
-					'status' => $response->header['http_code'],
+					'reason' => self::SKIPPED_HANDLER,
+					'description' => $description,
 				);
 				continue;
 			}
+			// finally{} is available on PHP 5.5+, but we need to maintain compatibility with 5.3... What a pity :(
 
-			// Extract the metadata
-			$metadata = new Metadata();
-			$metadata->url = $oldref['url'];
-			if ( $this->options->get( "usedomainaswork" ) ) { // Use the base domain as work
-				$metadata->work = Utils::getBaseDomain( $oldref['url'] );
-			}
-			$html5 = new HTML5();
-			$dom = $html5->loadHTML( $response->html );
-			$metadata = $this->metadataParserChain->parse( $dom, $metadata );
-			
 			if ( empty( $metadata->title ) ) {
 				$log['skipped'][] = array(
 					'ref' => $core,
@@ -266,18 +242,15 @@ class Reflinks {
 	}
 	public function getSkippedReason( $reason ) {
 		switch ( $reason ) {
-			case self::SKIPPED_FETCHERROR:
-				return "Fetching error";
-			case self::SKIPPED_HTTPERROR:
-				return "HTTP Error";
-			case self::SKIPPED_EMPTY:
-				return "Empty response";
+			default:
+			case self::SKIPPED_UNKNOWN:
+				return "Unknown error";
+			case self::SKIPPED_HANDLER:
+				return "Processing error";
 			case self::SKIPPED_NOTITLE:
 				return "No title is found";
 			case self::SKIPPED_SPAM:
 				return "Spam blacklist";
-			default:
-				return "Unknown error";
 		}
 	}
 }

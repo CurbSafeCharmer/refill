@@ -88,8 +88,8 @@ if ( $result['source'] == Reflinks::SOURCE_WIKI ) {
 				$sref = htmlspecialchars( $skipped['ref'] );
 				$reason = $app->getSkippedReason( $skipped['reason'] );
 				echo "<li><code class='url'>$sref</code> <span class='reason'>$reason";
-				if ( isset( $skipped['status'] ) ) {
-					echo " (" . $skipped['status'] . ")";
+				if ( isset( $skipped['description'] ) ) {
+					echo " (" . $skipped['description'] . ")";
 				}
 				echo "</span></li>";
 			}
