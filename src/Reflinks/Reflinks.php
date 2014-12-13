@@ -150,8 +150,9 @@ class Reflinks {
 			try {
 				$metadata = $handler->getMetadata( $oldref['url'] );
 			} catch ( LinkHandlerException $e ) {
-				if ( !empty( $e->getMessage() ) ) {
-					$description = $e->getMessage();
+				$message = $e->getMessage();
+				if ( !empty( $message ) ) {
+					$description = $message();
 				} else {
 					$description = $handler->explainErrorCode( $e->getCode() );
 				}
