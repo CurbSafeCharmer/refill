@@ -79,7 +79,8 @@ EOF;
 			} catch ( LinkHandlerException $e ) {
 				$result['success'] = false;
 				$result['error'] = $e->getCode();
-				$result['description'] = empty( $e->getMessage() ) ? $handler->explainErrorCode() : $e->getMessage();
+				$message = $e->getMessage();
+				$result['description'] = empty( $message ) ? $handler->explainErrorCode() : $message;
 				$unsuccessful = true;
 			}
 			if ( !isset( $unsuccessful ) ) {
