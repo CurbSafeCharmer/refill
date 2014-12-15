@@ -22,16 +22,14 @@
 */
 
 /*
-	Form generator for toolbox script
+	[STUB] Form generator for toolbox script
+
+	Replaced by api.php
 */
 
-namespace Reflinks;
-require_once __DIR__ . "/../src/bootstrap.php";
-
-$app = new Reflinks();
-
-$result = array();
-$result['form'] = $app->optionsProvider->generateForm( "toolbox", false );
+$result = array(
+	'form' => "<p>toolboxform.php is deprecated. Use api.php instead. If you are a user, please contact the maintainer of this gadget/script to resolve this issue. For Greasemonkey users, try updating the script.</p>"
+);
 
 $json = json_encode( $result );
 echo $_GET['callback'] . "(" . $json . ")";

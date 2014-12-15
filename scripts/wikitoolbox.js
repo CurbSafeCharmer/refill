@@ -35,7 +35,7 @@
 // @description Adds a toolbox link to the Reflinks tool
 // @namespace   https://en.wikipedia.org/wiki/User:Zhaofeng_Li
 // @include     *://en.wikipedia.org/*
-// @version     5
+// @version     6
 // @grant       none
 // ==/UserScript==
 
@@ -89,7 +89,7 @@ function rlSetUpForm() {
 }
 
 function rlLoadRemoteOptions() {
-	$.getJSON( rlServer + "/scripts/toolboxform.php?callback=?", function ( json ) {
+	$.getJSON( rlServer + "/api.php?action=optionsform&callback=?", function ( json ) {
 		$( "#reflinks-options" ).html( json.form );
 	} );
 }
