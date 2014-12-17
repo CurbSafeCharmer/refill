@@ -96,6 +96,25 @@ class Reflinks {
 			'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
 		);
 		$dateformat = Utils::detectDateFormat( $wikitext );
+		// Merge duplicated citations (clean up this mess!)
+		preg_match_all( $pattern, $wikitext, $matches );
+		$i = 1;
+		foreach ( $matches[0] as $key => $ref ) {
+			if ( substr_count( $wikitext, $ref ) > 1 ) {
+				for ( ; ; ) {
+					if ( preg_match( "/\\:" . $i . "[\\'\\\"\\>]/", $wikitext ) ) $i++;
+					else break;
+				}
+				// There are exact duplicates.
+				$pos = strpos( $wikitext, $ref );
+				$len = strlen( $ref );
+				$startTag = "<ref name=\":" . $i . "\">";
+				$wikitext = substr_replace( $wikitext, $startTag . $matches[2][$key] . "</ref>", $pos, $len );
+				$wikitext = str_replace( $ref, "<ref name=\":" . $i . "\"/>", $wikitext );
+				$i++;
+			}
+		}
+
 		preg_match_all( $pattern, $wikitext, $matches );
 		foreach ( $matches[2] as $key => $core ) {
 			$status = 0;
