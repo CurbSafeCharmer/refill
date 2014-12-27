@@ -89,36 +89,20 @@ class Reflinks {
 	}
 	
 	public function fix( $wikitext, &$log = array() ) {
-		$pattern = "/(\<ref[^\>]*\>)([^\<\>]+)(\<\/ref\>)/i";
-		$matches = array();
+		$cm = new CitationManipulator( $wikitext );
 		$log = array(
 			'fixed' => array(), // ['url'] contains the original link
 			'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
 		);
 		$dateformat = Utils::detectDateFormat( $wikitext );
-		// Merge duplicated citations (clean up this mess!)
-		preg_match_all( $pattern, $wikitext, $matches );
-		$i = 1;
-		foreach ( $matches[0] as $key => $ref ) {
-			if ( substr_count( $wikitext, $ref ) > 1 ) {
-				for ( ; ; ) {
-					if ( preg_match( "/\\:" . $i . "[\\'\\\"\\>]/", $wikitext ) ) $i++;
-					else break;
-				}
-				// There are exact duplicates.
-				$pos = strpos( $wikitext, $ref );
-				$len = strlen( $ref );
-				$startTag = "<ref name=\":" . $i . "\">";
-				$wikitext = substr_replace( $wikitext, $startTag . $matches[2][$key] . "</ref>", $pos, $len );
-				$wikitext = str_replace( $ref, "<ref name=\":" . $i . "\"/>", $wikitext );
-				$i++;
-			}
-		}
-
-		preg_match_all( $pattern, $wikitext, $matches );
-		foreach ( $matches[2] as $key => $core ) {
+		$handler = new StandaloneLinkHandler( $this->spider );
+		$options = &$this->options;
+		$spamFilter = &$this->spamFilter;
+		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, $dateformat, $handler ) {
 			$status = 0;
 			$oldref = array();
+			$core = $citation['content'];
+			$unchanged = false;
 			// Let's check if we are supposed to mess with it first...
 			if ( preg_match( "/\{\{(Dead link|404|dl|dead|Broken link)/i", $core ) ) { // dead link tag
 				continue;
@@ -131,41 +115,40 @@ class Reflinks {
 				$oldref['url'] = $tcore;
 			} elseif ( preg_match( "/^\[(http[^\] ]+) ([^\]]+)\]$/i", $tcore, $cmatches ) ) {
 				// a captioned plain link (consists of a URL and a caption, surrounded with [], with /no/ other stuff after it)
-				if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$this->options->get( "nofixcplain" ) ) {
+				if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options->get( "nofixcplain" ) ) {
 					$oldref['url'] = $cmatches[1];
 					$oldref['caption'] = $cmatches[2];
 				} else {
-					continue;
+					return;
 				}
 			} elseif ( preg_match( "/^\[(http[^ ]+)\]$/i", $tcore, $cmatches ) ) {
 				// an uncaptioned plain link (consists of only a URL, surrounded with [])
-				if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$this->options->get( "nofixuplain" ) ) {
+				if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options->get( "nofixuplain" ) ) {
 					$oldref['url'] = $cmatches[1];
 				} else {
-					continue;
+					return;
 				}
 			} elseif ( preg_match( "/^\{\{cite web\s*\|\s*url=(http[^ \|]+)\s*\}\}$/i", $tcore, $cmatches ) ) {
 				// an uncaptioned {{cite web}} template (Please improve the regex)
-				if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$this->options->get( "nofixutemplate" ) ) {
+				if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options->get( "nofixutemplate" ) ) {
 					$oldref['url'] = $cmatches[1];
 				} else {
-					continue;
+					return;
 				}
 			} else {
 				// probably already filled in, let's skip it
-				continue;
+				return;
 			}
 			
-			if ( $this->spamFilter->check( $oldref['url'] ) ) {
+			if ( $spamFilter->check( $oldref['url'] ) ) {
 				$log['skipped'][] = array(
 					'ref' => $core,
 					'reason' => self::SKIPPED_SPAM,
 					'status' => $status,
 				);
-				continue;
+				return;
 			}
 		
-			$handler = new StandaloneLinkHandler( $this->spider );
 			try {
 				$metadata = $handler->getMetadata( $oldref['url'] );
 			} catch ( LinkHandlerException $e ) {
@@ -180,35 +163,76 @@ class Reflinks {
 					'reason' => self::SKIPPED_HANDLER,
 					'description' => $description,
 				);
-				continue;
+				$unchanged = true;
 			}
 			// finally{} is available on PHP 5.5+, but we need to maintain compatibility with 5.3... What a pity :(
 
-			if ( empty( $metadata->title ) ) {
+			if ( !$unchanged && empty( $metadata->title ) ) {
 				$log['skipped'][] = array(
 					'ref' => $core,
 					'reason' => self::SKIPPED_NOTITLE,
 					'status' => $response->header['http_code'],
 				);
-				continue;
+				$unchanged = true;
 			}
-			
-			// Generate cite template
-			if ( $this->options->get( "plainlink" ) ) { // use plain CS1
-				$generator = new PlainCs1Generator( $this->options );
-			} else { // use {{cite web}}
-				$generator = new CiteTemplateGenerator( $this->options );
+
+			if ( !$unchanged ) {	
+				// Generate cite template
+				if ( $options->get( "plainlink" ) ) { // use plain CS1
+					$generator = new PlainCs1Generator( $options );
+				} else { // use {{cite web}}
+					$generator = new CiteTemplateGenerator( $options );
+				}
+				$newcore = $generator->getCitation( $metadata, $dateformat );
+
+				// Let's deal with the duplicated references
+				if ( $cm->hasDuplicates( $core ) ) {
+					$duplicates = $cm->searchByContent( $core );
+					$attributes = array();
+					$startAttrs = "";
+					foreach ( $duplicates as $duplicate ) {
+						if ( isset( $duplicate['attributes'] ) ) { // So one of the duplicates has a name
+							foreach ( $duplicate['attributes'] as $name => $value ) {
+								$attributes[$name] = $value;
+							}
+						}
+					}
+					if ( empty( $attributes['name'] ) ) {
+						if ( !empty( $metadata->author ) ) {
+							$attributes['name'] = strtolower( str_replace( " ", "", $metadata->author ) );
+						} else {
+							$attributes['name'] = Utils::getBaseDomain( $metadata->url );
+						}
+						if ( $cm->hasExactAttribute( "name", $attributes['name'] ) ) {
+							$suffix = 1;
+							while ( true ) {
+								if ( $cm->hasExactAttribute( "name", $attributes['name'] . $suffix ) ) {
+									$suffix++;
+								} else {
+									break;
+								}
+							}
+							$attributes['name'] .= $suffix;
+						}
+					}
+					foreach ( $attributes as $name => $value ) {
+						$startAttrs .= $cm->generateAttribute( $name, $value ) . " ";
+					}
+					$replacement = $cm->generateCitation( $newcore, $startAttrs );
+					$stub = $cm->generateStub( $startAttrs );
+					$cm->replaceFirstOccurence( $citation['complete'], $replacement );
+					$cm->replaceByContent( $core, $stub );
+				} else { // Just keep the original surrounding tags
+					$replacement = $citation['startTag'] . $newcore . $citation['endTag'];
+					$cm->replaceFirstOccurence( $citation['complete'], $replacement );
+				}
+				$log['fixed'][] = array(
+					'url' => $oldref['url']
+				);
 			}
-			$newcore = $generator->getCitation( $metadata, $dateformat );
-		
-			// Replace the old core
-			$replacement = $matches[1][$key] . $newcore . $matches[3][$key]; // for good measure
-			$wikitext = str_replace( $matches[0][$key], $replacement, $wikitext );
-			$log['fixed'][] = array(
-				'url' => $oldref['url'],
-			);
-		}
-		return $wikitext;
+		};
+		$cm->loopCitations( $callback ); // Do it!
+		return $cm->exportWikitext();
 	}
 	public function getResult() {
 		global $config;
