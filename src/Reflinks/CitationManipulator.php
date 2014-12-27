@@ -69,6 +69,7 @@ class CitationManipulator {
 		return $attribute . '="' . htmlentities( $value ) . '"';
 	}
 	public function generateCitation( $content, $startAttrs = "" ) {
+		$startAttrs = trim( $startAttrs );
 		if ( !empty( $startAttrs ) ) {
 			return "<ref $startAttrs>$content</ref>";
 		} else {
