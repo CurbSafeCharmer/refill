@@ -113,7 +113,7 @@ label {
 }
 
 #footerlinks li:after {
-	content: " ♦ ";
+	content: " \2666 ";
 }
 
 #footerlinks li:last-child:after {
