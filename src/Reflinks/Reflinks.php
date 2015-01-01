@@ -98,7 +98,8 @@ class Reflinks {
 		$handler = new StandaloneLinkHandler( $this->spider );
 		$options = &$this->options;
 		$spamFilter = &$this->spamFilter;
-		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, $dateformat, $handler ) {
+		$app = &$this;
+		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, $dateformat, $handler, $app ) {
 			$status = 0;
 			$oldref = array();
 			$core = $citation['content'];
@@ -143,7 +144,7 @@ class Reflinks {
 			if ( $spamFilter->check( $oldref['url'] ) ) {
 				$log['skipped'][] = array(
 					'ref' => $core,
-					'reason' => self::SKIPPED_SPAM,
+					'reason' => $app::SKIPPED_SPAM,
 					'status' => $status,
 				);
 				return;
@@ -160,7 +161,7 @@ class Reflinks {
 				}
 				$log['skipped'][] = array(
 					'ref' => $core,
-					'reason' => self::SKIPPED_HANDLER,
+					'reason' => $app::SKIPPED_HANDLER,
 					'description' => $description,
 				);
 				$unchanged = true;
@@ -170,7 +171,7 @@ class Reflinks {
 			if ( !$unchanged && empty( $metadata->title ) ) {
 				$log['skipped'][] = array(
 					'ref' => $core,
-					'reason' => self::SKIPPED_NOTITLE,
+					'reason' => $app::SKIPPED_NOTITLE,
 					'status' => $response->header['http_code'],
 				);
 				$unchanged = true;
