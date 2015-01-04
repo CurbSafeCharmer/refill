@@ -89,6 +89,10 @@ class Reflinks {
 	}
 	
 	public function fix( $wikitext, &$log = array() ) {
+		/*
+			FIXME: This is, by far, one of the worst
+			pieces of code in the whole project. Clean it up.
+		*/
 		$cm = new CitationManipulator( $wikitext );
 		$log = array(
 			'fixed' => array(), // ['url'] contains the original link
@@ -106,7 +110,7 @@ class Reflinks {
 			$unchanged = false;
 			// Let's check if we are supposed to mess with it first...
 			if ( preg_match( "/\{\{(Dead link|404|dl|dead|Broken link)/i", $core ) ) { // dead link tag
-				continue;
+				return;
 			}
 	 
 			// Let's find out what kind of reference it is...
