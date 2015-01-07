@@ -31,7 +31,9 @@ $app = new Reflinks();
 <head>
 	<title>Reflinks</title>
 	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="style/core.css"/>
+	<link rel="stylesheet" href="style/narrow.css" media="screen and ( max-width: 990px )"/>
 	<link rel="stylesheet" href="bower_components/chosen/chosen.css"/>
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="bower_components/chosen/chosen.jquery.min.js"></script>

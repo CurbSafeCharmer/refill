@@ -55,7 +55,9 @@ if ( $result['source'] == Reflinks::SOURCE_WIKI ) {
 <head>
 	<title>Reflinks</title>
 	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="style/core.css"/>
+	<link rel="stylesheet" href="style/narrow.css" media="screen and ( max-width: 990px )"/>
 	<script src="bower_components/jquery/dist/jquery.min.js"/></script>
 	<?php echo "<script src='" . $config['wdiff'] . "'></script>";?>
 </head>
