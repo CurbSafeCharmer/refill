@@ -1,31 +1,31 @@
 {
-    "name": "zhaofengli/reflinks",
-    "description": "Wikipedia tool that expands bare references",
-    "license": "BSD-2-Clause",
-    "authors": [
-        {
-            "name": "Zhaofeng Li",
-            "email": "hello@zhaofeng.li"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.0",
-        "ext-curl": "*",
-        "jeremykendall/php-domain-parser": "~1.3",
-        "masterminds/html5": "2.*"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "4.*",
-        "satooshi/php-coveralls": "dev-master"
-    },
-    "autoload": {
-        "psr-0": {
-            "Reflinks": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-0": {
-            "Reflinks": "tests/"
-        }
-    }
+	"name": "zhaofengli/reflinks",
+	"description": "Wikipedia tool that expands bare references",
+	"license": "BSD-2-Clause",
+	"authors": [
+		{
+			"name": "Zhaofeng Li",
+			"email": "hello@zhaofeng.li"
+		}
+	],
+	"require": {
+		"php": ">=5.3.0",
+		"ext-curl": "*",
+		"jeremykendall/php-domain-parser": "~1.3",
+		"masterminds/html5": "2.*"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "4.*",
+		"satooshi/php-coveralls": "dev-master"
+	},
+	"autoload": {
+		"psr-0": {
+			"Reflinks": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-0": {
+			"Reflinks": "tests/"
+		}
+	}
 }
