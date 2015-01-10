@@ -53,11 +53,15 @@ $messages['en'] = array(
 	'diff-insert' => 'Added',
 	'diff-delete' => 'Removed',
 	
-	
 	// Misc.
 	'comingsoon' => 'Coming soon',
 	'uhoh' => 'Uh-oh!',
 	'developedby' => 'by $1',
+	
+	// Labs-specific (i.e. not used on the vanilla version on GitHub)
+	'wmflabs-thankyoutest' => 'Thank you for testing the experimental version of Reflinks. Please report the bugs you encounter.',
+	'wmflabs-latestcommit' => 'Latest commit: ',
+	'wmflabs-poweredby' => 'Powered by Wikimedia Labs',
 );
 
 $messages['zh-hans'] = array(
@@ -105,4 +109,9 @@ $messages['zh-hans'] = array(
 	'comingsoon' => '敬请期待',
 	'uhoh' => '噢，不！',
 	'developedby' => '由 $1 开发',
+	
+	// 仅供 Labs (不被GitHub上的原版本使用)
+	'wmflabs-thankyoutest' => '感谢你帮助测试Reflinks。请报告你遇到的错误，谢谢。',
+	'wmflabs-latestcommit' => '最新提交：',
+	'wmflabs-poweredby' => '由维基媒体实验室驱动',
 );
