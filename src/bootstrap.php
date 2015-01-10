@@ -23,9 +23,13 @@ $twigFooter = new Twig_SimpleFunction( "footer", function() {
 		return rlFooter();
 	}
 } );
-$twigI18n = new Twig_SimpleFunction( "msg", function( $key ) {
+$twigI18n = new Twig_SimpleFunction( "msg", function( $key /* $vars ,... */ ) {
 	global $I18N;
-	return $I18N->msg( $key );
+	$vars = func_get_args();
+	array_shift( $vars );
+	return $I18N->msg( $key, array(
+		"variables" => $vars,
+	) );
 } );
 $twig->addFunction( $twigBanner );
 $twig->addFunction( $twigFooter );
