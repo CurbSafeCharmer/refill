@@ -32,6 +32,7 @@ $config['parserchain'] = array(
 	"MetaTagMetadataParser",
 	"WaybackMachineFixerMetadataParser",
 	"PublisherFixerMetadataParser",
+	"BadTitlesFixerMetadataParser",
 	"FixerMetadataParser",
 );
 
