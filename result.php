@@ -40,6 +40,9 @@ if ( $result['source'] == Reflinks::SOURCE_WIKI ) {
 if ( !$app->options->get( "nowatch" ) ) {
 	$vars['nowatch'] = true;
 }
+if ( $app->options->get( "noaccessdate" ) ) {
+	$vars['noaccessdate'] = true;
+}
 
 foreach ( $result['log']['skipped'] as &$citation ) {
 	$citation['humanreason'] = $app->getSkippedReason( $citation['reason'] );
