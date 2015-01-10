@@ -1,0 +1,19 @@
+#footerlinks {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+#footerlinks li {
+	display: inline;
+	margin-bottom: 0;
+}
+
+#footerlinks li:after {
+	content: " \2666 ";
+	color: #888;
+}
+
+#footerlinks li:last-child:after {
+	content: none;
+}

@@ -79,5 +79,31 @@ class UserOptionsProvider {
 		$result .= "</ul>";
 		return $result;
 	}
+	public function generateFormStructure( $advanced = false ) {
+		$result = array();
+		foreach( $this->options as $option => $details ) {
+			switch( $details['type'] ) {
+				case self::TYPE_CHECKBOX:
+					if ( !$details['advanced'] || $advanced ) {
+						$result[] = array(
+							"type" => "checkbox",
+							"name" => $option,
+							"checked" => $details['default'],
+							"humanname" => $details['name'],
+							"description" => $details['description'],
+						);
+					} elseif ( $details['default'] ) {
+						$result[] = array(
+							"type" => "hidden",
+							"name" => $option,
+							"value" => "ok",
+						);
+					}
+					break;
+			}
+		}
+		return $result;
+	}
 }
+
 

@@ -57,6 +57,10 @@ $config['maxtime'] = 300;
 // Path to Cacycle's wDiff script. For easy offline development, download a copy to scripts/diff.js which is ignored by git.
 $config['wdiff'] = "https://en.wikipedia.org/w/index.php?title=User:Cacycle/diff.js&action=raw&ctype=text/javascript";
 
+// Intuition i18n
+$config['i18n']['intuition'] = __DIR__ . "/Intuition/ToolStart.php";
+$config['i18n']['domain'] = "Reflinks";
+
 // User-settable options
 $config['options'] = array(
 	"page" => array(

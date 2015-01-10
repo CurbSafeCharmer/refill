@@ -5,7 +5,7 @@ A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/refl
 ## Setting up
 Setting up your Reflinks instance is fairly simple. You will need [Composer](http://getcomposer.org) and [Bower](http://bower.io) to install the dependencies. First, clone this repo with:
 ```sh
-git clone https://github.com/zhaofengli/reflinks.git
+git clone --recursive https://github.com/zhaofengli/reflinks.git
 ```
 
 The complete source code of Reflinks is now cloned in the `reflinks` directory. `cd` into it, and:
@@ -13,7 +13,11 @@ The complete source code of Reflinks is now cloned in the `reflinks` directory. 
 php composer.phar install
 bower install
 ```
-This will fetch the required libraries for you. That's it, you now have a working copy of Reflinks!
+This will fetch the required libraries for you.
+
+Next, you will need to set up the message files. Copy `misc/Reflinks.i18n.php` to `src/Intuition/language/messages` and add `Reflinks` to `src/Intuition/language/domains.json`.
+
+That's it, you now have a working copy of Reflinks!
 
 ### Configuring
 After setting up Reflinks, you may wish to add your local wiki for testing. To do so, create `config/config.php` and insert:
@@ -36,8 +40,7 @@ For some simple customizations, use:
 $config['summary'] = "Filled in %numfixed% bare reference(s) with Reflinks";
 ```
 
-You can also add a banner to notify users about updates. Create `config/banner.php` and add the banner code. This file is ignored by git.
-There's a CSS class named `banner` for banner styling.
+You can also add a banner to notify users about updates, as well as extend the default footer. Create `rlBanner()` and `rlFooter()` and return the content in them.
 
 There are more configuations available, please check out `src/config.default.php` for details.
 
@@ -64,6 +67,10 @@ Reflinks is licensed under the BSD 2-Clause License. See `LICENSE` for details.
 ### External libraries
 This program uses [wDiff](https://en.wikipedia.org/wiki/User:Cacycle/diff) by [Cacycle](https://en.wikipedia.org/wiki/User:Cacycle), released into public domain.
 
+The Bootstrap theme used is [Yeti](http://bootswatch.com/yeti/).
+
+[Open Sans](http://www.google.com/fonts/specimen/Open+Sans) is a font by [Steve Matteson](https://profiles.google.com/107777320916704234605/about).
+
 Composer dependencies of this program:
 - [PHP Domain Parser](https://github.com/jeremykendall/php-domain-parser/)
 - [HTML5-PHP](https://github.com/Masterminds/html5-php)
@@ -72,3 +79,4 @@ Composer dependencies of this program:
 Bower dependencies of this program:
 - [jQuery](http://jquery.com)
 - [Chosen](http://harvesthq.github.io/chosen/)
+- [Bootstrap](http://getbootstrap.com/)

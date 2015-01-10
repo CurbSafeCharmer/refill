@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "jquery": "~2.1.1",
-    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.2.0/chosen_v1.2.0.zip"
+    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.2.0/chosen_v1.2.0.zip",
+    "bootstrap": "~3.3.1"
   }
 }

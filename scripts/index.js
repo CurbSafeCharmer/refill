@@ -21,26 +21,11 @@
 */
 function checkForm( element, event ) {
 	if ( $( element ).val().length === 0 ) {
-		$( element ).addClass( "inputerror" );
+		$( element ).parent().addClass( "has-error" );
 		event.preventDefault();
 	} else {
-		$( element ).removeClass( "inputerror" );
+		$( element ).parent().removeClass( "has-error" );
 	}
-}
-
-function showAdvanced() {
-	$( "#advanced" ).show();
-	$( ".showadv" ).remove();
-}
-
-function hideAdvanced() {
-	var unhideLink = $( "<a>" ).html( "[+] Show advanced input" ).addClass( "showadv", "link" ).attr( "href", "#" ).click( function() { showAdvanced(); } );
-	$( "#advanced" ).before( unhideLink );
-	$( "#advanced" ).hide();
-}
-
-function resizeInput( element ) {
-	$( element ).attr( "size", $( element ).val().length );
 }
 
 $( document ).ready( function() {
@@ -50,9 +35,4 @@ $( document ).ready( function() {
 	$( "#form-wikitext" ).submit( function( event ) {
 		checkForm( $( "textarea[name=text]" ), event );
 	} );
-	$( "input[name=page]" ).keyup( function() {
-		resizeInput( this );
-	} );
-	$( "select[name=wiki]" ).chosen();
-	hideAdvanced();
 } );

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block foot %}
+	{{ parent() }}
+	<script src="{{ wdiff }}"></script>
+	<script src="scripts/result.js"></script>
+{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<!-- Simulate a MediaWiki editing interface -->
+			<form id="form-wikitext" name="editform" method="post" action="{{ indexphp }}?title={{ pagename }}&action=submit">
+				<h1>{{ msg( 'heading-result' ) }}</h1>
+				<p class="text-warning"><strong>{{ msg( 'responsibility' ) }}</strong> {{ msg( 'pleasedoublecheck' ) }}</p>
+				{% if noaccessdate %}
+					<p>Note: Dates of access are omitted in the result. Please verify whether the references still support the statements, and add the dates where appropriate.</p>
+				{% endif %}
+				{% if counter > 0 %}
+					<p>{{ counter }} reference(s) fixed!</p>
+				{% else %}
+					<p>No references fixed.</p>
+				{% endif %}
+				<div id='wdiff'></div>
+				{% if skipped is not empty %}
+					<p>
+						<span class="text-warning">The following reference(s) could not be filled:</span>
+						<ul>
+							{% for citation in skipped %}
+								<li>
+									<code>{{ citation['ref'] }}</code>
+									<span>{{ citation['humanreason'] }}</span>
+								</li>
+							{% endfor %}
+						</ul>
+					</p>
+				{% endif %}
+				<h2>{{ msg( 'heading-newwikitext' ) }}</h2>
+				<input id="wikitext-old" type="hidden" value="{{ wikitext_old | raw }}">
+				<textarea id="wikitext-new" class="form-control" name="wpTextbox1">{{ wikitext_new | raw }}</textarea>
+				<input type="hidden" name="wpSummary" value="{{ summary }}">
+				<input type="hidden" name="wpAutoSummary" value="fakehash">
+				<input type="hidden" name="wpStarttime" value="{{ timestamp }}">
+				<input type="hidden" name="wpEdittime" value="{{ edittimestamp }}">
+				{% if not nowatch %}
+					<input type="hidden" name="wpWatchthis" value="y">
+				{% endif %}
+				{% if saveable %}
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary" name="wpDiff" value="Preview / Save on wiki">
+						<span id="helpBlock" class="help-block">You will have a chance to review the edit before it's saved.</span>
+					</div>
+				{% endif %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

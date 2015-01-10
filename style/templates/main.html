@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Reflinks{% endblock %}
+{% block banner %}{% endblock %}
+{% block foot %}
+	{{ parent() }}
+	<script src="scripts/index.js"></script>
+{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="jumbotron">
+		<h1>{{ msg( 'appname' ) }}</h1>
+		<p>{{ msg( 'tagline' ) }}</p>
+	</div>
+	{{ banner() | raw }}
+	<div class="row">
+		<div class="col-md-6">
+			<div id="source-wiki">
+				<h2>{{ msg( 'heading-fetchfromwiki' ) }}</h2>
+				<form id="form-wiki" method="post" action="result.php">
+					<div class="form-group form-inline">
+						<span id="validation-page">
+							<input name="page" type="text" class="form-control" placeholder="{{ msg( 'placeholder-pagename' ) }}"/>
+						</span>
+						<select name="wiki" data-placeholder="Wiki" class="form-control">
+							{% for wiki in wikis %}
+								<option value='{{ wiki }}'>{{ wiki }}</option>
+							{% endfor %}
+						</select>
+						<input name="method-wiki" type="submit" class="btn btn-primary" value="{{ msg( 'label-fixpage' ) }}"/>
+					</div>
+					<h3>{{ msg( 'heading-options' ) }}</h3>
+					<div class="form-group">
+						{{ options_regular | raw }}
+					</div>
+				</form>
+			</div>
+			<a data-toggle="collapse" href="#source-wikitext" aria-expanded="false" aria-controls="source-wikitext">{{ msg( 'label-toggleadv' ) }}</a>
+			<div id="source-wikitext" class="collapse">
+				<h2>{{ msg( 'heading-rawwikitext' ) }}</h2>
+				<form id="form-wikitext" method="post" action="result.php">
+					<div class="form-group">
+						<span id="validation-wikitext">
+							<textarea name="text" class="form-control"></textarea>
+						</span>
+						<input name="method-wikitext" type="submit" class="btn btn-primary" value="{{ msg( 'label-fixwikitext' ) }}"/>
+					</div>
+					<h3>{{ msg( 'heading-options' ) }}</h3>
+					<div class="form-group">
+						{{ options_advanced | raw }}
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<h2>{{ msg( 'heading-citegen' ) }} <small>{{ msg( 'comingsoon' ) }}</small></h2>
+			<div class="form-group form-inline">
+				<input type="text" class="form-control" placeholder="URL" disabled>
+				<input type="submit" class="btn btn-default" value="Generate" disabled>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
