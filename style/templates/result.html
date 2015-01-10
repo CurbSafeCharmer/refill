@@ -27,7 +27,7 @@
 				</div>
 				{% if skipped is not empty %}
 					<p>
-						<span class="text-warning">The following reference(s) could not be filled:</span>
+						<span class="text-warning">{{ msg( 'skipped' ) }}</span>
 						<ul>
 							{% for citation in skipped %}
 								<li>

@@ -43,6 +43,7 @@ $messages['en'] = array(
 	// General messages
 	'fixed' => '$1 reference(s) fixed!',
 	'nofixed' => 'No references fixed.',
+	'skipped' => 'The following reference(s) could not be filled:',
 	'responsibility' => 'You are responsible for every edit you make.',
 	'pleasedoublecheck' => 'Please double-check the edit before saving!',
 	'noaccessdate' => 'Note: Dates of access are omitted in the result. Please verify whether the references still support the statements, and add the dates where appropriate.',
@@ -110,6 +111,7 @@ $messages['zh-hans'] = array(
 	// 一般信息
 	'fixed' => '扩展了 $1 个引证！',
 	'nofixed' => '没有修复引证。',
+	'skipped' => '下列引证无法被扩充：',
 	'responsibility' => '你对自己作出的每一个编辑负责。',
 	'pleasedoublecheck' => '请在保存前再三检查！',
 	'noaccessdate' => '注：在结果中没有添加存取日期。请确认提供的来源还能支持页面中的论述，并补充存取日期。',
