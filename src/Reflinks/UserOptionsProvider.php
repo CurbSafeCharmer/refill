@@ -56,23 +56,18 @@ class UserOptionsProvider {
 	}
 	public function generateForm( $suffix = "", $advanced = false ) {
 		$result = "<ul id='form-$suffix-options' class='optionul'>";
-		foreach( $this->options as $option => $details ) {
-			switch( $details['type'] ) {
-				case self::TYPE_CHECKBOX:
-					if ( !$details['advanced'] || $advanced ) {
-						$result .= "<li><input type='checkbox' name='$option' id='checkbox-$option-$suffix' ";
-						if ( $details['default'] ) {
-							$result .= "checked=''";
-						}
-						$result .= "/>";
-						$result .= "<label for='checkbox-$option-$suffix' ";
-						if ( !empty( $details['description'] ) ) {
-							$result .= "title='{$details['description']}'";
-						}
-						$result .= ">{$details['name']}</label></li>";
-					} elseif ( $details['default'] ) {
-						$result .= "<input type='hidden' name='$option' id='checkbox-$option-$suffix' value='ok'/>";
+		foreach ( $this->generateFormStructure( $advanced ) as $option ) {
+			switch ( $option['type'] ) {
+				case "checkbox":
+					$result .= "<li><input type='checkbox' name='{$option['name']}' id='checkbox-{$option['name']}-$suffix' ";
+					if ( $option['checked'] ) {
+						$result .= " checked ";
 					}
+					$result .= "/>";
+					$result .= "<label for='checkbox-{$option['name']}-$suffix' title='{$option['description']}'>{$option['humanname']}</label></li>";
+					break;
+				case "hidden":
+					$result .= "<input type='hidden' name='{$option['name']}' value='{$option['value']}>";
 					break;
 			}
 		}
@@ -80,18 +75,32 @@ class UserOptionsProvider {
 		return $result;
 	}
 	public function generateFormStructure( $advanced = false ) {
+		global $I18N;
 		$result = array();
 		foreach( $this->options as $option => $details ) {
 			switch( $details['type'] ) {
 				case self::TYPE_CHECKBOX:
 					if ( !$details['advanced'] || $advanced ) {
-						$result[] = array(
+						$o = array(
 							"type" => "checkbox",
 							"name" => $option,
 							"checked" => $details['default'],
-							"humanname" => $details['name'],
-							"description" => $details['description'],
 						);
+						if ( $I18N->msgExists( "option-" . $option ) ) {
+							$o['humanname'] = $I18N->msg( "option-" . $option );
+						} elseif ( !empty( $details['name'] ) ) {
+							$o['humanname'] = $details['name'];
+						} else {
+							$o['humanname'] = $option;
+						}
+						if ( $I18N->msgExists( "option-" . $option . "-description" ) ) {
+							$o['description'] = $I18N->msg( "option-" . $option . "-description" );
+						} elseif ( !empty( $details['description'] ) ) {
+							$o['description'] = $details['description'];
+						} else {
+							$o['description'] = "";
+						}
+						$result[] = $o;
 					} elseif ( $details['default'] ) {
 						$result[] = array(
 							"type" => "hidden",

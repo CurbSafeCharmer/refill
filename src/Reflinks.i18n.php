@@ -58,6 +58,22 @@ $messages['en'] = array(
 	'uhoh' => 'Uh-oh!',
 	'developedby' => 'by $1',
 	
+	// Options
+	'option-plainlink' => 'Use plain formatting instead of {{cite web}}',
+	'option-plainlink-description' => 'If selected, bare references will be expanded without using {{cite web}}. This is discouraged since cite templates provide a consistent citation style and enable easy parsing by programs.',
+	'option-nofixuplain' => 'Do not expand bare URLs surrounded with [ ]',
+	'option-nofixcplain' => 'Do not expand references with a captioned external link only',
+	'option-nofixcplain-description' => 'If selected, references consisting of a captioned external link only will not be expanded.',
+	'option-noremovetag' => 'Do not remove link rot tags',
+	'option-noremovetag-description' => 'If selected, link rot tags will be kept even if no reference is skipped unexpectedly during the process.',
+	'option-nofixutemplate' => 'Do not fix {{cite web}} templates with a URL only',
+	'option-nowatch' => 'Do not watch the page when using Wiki as the source',
+	'option-nowatch-description' => 'If selected, the \'Watch this page\' checkbox on the on-wiki editing interface will be unticked by default.',
+	'option-addblankmetadata' => 'Add blank metadata fields when the information is unavailable',
+	'option-noaccessdate' => 'Do not add access dates',
+	'option-noaccessdate-description' => 'If selected, dates of access will be omitted in the result.',
+	'option-usedomainaswork' => 'Use the base domain name as work when this information cannot be parsed',
+	
 	// Labs-specific (i.e. not used on the vanilla version on GitHub)
 	'wmflabs-thankyoutest' => 'Thank you for testing the experimental version of Reflinks. Please report the bugs you encounter.',
 	'wmflabs-latestcommit' => 'Latest commit: ',
@@ -104,11 +120,13 @@ $messages['zh-hans'] = array(
 	'diff-insert' => '增加',
 	'diff-delete' => '删除',
 	
-	
 	// 其他
 	'comingsoon' => '敬请期待',
 	'uhoh' => '噢，不！',
 	'developedby' => '由 $1 开发',
+	
+	// 选项
+	'option-plainlink' => '手工实现格式而不使用 {{cite web}}',
 	
 	// 仅供 Labs (不被GitHub上的原版本使用)
 	'wmflabs-thankyoutest' => '感谢你帮助测试Reflinks。请报告你遇到的错误，谢谢。',
