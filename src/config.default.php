@@ -59,7 +59,8 @@ $config['wdiff'] = "https://en.wikipedia.org/w/index.php?title=User:Cacycle/diff
 
 // Intuition i18n
 $config['i18n']['intuition'] = __DIR__ . "/Intuition/ToolStart.php";
-$config['i18n']['domain'] = "Reflinks";
+$config['i18n']['domainfile'] = __DIR__ . "/Reflinks.i18n.php";
+$config['i18n']['domain'] = "reflinks";
 
 // User-settable options
 $config['options'] = array(

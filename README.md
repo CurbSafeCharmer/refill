@@ -13,11 +13,7 @@ The complete source code of Reflinks is now cloned in the `reflinks` directory. 
 php composer.phar install
 bower install
 ```
-This will fetch the required libraries for you.
-
-Next, you will need to set up the message files. Copy `misc/Reflinks.i18n.php` to `src/Intuition/language/messages` and add `Reflinks` to `src/Intuition/language/domains.json`.
-
-That's it, you now have a working copy of Reflinks!
+This will fetch the required libraries for you. That's it, you now have a working copy of Reflinks!
 
 ### Configuring
 After setting up Reflinks, you may wish to add your local wiki for testing. To do so, create `config/config.php` and insert:
