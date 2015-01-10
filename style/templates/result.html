@@ -14,14 +14,17 @@
 				<h1>{{ msg( 'heading-result' ) }}</h1>
 				<p class="text-warning"><strong>{{ msg( 'responsibility' ) }}</strong> {{ msg( 'pleasedoublecheck' ) }}</p>
 				{% if noaccessdate %}
-					<p>Note: Dates of access are omitted in the result. Please verify whether the references still support the statements, and add the dates where appropriate.</p>
+					<p class="text-info">{{ msg( 'noaccessdate' ) }}</p>
 				{% endif %}
 				{% if counter > 0 %}
-					<p>{{ counter }} reference(s) fixed!</p>
+					<p>{{ msg( 'fixed', counter ) }}</p>
 				{% else %}
-					<p>No references fixed.</p>
+					<p>{{ msg( 'nofixed' ) }}</p>
 				{% endif %}
-				<div id='wdiff'></div>
+				<div id="wdiff" style="display: none;">
+					<small>{{ msg( 'colourlegend' ) }} <span class='wikEdDiffInsert'>{{ msg( 'colour-insert' ) }}</span> = {{ msg( 'diff-insert' ) }}; <span class='wikEdDiffDelete'>{{ msg( 'colour-delete' ) }}</span> = {{ msg( 'diff-delete' ) }}</small>
+					<div id="diffcontent"></div>
+				</div>
 				{% if skipped is not empty %}
 					<p>
 						<span class="text-warning">The following reference(s) could not be filled:</span>
@@ -47,8 +50,8 @@
 				{% endif %}
 				{% if saveable %}
 					<div class="form-group">
-						<input type="submit" class="btn btn-primary" name="wpDiff" value="Preview / Save on wiki">
-						<span id="helpBlock" class="help-block">You will have a chance to review the edit before it's saved.</span>
+						<input type="submit" class="btn btn-primary" name="wpDiff" value="{{ msg( 'label-save' ) }}">
+						<span id="helpBlock" class="help-block">{{ msg( 'chancetoreview' ) }}</span>
 					</div>
 				{% endif %}
 			</form>

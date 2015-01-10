@@ -23,10 +23,10 @@
 /*global WikEdDiff */
 
 function initDiff() {
-	$( "#wdiff" ).html( "<small>Colours: <span class='wikEdDiffInsert'>Blue</span> = Added; <span class='wikEdDiffDelete'>Orange</span> = Removed</small><div id='diffcontent'></div>" );
 	$( "#wikitext-new" ).keyup( function() {
 		updateDiff();
 	} );
+	$( "#wdiff" ).show();
 	updateDiff();
 }
 
