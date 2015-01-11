@@ -2,7 +2,7 @@
 <html>
 <head>
 	{% block head %}
-		<title>{% block title %}{% endblock %}</title>
+		<title>{% block title %}{{ msg( 'appname' ) }}{% endblock %}</title>
 		{% include "head.html" %}
 	{% endblock %}
 </head>
