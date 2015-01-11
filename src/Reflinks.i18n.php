@@ -28,11 +28,13 @@ $messages['en'] = array(
 	
 	// Input placeholders
 	'placeholder-pagename' => 'Page name',
+	'placeholder-url' => 'URL',
 	
 	// Labels
 	'label-fixpage' => 'Fix page',
 	'label-fixwikitext' => 'Fix wikitext',
 	'label-toggleadv' => 'Toggle advanced input',
+	'label-generate' => 'Generate',
 	'label-manual' => 'Manual',
 	'label-sourcecode' => 'Source',
 	'label-acknowledgements' => 'Acknowledgements',
@@ -96,11 +98,13 @@ $messages['zh-hans'] = array(
 	
 	// 输入提示
 	'placeholder-pagename' => '页面名称',
+	'placeholder-url' => 'URL',
 	
 	// 标签
 	'label-fixpage' => '修复页面',
 	'label-fixwikitext' => '修复维基代码',
 	'label-toggleadv' => '显示高级选项',
+	'label-generate' => '生成',
 	'label-manual' => '帮助',
 	'label-sourcecode' => '源代码',
 	'label-acknowledgements' => '致谢',
