@@ -275,7 +275,7 @@ class Reflinks {
 		
 		// Fix the wikitext
 		$result['new'] = $this->fix( $result['old'], $result['log'] );
-		if ( !$this->options->get( "noremovetag" ) ) {
+		if ( !count( $result['log']['skipped'] ) && !$this->options->get( "noremovetag" ) ) {
 			$result['new'] = Utils::removeBareUrlTags( $result['new'] );
 		}
 		
