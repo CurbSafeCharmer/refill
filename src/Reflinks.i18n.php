@@ -18,12 +18,12 @@ $messages['en'] = array(
 	'tagline' => 'Expand bare references with ease',
 	
 	// Headings
-	'heading-fetchfromwiki' => 'Fetch content from a Wiki',
-	'heading-rawwikitext' => 'Enter Wiki markup',
+	'heading-fetchfromwiki' => 'Fetch content from a wiki',
+	'heading-rawwikitext' => 'Enter wiki markup',
 	'heading-options' => 'Options',
 	'heading-citegen' => 'Generate a reference',
 	'heading-result' => 'Result',
-	'heading-newwikitext' => 'New Wiki markup',
+	'heading-newwikitext' => 'New wiki markup',
 	'heading-error' => 'Error',
 	
 	// Input placeholders
