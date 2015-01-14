@@ -139,3 +139,7 @@ $messages['zh-hans'] = array(
 	'wmflabs-latestcommit' => '最新提交：',
 	'wmflabs-poweredby' => '由维基媒体实验室驱动',
 );
+
+$messages['qqq'] = array(
+	'appname' => 'This is the application name. In localised versions, it should be concise and give users a basic idea of what the app does (expanding bare references).'
+);
