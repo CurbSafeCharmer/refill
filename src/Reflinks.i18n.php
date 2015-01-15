@@ -16,6 +16,10 @@ $messages = array();
 $messages['en'] = array(
 	'appname' => 'Reflinks',
 	'tagline' => 'Expand bare references with ease',
+	'manual' => 'Manual',
+	'sourcecode' => 'Source',
+	'acknowledgements' => 'Acknowledgements',
+
 	
 	// Headings
 	'heading-fetchfromwiki' => 'Fetch content from a wiki',
@@ -35,9 +39,6 @@ $messages['en'] = array(
 	'label-fixwikitext' => 'Fix wikitext',
 	'label-toggleadv' => 'Toggle advanced input',
 	'label-generate' => 'Generate',
-	'label-manual' => 'Manual',
-	'label-sourcecode' => 'Source',
-	'label-acknowledgements' => 'Acknowledgements',
 	'label-reportbugs' => 'Report bugs',
 	'label-switchlang' => 'Languages',
 	'label-save' => 'Preview / Save on Wiki',
@@ -86,6 +87,9 @@ $messages['en'] = array(
 $messages['zh-hans'] = array(
 	'appname' => '来源扩充',
 	'tagline' => '轻松填充裸露来源链接',
+	'manual' => '帮助',
+	'sourcecode' => '源代码',
+	'acknowledgements' => '致谢',
 	
 	// 题头
 	'heading-fetchfromwiki' => '从维基获取页面',
@@ -105,9 +109,6 @@ $messages['zh-hans'] = array(
 	'label-fixwikitext' => '修复维基代码',
 	'label-toggleadv' => '显示高级选项',
 	'label-generate' => '生成',
-	'label-manual' => '帮助',
-	'label-sourcecode' => '源代码',
-	'label-acknowledgements' => '致谢',
 	'label-reportbugs' => '报告错误',
 	'label-switchlang' => '切换语言',
 	'label-save' => '在维基上预览/保存',
