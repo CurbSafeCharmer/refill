@@ -182,6 +182,9 @@ class Reflinks {
 			}
 
 			if ( !$unchanged ) {	
+				if ( !$metadata->exists( "work" ) && $options->get( "usedomainaswork" ) ) { // Use the base domain as work
+					$metadata->work = Utils::getBaseDomain( $oldref['url'] );
+				}
 				// Generate cite template
 				if ( $options->get( "plainlink" ) ) { // use plain CS1
 					$generator = new PlainCs1Generator( $options );
