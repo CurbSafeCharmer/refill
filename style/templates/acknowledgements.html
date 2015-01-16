@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ msg( 'acknowledgements') }}{% endblock %}
+{% block foot %}
+	{{ parent() }}
+{% endblock %}
+{% block content %}
+<div class="container">
+	<h1>{{ msg( 'acknowledgements') }}</h1>
+	<p>The author, Zhaofeng Li, would like to thank everyone who has contributed to the project. Their help is essential to the project.</p>
+	<p>This project aims to provide an open-source rewrite of the old web-based tool maintained by <a href="https://en.wikipedia.org/wiki/User:Dispenser">Dispenser</a>. The original Reflinks script is a part of <a href="http://svn.wikimedia.org/viewvc/pywikipedia/trunk/pywikipedia/">the pywikipedia suite</a> by NicDumZ et al.</p>
+{% endblock %}
