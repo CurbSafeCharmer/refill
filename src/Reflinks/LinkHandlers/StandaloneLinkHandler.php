@@ -66,7 +66,8 @@ class StandaloneLinkHandler extends LinkHandler {
 		$metadata = new Metadata();
 		$metadata->url = $url;
 		$html5 = new HTML5();
-		$dom = $html5->loadHTML( $response->html );
+		$encoding = mb_detect_encoding( $response->html, "GB2312, GBK, BIG5, EUC-JP, SJIS, eucJP-win, SJIS-win, JIS, ISO-2022-JP, UTF-8, UTF-7, ASCII, LATIN1" );
+		$dom = $html5->loadHTML( mb_convert_encoding( $response->html, "UTF-8", $encoding ) );
 		$metadata = $this->chain->parse( $dom, $metadata );
 		return $metadata;
 	}
