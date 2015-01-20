@@ -59,7 +59,7 @@ if ( $result['source'] == Reflinks::SOURCE_WIKI ) {
 } else {
 	$vars['title'] = "Raw Wiki markup";
 }
-if ( !$app->options->get( "nowatch" ) ) {
+if ( $app->options->get( "nowatch" ) ) {
 	$vars['nowatch'] = true;
 }
 if ( $app->options->get( "noaccessdate" ) ) {
