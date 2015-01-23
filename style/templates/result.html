@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-8">
 			<!-- Simulate a MediaWiki editing interface -->
-			<form id="form-wikitext" name="editform" method="post" action="{{ indexphp }}?title={{ pagename }}&action=submit">
+			<form id="form-wikitext" name="editform" method="post" action="{{ indexphp }}?title={{ pagename|e('url') }}&action=submit">
 				<h1>{{ msg( 'heading-result' ) }}</h1>
 				<p class="text-warning"><strong>{{ msg( 'responsibility' ) }}</strong> {{ msg( 'pleasedoublecheck' ) }}</p>
 				{% if noaccessdate %}
