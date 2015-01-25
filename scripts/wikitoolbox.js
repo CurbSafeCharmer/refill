@@ -27,7 +27,7 @@
 	Please change the metadata and configuations below to suit your needs.
 */
 
-/*global wgPageName, rlServer, rlWiki, mw */
+/*global rlServer, rlWiki, mw */
 /*jshint multistr: true */
 
 // ==UserScript==
@@ -55,7 +55,8 @@ function rlIsWatching() {
 }
 
 function rlGetSubmitUrl( defaults ) {
-	var url = rlServer + "/result.php?page=" + encodeURIComponent( wgPageName );
+	var pagename = mw.config.get( "wgPageName" );
+	var url = rlServer + "/result.php?page=" + encodeURIComponent( pagename );
 	if ( defaults ) {
 		url += "&defaults=y";
 	}
