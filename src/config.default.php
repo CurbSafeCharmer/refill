@@ -83,24 +83,9 @@ $config['options'] = array(
 		"advanced" => false,
 		"default" => false,
 	),
-	"nofixuplain" => array(
-		"type" => UserOptionsProvider::TYPE_CHECKBOX,
-		"advanced" => true,
-		"default" => false,
-	),
-	"nofixcplain" => array(
-		"type" => UserOptionsProvider::TYPE_CHECKBOX,
-		"advanced" => false,
-		"default" => false,
-	),
 	"noremovetag" => array(
 		"type" => UserOptionsProvider::TYPE_CHECKBOX,
 		"advanced" => false,
-		"default" => false,
-	),
-	"nofixutemplate" => array(
-		"type" => UserOptionsProvider::TYPE_CHECKBOX,
-		"advanced" => true,
 		"default" => false,
 	),
 	"nowatch" => array(

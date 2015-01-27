@@ -51,7 +51,7 @@ class StandaloneLinkHandler extends LinkHandler {
 		$this->chain = new MetadataParserChain( $config['parserchain'] );
 	}
 
-	public function getMetadata( $url ) {
+	public function getMetadata( $url, Metadata $baseMetadata = null ) {
 		// Fetch the webpage
 		$response = $this->spider->fetch( $url );
 		if ( !$response->successful ) { // failed
@@ -63,7 +63,11 @@ class StandaloneLinkHandler extends LinkHandler {
 		}
 
 		// Extract the metadata
-		$metadata = new Metadata();
+		if ( $baseMetadata ) {
+			$metadata = $baseMetadata;
+		} else {
+			$metadata = new Metadata();
+		}
 		$metadata->url = $url;
 		$html5 = new HTML5();
 		$encoding = mb_detect_encoding( $response->html, "GB2312, GBK, BIG5, EUC-JP, SJIS, eucJP-win, SJIS-win, JIS, ISO-2022-JP, UTF-8, UTF-7, ASCII, LATIN1" );

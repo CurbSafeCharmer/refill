@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2014-2015, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -114,38 +114,13 @@ class Reflinks {
 			}
 	 
 			// Let's find out what kind of reference it is...
-			$tcore = trim( $core );
-			if ( filter_var( $tcore, FILTER_VALIDATE_URL ) && strpos( $tcore, "http" ) === 0 ) {
-				// a bare link (consists of only a URL)
-				$oldref['url'] = $tcore;
-			} elseif ( preg_match( "/^\[(http[^\] ]+) ([^\]]+)\]$/i", $tcore, $cmatches ) ) {
-				// a captioned plain link (consists of a URL and a caption, surrounded with [], with /no/ other stuff after it)
-				if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options->get( "nofixcplain" ) ) {
-					$oldref['url'] = $cmatches[1];
-					$oldref['caption'] = $cmatches[2];
-				} else {
-					return;
-				}
-			} elseif ( preg_match( "/^\[(http[^ ]+)\]$/i", $tcore, $cmatches ) ) {
-				// an uncaptioned plain link (consists of only a URL, surrounded with [])
-				if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options->get( "nofixuplain" ) ) {
-					$oldref['url'] = $cmatches[1];
-				} else {
-					return;
-				}
-			} elseif ( preg_match( "/^\{\{cite web\s*\|\s*url=(http[^ \|]+)\s*\}\}$/i", $tcore, $cmatches ) ) {
-				// an uncaptioned {{cite web}} template (Please improve the regex)
-				if ( filter_var( $cmatches[1], FILTER_VALIDATE_URL ) && !$options->get( "nofixutemplate" ) ) {
-					$oldref['url'] = $cmatches[1];
-				} else {
-					return;
-				}
-			} else {
-				// probably already filled in, let's skip it
+			$parser = new CitationParser();
+			$metadata = $parser->parse( $core );
+			if ( !$metadata ) { // probably already filled in
 				return;
 			}
-			
-			if ( $spamFilter->check( $oldref['url'] ) ) {
+
+			if ( $spamFilter->check( $metadata->url ) ) {
 				$log['skipped'][] = array(
 					'ref' => $core,
 					'reason' => $app::SKIPPED_SPAM,
@@ -155,7 +130,7 @@ class Reflinks {
 			}
 		
 			try {
-				$metadata = $handler->getMetadata( $oldref['url'] );
+				$metadata = $handler->getMetadata( $metadata->url, $metadata );
 			} catch ( LinkHandlerException $e ) {
 				$message = $e->getMessage();
 				if ( !empty( $message ) ) {

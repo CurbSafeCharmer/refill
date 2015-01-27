@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2015, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -22,31 +22,54 @@
 */
 
 /*
-	Link handler model
-
-	A link handler takes URLs to webpages, and returns
-	a populated Metadata object. It's not to be confused
-	with a MetadataParser that takes DOMDocument objects as
-	input.
-
-	For example, it can fetch the HTML of a webpage from
-	the web, generate a DOMDocument object, then feed it
-	into a MetadataParserChain.
-
-	Citoid works well for academic journals, so maybe we
-	can implement CitoidLinkHandler. But first we need to solve
-	the problem of switching between multiple LinkHandlers,
-	since the Zotero translator sucks at non-journal
-	sources and thus we cannot replace the internal parsers
-	entirely.
+	Citation parser
 */
 
 namespace Reflinks;
 
-use Reflinks\Exceptions\LinkHandlerException;
+use Reflinks\Metadata;
 
-abstract class LinkHandler {
-	abstract function __construct( Spider $spider );
-	abstract public function getMetadata( $url, Metadata $baseMetadata =null );
-	public static function explainErrorCode( $code ) {}
+class CitationParser {
+	public $rules = array(
+		"bare" => array(
+			"regex" => "/^(.+)$/",
+			"fields" => array( "url" => 1 )
+		),
+		"captioned" => array(
+			"regex" => "/^\[([^ ]+) (.+)\]$/",
+			"fields" => array( "url" => 1, "title" => 2 )
+		),
+		"uncaptioned" => array(
+			"regex" => "/^\[([^ ]+)\]$/",
+			"fields" => array( "url" => 1 )
+		),
+		"template" => array(
+			"regex" => "/^\{\{cite web\s*\|\s*url=([^ ]+)\s*\}\}$/i",
+			"fields" => array( "url" => 1 )
+		)
+	);
+
+	public function parse( $citation ) {
+		$citation = trim( $citation );
+		foreach ( $this->rules as $rule ) {
+			$regex = $rule['regex'];
+			$fields = $rule['fields'];
+			if ( preg_match( $regex, $citation, $matches ) ) {
+				$metadata = new Metadata();
+				foreach ( $fields as $name => $key ) {
+					$metadata->set( $name, $matches[$key] );
+				}
+				if (
+					!$metadata->exists( "url" )
+					|| !filter_var( $metadata->url, FILTER_VALIDATE_URL )
+					|| strpos( $metadata->url, "http" ) !== 0
+				) {
+					continue;
+				} else {
+					return $metadata;
+				}
+			}
+		}
+		return false;
+	}
 }
