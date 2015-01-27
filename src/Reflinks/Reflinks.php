@@ -105,7 +105,6 @@ class Reflinks {
 		$app = &$this;
 		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, $dateformat, $handler, $app ) {
 			$status = 0;
-			$oldref = array();
 			$core = $citation['content'];
 			$unchanged = false;
 			// Let's check if we are supposed to mess with it first...
@@ -158,7 +157,7 @@ class Reflinks {
 
 			if ( !$unchanged ) {	
 				if ( !$metadata->exists( "work" ) && $options->get( "usedomainaswork" ) ) { // Use the base domain as work
-					$metadata->work = Utils::getBaseDomain( $oldref['url'] );
+					$metadata->work = Utils::getBaseDomain( $metadata->url );
 				}
 				// Generate cite template
 				if ( $options->get( "plainlink" ) ) { // use plain CS1
@@ -210,7 +209,7 @@ class Reflinks {
 					$cm->replaceFirstOccurence( $citation['complete'], $replacement );
 				}
 				$log['fixed'][] = array(
-					'url' => $oldref['url']
+					'url' => $metadata->url
 				);
 			}
 		};
