@@ -115,103 +115,109 @@ class Reflinks {
 			// Let's find out what kind of reference it is...
 			$parser = new CitationParser();
 			$metadata = $parser->parse( $core );
-			if ( !$metadata ) { // probably already filled in
-				return;
-			}
 
-			if ( $spamFilter->check( $metadata->url ) ) {
-				$log['skipped'][] = array(
-					'ref' => $core,
-					'reason' => $app::SKIPPED_SPAM,
-					'status' => $status,
-				);
-				return;
-			}
-		
-			try {
-				$metadata = $handler->getMetadata( $metadata->url, $metadata );
-			} catch ( LinkHandlerException $e ) {
-				$message = $e->getMessage();
-				if ( !empty( $message ) ) {
-					$description = $message;
-				} else {
-					$description = $handler->explainErrorCode( $e->getCode() );
+			if ( $metadata ) { // Needs fixing
+				if ( $spamFilter->check( $metadata->url ) ) {
+					$log['skipped'][] = array(
+						'ref' => $core,
+						'reason' => $app::SKIPPED_SPAM,
+						'status' => $status,
+					);
+					return;
 				}
-				$log['skipped'][] = array(
-					'ref' => $core,
-					'reason' => $app::SKIPPED_HANDLER,
-					'description' => $description,
-				);
+			
+				try {
+					$metadata = $handler->getMetadata( $metadata->url, $metadata );
+				} catch ( LinkHandlerException $e ) {
+					$message = $e->getMessage();
+					if ( !empty( $message ) ) {
+						$description = $message;
+					} else {
+						$description = $handler->explainErrorCode( $e->getCode() );
+					}
+					$log['skipped'][] = array(
+						'ref' => $core,
+						'reason' => $app::SKIPPED_HANDLER,
+						'description' => $description,
+					);
+					$unchanged = true;
+					$newcore = $core;
+				}
+
+				// finally{} is available on PHP 5.5+, but we need to maintain compatibility with 5.3... What a pity :(
+				if ( !$unchanged ) {
+					if ( empty( $metadata->title ) ) {
+						$log['skipped'][] = array(
+							'ref' => $core,
+							'reason' => $app::SKIPPED_NOTITLE,
+							'status' => $response->header['http_code'],
+						);
+						$unchanged = true;
+					} else {
+						if ( !$metadata->exists( "work" ) && $options->get( "usedomainaswork" ) ) { // Use the base domain as work
+							$metadata->work = Utils::getBaseDomain( $metadata->url );
+						}
+						// Generate cite template
+						if ( $options->get( "plainlink" ) ) { // use plain CS1
+							$generator = new PlainCs1Generator( $options );
+						} else { // use {{cite web}}
+							$generator = new CiteTemplateGenerator( $options );
+						}
+						$newcore = $generator->getCitation( $metadata, $dateformat );
+					}
+				}
+			} else {
 				$unchanged = true;
-			}
-			// finally{} is available on PHP 5.5+, but we need to maintain compatibility with 5.3... What a pity :(
-
-			if ( !$unchanged && empty( $metadata->title ) ) {
-				$log['skipped'][] = array(
-					'ref' => $core,
-					'reason' => $app::SKIPPED_NOTITLE,
-					'status' => $response->header['http_code'],
-				);
-				$unchanged = true;
+				$newcore = $core;
 			}
 
-			if ( !$unchanged ) {	
-				if ( !$metadata->exists( "work" ) && $options->get( "usedomainaswork" ) ) { // Use the base domain as work
-					$metadata->work = Utils::getBaseDomain( $metadata->url );
-				}
-				// Generate cite template
-				if ( $options->get( "plainlink" ) ) { // use plain CS1
-					$generator = new PlainCs1Generator( $options );
-				} else { // use {{cite web}}
-					$generator = new CiteTemplateGenerator( $options );
-				}
-				$newcore = $generator->getCitation( $metadata, $dateformat );
-
-				// Let's deal with the duplicated references
-				if ( $cm->hasDuplicates( $core ) ) {
-					$duplicates = $cm->searchByContent( $core );
-					$attributes = array();
-					$startAttrs = "";
-					foreach ( $duplicates as $duplicate ) {
-						if ( isset( $duplicate['attributes'] ) ) { // So one of the duplicates has a name
-							foreach ( $duplicate['attributes'] as $name => $value ) {
-								$attributes[$name] = $value;
-							}
+			if ( $cm->hasDuplicates( $core ) ) {
+				$duplicates = $cm->searchByContent( $core );
+				$attributes = array();
+				$startAttrs = "";
+				foreach ( $duplicates as $duplicate ) {
+					if ( isset( $duplicate['attributes'] ) ) { // So one of the duplicates has a name
+						foreach ( $duplicate['attributes'] as $name => $value ) {
+							$attributes[$name] = $value;
 						}
 					}
-					if ( empty( $attributes['name'] ) ) {
+				}
+				if ( empty( $attributes['name'] ) ) {
+					if ( $metadata ) {
 						if ( !empty( $metadata->author ) ) {
 							$attributes['name'] = strtolower( str_replace( " ", "", $metadata->author ) );
 						} else {
 							$attributes['name'] = Utils::getBaseDomain( $metadata->url );
 						}
-						if ( $cm->hasExactAttribute( "name", $attributes['name'] ) ) {
-							$suffix = 1;
-							while ( true ) {
-								if ( $cm->hasExactAttribute( "name", $attributes['name'] . $suffix ) ) {
-									$suffix++;
-								} else {
-									break;
-								}
+					} else {
+						$attributes['name'] = "auto";
+					}
+					if ( $cm->hasExactAttribute( "name", $attributes['name'] ) ) {
+						$suffix = 1;
+						while ( true ) {
+							if ( $cm->hasExactAttribute( "name", $attributes['name'] . $suffix ) ) {
+								$suffix++;
+							} else {
+								break;
 							}
-							$attributes['name'] .= $suffix;
 						}
+						$attributes['name'] .= $suffix;
 					}
-					foreach ( $attributes as $name => $value ) {
-						$startAttrs .= $cm->generateAttribute( $name, $value ) . " ";
-					}
-					$replacement = $cm->generateCitation( $newcore, $startAttrs );
-					$stub = $cm->generateStub( $startAttrs );
-					$cm->replaceFirstOccurence( $citation['complete'], $replacement );
-					$cm->replaceByContent( $core, $stub );
-				} else { // Just keep the original surrounding tags
-					$replacement = $citation['startTag'] . $newcore . $citation['endTag'];
-					$cm->replaceFirstOccurence( $citation['complete'], $replacement );
 				}
-				$log['fixed'][] = array(
-					'url' => $metadata->url
-				);
+				foreach ( $attributes as $name => $value ) {
+					$startAttrs .= $cm->generateAttribute( $name, $value ) . " ";
+				}
+				$replacement = $cm->generateCitation( $newcore, $startAttrs );
+				$stub = $cm->generateStub( $startAttrs );
+				$cm->replaceFirstOccurence( $citation['complete'], $replacement );
+				$cm->replaceByContent( $core, $stub );
+			} elseif ( !$unchanged ) { // Just keep the original surrounding tags
+				$replacement = $citation['startTag'] . $newcore . $citation['endTag'];
+				$cm->replaceFirstOccurence( $citation['complete'], $replacement );
 			}
+			$log['fixed'][] = array(
+				'url' => $metadata->url
+			);
 		};
 		$cm->loopCitations( $callback ); // Do it!
 		return $cm->exportWikitext();
