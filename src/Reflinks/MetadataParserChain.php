@@ -41,6 +41,7 @@ class MetadataParserChain {
 	public function append( $parser ) {
 		if ( is_subclass_of( $parser, "MetadataParser" ) ) {
 			$this->chain[] = $parser;
+			return true;
 		} elseif ( is_string( $parser ) ) {
 			// The autoloader doesn't automatically resolve the namespace here, so...
 			if ( strpos( $parser, '\\' ) ) { // absolute namespace
@@ -50,6 +51,7 @@ class MetadataParserChain {
 			}
 			if ( class_exists( $class ) ) {
 				$this->chain[] = new $class();
+				return true;
 			} else {
 				throw new NoSuchMetadataParserException( $class );
 			}
