@@ -24,86 +24,98 @@
 	This script is intended to be included on-wiki!
 	
 	This script depends on jQuery and MediaWiki environment.
-	Please change the metadata and configuations below to suit your needs.
+	
+	Set rlServer to the URL of the tool, and rlWiki to the
+	wiki identifier.
 */
 
-/*global rlServer, rlWiki, mw */
+/*global rlServer, rlWiki, mw, $ */
 /*jshint multistr: true */
 
 // ==UserScript==
-// @name        Reflinks
+// @name        Reflinks gadget
 // @description Adds a toolbox link to the Reflinks tool
 // @namespace   https://en.wikipedia.org/wiki/User:Zhaofeng_Li
 // @include     *://en.wikipedia.org/*
-// @version     6
+// @version     10
 // @grant       none
 // ==/UserScript==
 
-if ( typeof rlServer === "undefined" ) {
-	var rlServer = "https://tools.wmflabs.org/fengtools/reflinks";
-}
+function ReflinksGadget() {
+	this.server = typeof rlServer !== 'undefined' ? rlServer
+	            : "https://tools.wmflabs.org/fengtools/reflinks";
+	this.wiki = typeof rlWiki !== 'undefined' ? rlWiki
+	          : null;
 
-var rlOptionLink = "", rlPortlet = "";
+	this.portletLink = "";
+	this.optionsLink = "";
 
-function rlIsWatching() {
-	// Let's use a little hack to determine whether the current page is watched or not
-	if ( $( "#ca-unwatch" ).length !== 0 ) {
-		return true;
-	} else {
-		return false;
+	this.isWatching = function() {
+		// Let's use a little hack to determine whether the current page is watched or not
+		if ( $( "#ca-unwatch" ).length !== 0 ) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-}
-
-function rlGetSubmitUrl( defaults ) {
-	var pagename = mw.config.get( "wgPageName" );
-	var url = rlServer + "/result.php?page=" + encodeURIComponent( pagename );
-	if ( defaults ) {
-		url += "&defaults=y";
+	
+	this.getSubmitUrl = function( defaults ) {
+		var pagename = mw.config.get( "wgPageName" );
+		var url = this.server + "/result.php?page=" + encodeURIComponent( pagename );
+		if ( defaults ) {
+			url += "&defaults=y";
+		}
+		if ( !this.isWatching() ) {
+			url += "&nowatch=y";
+		}
+		if ( this.wiki !== null ) {
+			url += "&wiki=" + encodeURIComponent( this.wiki );
+		}
+		return url;
 	}
-	if ( !rlIsWatching() ) {
-		url += "&nowatch=y";
+	
+	this.setUpForm = function() {
+		this.tearDownForm();
+		$( "#mw-content-text" ).prepend( "\
+	<div id='reflinks' style='border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;'>\
+		<h2>Options</h1>\
+		<form id='reflinks-form' method='post' action='" + this.getSubmitUrl( false ) + "'>\
+			<div id='reflinks-options'>Loading options...</div>\
+			<input name='method-wiki' type='submit' value='Fix page'/>\
+			<a href='" + this.server + "' style='color: #555;'>Tool homepage</a>\
+		</form>\
+	</div>" );
+		if ( !this.isWatching() ) {
+			var nowatch = $( "<input>" ).attr( "name", "nowatch" ).attr( "type", "hidden" ).val( "y" );
+			$( "#reflinks-form" ).append( nowatch );
+		}
+		$( "html, body" ).animate( {
+			scrollTop: $( "#reflinks" ).offset().top - 10
+		}, 250 );
 	}
-	if ( typeof rlWiki !== "undefined" ) {
-		url += "&wiki=" + encodeURIComponent( rlWiki );
+	
+	this.loadRemoteOptions = function() {
+		$.getJSON( this.server + "/api.php?action=optionsform&callback=?", function ( json ) {
+			$( "#reflinks-options" ).html( json.form );
+		} );
 	}
-	return url;
-}
-
-function rlSetUpForm() {
-	rlTearDownForm();
-	$( "#mw-content-text" ).prepend( "\
-<div id='reflinks' style='border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;'>\
-	<h2>Options</h1>\
-	<form id='reflinks-form' method='post' action='" + rlGetSubmitUrl( false ) + "'>\
-		<div id='reflinks-options'>Loading options...</div>\
-		<input name='method-wiki' type='submit' value='Fix page'/>\
-		<a href='" + rlServer + "' style='color: #555;'>Tool homepage</a>\
-	</form>\
-</div>" );
-	if ( !rlIsWatching() ) {
-		var nowatch = $( "<input>" ).attr( "name", "nowatch" ).attr( "type", "hidden" ).val( "y" );
-		$( "#reflinks-form" ).append( nowatch );
+	
+	this.tearDownForm = function() {
+		$( "#reflinks" ).remove();
 	}
-	$( "html, body" ).animate( {
-		scrollTop: $( "#reflinks" ).offset().top - 10
-	}, 250 );
-}
-
-function rlLoadRemoteOptions() {
-	$.getJSON( rlServer + "/api.php?action=optionsform&callback=?", function ( json ) {
-		$( "#reflinks-options" ).html( json.form );
-	} );
-}
-
-function rlTearDownForm() {
-	$( "#reflinks" ).remove();
+	
+	this.init = function() {
+		this.portletLink = mw.util.addPortletLink( "p-tb", this.getSubmitUrl( true ), "Reflinks" );
+		var obj = this;
+		this.optionsLink = $( "<a>" ).attr( "href", "#" ).text( "(options)" ).click( function() {
+			obj.setUpForm();
+			obj.loadRemoteOptions();
+		} );
+		$( this.portletLink ).append( $( "<sup>").html( this.optionsLink ) );
+	}
 }
 
 $( document ).ready( function() {
-	rlPortlet = mw.util.addPortletLink( "p-tb", rlGetSubmitUrl( true ), "Reflinks" );
-	rlOptionLink = $( "<a>" ).attr( "href", "#" ).html( "(options)" ).click( function() {
-		rlSetUpForm();
-		rlLoadRemoteOptions();
-	} );
-	$( rlPortlet ).append( $( "<sup>").html( rlOptionLink ) );
+	var rlGadget = new ReflinksGadget();
+	rlGadget.init();
 } );
