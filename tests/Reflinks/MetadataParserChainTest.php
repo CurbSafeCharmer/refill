@@ -31,13 +31,13 @@ class MetadataParserChainTest extends \PHPUnit_Framework_TestCase {
 	public function testAppendObject() {
 		$chain = new MetadataParserChain();
 		$mock = $this->getMock( "MetadataParser" );
-		$chain->append( $mock );
+		$this->assertTrue( $chain->append( $mock ) );
 	}
 
 	public function testAppendClassName() {
 		$chain = new MetadataParserChain();
 		$chain->append( "Reflinks\UnitTestMockMetadataParserA" );
-		$chain->append( "UnitTestMockMetadataParserB" );
+		$this->assertTrue( $chain->append( "UnitTestMockMetadataParserB" ) );
 	}
 
 	/**
