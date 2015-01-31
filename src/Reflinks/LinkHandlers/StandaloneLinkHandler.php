@@ -62,6 +62,17 @@ class StandaloneLinkHandler extends LinkHandler {
 			throw new LinkHandlerException( "Empty response", self::ERROR_EMPTY );	
 		}
 
+		// Determine the page's encoding
+		$encodings = array(
+			"GB2312", "GBK", "BIG5", "EUC-JP", "SJIS", "eucJP-win", "SJIS-win", "JIS", "ISO-2022-JP", "UTF-8", "UTF-7", "ASCII", "LATIN1"
+		);
+		if ( $ctypeEncodingPos = stripos( $response->header['content_type'], "charset=" ) !== false ) {
+			// Take the charset declaration in Content-Type into account
+			array_unshift( $encodings, substr( $response->header['content_type'], $ctypeEncodingPos + 8 ) );
+		}
+		$encoding = mb_detect_encoding( $response->html, $encodings );
+		$utf8Html = mb_convert_encoding( $response->html, "UTF-8", $encoding );
+
 		// Extract the metadata
 		if ( $baseMetadata ) {
 			$metadata = $baseMetadata;
@@ -70,8 +81,7 @@ class StandaloneLinkHandler extends LinkHandler {
 		}
 		$metadata->url = $url;
 		$html5 = new HTML5();
-		$encoding = mb_detect_encoding( $response->html, "GB2312, GBK, BIG5, EUC-JP, SJIS, eucJP-win, SJIS-win, JIS, ISO-2022-JP, UTF-8, UTF-7, ASCII, LATIN1" );
-		$dom = $html5->loadHTML( mb_convert_encoding( $response->html, "UTF-8", $encoding ) );
+		$dom = $html5->loadHTML( $utf8Html );
 		$metadata = $this->chain->parse( $dom, $metadata );
 		return $metadata;
 	}
