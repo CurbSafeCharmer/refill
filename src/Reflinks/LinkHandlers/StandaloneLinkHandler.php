@@ -66,12 +66,18 @@ class StandaloneLinkHandler extends LinkHandler {
 		$encodings = array(
 			"GB2312", "GBK", "BIG5", "EUC-JP", "SJIS", "eucJP-win", "SJIS-win", "JIS", "ISO-2022-JP", "UTF-8", "UTF-7", "ASCII", "LATIN1"
 		);
-		if ( $ctypeEncodingPos = stripos( $response->header['content_type'], "charset=" ) !== false ) {
-			// Take the charset declaration in Content-Type into account
-			array_unshift( $encodings, substr( $response->header['content_type'], $ctypeEncodingPos + 8 ) );
+		if ( preg_match( "/\<meta[^\>]+charset\=[\\\"\']?([\w\-]+)/i", $response->html, $matches ) ) { // Charset declaration in HTML
+			// The regex matches both the old-school `http-equiv` attribute and the HTML5 `charset` attribute
+			array_unshift( $encodings, $matches[1] );
+		} elseif ( preg_match( "/charset\=([\w\-]+)/i", $response->header['content_type'], $matches ) ) { // Content-Type in HTTP header
+			array_unshift( $encodings, $matches[1] );
 		}
 		$encoding = mb_detect_encoding( $response->html, $encodings );
-		$utf8Html = mb_convert_encoding( $response->html, "UTF-8", $encoding );
+		if ( $encoding != "UTF-8" ) {
+			$utf8Html = mb_convert_encoding( $response->html, "UTF-8", $encoding );
+		} else {
+			$utf8Html = $response->html;
+		}
 
 		// Extract the metadata
 		if ( $baseMetadata ) {
