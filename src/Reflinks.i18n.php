@@ -11,15 +11,11 @@ $messages = array();
 
 /**
  * English
- * @author Zhaofeng Li
+ * @author Contributors
  */
 $messages['en'] = array(
 	'appname' => 'Reflinks',
 	'tagline' => 'Expand bare references with ease',
-	'manual' => 'Manual',
-	'sourcecode' => 'Source',
-	'acknowledgements' => 'Acknowledgements',
-
 	
 	// Headings
 	'heading-fetchfromwiki' => 'Fetch content from a wiki',
@@ -29,6 +25,9 @@ $messages['en'] = array(
 	'heading-result' => 'Result',
 	'heading-newwikitext' => 'New wiki markup',
 	'heading-error' => 'Error',
+	'heading-manual' => 'Manual',
+	'heading-acknowledgements' => 'Acknowledgements',
+	'heading-reportbugs' => 'Report bugs',
 	
 	// Input placeholders
 	'placeholder-pagename' => 'Page name',
@@ -39,6 +38,9 @@ $messages['en'] = array(
 	'label-fixwikitext' => 'Fix wikitext',
 	'label-toggleadv' => 'Toggle advanced input',
 	'label-generate' => 'Generate',
+	'label-manual' => 'Manual',
+	'label-sourcecode' => 'Source',
+	'label-acknowledgements' => 'Acknowledgements',
 	'label-reportbugs' => 'Report bugs',
 	'label-switchlang' => 'Languages',
 	'label-save' => 'Preview / Save on Wiki',
@@ -65,12 +67,8 @@ $messages['en'] = array(
 	// Options
 	'option-plainlink' => 'Use plain formatting instead of {{cite web}}',
 	'option-plainlink-description' => 'If selected, bare references will be expanded without using {{cite web}}. This is discouraged since cite templates provide a consistent citation style and enable easy parsing by programs.',
-	'option-nofixuplain' => 'Do not expand bare URLs surrounded with [ ]',
-	'option-nofixcplain' => 'Do not expand references with a captioned external link only',
-	'option-nofixcplain-description' => 'If selected, references consisting of a captioned external link only will not be expanded.',
 	'option-noremovetag' => 'Do not remove link rot tags',
 	'option-noremovetag-description' => 'If selected, link rot tags will be kept even if no reference is skipped unexpectedly during the process.',
-	'option-nofixutemplate' => 'Do not fix {{cite web}} templates with a URL only',
 	'option-nowatch' => 'Do not watch the page when using Wiki as the source',
 	'option-nowatch-description' => 'If selected, the \'Watch this page\' checkbox on the on-wiki editing interface will be unticked by default.',
 	'option-addblankmetadata' => 'Add blank metadata fields when the information is unavailable',
@@ -79,17 +77,18 @@ $messages['en'] = array(
 	'option-usedomainaswork' => 'Use the base domain name as work when this information cannot be parsed',
 	
 	// Labs-specific (i.e. not used on the vanilla version on GitHub)
-	'wmflabs-thankyoutest' => 'Thank you for testing the experimental version of Reflinks. Please report the bugs you encounter.',
-	'wmflabs-latestcommit' => 'Latest commit: ',
+	'wmflabs-thankyoutest' => 'Thank you for testing the experimental version of $1. Please report the bugs you encounter.',
+	'wmflabs-latestcommit' => 'Latest commit: $1',
 	'wmflabs-poweredby' => 'Powered by Wikimedia Labs',
 );
 
+/**
+ * Simplified Chinese
+ * @author Zhaofeng Li
+ */
 $messages['zh-hans'] = array(
 	'appname' => '来源扩充',
 	'tagline' => '轻松填充裸露来源链接',
-	'manual' => '帮助',
-	'sourcecode' => '源代码',
-	'acknowledgements' => '致谢',
 	
 	// 题头
 	'heading-fetchfromwiki' => '从维基获取页面',
@@ -99,6 +98,9 @@ $messages['zh-hans'] = array(
 	'heading-result' => '结果',
 	'heading-newwikitext' => '新维基代码',
 	'heading-error' => '错误',
+	'heading-manual' => '帮助',
+	'heading-acknowledgements' => '致谢',
+	'heading-reportbugs' => '报告错误',	
 	
 	// 输入提示
 	'placeholder-pagename' => '页面名称',
@@ -109,6 +111,9 @@ $messages['zh-hans'] = array(
 	'label-fixwikitext' => '修复维基代码',
 	'label-toggleadv' => '显示高级选项',
 	'label-generate' => '生成',
+	'label-manual' => '帮助',
+	'label-sourcecode' => '源代码',
+	'label-acknowledgements' => '致谢',
 	'label-reportbugs' => '报告错误',
 	'label-switchlang' => '切换语言',
 	'label-save' => '在维基上预览/保存',
@@ -136,11 +141,63 @@ $messages['zh-hans'] = array(
 	'option-plainlink' => '手工实现格式而不使用 {{cite web}}',
 	
 	// 仅供 Labs (不被GitHub上的原版本使用)
-	'wmflabs-thankyoutest' => '感谢你帮助测试Reflinks。请报告你遇到的错误，谢谢。',
-	'wmflabs-latestcommit' => '最新提交：',
+	'wmflabs-thankyoutest' => '感谢你帮助测试$1。请报告你遇到的错误，谢谢。',
+	'wmflabs-latestcommit' => '最新提交：$1',
 	'wmflabs-poweredby' => '由维基媒体实验室驱动',
 );
 
 $messages['qqq'] = array(
-	'appname' => 'This is the application name. In localised versions, it should be concise and give users a basic idea of what the app does (expanding bare references).'
+	'appname' => '{{Optional|Translate it only if you have a good name that is concise and gives a basic idea of what the tool does in your language.}}',
+	'tagline' => 'A brief explanation of the tool\'s purpose. This is displayed below its name on the main page of the tool. Please keep it concise.',
+	
+	// Headings
+	'heading-fetchfromwiki' => 'The heading of the form of the \'Fetch from wiki\' mode. Used on the main page.',
+	'heading-rawwikitext' => 'The heading of the form of the \'Enter wikitext\' mode. Used on the main page.',
+	'heading-options' => 'The heading of the form sections containing checkboxes of options. Used on the main page.',
+	'heading-citegen' => 'The heading of the form of the citation generator tool. Used on the main page.',
+	'heading-result' => 'The heading of the result page. This is also used as the browser title of the page.',
+	'heading-newwikitext' => 'The heading of the section containing the resulting wikitext. Used on the result page.',
+	'heading-error' => 'The heading of the error page. This is also used as the browser title of the page.',
+	'heading-manual' => 'The heading of the manual page. This is also used as the browser title of the page.',
+	'heading-acknowledgements' => 'The heading of the acknowledgements page. This is also used as the browser title of the page.',
+	'heading-reportbugs' => 'The heading of the bug reporting page. This is also used as the browser title of the page.',
+	
+	// Input placeholders
+	'placeholder-pagename' => 'The placeholder text shown in an input field expecting a name of a wiki page.',
+	'placeholder-url' => 'The placeholder text shown in an input field expecting a URL.',
+	
+	// Labels
+	'label-fixpage' => 'This is used as the button label.',
+	'label-fixwikitext' => 'This is used as the button label.',
+	'label-toggleadv' => 'This is used as the button label.',
+	'label-generate' => 'This is used as the button label.',
+	'label-manual' => 'This is used as the label of a link in the navigation bar.',
+	'label-sourcecode' => 'This is used as the label of a link in the navigation bar.',
+	'label-acknowledgements' => 'This is used as the label of a link in the navigation bar.',
+	'label-reportbugs' => 'This is used as the label of a link in the navigation bar.',
+	'label-switchlang' => 'This is used as the label of a link in the navigation bar.',
+	'label-save' => 'This is used as the button label.',
+	
+	// General messages
+	/*
+		Well, I remember the the translation interface in Launchpad gives an automatic hint about how to deal with the parameters.
+		Maybe the Translate extension can do the same? (Or am I missing something?)
+	*/
+	'fixed' => 'Please keep the $1 intact. It\'ll be replaced by a number at run-time.',
+	'colourlegend' => 'This will be followed by a colour legend.',
+	'colour-insert' => 'This is used in the diff highlighting colour legend.',
+	'colour-delete' => 'This is used in the diff highlighting colour legend.',
+	'diff-insert' => 'This is used in the diff highlighting colour legend for added text.',
+	'diff-delete' => 'This is used in the diff highlighting colour legend for removed text.',
+	
+	// Misc.
+	'developedby' => 'The $1 will be replaced by the names of the developers. Keep it intact.',
+	
+	// Options
+	'option-plainlink' => 'Label of an option checkbox. Plain formatting means manually using wiki markup to format the reference instead of citation templates. The type of the formatting is undetermined and may depend on the wiki.',
+	'option-noremovetag' => 'This may not be applicable to all wikis.',
+	
+	// Labs-specific (i.e. not used on the vanilla version on GitHub)
+	'wmflabs-thankyoutest' => 'Used on the main page of the experimental version on Tool Labs. The $1 will be replaced by the application name at run-time.',
+	'wmflabs-latestcommit' => 'Information about the software commit. The $1 will be replaced by the actual commit information. Keep it intact.',
 );
