@@ -223,7 +223,7 @@ class Reflinks {
 		return $cm->exportWikitext();
 	}
 	public function getResult() {
-		global $config;
+		global $config, $I18N;
 		$result = array();
 		
 		// Fetch the source wikitext
@@ -265,8 +265,18 @@ class Reflinks {
 		// Generate default summary
 		$counter = count( $result['log']['fixed'] );
 		$counterskipped = count( $result['log']['skipped'] );
-		$result['summary'] = str_replace( "%numfixed%", $counter, $config['summary'] );
-		$result['summary'] = str_replace( "%numskipped%", $counterskipped, $result['summary'] );
+		if ( !isset( $config['summary'] ) ) { //Use the I18N engine
+			$toollink = $I18N->msg( "toollink" );
+			$result['summary'] = $I18N->msg( "summary", array( "variables" => array(
+				$counter, $counterskipped, $toollink
+			) ) );
+		} else { // Use the one supplied by the local config
+			$result['summary'] = str_replace( "%numfixed%", $counter, $config['summary'] );
+			$result['summary'] = str_replace( "%numskipped%", $counterskipped, $result['summary'] );
+		}
+		if ( isset( $config['summaryextra'] ) ) {
+			$result['summary'] .= $config['summaryextra']; // Add extra information
+		}
 		$result['timestamp'] = Utils::generateWikiTimestamp();
 		
 		$result['status'] = self::STATUS_SUCCESS;

@@ -39,9 +39,14 @@ $config['parserchain'] = array(
 // Stuff to insert into the end of a cite template
 $config['citeextra'] = "";
 
-// Default edit summary for the generated edit
+// Override localised default edit summary
 // Use %numfixed% to show how many references are fixed, and %numskipped% for skipped.
-$config['summary'] = "Filled in %numfixed% bare reference(s) with [[User:Zhaofeng Li/Reflinks]]";
+// Setting this will /OVERRIDE/ the I18N version!
+// $config['summary'] = "Filled in %numfixed% bare reference(s) with [[User:Zhaofeng Li/Reflinks]]";
+
+// Extra information to append to the default edit summary
+// This will be added to the end of the default edit summary
+// $config['summaryextra'] = "";
 
 // Whether to enable the filter or not
 $config['spam']['enable'] = false;

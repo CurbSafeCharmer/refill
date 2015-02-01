@@ -63,6 +63,8 @@ $messages['en'] = array(
 	'comingsoon' => 'Coming soon',
 	'uhoh' => 'Uh-oh!',
 	'developedby' => 'by $1',
+	'summary' => 'Filled in $1 bare reference(s) with $3',
+	'toollink' => '[[User:Zhaofeng Li/Reflinks]]',
 	
 	// Options
 	'option-plainlink' => 'Use plain formatting instead of {{cite web}}',
@@ -80,6 +82,7 @@ $messages['en'] = array(
 	'wmflabs-thankyoutest' => 'Thank you for testing the experimental version of $1. Please report the bugs you encounter.',
 	'wmflabs-latestcommit' => 'Latest commit: $1',
 	'wmflabs-poweredby' => 'Powered by Wikimedia Labs',
+	'wmflabs-testsummary' => 'Filled in $1 bare reference(s) with the test version of $3',
 );
 
 /**
@@ -136,6 +139,8 @@ $messages['zh-hans'] = array(
 	'comingsoon' => '敬请期待',
 	'uhoh' => '噢，不！',
 	'developedby' => '由 $1 开发',
+	'summary' => '用$3填充了$1个裸露来源链接',
+	'toollink' => '[[User:Zhaofeng Li/Reflinks]]',
 	
 	// 选项
 	'option-plainlink' => '手工实现格式而不使用 {{cite web}}',
@@ -144,6 +149,7 @@ $messages['zh-hans'] = array(
 	'wmflabs-thankyoutest' => '感谢你帮助测试$1。请报告你遇到的错误，谢谢。',
 	'wmflabs-latestcommit' => '最新提交：$1',
 	'wmflabs-poweredby' => '由维基媒体实验室驱动',
+	'wmflabs-testsummary' => '用测试版的$3填充了$1个裸露来源链接',
 );
 
 $messages['qqq'] = array(
@@ -192,6 +198,8 @@ $messages['qqq'] = array(
 	
 	// Misc.
 	'developedby' => 'The $1 will be replaced by the names of the developers. Keep it intact.',
+	'summary' => 'The default edit summary. $1 will be replaced by the fixed count, $2 by the skipped count and $3 by a wikilink to the manual page',
+	'toollink' => 'A wikilink to the documentation page',
 	
 	// Options
 	'option-plainlink' => 'Label of an option checkbox. Plain formatting means manually using wiki markup to format the reference instead of citation templates. The type of the formatting is undetermined and may depend on the wiki.',
