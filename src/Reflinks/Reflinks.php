@@ -164,6 +164,9 @@ class Reflinks {
 							$generator = new CiteTemplateGenerator( $options );
 						}
 						$newcore = $generator->getCitation( $metadata, $dateformat );
+						$log['fixed'][] = array(
+							'url' => $metadata->url
+						);
 					}
 				}
 			} else {
@@ -215,9 +218,6 @@ class Reflinks {
 				$replacement = $citation['startTag'] . $newcore . $citation['endTag'];
 				$cm->replaceFirstOccurence( $citation['complete'], $replacement );
 			}
-			$log['fixed'][] = array(
-				'url' => $metadata->url
-			);
 		};
 		$cm->loopCitations( $callback ); // Do it!
 		return $cm->exportWikitext();
