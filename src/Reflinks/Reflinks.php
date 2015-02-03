@@ -213,7 +213,7 @@ class Reflinks {
 				$replacement = $cm->generateCitation( $newcore, $startAttrs );
 				$stub = $cm->generateStub( $startAttrs );
 				$cm->replaceFirstOccurence( $citation['complete'], $replacement );
-				$cm->replaceByContent( $core, $stub );
+				$cm->replaceByContent( $core, $stub, true );
 			} elseif ( !$unchanged ) { // Just keep the original surrounding tags
 				$replacement = $citation['startTag'] . $newcore . $citation['endTag'];
 				$cm->replaceFirstOccurence( $citation['complete'], $replacement );
