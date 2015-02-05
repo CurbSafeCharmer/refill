@@ -152,6 +152,81 @@ $messages['zh-hans'] = array(
 	'wmflabs-testsummary' => '用测试版的$3填充了$1个裸露来源链接',
 );
 
+/**
+ * Portuguese
+ * @author Victor Lopes
+ */
+$messages['pt'] = array(
+	'tagline' => 'Formate referências com facilidade',
+
+	// Headings
+	'heading-fetchfromwiki' => 'Obtenha conteúdo de uma wiki',
+	'heading-rawwikitext' => 'Entre na marcação Wiki',
+	'heading-options' => 'Opções',
+	'heading-citegen' => 'Gerar uma referência',
+	'heading-result' => 'Resultado',
+	'heading-newwikitext' => 'Nova marcação Wiki',
+	'heading-error' => 'Erro',
+	'heading-manual' => 'Manual',
+	'heading-acknowledgements' => 'Agradecimentos',
+	'heading-reportbugs' => 'Relatar bugs',
+
+	// Input placeholders
+	'placeholder-pagename' => 'Nome da página',
+	'placeholder-url' => 'URL',
+
+	// Labels
+	'label-fixpage' => 'Consertar página',
+	'label-fixwikitext' => 'Consertar texto Wiki',
+	'label-toggleadv' => 'Ativar entradas avançadas',
+	'label-generate' => 'Gerar',
+	'label-manual' => 'Manual',
+	'label-sourcecode' => 'Fonte',
+	'label-acknowledgements' => 'Agradecimentos',
+	'label-reportbugs' => 'Relatar bugs',
+	'label-switchlang' => 'Idiomas',
+	'label-save' => 'Pré-visualizar / Salvar na Wiki',
+
+	// General messages
+	'fixed' => '$1 referência(s) consertada(s)!',
+	'nofixed' => 'Nenhuma referência consertada.',
+	'skipped' => 'A(s) referência(s) a seguir não pôde/puderam ser formatada(s):',
+	'responsibility' => 'Você é responsável por toda edição que fizer.',
+	'pleasedoublecheck' => 'Favor conferir a edição antes de salvar!',
+	'noaccessdate' => 'Nota: Datas de acesso são omitidas do resultado. Favor verificar se as referências ainda validam as afirmações e adicionar as datas quando apropriado.',
+	'chancetoreview' => 'Você poderá revisar a edição antes de salvá-la.',
+	'colourlegend' => 'Cores:',
+	'colour-insert' => 'Azul',
+	'colour-delete' => 'Laranja',
+	'diff-insert' => 'Adicionado',
+	'diff-delete' => 'Removido',
+
+	// Misc.
+	'comingsoon' => 'Em breve',
+	'uhoh' => 'Oh-oh!',
+	'developedby' => 'por $1',
+	'summary' => 'Formatando $1 referência(s) com $3',
+	'toollink' => '[[en:User:Zhaofeng Li/Reflinks|User:Zhaofeng Li/Reflinks]]',
+
+	// Options
+	'option-plainlink' => 'Usar formatação simples em vez de {{citar web}}',
+	'option-plainlink-description' => 'Se selecionado, as referências não formatadas serão expandidas sem a prédefinição {{citar web}}. Isso é desencorajado uma vez que as prédefinições de citação garantem um estilo de citação consistente e permitem fácil análise por parte de programas.',
+	'option-noremovetag' => 'Não remover marcações de referências não formatadas',
+	'option-noremovetag-description' => 'Se selecionado, as marcações de referências não formatadas serão mantidas mesmo que todas as referências tenham sido consertadas.',
+	'option-nowatch' => 'Não vigiar a página se a ferramenta for utilizada na Wikipédia',
+	'option-nowatch-description' => 'Se selecionado, a opção \'Vigiar esta página\' na interface de edição da Wikipédia será desmarcada por definição.',
+	'option-addblankmetadata' => 'Adicionar campos em branco de metadados quando a informação estiver indisponível.',
+	'option-noaccessdate' => 'Não adicionar datas de acesso',
+	'option-noaccessdate-description' => 'Se selecionado, as datas de acesso serão omitidas por definição.',
+	'option-usedomainaswork' => 'Usar o nome básico do domínio quando esta informação não puder ser analisada',
+
+	// Labs-specific (i.e. not used on the vanilla version on GitHub)
+	'wmflabs-thankyoutest' => 'Obrigado por testar a versão experimental de $1. Favor relatar bugs que você encontrar.',
+	'wmflabs-latestcommit' => 'Commit mais recente: $1',
+	'wmflabs-poweredby' => 'Distribuído por Wikimedia Labs',
+	'wmflabs-testsummary' => 'Formatando $1 referência(s) com a versão teste de $3',
+);
+
 $messages['qqq'] = array(
 	'appname' => '{{Optional|Translate it only if you have a good name that is concise and gives a basic idea of what the tool does in your language.}}',
 	'tagline' => 'A brief explanation of the tool\'s purpose. This is displayed below its name on the main page of the tool. Please keep it concise.',
