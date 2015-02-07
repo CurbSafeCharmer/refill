@@ -93,29 +93,21 @@ class CitationManipulator {
 		return $result;
 	}
 	/*
-		Replace the first occurence of a citation
-	*/
-	public function replaceFirstOccurence( $citation, $replacement ) {
-		$length = strlen( $citation );
-		$position = strpos( $this->wikitext, $citation );
-		$this->wikitext = substr_replace( $this->wikitext, $replacement, $position, $length );
-	}
-	/*
 		Change all citations with identical content
 	*/
-	public function replaceByContent( $content, $replacement, $skipFirst = false ) {
+	public function replaceByContent( $content, $first, $remaining = null ) {
 		$citations = $this->searchByContent( $content );
+		$i = 0;
 		// Some code smell here...
-		if ( count( $citations ) ) {
-			$first = $citations[0]['complete'];
-		}
 		foreach ( $citations as $citation ) {
-			if ( $skipFirst ) { // Okay, let's protect the first matched citation from being replaced
-				$arr = explode( $first, $this->wikitext, 2 );
-				$this->wikitext = $arr[0] . $first . str_replace( $citation['complete'], $replacement, $arr[1] );
-			} else {
-				$this->wikitext = str_replace( $citation['complete'], $replacement, $this->wikitext );
-			}
+			$pattern = "/" . preg_quote( $citation['complete'], "/" ) . "/";
+			$this->wikitext = preg_replace_callback( $pattern, function( $match ) use ( &$i, $first, $remaining ) {
+				if ( !empty( $remaining ) && $i++ != 0 ) {
+					return $remaining;
+				} else {
+					return $first;
+				}
+			}, $this->wikitext );
 		}
 	}
 	public function dumpCitations() {
