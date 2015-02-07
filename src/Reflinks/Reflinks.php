@@ -32,7 +32,6 @@ use Reflinks\Exceptions\LinkHandlerException;
 // Let's leave them hard-coded for now...
 use Reflinks\CitationGenerators\CiteTemplateGenerator;
 use Reflinks\CitationGenerators\PlainCs1Generator;
-use Reflinks\LinkHandlers\StandaloneLinkHandler;
 
 class Reflinks {
 	public $optionsProvider = null;
@@ -66,6 +65,8 @@ class Reflinks {
 		$this->spamFilter = new SpamFilter();
 
 		$this->wikiProvider = new WikiProvider();
+
+		$this->linkHandler = new $config['linkhandler']( $this->spider );
 	}
 	
 	public function fix( $wikitext, &$log = array() ) {
@@ -79,11 +80,10 @@ class Reflinks {
 			'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
 		);
 		$dateformat = Utils::detectDateFormat( $wikitext );
-		$handler = new StandaloneLinkHandler( $this->spider );
 		$options = &$this->options;
 		$spamFilter = &$this->spamFilter;
 		$app = &$this;
-		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, $dateformat, $handler, $app ) {
+		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, $dateformat, $app ) {
 			$status = 0;
 			$core = $citation['content'];
 			$unchanged = false;
@@ -107,13 +107,13 @@ class Reflinks {
 				}
 			
 				try {
-					$metadata = $handler->getMetadata( $metadata->url, $metadata );
+					$metadata = $app->linkHandler->getMetadata( $metadata->url, $metadata );
 				} catch ( LinkHandlerException $e ) {
 					$message = $e->getMessage();
 					if ( !empty( $message ) ) {
 						$description = $message;
 					} else {
-						$description = $handler->explainErrorCode( $e->getCode() );
+						$description = $app->linkHandler->explainErrorCode( $e->getCode() );
 					}
 					$log['skipped'][] = array(
 						'ref' => $core,
