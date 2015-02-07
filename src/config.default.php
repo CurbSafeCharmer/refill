@@ -24,6 +24,9 @@ $config['wikis'] = array(
 	),
 );
 
+// Link handler
+$config['linkhandler'] = "Reflinks\LinkHandlers\StandaloneLinkHandler";
+
 // Metadata parser chain
 $config['parserchain'] = array(
 	"TitleMetadataParser",
