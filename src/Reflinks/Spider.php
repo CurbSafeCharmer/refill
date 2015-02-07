@@ -31,6 +31,7 @@ use Reflinks\SpiderResponse;
 
 class Spider {
 	public $useragent = "";
+	public $postData = array();
 	
 	const FAILURE_NOTHTML = 0;
 	const FAILURE_RESETBYPEER = 1;
@@ -50,26 +51,40 @@ class Spider {
 		curl_setopt( $curl, CURLOPT_MAXREDIRS, 10 );
 		curl_setopt( $curl, CURLOPT_TIMEOUT, 10 );
 		if ( !empty( $referer ) ) curl_setopt( $curl, CURLOPT_REFERER, $referer );
+
+		if ( !empty( $this->postData ) ) {
+			$postString = http_build_query( $this->postData );
+			curl_setopt( $curl, CURLOPT_POST, count( $this->postData ) );
+			curl_setopt( $curl, CURLOPT_POSTFIELDS, $postString );
+		}
 		
 		// step 1: make sure it's text/html
-		curl_setopt( $curl, CURLOPT_NOBODY, true );
-		curl_exec( $curl );
-		$header = curl_getinfo( $curl );
-		if ( strpos( $header['content_type'], "text/html" ) === false && $htmlOnly ) {
-			$header['failure'] = self::FAILURE_NOTHTML;
-			return new SpiderResponse( false, "", $header );
-		} elseif ( $header['http_code'] == 0 ) {
-			$header['failure'] = self::FAILURE_RESETBYPEER;
-			return new SpiderResponse( false, "", $header );
+		if ( $htmlOnly ) {
+			curl_setopt( $curl, CURLOPT_NOBODY, true );
+			curl_exec( $curl );
+			$header = curl_getinfo( $curl );
+			if ( strpos( $header['content_type'], "text/html" ) === false ) {
+				$header['failure'] = self::FAILURE_NOTHTML;
+				return new SpiderResponse( false, "", $header );
+			} elseif ( $header['http_code'] == 0 ) {
+				$header['failure'] = self::FAILURE_RESETBYPEER;
+				return new SpiderResponse( false, "", $header );
+			}
 		}
 		
 		// step 2: actually fetch the page
 		curl_setopt( $curl, CURLOPT_NOBODY, false );
-		curl_setopt( $curl, CURLOPT_HEADER, false );
+		curl_setopt( $curl, CURLOPT_HEADER, false ); 
 		$content = curl_exec( $curl );
+		$header = curl_getinfo( $curl );
 		curl_close( $curl );
-		$response = new SpiderResponse( true, $content, $header );
-		return $response;
+		if ( $header['http_code'] == 0 ) {
+			$header['failure'] = self::FAILURE_RESETBYPEER;
+			return new SpiderResponse( false, "", $header );
+		} else {
+			$response = new SpiderResponse( true, $content, $header );
+			return $response;
+		}
 	}
 }
 
