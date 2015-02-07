@@ -79,12 +79,13 @@ function ReflinksGadget() {
 		$( "#mw-content-text" ).prepend( "\
 	<div id='reflinks' style='border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;'>\
 		<h2>Options</h1>\
-		<form id='reflinks-form' method='post' action='" + this.getSubmitUrl( false ) + "'>\
+		<form id='reflinks-form' method='post'>\
 			<div id='reflinks-options'>Loading options...</div>\
 			<input name='method-wiki' type='submit' value='Fix page'/>\
 			<a href='" + this.server + "' style='color: #555;'>Tool homepage</a>\
 		</form>\
 	</div>" );
+		$( "#reflinks-form" ).attr( "action", this.getSubmitUrl( false ) );
 		if ( !this.isWatching() ) {
 			var nowatch = $( "<input>" ).attr( "name", "nowatch" ).attr( "type", "hidden" ).val( "y" );
 			$( "#reflinks-form" ).append( nowatch );
