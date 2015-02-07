@@ -53,39 +53,19 @@ class Reflinks {
 	const SOURCE_TEXT = 0;
 	const SOURCE_WIKI = 1;
 	
-	function __construct( array $objects = array() ) {
+	function __construct() {
 		global $config;
-		if ( isset( $objects['optionsProvider'] ) ) {
-			$this->optionsProvider = $objects['optionsProvider'];
-		} else {
-			$this->optionsProvider = new UserOptionsProvider();
-		}
-		
-		if ( isset( $objects['options'] ) ) {
-			$this->options = $objects['options'];
-		} else {
-			$this->options = new UserOptions( $this->optionsProvider );
-			$this->options->load( $_GET );
-			$this->options->load( $_POST );
-		}
-		
-		if ( isset( $objects['spider'] ) ) {
-			$this->spider = $objects['spider'];
-		} else {
-			$this->spider = new Spider( $config['useragent'] );
-		}
-		
-		if ( isset( $objects['spamFilter'] ) ) {
-			$this->spamFilter = $objects['spamFilter'];
-		} else {
-			$this->spamFilter = new SpamFilter();
-		}
-		
-		if ( isset( $objects['wikiProvider'] ) ) {
-			$this->wikiProvider = $objects['wikiProvider'];
-		} else {
-			$this->wikiProvider = new WikiProvider();
-		}
+		$this->optionsProvider = new UserOptionsProvider();
+
+		$this->options = new UserOptions( $this->optionsProvider );
+		$this->options->load( $_GET );
+		$this->options->load( $_POST );
+
+		$this->spider = new Spider( $config['useragent'] );
+
+		$this->spamFilter = new SpamFilter();
+
+		$this->wikiProvider = new WikiProvider();
 	}
 	
 	public function fix( $wikitext, &$log = array() ) {
