@@ -44,6 +44,8 @@ $messages['en'] = array(
 	'label-reportbugs' => 'Report bugs',
 	'label-switchlang' => 'Languages',
 	'label-save' => 'Preview / Save on Wiki',
+	'label-gadgetoptions' => '(options)',
+	'label-homepage' => 'Tool homepage',
 	
 	// General messages
 	'fixed' => '$1 reference(s) fixed!',
@@ -120,6 +122,8 @@ $messages['zh-hans'] = array(
 	'label-reportbugs' => '报告错误',
 	'label-switchlang' => '切换语言',
 	'label-save' => '在维基上预览/保存',
+	'label-gadgetoptions' => '(选项)',
+	'label-homepage' => '工具主页',
 	
 	// 一般信息
 	'fixed' => '扩展了 $1 个引证！',

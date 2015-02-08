@@ -49,7 +49,23 @@ function ReflinksGadget() {
 
 	this.portletLink = "";
 	this.optionsLink = "";
-
+	
+	this.messages = {
+		'appname': "Reflinks",
+		'heading-options': "Options",
+		'label-fixpage': "Fix page",
+		'label-gadgetoptions': "(options)"
+	};
+	
+	this.messagesLoaded = false;
+	this.suppressConsole = false;
+	
+	this.log = function( message ) {
+		if ( !this.suppressConsole ) {
+			console.log( "Reflinks: " + message );
+		}
+	}
+	
 	this.isWatching = function() {
 		// Let's use a little hack to determine whether the current page is watched or not
 		if ( $( "#ca-unwatch" ).length !== 0 ) {
@@ -74,17 +90,60 @@ function ReflinksGadget() {
 		return url;
 	}
 	
+	this.msg = function( key ) {
+		if ( !this.messagesLoaded ) {
+			this.loadMessages( false );
+		}
+		// Even if it's "unloaded", we still have an incomplete set of English messages
+		if ( this.messages.hasOwnProperty( key ) ) {
+			return this.messages[key];
+		} else {
+			this.log( "Message not found: " + key );
+			return "[" + key + "]";
+		}
+	}
+	
+	this.loadMessages = function( forceReload ) {
+		var ts = localStorage.getItem( "reflinks-messagests" );
+		if ( ts < (new Date).getTime() - 259200000 || forceReload ) { // older than 3 days
+			this.log( "Loading messages from API" );
+			var obj = this;
+			$.getJSON( this.server + "/api.php?action=i18n&callback=?", function( data ) {
+				obj.messages = data;
+				obj.messagesLoaded = true;
+				localStorage.setItem( "reflinks-messages", JSON.stringify( data ) );
+				localStorage.setItem( "reflinks-messagests", (new Date).getTime() );
+			} );
+		} else if ( ts ) { // Cache exists
+			this.log( "Loading messages from cache @ " + ts );
+			this.messages = JSON.parse( localStorage.getItem( "reflinks-messages" ) );
+			this.messagesLoaded = true;
+		}
+	}
+	
 	this.setUpForm = function() {
 		this.tearDownForm();
+		var formControls = 
+		$( "#mw-content-text" ).prepend(
+			$( "<div>" ).attr( "id", "reflinks" ).attr( "style", "border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;" ).prepend(
+				$( "<h2>" ).text( this.msg( "heading-options" ) ),
+				$( "<form>" ).attr( "id", "reflinks-form" ).attr( "method", "post" ).prepend(
+					$( "<div>" ).attr( "id", "reflinks-options" ).text( this.msg( "loadingoptions" ) ),
+					$( "<button>" ).addClass( "mw-ui-button mw-ui-progressive" ).text( this.msg( "label-fixpage" ) ),
+					$( "<a>" ).addClass( "mw-ui-button mw-ui-quiet" ).attr( "href", this.server ).text( this.msg( "label-homepage" ) )
+				)
+			)
+		);
+		/*
 		$( "#mw-content-text" ).prepend( "\
-	<div id='reflinks' style='border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;'>\
-		<h2>Options</h1>\
-		<form id='reflinks-form' method='post'>\
-			<div id='reflinks-options'>Loading options...</div>\
-			<input name='method-wiki' type='submit' value='Fix page'/>\
-			<a href='" + this.server + "' style='color: #555;'>Tool homepage</a>\
-		</form>\
-	</div>" );
+		<div id='reflinks' style='border: 1px solid #ccc; border-radius: 2px; margin: 5px; padding: 0 10px 10px 10px;'>\
+			<h2>Options</h1>\
+			<form id='reflinks-form' method='post'>\
+				<div id='reflinks-options'>Loading options...</div>\
+				<input name='method-wiki' type='submit' value='Fix page'/>\
+				<a href='" + this.server + "' style='color: #555;'>Tool homepage</a>\
+			</form>\
+		</div>" );*/
 		$( "#reflinks-form" ).attr( "action", this.getSubmitUrl( false ) );
 		if ( !this.isWatching() ) {
 			var nowatch = $( "<input>" ).attr( "name", "nowatch" ).attr( "type", "hidden" ).val( "y" );
@@ -106,17 +165,20 @@ function ReflinksGadget() {
 	}
 	
 	this.init = function() {
-		this.portletLink = mw.util.addPortletLink( "p-tb", this.getSubmitUrl( true ), "Reflinks" );
+		this.loadMessages( false );
+		this.portletLink = mw.util.addPortletLink( "p-tb", this.getSubmitUrl( true ), this.msg( "appname" ) );
 		var obj = this;
-		this.optionsLink = $( "<a>" ).attr( "href", "#" ).text( "(options)" ).click( function() {
+		this.optionsLink = $( "<a>" ).attr( "href", "#" ).text( this.msg( "label-gadgetoptions" ) ).click( function() {
 			obj.setUpForm();
 			obj.loadRemoteOptions();
+			obj.loadMessages( true );
 		} );
 		$( this.portletLink ).append( $( "<sup>").html( this.optionsLink ) );
 	}
 }
 
+// Let's put it in global scope for easy debugging
+var rlGadget = new ReflinksGadget();
 $( document ).ready( function() {
-	var rlGadget = new ReflinksGadget();
 	rlGadget.init();
 } );
