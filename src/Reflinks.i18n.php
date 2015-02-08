@@ -192,6 +192,7 @@ $messages['pt'] = array(
 	'label-reportbugs' => 'Relatar bugs',
 	'label-switchlang' => 'Idiomas',
 	'label-save' => 'Pré-visualizar / Salvar na Wiki',
+	'label-gadgetoptions' => '(opções)',
 
 	// General messages
 	'fixed' => '$1 referência(s) consertada(s)!',
