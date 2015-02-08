@@ -60,6 +60,7 @@ $messages['en'] = array(
 	'colour-delete' => 'Orange',
 	'diff-insert' => 'Added',
 	'diff-delete' => 'Removed',
+	'loadingoptions' => 'Loading options...',
 	
 	// Misc.
 	'comingsoon' => 'Coming soon',
@@ -138,6 +139,7 @@ $messages['zh-hans'] = array(
 	'colour-delete' => '橙色',
 	'diff-insert' => '增加',
 	'diff-delete' => '删除',
+	'loadingoptions' => '正在载入……',
 	
 	// 其他
 	'comingsoon' => '敬请期待',
