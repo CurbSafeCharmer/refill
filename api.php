@@ -35,6 +35,7 @@ switch ( $action ) {
 - help: Show this response.
 - optionsform*: Get a HTML form with available options
 - citegen*: Generate a citation from a URL
+- i18n*: Lists all messages
 - reflinks*: Run Reflinks
 
 Actions tagged with * give JSONP outputs. Remember to set `callback=` in your script.
@@ -51,6 +52,9 @@ and the resulting JSON object will contain:
 - `error`: The error code from the LinkHandler (Unstable - Don't depend on this)
 - `description`: Human-readable description of the error (Unstable - Don't parse this)
 - `citation`: The resulting citation
+
+## `i18n`
+Lists all messages.
 
 ## `reflinks`
 Not implemented yet.
@@ -103,4 +107,16 @@ EOF;
 		$json = json_encode( $result );
 		echo $_GET['callback'] . "(" . $json . ")";
 		break;
+	case "i18n":
+		global $I18N;
+		$result = array();
+		$domain = $I18N->getDomain();
+		$lang = $I18N->getLang();
+		$keys = $I18N->listMsgs( $domain );
+		foreach ( $keys as $key ) {
+			$result[$key] = $I18N->rawMsg( $domain, $lang, $key );
+		}
+		$json = json_encode( $result );
+		echo $_GET['callback'] . "(" . $json . ")";
+                break;
 }
