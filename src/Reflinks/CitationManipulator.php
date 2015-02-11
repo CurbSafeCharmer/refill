@@ -99,16 +99,17 @@ class CitationManipulator {
 		$citations = $this->searchByContent( $content );
 		$i = 0;
 		// Some code smell here...
-		foreach ( $citations as $citation ) {
-			$pattern = "/" . preg_quote( $citation['complete'], "/" ) . "/";
-			$this->wikitext = preg_replace_callback( $pattern, function( $match ) use ( &$i, $first, $remaining ) {
-				if ( !empty( $remaining ) && $i++ != 0 ) {
-					return $remaining;
-				} else {
-					return $first;
-				}
-			}, $this->wikitext );
-		}
+		$escaped = array();
+		foreach ( $citations as $citation )
+			$escaped[] = preg_quote( $citation['complete'], "/"  );
+		$pattern = "/" . implode( "|", $escaped ) . "/";
+		$this->wikitext = preg_replace_callback( $pattern, function( $match ) use ( &$i, $first, $remaining ) {
+			if ( !empty( $remaining ) && $i++ != 0 ) {
+				return $remaining;
+			} else {
+				return $first;
+			}
+		}, $this->wikitext, -1, $count );
 	}
 	public function dumpCitations() {
 		return $this->citations;
@@ -124,9 +125,11 @@ class CitationManipulator {
 		enough.
 	*/
 	public function loopCitations( $callback ) {
+		$processed = array();
 		foreach ( $this->citations as $citation ) {
-			if ( substr_count( $this->wikitext, $citation['complete'] ) ) {
+			if ( !in_array( $citation['content'], $processed ) ) {
 				call_user_func( $callback, $citation );
+				$processed[] = $citation['content'];
 			}
 		}
 	}
