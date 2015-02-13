@@ -53,7 +53,7 @@ class CitationManipulator {
 			 // end scenario #1
 			 . "|" // or...
 			 // scenario #2: the value is not quoted, so no spaces allowed in the value
-			 . "(?'unquotedValue'\w+)"
+			 . "(?'unquotedValue'\S+)"
 			 // end scenario #2
 			 . ")"
 			 . "/i";
