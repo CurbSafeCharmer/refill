@@ -18,7 +18,7 @@ class CitationManipulator {
 	private function parse() {
 		$pattern = "/"
 		         . "(?'startTag'\<ref(?'startAttrs'[^\>]*)\>)" // the starting <ref> tag, possibly with attributes
-		         . "(?'content'.+)" // content of the citation (inside the surround tags)
+		         . "(?'content'[^\<\>]+)" // content of the citation (inside the surround tags)
 			 . "(?'endTag'\<\/ref\>)" // the ending </ref> tag
 			 . "/i";
 		$matches = array();
