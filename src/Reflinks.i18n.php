@@ -234,6 +234,84 @@ $messages['pt'] = array(
 	'wmflabs-testsummary' => 'Formatando $1 referência(s) com a versão teste de $3',
 );
 
+/**
+ * Dutch
+ * @author Frank Geerlings
+ */
+$messages['nl'] = array(
+	'tagline' => 'Eenvoudig kale verwijzingen uitbreiden',
+	
+	// Headings
+	'heading-fetchfromwiki' => 'Haal inhoud op van een wiki',
+	'heading-rawwikitext' => 'Voer wiki-opmaak in',
+	'heading-options' => 'Opties',
+	'heading-citegen' => 'Een verwijzing aanmaken',
+	'heading-result' => 'Resultaat',
+	'heading-newwikitext' => 'Nieuwe wiki-opmaak',
+	'heading-error' => 'Foutmelding',
+	'heading-manual' => 'Handleiding',
+	'heading-acknowledgements' => 'Dankwoord',
+	'heading-reportbugs' => 'Bugs melden',
+	
+	// Input placeholders
+	'placeholder-pagename' => 'Naam van het artikel',
+	'placeholder-url' => 'URL',
+	
+	// Labels
+	'label-fixpage' => 'Verbeter pagina',
+	'label-fixwikitext' => 'Verbeter wikitekst',
+	'label-toggleadv' => 'Instellingen voor gevorderden weergeven',
+	'label-generate' => 'Aanmaken',
+	'label-manual' => 'Handleiding',
+	'label-sourcecode' => 'Broncode',
+	'label-acknowledgements' => 'Dankwoord',
+	'label-reportbugs' => 'Bugs melden',
+	'label-switchlang' => 'Taalkeuze',
+	'label-save' => 'Voorvertoning / Opslaan op Wiki',
+	'label-gadgetoptions' => '(opties)',
+	'label-homepage' => 'Tool-website',
+	
+	// General messages
+	'fixed' => '$1 verwijzing(en) verbeterd!',
+	'nofixed' => 'Geen verwijzingen verbeterd.',
+	'skipped' => 'De volgende verwijzing(en) kon(den) niet worden aangevuld:',
+	'responsibility' => 'U bent zelf verantwoordelijk voor iedere aanpassing die u aanbrengt.',
+	'pleasedoublecheck' => 'Gelieve zorgvuldig de bewerking te controleren voordat u opslaat!',
+	'noaccessdate' => 'Let op: De datum van raadpleging is weggelaten in het resultaat. Deze kunt u weer toevoegen als u bent nagegegaan of hetgeen in het artikel wordt beweerd door de bron gestaafd wordt.',
+	'chancetoreview' => 'U heeft de mogelijkheid uw wijzigingen te controleren voor ze worden opgeslagen.',
+	'colourlegend' => 'Kleuren:',
+	'colour-insert' => 'Blauw',
+	'colour-delete' => 'Oranje',
+	'diff-insert' => 'Toegevoegd',
+	'diff-delete' => 'Verwijderd',
+	'loadingoptions' => 'Opties worden geladen...',
+	
+	// Misc.
+	'comingsoon' => 'Verschijnt binnenkort',
+	'uhoh' => 'O jee!',
+	'developedby' => 'door $1',
+	'summary' => '$1 kale verwijzing(en) aangevuld met $3',
+	'toollink' => '[[:en:User:Zhaofeng Li/Reflinks]]',
+	
+	// Options
+	'option-plainlink' => 'Gebruik eenvoudige opmaak in plaats van {{cite web}}',
+	'option-plainlink-description' => 'Indien aangevinkt zullen kale verwijzingen worden uitgebreid zonder {{cite web}} te gebruiken. Dit dient te worden vermeden omdat het citeer-sjabloon een consistente stijl voor verwijzingen afdwingt en geautomatiseerde verwerking vereenvoudigdt.',
+	'option-noremovetag' => 'Laat link rot-tags staan',
+	'option-noremovetag-description' => 'Indien aangevinkt zullen bestaande link rot-tags behouden blijven, ook als de verwijzing dit maal kon worden aangevuld.',
+	'option-nowatch' => 'Blijf de pagina niet volgen als Wiki als bron wordt gebruikt',
+	'option-nowatch-description' => 'Indien aangevinkt zal \'Deze pagina volgen\' niet worden aangevinkt op de bewerkingspagina op de wiki.',
+	'option-addblankmetadata' => 'Voeg lege metadata-velden toe als de informatie ontbreekt',
+	'option-noaccessdate' => 'Voeg geen datum van raadpleging toe',
+	'option-noaccessdate-description' => 'Indien aangevinkt zal de \'laatst geraadpleegd\'-datum niet in het resultaat worden opgenomen.',
+	'option-usedomainaswork' => 'Gebruik de domeinnaam als \'werk\' als deze informatie niet kan worden afgeleid',
+	
+	// Labs-specific (i.e. not used on the vanilla version on GitHub)
+	'wmflabs-thankyoutest' => 'Dank u voor het testen van de experimentele versie van $1. Het is fijn als u het meldt als u een bug vindt.',
+	'wmflabs-latestcommit' => 'Laatste commit: $1',
+	'wmflabs-poweredby' => 'Aangedreven door Wikimedia Labs',
+	'wmflabs-testsummary' => '$1 kale verwijzing(en) aangevuld met de testversie van $3',
+);
+
 $messages['qqq'] = array(
 	'appname' => '{{Optional|Translate it only if you have a good name that is concise and gives a basic idea of what the tool does in your language.}}',
 	'tagline' => 'A brief explanation of the tool\'s purpose. This is displayed below its name on the main page of the tool. Please keep it concise.',
