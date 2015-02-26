@@ -7,7 +7,7 @@ For backward compatibility, the source code of the tool still refers to the tool
 ## Setting up
 Setting up your reFill instance is fairly simple. You will need [Composer](http://getcomposer.org) and [Bower](http://bower.io) to install the dependencies. First, clone this repo with:
 ```sh
-git clone --recursive https://github.com/zhaofengli/reflinks.git
+git clone --recursive https://github.com/zhaofengli/refill.git
 ```
 
 The complete source code of reFill is now cloned in the `reflinks` directory. `cd` into it, and:

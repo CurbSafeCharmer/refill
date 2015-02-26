@@ -34,7 +34,7 @@
 
 function ReflinksGadget() {
 	this.server = typeof rlServer !== 'undefined' ? rlServer
-	            : "https://tools.wmflabs.org/fengtools/reflinks";
+	            : "https://tools.wmflabs.org/refill";
 	this.wiki = typeof rlWiki !== 'undefined' ? rlWiki
 	          : null;
 
@@ -42,7 +42,7 @@ function ReflinksGadget() {
 	this.optionsLink = "";
 	
 	this.messages = {
-		'appname': "Reflinks",
+		'appname': "reFill",
 		'heading-options': "Options",
 		'label-fixpage': "Fix page",
 		'label-gadgetoptions': "(options)"
