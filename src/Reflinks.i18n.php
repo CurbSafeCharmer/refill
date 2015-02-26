@@ -1,6 +1,6 @@
 <?php
 /**
- * Interface messages for Reflinks.
+ * Interface messages for reFill (formerly Reflinks).
  *
  * @toolowner Zhaofeng Li
  */
@@ -14,7 +14,7 @@ $messages = array();
  * @author Contributors
  */
 $messages['en'] = array(
-	'appname' => 'Reflinks',
+	'appname' => 'reFill',
 	'tagline' => 'Expand bare references with ease',
 	
 	// Headings

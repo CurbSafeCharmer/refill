@@ -1,22 +1,24 @@
-# Reflinks [![Build Status](https://travis-ci.org/zhaofengli/reflinks.svg?branch=master)](https://travis-ci.org/zhaofengli/reflinks) [![Code Climate](https://codeclimate.com/github/zhaofengli/reflinks/badges/gpa.svg)](https://codeclimate.com/github/zhaofengli/reflinks) [![Coverage Status](https://img.shields.io/coveralls/zhaofengli/reflinks.svg)](https://coveralls.io/r/zhaofengli/reflinks?branch=master)
-[Reflinks](https://en.wikipedia.org/wiki/User:Zhaofeng_Li/Reflinks) is a tool for Wikipedia that adds information (page title, work/website, author and publication date, etc.) to [bare references](https://en.wikipedia.org/wiki/WP:BURL) semi-automatically. This is a rewrite of the closed-source original tool by [Dispenser](https://en.wikipedia.org/wiki/User:Dispenser).
+# reFill [![Build Status](https://travis-ci.org/zhaofengli/reflinks.svg?branch=master)](https://travis-ci.org/zhaofengli/reflinks) [![Code Climate](https://codeclimate.com/github/zhaofengli/reflinks/badges/gpa.svg)](https://codeclimate.com/github/zhaofengli/reflinks) [![Coverage Status](https://img.shields.io/coveralls/zhaofengli/reflinks.svg)](https://coveralls.io/r/zhaofengli/reflinks?branch=master)
+*[reFill](https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill)* (formerly *Reflinks*) is a tool for Wikipedia that adds information (page title, work/website, author and publication date, etc.) to [bare references](https://en.wikipedia.org/wiki/WP:BURL) semi-automatically. This is a rewrite of the closed-source original tool by [Dispenser](https://en.wikipedia.org/wiki/User:Dispenser).
 A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/reflinks/), and there is also an [experimental version](https://tools.wmflabs.org/fengtools/reflinkstest/), automatically pulled from the latest commit.
 
+For backward compatibility, the source code of the tool still refers to the tool as "Reflinks". This is intentional.
+
 ## Setting up
-Setting up your Reflinks instance is fairly simple. You will need [Composer](http://getcomposer.org) and [Bower](http://bower.io) to install the dependencies. First, clone this repo with:
+Setting up your reFill instance is fairly simple. You will need [Composer](http://getcomposer.org) and [Bower](http://bower.io) to install the dependencies. First, clone this repo with:
 ```sh
 git clone --recursive https://github.com/zhaofengli/reflinks.git
 ```
 
-The complete source code of Reflinks is now cloned in the `reflinks` directory. `cd` into it, and:
+The complete source code of reFill is now cloned in the `reflinks` directory. `cd` into it, and:
 ```sh
 php composer.phar install
 bower install
 ```
-This will fetch the required libraries for you. That's it, you now have a working copy of Reflinks!
+This will fetch the required libraries for you. That's it, you now have a working copy of reFill!
 
 ### Configuring
-After setting up Reflinks, you may wish to add your local wiki for testing. To do so, create `config/config.php` and insert:
+After setting up reFill, you may wish to add your local wiki for testing. To do so, create `config/config.php` and insert:
 ```php
 <?php
 $config['wikis']['mywiki'] = array(
@@ -33,7 +35,7 @@ For some simple customizations, use:
 ```php
 // Default edit summary for the generated edit
 // Use %numfixed% to show how many references are fixed, and %numskipped% for skipped.
-$config['summary'] = "Filled in %numfixed% bare reference(s) with Reflinks";
+$config['summary'] = "Filled in %numfixed% bare reference(s) with reFill";
 ```
 
 You can also add a banner to notify users about updates, as well as extend the default footer. Create `rlBanner()` and `rlFooter()` and return the content in them.
@@ -58,7 +60,7 @@ If you have found a bug, please [report it on Wikipedia](https://en.wikipedia.or
 Patches are always welcome! To contribute, simply create a fork of the repo, make your changes and submit a pull request. Thank you for your contributions!
 
 ## Licensing
-Reflinks is licensed under the BSD 2-Clause License. See `LICENSE` for details.
+reFill is licensed under the BSD 2-Clause License. See `LICENSE` for details.
 
 ### External libraries
 This program uses [wDiff](https://en.wikipedia.org/wiki/User:Cacycle/diff) by [Cacycle](https://en.wikipedia.org/wiki/User:Cacycle), released into public domain.
