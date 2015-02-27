@@ -1,4 +1,4 @@
-# reFill [![Build Status](https://travis-ci.org/zhaofengli/reflinks.svg?branch=master)](https://travis-ci.org/zhaofengli/reflinks) [![Code Climate](https://codeclimate.com/github/zhaofengli/reflinks/badges/gpa.svg)](https://codeclimate.com/github/zhaofengli/reflinks) [![Coverage Status](https://img.shields.io/coveralls/zhaofengli/reflinks.svg)](https://coveralls.io/r/zhaofengli/reflinks?branch=master)
+# reFill [![Build Status](https://travis-ci.org/zhaofengli/refill.svg?branch=master)](https://travis-ci.org/zhaofengli/reflinks) [![Code Climate](https://codeclimate.com/github/zhaofengli/reflinks/badges/gpa.svg)](https://codeclimate.com/github/zhaofengli/reflinks) [![Coverage Status](https://img.shields.io/coveralls/zhaofengli/reflinks.svg)](https://coveralls.io/r/zhaofengli/reflinks?branch=master)
 *[reFill](https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill)* (formerly *Reflinks*) is a tool for Wikipedia that adds information (page title, work/website, author and publication date, etc.) to [bare references](https://en.wikipedia.org/wiki/WP:BURL) semi-automatically. This is a rewrite of the closed-source original tool by [Dispenser](https://en.wikipedia.org/wiki/User:Dispenser).
 A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/reflinks/), and there is also an [experimental version](https://tools.wmflabs.org/fengtools/reflinkstest/), automatically pulled from the latest commit.
 
@@ -54,7 +54,7 @@ $config['wdiff'] = "scripts/diff.js";
 The program includes an incomplete set of unit tests under `tests`, which can be ran with PHPUnit. Please help cover untested code by adding new tests.
 
 ## Reporting bugs
-If you have found a bug, please [report it on Wikipedia](https://en.wikipedia.org/wiki/User_talk:Zhaofeng_Li) or [create an issue on GitHub](https://github.com/zhaofengli/reflinks/issues).
+If you have found a bug, please [report it on Wikipedia](https://en.wikipedia.org/wiki/User_talk:Zhaofeng_Li/reFill) or [create an issue on GitHub](https://github.com/zhaofengli/refill/issues).
 
 ## Contributing
 Patches are always welcome! To contribute, simply create a fork of the repo, make your changes and submit a pull request. Thank you for your contributions!
