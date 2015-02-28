@@ -67,7 +67,7 @@ $messages['en'] = array(
 	'uhoh' => 'Uh-oh!',
 	'developedby' => 'by $1',
 	'summary' => 'Filled in $1 bare reference(s) with $3',
-	'toollink' => '[[User:Zhaofeng Li/Reflinks]]',
+	'toollink' => '[[:en:WP:REFILL|reFill]]',
 	
 	// Options
 	'option-plainlink' => 'Use plain formatting instead of {{cite web}}',
