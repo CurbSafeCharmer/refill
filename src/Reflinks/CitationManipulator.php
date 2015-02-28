@@ -42,24 +42,36 @@ class CitationManipulator {
 	}
 	public function parseAttribute( $startAttrs, $attribute ) {
 		$template = "/"
+		         . "\\s*" // allow whitespace
 		         . "%s\\=" // %s is the attribute name ("name" or "group" or whatever), to be filled with sprintf()
 			 . "(" // there are two possiblities here...
-			 // scenario #1: the value is quoted with " or '
+			 // scenario #1: the value is quoted with "
 			 . "("
-			 . "(?'valQuote'\\\"|\\')"
-			 . "(?'quotedValue'[^\\\"\\']*)" // the value (imperfect - what about something like name="joe's site"?)
-			 . "(?:\k'valQuote')"
+			 . "\\\""
+			 . "(?'doubleQuotedValue'[^\\\"]*)"
+			 . "\\\""
 			 . ")"
 			 // end scenario #1
 			 . "|" // or...
-			 // scenario #2: the value is not quoted, so no spaces allowed in the value
-			 . "(?'unquotedValue'\S+)"
-			 // end scenario #2
+			 // scenario #2: the value is quoted with '
+			 . "("
+			 . "\\'"
+			 . "(?'singleQuotedValue'[^\\']*)"
+			 . "\\'"
 			 . ")"
+			 // end scenario #2
+			 . "|" // or...
+			 // scenario #3: the value is not quoted, so no spaces allowed in the value
+			 . "(?'unquotedValue'\S+)"
+			 . ")"
+			 // end scenario #3
+			 . "\\s*" // allow whitespace
 			 . "/i";
 		$pattern = sprintf( $template, $attribute );
 		if ( preg_match( $pattern,  $startAttrs, $matches ) ) {
-			return !empty( $matches['quotedValue'] ) ? $matches['quotedValue'] : $matches['unquotedValue'];
+			foreach ( array( "doubleQuotedValue", "singleQuotedValue", "unquotedValue" ) as $type )
+				if ( !empty( $matches[$type] ) )
+					return $matches[$type];
 		}
 	}
 	public function hasExactAttribute( $name, $value ) {
