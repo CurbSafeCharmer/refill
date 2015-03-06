@@ -33,6 +33,8 @@ echo $twig->render( "main.html", array(
 	"options_regular" => $regularForm,
 	"options_advanced" => $advancedForm,
 	"wikis" => $wikis,
+	"pagename" => $app->options->get( 'page' ),
+	"wikiname" => $app->options->get( 'wiki' ),
 ) );
 
 function generateForm( &$app, $advanced = false ) {

@@ -24,11 +24,11 @@
 				<form id="form-wiki" method="post" action="result.php">
 					<div class="form-group form-inline">
 						<span id="validation-page">
-							<input name="page" type="text" class="form-control" placeholder="{{ msg( 'placeholder-pagename' ) }}"/>
+							<input name="page" type="text" class="form-control" placeholder="{{ msg( 'placeholder-pagename' ) }}" {% if pagename %} value="{{ pagename }}" {% endif %}/>
 						</span>
 						<select name="wiki" data-placeholder="Wiki" class="form-control">
 							{% for wiki in wikis %}
-								<option value='{{ wiki }}'>{{ wiki }}</option>
+								<option value='{{ wiki }}' {% if wikiname == wiki %} selected="selected" {% endif %}>{{ wiki }}</option>
 							{% endfor %}
 						</select>
 						<input name="method-wiki" type="submit" class="btn btn-primary" value="{{ msg( 'label-fixpage' ) }}"/>
