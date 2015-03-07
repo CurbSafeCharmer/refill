@@ -42,6 +42,7 @@ class Reflinks {
 	const SKIPPED_UNKNOWN = 0;
 	const SKIPPED_NOTITLE = 1;
 	const SKIPPED_HANDLER = 2;
+	const SKIPPED_SPAM = 3;
 	
 	const STATUS_SUCCESS = 0;
 	const STATUS_FAILED = 1;
