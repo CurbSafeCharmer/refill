@@ -92,7 +92,11 @@ class Reflinks {
 				return;
 			}
 			if ( Utils::isCitationEmpty( $citation['content'] ) ) {
-				return; // skip them for now
+				if ( count( $citation['attributes'] ) > 0 ) { // has some attributes - let's turn it into a stub
+					$stub = $cm->generateStub( $citation['attributes'] );
+					$cm->replaceByContent( $core, $stub );
+				}
+				return;
 			}
 
 			// Let's find out what kind of reference it is...
@@ -190,11 +194,8 @@ class Reflinks {
 						$attributes['name'] .= $suffix;
 					}
 				}
-				foreach ( $attributes as $name => $value ) {
-					$startAttrs .= $cm->generateAttribute( $name, $value ) . " ";
-				}
-				$replacement = $cm->generateCitation( $newcore, $startAttrs );
-				$stub = $cm->generateStub( $startAttrs );
+				$replacement = $cm->generateCitation( $newcore, $attributes );
+				$stub = $cm->generateStub( $attributes );
 				$cm->replaceByContent( $core, $replacement, $stub );
 			} elseif ( !$unchanged ) { // Just keep the original surrounding tags
 				$replacement = $citation['startTag'] . $newcore . $citation['endTag'];
