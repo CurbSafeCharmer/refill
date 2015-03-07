@@ -80,7 +80,18 @@ class CitationManipulator {
 	public function generateAttribute( $attribute, $value ) {
 		return $attribute . '="' . htmlentities( $value ) . '"';
 	}
+	public function generateAttributes( $attributes ) {
+		$startAttr = "";
+		foreach ( $attributes as $name => $attribute ) {
+			$startAttr .= $this->generateAttribute( $name, $attribute ) . " ";
+		}
+		return $startAttr;
+
+	}
 	public function generateCitation( $content, $startAttrs = "" ) {
+		if ( is_array( $startAttrs ) ) {
+			$startAttrs = $this->generateAttributes( $startAttrs );
+		}
 		$startAttrs = trim( $startAttrs );
 		if ( !empty( $startAttrs ) ) {
 			return "<ref $startAttrs>$content</ref>";
@@ -89,6 +100,9 @@ class CitationManipulator {
 		}
 	}
 	public function generateStub( $startAttrs ) {
+		if ( is_array( $startAttrs ) ) {
+			$startAttrs = $this->generateAttributes( $startAttrs );
+		}
 		$startAttrs = trim( $startAttrs );
 		return "<ref $startAttrs/>";
 	}
