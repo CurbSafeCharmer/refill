@@ -91,7 +91,10 @@ class Reflinks {
 			if ( preg_match( "/\{\{(Dead link|404|dl|dead|Broken link)/i", $core ) ) { // dead link tag
 				return;
 			}
-	 
+			if ( Utils::isCitationEmpty( $citation['content'] ) ) {
+				return; // skip them for now
+			}
+
 			// Let's find out what kind of reference it is...
 			$parser = new CitationParser();
 			$metadata = $parser->parse( $core );
@@ -105,7 +108,7 @@ class Reflinks {
 					);
 					return;
 				}
-			
+
 				try {
 					$metadata = $app->linkHandler->getMetadata( $metadata->url, $metadata );
 				} catch ( LinkHandlerException $e ) {

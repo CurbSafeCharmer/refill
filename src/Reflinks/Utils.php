@@ -95,4 +95,14 @@ class Utils {
 		$pattern = "/\{\{(Bare|Bare links|Barelinks|Bare references|Bare refs|Bare URLs|Cleanup link rot|Cleanup link-rot|Cleanup-link-rot|Cleanup-linkrot|Link rot|Linkrot|Cleanup-bare URLs)([^\}])*\}\}/i";
 		return preg_replace( $pattern, "", $source );
 	}
+
+	public static function isCitationEmpty( $content ) {
+		if (
+			empty( $content ) // literally empty
+			|| $content == "{{cite web}}" // inserted via RefToolbar
+		) {
+			return true;
+		}
+		return false;
+	}
 }
