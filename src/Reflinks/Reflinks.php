@@ -43,6 +43,7 @@ class Reflinks {
 	const SKIPPED_NOTITLE = 1;
 	const SKIPPED_HANDLER = 2;
 	const SKIPPED_SPAM = 3;
+	const SKIPPED_CONFIGBL = 4;
 	
 	const STATUS_SUCCESS = 0;
 	const STATUS_FAILED = 1;
@@ -105,13 +106,24 @@ class Reflinks {
 			$metadata = $parser->parse( $core );
 
 			if ( $metadata ) { // Needs fixing
-				if ( $spamFilter->check( $metadata->url ) ) {
-					$log['skipped'][] = array(
-						'ref' => $core,
-						'reason' => $app::SKIPPED_SPAM,
-						'status' => $status,
-					);
-					return;
+				if ( $spam = $spamFilter->check( $metadata->url ) ) {
+					switch ( $spam ) {
+						default:
+						case SpamFilter::TYPE_SPAM:
+							$log['skipped'][] = array(
+								'ref' => $core,
+								'reason' => $app::SKIPPED_SPAM,
+								'status' => $status,
+							);
+							return;
+						case SpamFilter::TYPE_CONFIGBL:
+							$log['skipped'][] = array(
+								'ref' => $core,
+								'reason' => $app::SKIPPED_CONFIGBL,
+								'status' => $status,
+							);
+							return;	
+					}
 				}
 
 				try {
@@ -277,6 +289,8 @@ class Reflinks {
 				return "No title is found";
 			case self::SKIPPED_SPAM:
 				return "Spam blacklist";
+			case self::SKIPPED_CONFIGBL:
+				return "Blacklisted";
 		}
 	}
 }

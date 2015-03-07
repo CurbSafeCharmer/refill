@@ -28,6 +28,9 @@
 namespace Reflinks;
 
 class SpamFilter {
+	const TYPE_SPAM = 1;
+	const TYPE_CONFIGBL = 2;
+
 	private $file = "";
 	private $enabled = false;
 	private $blacklist = array();
@@ -61,23 +64,33 @@ class SpamFilter {
 			return false;
 		}
 	}
-	function addRegex( $line ) {
+	public function addRegex( $line ) {
 		// Remove comments from the line, and trim the whitespaces
 		$line = trim( preg_replace( "/#.*$/", "", $line ) );
 		if ( !empty( $line ) ) { // Okay, we've got a regex
 			$this->blacklist[] = $line;
 		}
 	}
-	function count() {
+	public function count() {
 		return count( $this->blacklist );
 	}
-	function check( $url ) {
-		foreach( $this->blacklist as $oregex ) {
+	public function checkList( $url, $blacklist ) {
+		foreach( $blacklist as $oregex ) {
 			// Those entries on the list are fragments, let's complete them
 			$regex = "|^https?\:\/\/[A-Za-z0-9\-\_\.]*" . $oregex . "|";
 			if ( @preg_match( $regex, $url ) ) { // Gotcha!
 				return true;
 			}
+		}
+		return false;
+	
+	}
+	public function check( $url ) {
+		global $config;
+		if ( $this->checkList( $url, $this->blacklist ) ) {
+			return self::TYPE_SPAM;
+		} elseif ( $this->checkList( $url, $config['blacklist'] ) ) {
+			return self::TYPE_CONFIGBL;
 		}
 		return false;
 	}

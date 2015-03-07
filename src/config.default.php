@@ -71,6 +71,9 @@ $config['i18n']['intuition'] = __DIR__ . "/Intuition/ToolStart.php";
 $config['i18n']['domainfile'] = __DIR__ . "/Reflinks.i18n.php";
 $config['i18n']['domain'] = "reflinks";
 
+// Blacklist
+$config['blacklist'] = array();
+
 // User-settable options
 $config['options'] = array(
 	"page" => array(
