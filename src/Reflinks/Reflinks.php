@@ -96,7 +96,7 @@ class Reflinks {
 			if ( Utils::isCitationEmpty( $citation['content'] ) ) {
 				if ( count( $citation['attributes'] ) > 0 ) { // has some attributes - let's turn it into a stub
 					$stub = $cm->generateStub( $citation['attributes'] );
-					$cm->replaceByContent( $core, $stub );
+					$cm->replaceIdentical( $citation['complete'], $stub );
 				}
 				return;
 			}

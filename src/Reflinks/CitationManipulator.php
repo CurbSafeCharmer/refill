@@ -137,6 +137,16 @@ class CitationManipulator {
 			}
 		}, $this->wikitext, -1, $count );
 	}
+	public function replaceIdentical( $citation, $first, $remaining = null ) {
+		$pattern = "/" . preg_quote( $citation, "/" ) . "/";
+		$this->wikitext = preg_replace_callback( $pattern, function( $match ) use ( &$i, $first, $remaining ) {
+			if ( !empty( $remaining ) && $i++ != 0 ) {
+				return $remaining;
+			} else {
+				return $first;
+			}
+		}, $this->wikitext, -1, $count );
+	}
 	public function dumpCitations() {
 		return $this->citations;
 	}
@@ -155,7 +165,9 @@ class CitationManipulator {
 		foreach ( $this->citations as $citation ) {
 			if ( !in_array( $citation['content'], $processed ) ) {
 				call_user_func( $callback, $citation );
-				$processed[] = $citation['content'];
+				if ( !Utils::isCitationEmpty( $citation['content'] ) ) { // special handling for empty refs
+					$processed[] = $citation['content'];
+				}
 			}
 		}
 	}
