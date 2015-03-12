@@ -71,7 +71,7 @@ class Reflinks {
 		$this->linkHandler = new $config['linkhandler']( $this->spider );
 	}
 	
-	public function fix( $wikitext, &$log = array() ) {
+	public function fix( $wikitext, &$log = array(), &$unfinished = false ) {
 		/*
 			FIXME: This is, by far, one of the worst
 			pieces of code in the whole project. Clean it up.
@@ -84,8 +84,9 @@ class Reflinks {
 		$dateformat = Utils::detectDateFormat( $wikitext );
 		$options = &$this->options;
 		$spamFilter = &$this->spamFilter;
+		$limit = $this->options->get( "limit" );
 		$app = &$this;
-		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, $dateformat, $app ) {
+		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, &$limit, $dateformat, $app ) {
 			$status = 0;
 			$core = $citation['content'];
 			$unchanged = false;
@@ -106,6 +107,10 @@ class Reflinks {
 			$metadata = $parser->parse( $core );
 
 			if ( $metadata ) { // Needs fixing
+				if ( $limit !== -1 ) {
+					$limit--;
+				}
+
 				if ( $spam = $spamFilter->check( $metadata->url ) ) {
 					switch ( $spam ) {
 						default:
@@ -214,8 +219,15 @@ class Reflinks {
 				$replacement = $citation['startTag'] . $newcore . $citation['endTag'];
 				$cm->replaceByContent( $core, $replacement );
 			}
+			if ( $limit === 0 ) {
+				return true; // limit exceeded
+			}
 		};
-		$cm->loopCitations( $callback ); // Do it!
+		if ( $cm->loopCitations( $callback ) === false ) { // stopped prematurely
+			$unfinished = true;
+		} else {
+			$unfinished = false;
+		}
 		return $cm->exportWikitext();
 	}
 	public function getResult() {
@@ -253,7 +265,7 @@ class Reflinks {
 		}
 		
 		// Fix the wikitext
-		$result['new'] = $this->fix( $result['old'], $result['log'] );
+		$result['new'] = $this->fix( $result['old'], $result['log'], $result['unfinished'] );
 		if ( !count( $result['log']['skipped'] ) && !$this->options->get( "noremovetag" ) ) {
 			$result['new'] = Utils::removeBareUrlTags( $result['new'] );
 		}

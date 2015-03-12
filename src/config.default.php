@@ -89,6 +89,11 @@ $config['options'] = array(
 		"type" => UserOptionsProvider::TYPE_SPECIAL,
 		"name" => "Wiki",
 	),
+	"limit" => array(
+		"type" => UserOptionsProvider::TYPE_SPECIAL,
+		"name" => "Limit",
+		"default" => -1,
+	),
 	"plainlink" => array(
 		"type" => UserOptionsProvider::TYPE_CHECKBOX,
 		"advanced" => false,

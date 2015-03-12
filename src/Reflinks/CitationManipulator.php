@@ -164,11 +164,14 @@ class CitationManipulator {
 		$processed = array();
 		foreach ( $this->citations as $citation ) {
 			if ( !in_array( $citation['content'], $processed ) ) {
-				call_user_func( $callback, $citation );
+				if ( call_user_func( $callback, $citation ) === true ) { // stop the loop
+					return false; // we stopped prematurely
+				}
 				if ( !Utils::isCitationEmpty( $citation['content'] ) ) { // special handling for empty refs
 					$processed[] = $citation['content'];
 				}
 			}
 		}
+		return true; // all references traversed!
 	}
 }

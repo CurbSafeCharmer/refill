@@ -45,6 +45,7 @@ $vars['wdiff'] = $config['wdiff'];
 $vars['counter'] = count( $result['log']['fixed'] );
 $vars['wikitext_old'] = htmlspecialchars( $result['old'], ENT_QUOTES );
 $vars['wikitext_new'] = htmlspecialchars( $result['new'] );
+$vars['unfinished'] = $result['unfinished'];
 
 if ( $result['source'] == Reflinks::SOURCE_WIKI ) {
 	if ( $result['old'] != $result['new'] ) {

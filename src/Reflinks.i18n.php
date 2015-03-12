@@ -55,6 +55,7 @@ $messages['en'] = array(
 	'pleasedoublecheck' => 'Please double-check the edit before saving!',
 	'noaccessdate' => 'Note: Dates of access are omitted in the result. Please verify whether the references still support the statements, and add the dates where appropriate.',
 	'chancetoreview' => 'You will have a chance to review the edit before it\'s saved.',
+	'unfinished' => 'Due to limits, the program was\'t able to fix all references. Try saving and running the tool again.',
 	'colourlegend' => 'Colours:',
 	'colour-insert' => 'Blue',
 	'colour-delete' => 'Orange',

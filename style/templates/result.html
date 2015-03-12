@@ -13,6 +13,10 @@
 			<form id="form-wikitext" name="editform" method="post" action="{{ indexphp }}?title={{ pagename|e('url') }}&action=submit">
 				<h1>{{ msg( 'heading-result' ) }}</h1>
 				<p class="text-warning"><strong>{{ msg( 'responsibility' ) }}</strong> {{ msg( 'pleasedoublecheck' ) }}</p>
+				{% if unfinished %}
+					<p class="text-warning">{{ msg( 'unfinished' ) }}</p>
+				{% endif %}
+
 				{% if noaccessdate %}
 					<p class="text-info">{{ msg( 'noaccessdate' ) }}</p>
 				{% endif %}
