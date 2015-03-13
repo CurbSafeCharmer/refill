@@ -29,6 +29,7 @@ $config['linkhandler'] = "Reflinks\LinkHandlers\StandaloneLinkHandler";
 
 // Metadata parser chain
 $config['parserchain'] = array(
+	"TypeFixerMetadataParser",
 	"TitleMetadataParser",
 	"OpenGraphMetadataParser",
 	"SchemaOrgMetadataParser",
