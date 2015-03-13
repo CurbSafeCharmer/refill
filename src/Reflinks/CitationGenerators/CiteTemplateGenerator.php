@@ -46,34 +46,49 @@ class CiteTemplateGenerator extends CitationGenerator {
 			}
 		}
 		$metadata->url = str_replace( "|", "%7c", $metadata->url );
-		$core = "{{cite web|url=" . $metadata->url;
+		// Type
+		if ( $metadata->exists( "type" ) ) {
+			$core = "{{cite " . $metadata->type;
+		} else {
+			$core = "{{cite web";
+		}
+		// URL
+		$core .= "|url=" . $metadata->url;
+		// Archive URL
 		if ( $metadata->exists( "archiveurl" ) ) {
 			$core .= "|archiveurl=" . $metadata->archiveurl;
 		}
+		// Title
 		if ( $metadata->exists( "title" ) ) {
 			$core .= "|title=" . $metadata->title;
 		}
+		// Author
 		if ( $metadata->exists( "author" ) ) {
 			$core .= "|author=" . $metadata->author;
 		} elseif ( $this->options->get( "addblankmetadata" ) ) { // add a blank field
 			$core .= "|author=";
 		}
+		// Date
 		if ( $timestamp = strtotime( $metadata->date ) ) { // date
 			$core .= "|date=" . Utils::generateDate( $timestamp, $format );
 		} elseif ( $this->options->get( "addblankmetadata" ) ) { // add a blank field
 			$core .= "|date=";
 		}
+		// Archive date
 		if ( $archivets = strtotime( $metadata->archivedate ) ) { // archivedate
 			$core .= "|archivedate=" . Utils::generateDate( $archivets, $format );
 		}
+		// Publisher
 		if ( $metadata->exists( "publisher" ) ) {
 			$core .= "|publisher=" . $metadata->publisher;
 		}
+		// Work (and an empty |publisher=)
 		if ( $metadata->exists( "work" ) ) {
 			$core .= "|work=" . $metadata->work;
 		} elseif( !$metadata->exists( "publisher" ) ) { // no |work= or |publisher= extracted, add an empty |publisher=
 			$core .= "|publisher=";
 		}
+		// Access date
 		if ( !$this->options->get( "noaccessdate" ) ) {
 			$core .= "|accessdate=" . Utils::generateDate( 0, $format );
 		}
