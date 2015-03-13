@@ -51,7 +51,7 @@ class CitationParser {
 
 	public function parse( $citation ) {
 		$citation = trim( $citation );
-		foreach ( $this->rules as $rule ) {
+		foreach ( $this->rules as $type => $rule ) {
 			$regex = $rule['regex'];
 			$fields = $rule['fields'];
 			if ( preg_match( $regex, $citation, $matches ) ) {
@@ -65,9 +65,15 @@ class CitationParser {
 					|| strpos( $metadata->url, "http" ) !== 0
 				) {
 					continue;
-				} else {
-					return $metadata;
+				} else if (
+					$type == "captioned"
+					&& strpos( $metadata->title, "''" )
+				) {
+					// Let's deal with an edge case: Some editors put metadata in the link caption
+					// If that's the case, don't mess with it
+					continue;
 				}
+				return $metadata;
 			}
 		}
 		return false;
