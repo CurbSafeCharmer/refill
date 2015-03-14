@@ -59,6 +59,9 @@ If you have found a bug, please [report it on Wikipedia](https://en.wikipedia.or
 ## Contributing
 Patches are always welcome! To contribute, simply create a fork of the repo, make your changes and submit a pull request. Thank you for your contributions!
 
+Localisation of the tool is powered by [Intuition](https://github.com/Krinkle/intuition) but handled on [Transifex](https://www.transifex.com/projects/p/refill/).
+To start translating the tool, please register at Transifex and request to join the project. You can also submit your translations manually via GitHub pull requests or even [on-wiki](https://en.wikipedia.org/wiki/User_talk:Zhaofeng_Li/reFill).
+
 ## Licensing
 reFill is licensed under the BSD 2-Clause License. See `LICENSE` for details.
 
