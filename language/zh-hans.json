@@ -37,6 +37,7 @@
 	"pleasedoublecheck": "请在保存前再三检查！",
 	"noaccessdate": "注：在结果中没有添加存取日期。请确认提供的来源还能支持页面中的论述，并补充存取日期。",
 	"chancetoreview": "你在保存前将有机会再次检查修改。",
+	"unfinished": "由于限制，程序无法修复所有来源。试着保存，然后再次运行这个工具。",
 	"colourlegend": "颜色：",
 	"colour-insert": "蓝色",
 	"colour-delete": "橙色",
