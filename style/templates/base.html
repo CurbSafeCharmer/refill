@@ -12,7 +12,9 @@
 	{% endblock %}
 
 	{% block banner %}
-		{{ banner() | raw }}
+		<div class="container">
+			{{ banner() | raw }}
+		</div>
 	{% endblock %}
 
 	{% block content %}{% endblock %}
