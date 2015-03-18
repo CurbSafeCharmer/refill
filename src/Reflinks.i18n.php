@@ -94,16 +94,16 @@ $messages['en'] = array(
  * @author Zhaofeng Li
  */
 $messages['zh-hans'] = array(
-	'appname' => '来源扩充',
+	'appname' => 'reFill',
 	'tagline' => '轻松填充裸露来源链接',
 	
 	// 题头
 	'heading-fetchfromwiki' => '从维基获取页面',
-	'heading-rawwikitext' => '输入维基代码',
+	'heading-rawwikitext' => '输入维基标记',
 	'heading-options' => '选项',
 	'heading-citegen' => '生成来源',
 	'heading-result' => '结果',
-	'heading-newwikitext' => '新维基代码',
+	'heading-newwikitext' => '新维基标记',
 	'heading-error' => '错误',
 	'heading-manual' => '帮助',
 	'heading-acknowledgements' => '致谢',
@@ -151,12 +151,100 @@ $messages['zh-hans'] = array(
 	
 	// 选项
 	'option-plainlink' => '手工实现格式而不使用 {{cite web}}',
+	'option-plainlink-description' => '选取的话，裸露的引用将不会使用{{cite web}}。不建议使用此选项，因为引用模板已提供一致的引用样式和能够轻松解析的程序。',
+	'option-noremovetag' => '不要删除链接失效的标签',
+	'option-noremovetag-description' => '选取的话，即使在过程中没有引用因错误而跳过，失效的标签也会被保留。',
+	'option-nowatch' => '使用维基作为来源的时候不监视页面',
+	'option-nowatch-description' => '选取的话，维基编辑模式的「监视本页」核取方块会设置为默认不选取。',
+	'option-addblankmetadata' => '资料不可用时添加空白的元数据',
+	'option-noaccessdate' => '不要添加访问日期',
+	'option-noaccessdate-description' => '选取的话，访问日期将在结果中省略。',
+	'option-usedomainaswork' => '这个资料不能被解析的时候使用基本域名',
 	
 	// 仅供 Labs (不被GitHub上的原版本使用)
 	'wmflabs-thankyoutest' => '感谢你帮助测试$1。请报告你遇到的错误，谢谢。',
 	'wmflabs-latestcommit' => '最新提交：$1',
-	'wmflabs-poweredby' => '由维基媒体实验室驱动',
+	'wmflabs-poweredby' => '由维基媒体实验室给予技术支持',
 	'wmflabs-testsummary' => '用测试版的$3填充了$1个裸露来源链接',
+);
+
+/**
+ * Traditional Chinese
+ * @author Pak Long Wu
+ */
+$messages['zh-hant'] = array(
+	'appname' => 'reFill',
+	'tagline' => '輕鬆補充裸露來源連結',
+	
+	// 標題
+	'heading-fetchfromwiki' => '從維基獲取內容',
+	'heading-rawwikitext' => '輸入維基標記',
+	'heading-options' => '選項',
+	'heading-citegen' => '產生參考來源',
+	'heading-result' => '結果',
+	'heading-newwikitext' => '新維基標記',
+	'heading-error' => '錯誤',
+	'heading-manual' => '說明',
+	'heading-acknowledgements' => '鳴謝',
+	'heading-reportbugs' => '報告錯誤',	
+	
+	// 輸入提示
+	'placeholder-pagename' => '頁面名稱',
+	'placeholder-url' => 'URL',
+	
+	// 標籤
+	'label-fixpage' => '修復頁面',
+	'label-fixwikitext' => '修復維基代碼',
+	'label-toggleadv' => '顯示進階選項',
+	'label-generate' => '產生',
+	'label-manual' => '說明',
+	'label-sourcecode' => '來源',
+	'label-acknowledgements' => '鳴謝',
+	'label-reportbugs' => '報告錯誤',
+	'label-switchlang' => '語言',
+	'label-save' => '預覽/在維基保存',
+	'label-gadgetoptions' => '(選項)',
+	'label-homepage' => '工具主頁',
+	
+	// 一般信息
+	'fixed' => '修復了$1 個來源！',
+	'nofixed' => '沒有來源被修復。',
+	'skipped' => '下列的引用來源未能補充：',
+	'responsibility' => '您須要對每個你做的編輯負責。',
+	'pleasedoublecheck' => '請在保存前再三檢查！',
+	'noaccessdate' => '注意：訪問日期會在結果中忽略。請驗證引用是否仍然支持內容，並在適當情況添加日期。',
+	'chancetoreview' => '你有機會在保存之前再查看編輯。',
+	'colourlegend' => '顏色：',
+	'colour-insert' => '藍',
+	'colour-delete' => '橙',
+	'diff-insert' => '已添加',
+	'diff-delete' => '已清除',
+	'loadingoptions' => '正在載入選項。。。',
+	
+	// 其他
+	'comingsoon' => '即將推出',
+	'uhoh' => '哎喲！',
+	'developedby' => '由 $1 開發',
+	'summary' => '已用 $3 補充了 $1 個裸露來源連結',
+	'toollink' => '[[User:Zhaofeng Li/Reflinks]]',
+	
+	// 選項
+	'option-plainlink' => '使用普通的格式取代{{cite web}}',
+	'option-plainlink-description' => '選取的話，裸露的引用將不會使用{{cite web}}。不建議使用此選項，因為引用模板已提供一致的引用樣式和能夠輕鬆解析的程序。',
+	'option-noremovetag' => '不要刪除鏈接失效的標籤',
+	'option-noremovetag-description' => '選取的話，即使在過程中沒有引用因錯誤而跳過，失效的標籤也會被保留。',
+	'option-nowatch' => '使用維基作為來源的時候不監視頁面',
+	'option-nowatch-description' => '選取的話，維基編輯模式的「監視本頁」核取方塊會設置為默認不選取。',
+	'option-addblankmetadata' => '資料不可用時添加空白的元數據',
+	'option-noaccessdate' => '不要添加訪問日期',
+	'option-noaccessdate-description' => '選取的話，訪問日期將在結果中省略。',
+	'option-usedomainaswork' => '這個資料不能被解析的時候使用基本域名',
+	
+	// 只供 Labs (不被GitHub上的原版本使用)
+	'wmflabs-thankyoutest' => '感謝您幫助測試 $1 測試版本。請回報你遇到的問題。',
+	'wmflabs-latestcommit' => '最後提交: $1',
+	'wmflabs-poweredby' => '由維基媒體實驗室給予技術支持',
+	'wmflabs-testsummary' => '已用 $3 的測試版本補充了 $1 個裸露來源連結',
 );
 
 /**
