@@ -43,6 +43,7 @@
 	"comingsoon": "Coming soon",
 	"uhoh": "Uh-oh!",
 	"developedby": "by $1",
+	"translatedby": "This tool is translated by:",
 	"summary": "Filled in $1 bare reference(s) with $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-plainlink": "Use plain formatting instead of {{cite web}}",
