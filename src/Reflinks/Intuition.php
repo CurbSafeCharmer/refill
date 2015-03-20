@@ -70,4 +70,8 @@ class Intuition extends \Intuition {
 		$fallbacks[] = "en"; // Ensure en is always available
 		return $fallbacks;
 	}
+	public function listMsgs( $domain ) {
+		$this->ensureLoaded( $domain, 'en' );
+		return array_keys( $this->messageBlob[$domain]['en'] );
+	}
 }
