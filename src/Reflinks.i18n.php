@@ -67,6 +67,7 @@ $messages['en'] = array(
 	'comingsoon' => 'Coming soon',
 	'uhoh' => 'Uh-oh!',
 	'developedby' => 'by $1',
+	'translatedby' => 'This tool is translated by:',
 	'summary' => 'Filled in $1 bare reference(s) with $3',
 	'toollink' => '[[:en:WP:REFILL|reFill]]',
 	
@@ -146,6 +147,7 @@ $messages['zh-hans'] = array(
 	'comingsoon' => '敬请期待',
 	'uhoh' => '噢，不！',
 	'developedby' => '由 $1 开发',
+        'translatedby' => '翻译者：',
 	'summary' => '用$3填充了$1个裸露来源链接',
 	'toollink' => '[[User:Zhaofeng Li/Reflinks]]',
 	
@@ -225,6 +227,7 @@ $messages['zh-hant'] = array(
 	'comingsoon' => '即將推出',
 	'uhoh' => '哎喲！',
 	'developedby' => '由 $1 開發',
+        'translatedby' => '翻譯者：',
 	'summary' => '已用 $3 補充了 $1 個裸露來源連結',
 	'toollink' => '[[User:Zhaofeng Li/Reflinks]]',
 	

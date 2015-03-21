@@ -47,6 +47,7 @@
     "comingsoon": "敬请期待",
     "uhoh": "噢，不！",
     "developedby": "由 $1 开发",
+    "translatedby": "翻译者：",
     "summary": "用$3填充了$1个裸露来源链接",
     "toollink": "[[User:Zhaofeng Li\/Reflinks]]",
     "option-plainlink": "手工实现格式而不使用 {{cite web}}",
