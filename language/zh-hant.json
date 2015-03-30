@@ -49,7 +49,7 @@
     "developedby": "由 $1 開發",
     "translatedby": "翻譯者：",
     "summary": "已用 $3 補充了 $1 個裸露來源連結",
-    "toollink": "[[User:Zhaofeng_Li\/reFill]]",
+    "toollink": "[[:en:User:Zhaofeng_Li\/reFill]]",
     "option-plainlink": "使用普通的格式取代{{cite web}}",
     "option-plainlink-description": "選取的話，裸露的引用將不會使用{{cite web}}。不建議使用此選項，因為引用模板已提供一致的引用樣式和能夠輕鬆解析的程序。",
     "option-noremovetag": "不要刪除鏈接失效的標籤",
