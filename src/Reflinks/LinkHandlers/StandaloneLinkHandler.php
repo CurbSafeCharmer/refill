@@ -68,11 +68,14 @@ class StandaloneLinkHandler extends LinkHandler {
 		);
 		if ( preg_match( "/\<meta[^\>]+charset\=[\\\"\']?([\w\-]+)/i", $response->html, $matches ) ) { // Charset declaration in HTML
 			// The regex matches both the old-school `http-equiv` attribute and the HTML5 `charset` attribute
-			array_unshift( $encodings, $matches[1] );
+			$encoding = $matches[1];
 		} elseif ( preg_match( "/charset\=([\w\-]+)/i", $response->header['content_type'], $matches ) ) { // Content-Type in HTTP header
-			array_unshift( $encodings, $matches[1] );
+			$encoding = $matches[1];
+		} elseif ( false === $encoding = mb_detect_encoding( $response->html, $encodings ) ) {
+			// *sigh* Let's assume it's UTF-8 then
+			// (what a bad guess)
+			$encoding = "UTF-8";
 		}
-		$encoding = mb_detect_encoding( $response->html, $encodings );
 		if ( $encoding != "UTF-8" ) {
 			$utf8Html = mb_convert_encoding( $response->html, "UTF-8", $encoding );
 		} else {

@@ -1,11 +1,17 @@
 <?php
+/*
+	THIS FILE IS DEPRECATED!
+
+	The actual message files being used are under `language/`
+*/
+
 /**
  * Interface messages for reFill (formerly Reflinks).
  *
  * @toolowner Zhaofeng Li
  */
  
-$url = '//tools.wmflabs.org/fengtools/reflinks/';
+$url = '//tools.wmflabs.org/refill';
 
 $messages = array();
 
@@ -147,7 +153,7 @@ $messages['zh-hans'] = array(
 	'comingsoon' => '敬请期待',
 	'uhoh' => '噢，不！',
 	'developedby' => '由 $1 开发',
-        'translatedby' => '翻译者：',
+	'translatedby' => '翻译者：',
 	'summary' => '用$3填充了$1个裸露来源链接',
 	'toollink' => '[[User:Zhaofeng Li/Reflinks]]',
 	
@@ -227,7 +233,7 @@ $messages['zh-hant'] = array(
 	'comingsoon' => '即將推出',
 	'uhoh' => '哎喲！',
 	'developedby' => '由 $1 開發',
-        'translatedby' => '翻譯者：',
+	'translatedby' => '翻譯者：',
 	'summary' => '已用 $3 補充了 $1 個裸露來源連結',
 	'toollink' => '[[User:Zhaofeng Li/Reflinks]]',
 	
