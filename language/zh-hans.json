@@ -49,7 +49,6 @@
     "developedby": "由 $1 开发",
     "translatedby": "翻译者：",
     "summary": "用$3填充了$1个裸露来源链接",
-    "toollink": "[[User:Zhaofeng Li\/Reflinks]]",
     "option-plainlink": "手工实现格式而不使用 {{cite web}}",
     "option-plainlink-description": "选取的话，裸露的引用将不会使用{{cite web}}。不建议使用此选项，因为引用模板已提供一致的引用样式和能够轻松解析的程序。",
     "option-noremovetag": "不要删除链接失效的标签",

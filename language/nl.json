@@ -46,7 +46,6 @@
 	"uhoh": "O jee!",
 	"developedby": "door $1",
 	"summary": "$1 kale verwijzing(en) aangevuld met $3",
-	"toollink": "[[:en:User:Zhaofeng Li\/Reflinks]]",
 	"option-plainlink": "Gebruik eenvoudige opmaak in plaats van {{cite web}}",
 	"option-plainlink-description": "Indien aangevinkt zullen kale verwijzingen worden uitgebreid zonder {{cite web}} te gebruiken. Dit dient te worden vermeden omdat het citeer-sjabloon een consistente stijl voor verwijzingen afdwingt en geautomatiseerde verwerking vereenvoudigdt.",
 	"option-noremovetag": "Laat link rot-tags staan",

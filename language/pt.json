@@ -44,7 +44,6 @@
 	"uhoh": "Oh-oh!",
 	"developedby": "por $1",
 	"summary": "Formatando $1 referência(s) com $3",
-	"toollink": "[[en:User:Zhaofeng Li\/Reflinks|User:Zhaofeng Li\/Reflinks]]",
 	"option-plainlink": "Usar formatação simples em vez de {{citar web}}",
 	"option-plainlink-description": "Se selecionado, as referências não formatadas serão expandidas sem a prédefinição {{citar web}}. Isso é desencorajado uma vez que as prédefinições de citação garantem um estilo de citação consistente e permitem fácil análise por parte de programas.",
 	"option-noremovetag": "Não remover marcações de referências não formatadas",
