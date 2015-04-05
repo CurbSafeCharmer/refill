@@ -77,7 +77,10 @@ class StandaloneLinkHandler extends LinkHandler {
 			$encoding = "UTF-8";
 		}
 		if ( $encoding != "UTF-8" ) {
-			$utf8Html = mb_convert_encoding( $response->html, "UTF-8", $encoding );
+			$utf8Html = iconv( $encoding, "UTF-8", $response->html );
+			if ( false === $utf8Html ) {
+				$utf8Html = $response->html;
+			}
 		} else {
 			$utf8Html = $response->html;
 		}
