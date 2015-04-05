@@ -2,7 +2,7 @@
 **[reFill](https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill)** (formerly **Reflinks**) is a tool for Wikipedia that adds information (page title, work/website, author and publication date, etc.) to [bare references](https://en.wikipedia.org/wiki/WP:BURL) semi-automatically. This is a rewrite of the closed-source original tool by [Dispenser](https://en.wikipedia.org/wiki/User:Dispenser).
 A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/reflinks/), and there is also an [experimental version](https://tools.wmflabs.org/fengtools/reflinkstest/), automatically pulled from the latest commit.
 
-For backward compatibility, the source code of the tool still refers to the tool as "Reflinks". This is intentional.
+For backwards compatibility, the source code of the tool still refers to the tool as "Reflinks". This is intentional.
 
 ## Setting up
 Setting up your reFill instance is fairly simple. You will need [Composer](http://getcomposer.org) and [Bower](http://bower.io) to install the dependencies. First, clone this repo with:
@@ -51,7 +51,7 @@ To enable the local version, insert this into `config/config.php`:
 $config['wdiff'] = "scripts/diff.js";
 ```
 ## Unit tests
-The program includes an incomplete set of unit tests under `tests`, which can be ran with PHPUnit. Please help cover untested code by adding new tests.
+The program includes an incomplete set of unit tests under `tests`, which can be run with PHPUnit. Please help cover untested code by adding new tests.
 
 ## Reporting bugs
 If you have found a bug, please [report it on Wikipedia](https://en.wikipedia.org/wiki/User_talk:Zhaofeng_Li/reFill) or [create an issue on GitHub](https://github.com/zhaofengli/refill/issues).
