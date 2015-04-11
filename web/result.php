@@ -22,7 +22,7 @@
 */
 
 namespace Reflinks;
-require_once __DIR__ . "/src/bootstrap.php";
+require_once __DIR__ . "/../src/bootstrap.php";
 
 set_time_limit( $config['maxtime'] );
 

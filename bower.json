@@ -1,23 +1,24 @@
 {
-  "name": "Reflinks",
-  "version": "0.0.0",
-  "homepage": "https://github.com/zhaofengli/reflinks",
-  "authors": [
-    "Zhaofeng Li <hello@zhaofeng.li>"
-  ],
-  "description": "Wikipedia tool that expands bare references",
-  "license": "BSD-2-Clause",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "jquery": "~2.1.1",
-    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.2.0/chosen_v1.2.0.zip",
-    "bootstrap": "~3.3.1"
-  }
+	"name": "Reflinks",
+	"version": "0.0.0",
+	"homepage": "https://github.com/zhaofengli/reflinks",
+	"authors": [
+		"Zhaofeng Li <hello@zhaofeng.li>"
+	],
+	"description": "Wikipedia tool that expands bare references",
+	"license": "BSD-2-Clause",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"web/components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"jquery": "~2.1.1",
+		"bootstrap": "~3.3.1",
+		"chosen": "~1.4.2"
+	}
 }

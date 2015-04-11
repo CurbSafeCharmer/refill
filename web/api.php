@@ -15,7 +15,7 @@ namespace Reflinks;
 use Reflinks\LinkHandlers\StandaloneLinkHandler;
 use Reflinks\Exceptions\LinkHandlerException;
 
-require_once __DIR__ . "/src/bootstrap.php";
+require_once __DIR__ . "/../src/bootstrap.php";
 
 $app = new Reflinks();
 

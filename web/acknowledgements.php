@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/src/bootstrap.php";
+require_once __DIR__ . "/../src/bootstrap.php";
 $metadata = $I18N->rawMsg(
 		$I18N->getDomain(),
 		$I18N->getLang(),
