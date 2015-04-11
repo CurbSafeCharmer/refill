@@ -24,7 +24,7 @@
 namespace Reflinks\Exceptions;
 
 class NoSuchMetadataFieldExpcetion extends MetadataException {
-	public function __constuct( $field, $code = 0, Exception $previous = null ) {
+	public function __constuct( $field, $code = 0, \Exception $previous = null ) {
 		parent::__construct( $field, $code, $previous );
 	}
 	public function __toString() {
