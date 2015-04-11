@@ -33,7 +33,7 @@ $I18N = new Reflinks\Intuition();
 $I18N->setDomain( $config['i18n']['domain'] );
 
 // Twig templating engine
-$twigLoader = new Twig_Loader_Filesystem( __DIR__ . "/../style/templates" );
+$twigLoader = new Twig_Loader_Filesystem( __DIR__ . "/../templates" );
 $twig = new Twig_Environment( $twigLoader );
 $twig->addFunction( new Twig_SimpleFunction( "banner", function() {
 	if ( function_exists( "rlBanner" ) ) {

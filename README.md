@@ -15,7 +15,7 @@ The complete source code of reFill is now cloned in the `reflinks` directory. `c
 php composer.phar install
 bower install
 ```
-This will fetch the required libraries for you. That's it, you now have a working copy of reFill!
+This will fetch the required libraries for you. That's it, you now have a working copy of reFill! Fire up a server in `web` and start hacking!
 
 ### Configuring
 After setting up reFill, you may wish to add your local wiki for testing. To do so, create `config/config.php` and insert:
