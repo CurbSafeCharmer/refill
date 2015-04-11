@@ -37,7 +37,7 @@ echo $twig->render( "main.html", array(
 	"wikiname" => $app->options->get( 'wiki' ),
 ) );
 
-function generateForm( &$app, $advanced = false ) {
+function generateForm( Reflinks &$app, $advanced = false ) {
 	$options = $app->optionsProvider->generateFormStructure( $advanced );
 	$result = "";
 	foreach ( $options as $option ) {
