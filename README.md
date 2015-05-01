@@ -5,7 +5,7 @@ A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/refl
 For backwards compatibility, the source code of the tool still refers to the tool as "Reflinks". This is intentional.
 
 ## Setting up
-Setting up your reFill instance is fairly simple. You will need [Composer](http://getcomposer.org) and [Bower](http://bower.io) to install the dependencies. First, clone this repo with:
+Setting up your reFill instance is fairly simple. You will need [Composer](http://getcomposer.org) to install the dependencies. First, clone this repo with:
 ```sh
 git clone --recursive https://github.com/zhaofengli/refill.git
 ```
@@ -13,7 +13,6 @@ git clone --recursive https://github.com/zhaofengli/refill.git
 The complete source code of reFill is now cloned in the `reflinks` directory. `cd` into it, and:
 ```sh
 php composer.phar install
-bower install
 ```
 This will fetch the required libraries for you. That's it, you now have a working copy of reFill! Fire up a server in `web` and start hacking!
 
