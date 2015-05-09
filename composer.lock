@@ -271,29 +271,17 @@
         },
         {
             "name": "knplabs/github-api",
-            "version": "1.4.7",
+            "version": "1.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "d2729cf6b9d5b6fa340b1ff001dd89e319741baa",
-                "mirrors": [
-                    {
-                        "url": "/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "b53ff0c7eef5063818aac3ea6a3c4f0598bf16be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/d2729cf6b9d5b6fa340b1ff001dd89e319741baa",
-                "reference": "d2729cf6b9d5b6fa340b1ff001dd89e319741baa",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "http://pkg.phpcomposer.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/b53ff0c7eef5063818aac3ea6a3c4f0598bf16be",
+                "reference": "b53ff0c7eef5063818aac3ea6a3c4f0598bf16be",
+                "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
@@ -317,7 +305,7 @@
                     "Github\\": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.cn/downloads/",
             "license": [
                 "MIT"
             ],
@@ -340,7 +328,7 @@
                 "gist",
                 "github"
             ],
-            "time": "2015-04-07 20:24:33"
+            "time": "2015-05-05 08:43:01"
         },
         {
             "name": "masterminds/html5",
@@ -733,16 +721,16 @@
         },
         {
             "name": "vierbergenlars/php-semver",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vierbergenlars/php-semver.git",
-                "reference": "4dc35f3804f3b127ad557b8b2255c03204dec951"
+                "reference": "516bb3061577e60e9420cbecc479362d3ad8c7f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vierbergenlars/php-semver/zipball/4dc35f3804f3b127ad557b8b2255c03204dec951",
-                "reference": "4dc35f3804f3b127ad557b8b2255c03204dec951",
+                "url": "https://api.github.com/repos/vierbergenlars/php-semver/zipball/516bb3061577e60e9420cbecc479362d3ad8c7f1",
+                "reference": "516bb3061577e60e9420cbecc479362d3ad8c7f1",
                 "shasum": ""
             },
             "require": {
@@ -765,7 +753,7 @@
                     "src/vierbergenlars/SemVer/internal.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.cn/downloads/",
             "license": [
                 "MIT"
             ],
@@ -781,7 +769,7 @@
                 "semver",
                 "versioning"
             ],
-            "time": "2013-12-21 17:10:13"
+            "time": "2015-05-02 19:28:54"
         }
     ],
     "packages-dev": [
