@@ -33,7 +33,7 @@ use Reflinks\Exceptions\NoSuchMetadataFieldException;
 class Metadata implements \Iterator {
 	public $rawMetadata = array();
 	public static $fields = array(
-		"type", "url", "title", "date", "accessdate", "author", "publisher", "work", "archiveurl", "archivedate", "deadurl"
+		"type", "url", "title", "date", "accessdate", "author", "publisher", "work", "archiveurl", "archivedate", "deadurl", "via"
 	);
 	
 	function __construct( array $rawMetadata = array() ) {
