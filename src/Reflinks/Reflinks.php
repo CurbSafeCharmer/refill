@@ -159,7 +159,7 @@ class Reflinks {
 						);
 						$unchanged = true;
 					} else {
-						if ( !$metadata->exists( "work" ) && $options->get( "usedomainaswork" ) ) { // Use the base domain as work
+						if ( !$metadata->exists( "work" ) && !$metadata->exists( "via" ) && $options->get( "usedomainaswork" ) ) { // Use the base domain as work
 							$metadata->work = Utils::getBaseDomain( $metadata->url );
 						}
 						// Generate cite template
