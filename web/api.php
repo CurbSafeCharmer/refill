@@ -46,7 +46,7 @@ It returns a JSON object with the "form" property filled with
 the HTML.
 
 ## `citegen`
-Set `url=` to the URL and `format=` to `CiteTemplateCitationGenerator` or `PlainCs1CitationGenerator`,
+Set `url=` to the URL and `format=` to `CiteTemplateGenerator` or `PlainCs1Generator`,
 and the resulting JSON object will contain:
 - `success`: Whether the action has succeeded or not
 - `error`: The error code from the LinkHandler (Unstable - Don't depend on this)
