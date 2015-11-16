@@ -43,6 +43,11 @@ class FixerMetadataParser extends MetadataParser {
 		if ( $metadata->work == "Los Angeles Times Articles" ) {
 			$metadata->work = "Los Angeles Times";
 		}
+
+		if ( $metadata->work == "YouTube" ) {
+			$metadata->via = "YouTube";
+			unset( $metadata->work );
+		}
 		
 		if ( $metadata->exists( "author" ) ) {
 			$metadata->author = preg_replace( "/(?:by|from)\s+(.+)/i", "$1", $metadata->author ); // clean it up a bit
