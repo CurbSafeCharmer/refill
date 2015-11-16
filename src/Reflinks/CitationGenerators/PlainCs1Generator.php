@@ -94,6 +94,12 @@ class PlainCs1Generator extends CitationGenerator {
 		if ( !$this->options->get( "noaccessdate" ) ) {
 			$core .= "Retrieved on " . Utils::generateDate( 0, $format ) . ".";
 		}
+
+		// Via
+		if ( $metadata->exists( "via" ) ) {
+			$core = rtrim( $core, ". " );
+			$core .= " &ndash; via " . $metadata->via . ".";
+		}
 		return $core;
 	}
 }

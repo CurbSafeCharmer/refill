@@ -92,6 +92,10 @@ class CiteTemplateGenerator extends CitationGenerator {
 		if ( !$this->options->get( "noaccessdate" ) ) {
 			$core .= "|accessdate=" . Utils::generateDate( 0, $format );
 		}
+		// Via
+		if ( $metadata->exists( "via" ) ) {
+			$core .= "|via=" . $metadata->via;
+		}
 		$core .= $config['citeextra'] . "}}";
 		return $core;
 	}
