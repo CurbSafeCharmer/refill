@@ -75,6 +75,7 @@ Composer dependencies of this program:
 - [PHP Domain Parser](https://github.com/jeremykendall/php-domain-parser/)
 - [HTML5-PHP](https://github.com/Masterminds/html5-php)
 - [Twig](http://twig.sensiolabs.org/)
+- [Intuition](https://github.com/Krinkle/intuition)
 
 Bower dependencies of this program:
 - [jQuery](http://jquery.com)

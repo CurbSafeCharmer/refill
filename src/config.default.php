@@ -68,8 +68,7 @@ $config['maxtime'] = 300;
 $config['wdiff'] = "https://en.wikipedia.org/w/index.php?title=User:Cacycle/diff.js&action=raw&ctype=text/javascript";
 
 // Intuition i18n
-$config['i18n']['intuition'] = __DIR__ . "/Intuition/ToolStart.php";
-$config['i18n']['domain'] = "reflinks";
+$config['i18n']['domain'] = "refill";
 
 // Blacklist
 $config['blacklist'] = array();

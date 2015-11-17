@@ -26,11 +26,11 @@
 */
 require_once __DIR__ . "/../vendor/autoload.php";
 require_once __DIR__ . "/config.default.php";
-require_once $config['i18n']['intuition'];
+// require_once $config['i18n']['intuition'];
 
 // Intuition I18N
-$I18N = new Reflinks\Intuition();
-$I18N->setDomain( $config['i18n']['domain'] );
+$I18N = new Intuition( $config['i18n']['domain'] );
+$I18N->registerDomain( $config['i18n']['domain'], __DIR__ . "/../language" );
 
 // Twig templating engine
 $twigLoader = new Twig_Loader_Filesystem( __DIR__ . "/../templates" );
