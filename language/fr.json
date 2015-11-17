@@ -48,7 +48,7 @@
 	"uhoh": "Youhou !",
 	"developedby": "par $1",
 	"translatedby": "Cet outil à été traduit par :",
-	"summary": "Rempli 1$ référence(s) avec 3$",
+	"summary": "Rempli $1 référence(s) avec $3",
 	"option-plainlink": "Utiliser le formatage simple au lieu de {{Lien web}}",
 	"option-plainlink-description": "Si sélectionné, les références brutes seront développées sans utiliser {{Lien web}}. Ceci est déconseillé car les modèles bibliographiques offrent un style uniforme et permettent de simplifier l'analyse par les programmes.",
 	"option-noremovetag": "Ne pas supprimer les balises de liens morts",
@@ -60,7 +60,7 @@
 	"option-noaccessdate-description": "Si sélectionné, les dates de consultation seront omises dans la résultat.",
 	"option-usedomainaswork": "Utilisez le nom de base du domaine comme nom de site lorsque cette information ne peut pas être analysée",
 	"wmflabs-thankyoutest": "Merci de tester la version expérimentale de $1. Merci de signaler les bugs que vous voyez.",
-	"wmflabs-latestcommit": "Dernier engagement :",
+	"wmflabs-latestcommit": "Dernier engagement :$1",
 	"wmflabs-poweredby": "Développé par Wikimedia Labs",
 	"wmflabs-testsummary": "Rempli $1 référence(s) brutes avec la version test de $3"
 }
