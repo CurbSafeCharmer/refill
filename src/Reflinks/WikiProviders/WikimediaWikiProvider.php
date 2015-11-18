@@ -97,7 +97,7 @@ class WikimediaWikiProvider extends WikiProvider {
 			$result['indexphp'] = str_replace( "%id%", $language, $this->projects[$project]['indexphp'] );
 
 			if ( empty( $this->projects[$project]['language'] ) ) {
-				$result['language'] = "en";
+				$result['language'] = $language;
 			} else {
 				$result['language'] = $this->projects[$project]['language'];
 			}
