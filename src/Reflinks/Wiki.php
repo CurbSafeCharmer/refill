@@ -31,6 +31,7 @@ class Wiki {
 	public $api;
 	public $indexphp;
 	public $name = false;
+	public $language = "en";
 	
 	function __construct( $api = "https://en.wikipedia.org/w/api.php", $indexphp = "https://en.wikipedia.org/w/index.php" ) {
 		$this->api = $api;
