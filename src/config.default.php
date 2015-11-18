@@ -13,7 +13,11 @@ use Reflinks\UserOptionsProvider;
 // The useragent used when fetching web pages and accessing MediaWiki API
 $config['useragent'] = "Reflinks/1.0 (by Zhaofeng Li: https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill )";
 
-// Wiki map
+// Wiki provider
+$config['wikiprovider'] = "SimpleWikiProvider";
+$config['wikiproviderargs'] = null;
+
+// Wiki map for SimpleWikiProvider
 $config['wikis'] = array(
 	"wikipedia" => array(
 		"identifiers" => array(

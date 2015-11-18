@@ -28,11 +28,20 @@ $app = new Reflinks();
 $regularForm = generateForm( $app, false );
 $advancedForm = generateForm( $app, true );
 $wikis = $app->wikiProvider->listWikis();
+$wikinames = array();
+if ( $app->wikiProvider->supportsNaming() ) {
+	foreach ( $wikis as $wiki ) {
+		if ( false !== $name = $app->wikiProvider->getWikiName( $wiki ) ) {
+			$wikinames[$wiki] = $name;
+		}
+	}
+}
 
 echo $twig->render( "main.html", array(
 	"options_regular" => $regularForm,
 	"options_advanced" => $advancedForm,
 	"wikis" => $wikis,
+	"wikinames" => $wikinames,
 	"pagename" => $app->options->get( 'page' ),
 	"wikiname" => $app->options->get( 'wiki' ),
 ) );

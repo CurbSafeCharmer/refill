@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2015, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -21,23 +21,13 @@
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*
-	Wiki provider model
-*/
+namespace Reflinks\Exceptions;
 
-namespace Reflinks;
-
-abstract class WikiProvider {
-	abstract public function __construct( $args = null );
-	abstract public function getWiki( $identifier );
-	abstract public function listWikis(); // always returns a 1D array
-	public function supportsNaming() {
-		// do wikis have human-readable names?
-		return false;
+class NoSuchWikiProviderException extends OptionsException {
+	public function __constuct( $field, $code = 0, \Exception $previous = null ) {
+		parent::__construct( $field, $code, $previous );
 	}
-	public function getWikiName( $wiki ) {
-		// returns the human-readable name of the wiki
-		return false;
+	public function __toString() {
+		return __CLASS__ . ": No such wiki provider: " . $this->message;
 	}
 }
-

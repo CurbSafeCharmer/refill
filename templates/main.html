@@ -28,7 +28,13 @@
 						</span>
 						<select name="wiki" data-placeholder="Wiki" class="form-control">
 							{% for wiki in wikis %}
-								<option value='{{ wiki }}' {% if wikiname == wiki %} selected="selected" {% endif %}>{{ wiki }}</option>
+								<option value='{{ wiki }}' {% if wikiname == wiki %} selected="selected" {% endif %}>
+									{% if wikinames[wiki] is defined %}
+										{{ wikinames[wiki] }} ({{ wiki }})
+									{% else %}
+										{{ wiki }}
+									{% endif %}
+								</option>
 							{% endfor %}
 						</select>
 						<input name="method-wiki" type="submit" class="btn btn-primary" value="{{ msg( 'label-fixpage' ) }}"/>

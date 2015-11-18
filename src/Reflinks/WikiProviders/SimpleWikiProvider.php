@@ -22,22 +22,47 @@
 */
 
 /*
-	Wiki provider model
+	Simple wiki provider
+
+	This is the default wiki provider of reFill. It reads in the list of wikifarms
+	from $config['wikis'] or $args, and generates URLs for individual wikis according 
+	to the template URLs provided.
 */
 
-namespace Reflinks;
+namespace Reflinks\WikiProviders;
 
-abstract class WikiProvider {
-	abstract public function __construct( $args = null );
-	abstract public function getWiki( $identifier );
-	abstract public function listWikis(); // always returns a 1D array
-	public function supportsNaming() {
-		// do wikis have human-readable names?
+use Reflinks\WikiProvider;
+use Reflinks\Wiki;
+
+class SimpleWikiProvider extends WikiProvider {
+	public $wikis = array();
+	
+	function __construct( $args = null ) {
+		global $config;
+		if ( $args !== null ) {
+			$this->wikis = $wikis;
+		} else {
+			$this->wikis = $config['wikis'];
+		}
+	}
+
+	public function getWiki( $identifier ) {
+		foreach ( $this->wikis as $type => $details ) {
+			if ( in_array( $identifier, $details['identifiers'] ) ) {
+				$api = str_replace( "%id%", $identifier, $details['api'] );
+				$indexphp = str_replace( "%id%", $identifier, $details['indexphp'] );
+				return new Wiki( $api, $indexphp );
+			}
+		}
 		return false;
 	}
-	public function getWikiName( $wiki ) {
-		// returns the human-readable name of the wiki
-		return false;
+
+	public function listWikis() {
+		$result = array();
+		foreach ( $this->wikis as $type => $details ) {
+			$result = array_merge( $result, $details['identifiers'] );
+		}
+		return $result;
 	}
 }
 

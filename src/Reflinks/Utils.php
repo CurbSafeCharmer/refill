@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2014-2015, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -104,5 +104,15 @@ class Utils {
 			return true;
 		}
 		return false;
+	}
+
+	public static function getClass( $class, $defaultNs ) {
+		if ( class_exists( $defaultNs . "\\" . $class ) ) {
+			return $defaultNs . "\\" . $class;
+		} else if ( class_exists( $class ) ) {
+			return $class;
+		} else {
+			return false;
+		}
 	}
 }

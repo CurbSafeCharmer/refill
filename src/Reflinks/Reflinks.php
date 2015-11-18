@@ -28,6 +28,8 @@
 namespace Reflinks;
 
 use Reflinks\Exceptions\LinkHandlerException;
+use Reflinks\WikiProvider;
+use Reflinks\Utils;
 
 // Let's leave them hard-coded for now...
 use Reflinks\CitationGenerators\CiteTemplateGenerator;
@@ -66,9 +68,16 @@ class Reflinks {
 
 		$this->spamFilter = new SpamFilter();
 
-		$this->wikiProvider = new WikiProvider();
-
 		$this->linkHandler = new $config['linkhandler']( $this->spider );
+
+		$wikiProvider = Utils::getClass( $config['wikiprovider'], "Reflinks\\WikiProviders" );
+		if ( !$wikiProvider ) {
+			throw new NoSuchWikiProviderException( $config['wikiprovider'] );
+		} else if ( is_subclass_of( $wikiProvider, "WikiProvider" ) ) {
+			throw new ErroneousWikiProviderException( $config['wikiprovider'] );
+		} else { // All good
+			$this->wikiProvider = new $wikiProvider( $config['wikiproviderargs'] );
+		}
 	}
 	
 	public function fix( $wikitext, &$log = array(), &$unfinished = false ) {
