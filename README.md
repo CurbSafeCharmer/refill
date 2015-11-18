@@ -2,7 +2,7 @@
 **[reFill](https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill)** (formerly **Reflinks**) is a tool for Wikipedia that adds information (page title, work/website, author and publication date, etc.) to [bare references](https://en.wikipedia.org/wiki/WP:BURL) semi-automatically. This is a rewrite of the closed-source original tool by [Dispenser](https://en.wikipedia.org/wiki/User:Dispenser).
 A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/reflinks/), and there is also an [experimental version](https://tools.wmflabs.org/fengtools/reflinkstest/), automatically pulled from the latest commit.
 
-For backwards compatibility, the source code of the tool still refers to the tool as "Reflinks". This is intentional.
+For backwards compatibility, the source code of the tool still refers to itself as "Reflinks". This is intentional.
 
 ## Setting up
 Setting up your reFill instance is fairly simple. You will need [Composer](http://getcomposer.org) to install the dependencies. First, clone this repo with:
@@ -37,7 +37,7 @@ For some simple customizations, use:
 $config['summary'] = "Filled in %numfixed% bare reference(s) with reFill";
 ```
 
-You can also add a banner to notify users about updates, as well as extend the default footer. Create `rlBanner()` and `rlFooter()` and return the content in them.
+You can also add a banner to notify users about updates, as well as to extend the default footer. Implement global functions `rlBanner()` and/or `rlFooter()` which return the HTML code of the banner/footer.
 
 There are more configuations available, please check out `src/config.default.php` for details.
 
@@ -51,6 +51,9 @@ $config['wdiff'] = "scripts/diff.js";
 ```
 ## Unit tests
 The program includes an incomplete set of unit tests under `tests`, which can be run with PHPUnit. Please help cover untested code by adding new tests.
+
+## Tool Labs-specific configurations
+The Tool Labs version uses its own set of configurations, which reside on [zhaofengli/refill-labsconf](https://github.com/zhaofengli/refill-labsconf). You can `require_once()` the `stable.php`, `test.php` or `citoid.php` in the repo from your `config.php` to replicate the Tool Labs configurations on your local instance.
 
 ## Reporting bugs
 If you have found a bug, please [report it on Wikipedia](https://en.wikipedia.org/wiki/User_talk:Zhaofeng_Li/reFill) or [create an issue on GitHub](https://github.com/zhaofengli/refill/issues).
@@ -71,13 +74,14 @@ The Bootstrap theme used is [Yeti](http://bootswatch.com/yeti/).
 
 [Open Sans](http://www.google.com/fonts/specimen/Open+Sans) is a font by [Steve Matteson](https://profiles.google.com/107777320916704234605/about).
 
-Composer dependencies of this program:
+#### Composer dependencies
 - [PHP Domain Parser](https://github.com/jeremykendall/php-domain-parser/)
 - [HTML5-PHP](https://github.com/Masterminds/html5-php)
 - [Twig](http://twig.sensiolabs.org/)
 - [Intuition](https://github.com/Krinkle/intuition)
+You may want to run `composer licenses` to list the licenses of all Composer dependencies.
 
-Bower dependencies of this program:
+#### Bower dependencies
 - [jQuery](http://jquery.com)
 - [Chosen](http://harvesthq.github.io/chosen/)
 - [Bootstrap](http://getbootstrap.com/)
