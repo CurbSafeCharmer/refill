@@ -41,7 +41,7 @@ abstract class CitationGenerator {
 	public function setWikiContext( Wiki $wiki ) {
 		return true;
 	}
-	public function setI18n( $I18n ) {
+	public function setI18n( $i18n ) {
 		return true;
 	}
 }

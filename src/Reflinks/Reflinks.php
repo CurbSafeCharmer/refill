@@ -40,6 +40,7 @@ class Reflinks {
 	public $options = null;
 	public $spamFilter = null;
 	public $wikiProvider = null;
+	public $wiki = null;
 	
 	const SKIPPED_UNKNOWN = 0;
 	const SKIPPED_NOTITLE = 1;
@@ -78,6 +79,16 @@ class Reflinks {
 		} else { // All good
 			$this->wikiProvider = new $wikiProvider( $config['wikiproviderargs'] );
 		}
+
+		if ( !$this->options->get( "wiki" ) ) {
+			$this->options->set( "wiki", "en" ); // TODO: Fix this hard-coded default
+		}
+
+		if ( $wiki = $this->wikiProvider->getWiki( $this->options->get( "wiki" ) ) ) {
+			$this->wiki = $wiki;
+		} else {
+			$this->wiki = null;
+		}
 	}
 	
 	public function fix( $wikitext, &$log = array(), &$unfinished = false ) {
@@ -96,6 +107,7 @@ class Reflinks {
 		$limit = $this->options->get( "limit" );
 		$app = &$this;
 		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, &$limit, $dateFormat, $app ) {
+			global $I18N;
 			$status = 0;
 			$core = $citation['content'];
 			$unchanged = false;
@@ -177,6 +189,10 @@ class Reflinks {
 						} else { // use {{cite web}}
 							$generator = new CiteTemplateGenerator( $options, $dateFormat );
 						}
+						$generator->setI18n( $I18N );
+						if ( $app->wiki ) {
+							$generator->setWikiContext( $app->wiki );
+						}
 						$newcore = $generator->getCitation( $metadata );
 						$log['fixed'][] = array(
 							'url' => $metadata->url
@@ -239,6 +255,7 @@ class Reflinks {
 		}
 		return $cm->exportWikitext();
 	}
+
 	public function getResult() {
 		global $config, $I18N;
 		$result = array();
@@ -248,14 +265,11 @@ class Reflinks {
 			$result['old'] = $text;
 			$result['source'] = self::SOURCE_TEXT;
 		} elseif ( $page = $this->options->get( "page" ) ) {
-			if ( !$this->options->get( "wiki" ) ) {
-				$this->options->set( "wiki", "en" ); // TODO: Fix this hard-coded default
-			}
-			if ( !$wiki = $this->wikiProvider->getWiki( $this->options->get( "wiki" ) ) ) {
+			if ( !$this->wiki ) {
 				$result['status'] = self::STATUS_FAILED;
 				return $result;
 			}
-			$source = $wiki->fetchPage( $page, $this->spider );
+			$source = $this->wiki->fetchPage( $page, $this->spider );
 			if ( !$source['successful'] ) {
 				$result['status'] = self::STATUS_FAILED;
 				$result['failure'] = self::FAILURE_PAGENOTFOUND;
@@ -263,8 +277,8 @@ class Reflinks {
 			}
 			$result['old'] = $source['wikitext'];
 			$result['source'] = self::SOURCE_WIKI;
-			$result['api'] = $wiki->api;
-			$result['indexphp'] = $wiki->indexphp;
+			$result['api'] = $this->wiki->api;
+			$result['indexphp'] = $this->wiki->indexphp;
 			$result['actualname'] = $source['actualname'];
 			$result['edittimestamp'] = Utils::generateWikiTimestamp( $source['timestamp'] );
 		} else {
