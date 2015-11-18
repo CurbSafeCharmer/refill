@@ -23,10 +23,14 @@
 
 /*
 	Citation generator model
+
+	If a wiki context is set, the generator should adapt to the wiki's preference 
+	with the aid of the I18N engine (if available).
 */
 
 namespace Reflinks;
 
+use Reflinks\Wiki;
 use Reflinks\UserOptions;
 use Reflinks\Metadata;
 use Reflinks\DateFormat;
@@ -34,4 +38,10 @@ use Reflinks\DateFormat;
 abstract class CitationGenerator {
 	abstract function __construct( UserOptions $options, DateFormat $dateFormat );
 	abstract public function getCitation( Metadata $metadata );
+	public function setWikiContext( Wiki $wiki ) {
+		return true;
+	}
+	public function setI18n( $I18n ) {
+		return true;
+	}
 }
