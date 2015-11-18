@@ -62,5 +62,14 @@
 	"wmflabs-thankyoutest": "Merci de tester la version expérimentale de $1. Merci de signaler les bugs que vous voyez.",
 	"wmflabs-latestcommit": "Dernier engagement :$1",
 	"wmflabs-poweredby": "Développé par Wikimedia Labs",
-	"wmflabs-testsummary": "Rempli $1 référence(s) brutes avec la version test de $3"
+	"wmflabs-testsummary": "Rempli $1 référence(s) brutes avec la version test de $3",
+	"wikitext-template-web": "lien web",
+	"wikitext-template-av-media": "lien vidéo",
+	"wikitext-parameter-url": "url",
+	"wikitext-parameter-title": "titre",
+	"wikitext-parameter-author": "auteur",
+	"wikitext-parameter-work": "site",
+	"wikitext-parameter-publisher": "éditeur",
+	"wikitext-parameter-date": "date",
+	"wikitext-parameter-accessdate": "consulté le"
 }

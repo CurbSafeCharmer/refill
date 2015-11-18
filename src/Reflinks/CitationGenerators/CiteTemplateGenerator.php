@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2015, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -32,14 +32,68 @@ use Reflinks\UserOptions;
 use Reflinks\Metadata;
 use Reflinks\DateFormat;
 use Reflinks\Utils;
+use Reflinks\Wiki;
 
 class CiteTemplateGenerator extends CitationGenerator {
 	public $options;
 	public $dateFormat;
+	public $wiki = null;
+	public $i18n = null;
+
 	function __construct( UserOptions $options, DateFormat $dateFormat ) {
 		$this->options = $options;
 		$this->dateFormat = $dateFormat;
 	}
+	public function setWikiContext( Wiki $wiki ) {
+		$this->wiki = $wiki;
+	}
+
+	public function setI18n( $i18n ) {
+		$this->i18n = $i18n;
+	}
+	
+	protected function getMessage( $key, $fallback = false ) {
+		if ( !$this->wiki || !$this->wiki->language ) {
+			$lang = "en";
+		} else {
+			$lang = $this->wiki->language;
+		}
+
+		if (
+			$this->i18n && 
+			$this->i18n->msgExists( $key, array( "lang" => $lang ) )
+		) { 
+			return $this->i18n->msg( $key, array( "lang" => $lang ) );
+		} else { // fallback to $fallback
+			return $fallback;
+		}
+
+	}
+
+	public function getTemplateName( $type = "web" ) {
+		if ( empty( $type ) ) return false;
+		$typekey = str_replace( " ", "-", $type );
+		return $this->getMessage( "wikitext-template-$typekey", "cite $type" );
+	}
+
+	public function getParameterName( $parameter = "" ) {
+		if ( empty( $parameter ) ) return false;
+		$parameterkey = str_replace( " ", "-", $parameter );
+		return $this->getMessage( "wikitext-parameter-$parameterkey", $parameter );
+	}
+
+	public function getBlankParameter( $parameter ) {
+		return "|" . $this->getParameterName( $parameter ) . "=";
+	}
+
+	public function getFragment( $metadata, $parameter ) {
+		if ( $metadata->exists( $parameter ) ) {
+			return $this->getBlankParameter( $parameter ) . $metadata->get( $parameter );
+		} else {
+			return "";
+		}
+	}
+
 	public function getCitation( Metadata $metadata ) {
 		global $config;
 		foreach ( $metadata as $key => $value ) { // we don't want | here
@@ -50,54 +104,56 @@ class CiteTemplateGenerator extends CitationGenerator {
 		$metadata->url = str_replace( "|", "%7c", $metadata->url );
 		// Type
 		if ( $metadata->exists( "type" ) ) {
-			$core = "{{cite " . $metadata->type;
+			$type = $metadata->type;
 		} else {
-			$core = "{{cite web";
+			$type = "web";
 		}
+		$core = "{{" . $this->getTemplateName( $type );
+
 		// URL
-		$core .= "|url=" . $metadata->url;
+		$core .= $this->getFragment( $metadata, "url" );
+
 		// Archive URL
-		if ( $metadata->exists( "archiveurl" ) ) {
-			$core .= "|archiveurl=" . $metadata->archiveurl;
-		}
+		$core .= $this->getFragment( $metadata, "archiveurl" );
+
 		// Title
-		if ( $metadata->exists( "title" ) ) {
-			$core .= "|title=" . $metadata->title;
-		}
+		$core .= $this->getFragment( $metadata, "title" );
+
 		// Author
-		if ( $metadata->exists( "author" ) ) {
-			$core .= "|author=" . $metadata->author;
+		if ( $fragment = $this->getFragment( $metadata, "author" ) ) {
+			$core .= $fragment;
 		} elseif ( $this->options->get( "addblankmetadata" ) ) { // add a blank field
-			$core .= "|author=";
+			$core .= $this->getBlankParameter( "author" );
 		}
+
 		// Date
 		if ( $timestamp = strtotime( $metadata->date ) ) { // date
-			$core .= "|date=" . Utils::generateDate( $timestamp, $this->dateFormat );
+			$core .= $this->getBlankParameter( "date" ) . Utils::generateDate( $timestamp, $this->dateFormat );
 		} elseif ( $this->options->get( "addblankmetadata" ) ) { // add a blank field
-			$core .= "|date=";
+			$core .= $this->getBlankParameter( "date" );
 		}
+
 		// Archive date
 		if ( $archivets = strtotime( $metadata->archivedate ) ) { // archivedate
-			$core .= "|archivedate=" . Utils::generateDate( $archivets, $this->dateFormat );
+			$core .= $this->getBlankParameter( "archivedate" ) . Utils::generateDate( $archivets, $this->dateFormat );
 		}
+
 		// Publisher
-		if ( $metadata->exists( "publisher" ) ) {
-			$core .= "|publisher=" . $metadata->publisher;
-		}
+		$core .= $this->getFragment( $metadata, "publisher" );
+
 		// Work (and an empty |publisher=)
-		if ( $metadata->exists( "work" ) ) {
-			$core .= "|work=" . $metadata->work;
+		if ( $fragment = $this->getFragment( $metadata, "work" ) ) {
+			$core .= $fragment;
 		} elseif( !$metadata->exists( "publisher" ) ) { // no |work= or |publisher= extracted, add an empty |publisher=
-			$core .= "|publisher=";
+			$core .= $this->getBlankParameter( "publisher" );
 		}
 		// Access date
 		if ( !$this->options->get( "noaccessdate" ) ) {
-			$core .= "|accessdate=" . Utils::generateDate( 0, $this->dateFormat );
+			$core .= $this->getBlankParameter( "accessdate" ) . Utils::generateDate( 0, $this->dateFormat );
 		}
 		// Via
-		if ( $metadata->exists( "via" ) ) {
-			$core .= "|via=" . $metadata->via;
-		}
+		$core .= $this->getFragment( $metadata, "publisher" );
+
 		$core .= $config['citeextra'] . "}}";
 		return $core;
 	}

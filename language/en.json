@@ -16,6 +16,7 @@
 	"placeholder-url": "URL",
 	"label-fixpage": "Fix page",
 	"label-fixwikitext": "Fix wikitext",
+	"label-pretendwiki": "Pretend it's from: ",
 	"label-toggleadv": "Toggle advanced input",
 	"label-generate": "Generate",
 	"label-manual": "Manual",
@@ -59,5 +60,18 @@
 	"wmflabs-thankyoutest": "Thank you for testing the experimental version of $1. Please report the bugs you encounter.",
 	"wmflabs-latestcommit": "Latest commit: $1",
 	"wmflabs-poweredby": "Powered by Wikimedia Labs",
-	"wmflabs-testsummary": "Filled in $1 bare reference(s) with the test version of $3"
+	"wmflabs-testsummary": "Filled in $1 bare reference(s) with the test version of $3",
+	"wikitext-template-web": "cite web",
+	"wikitext-template-av-media": "cite av media",
+	"wikitext-parameter-url": "url",
+	"wikitext-parameter-title": "title",
+	"wikitext-parameter-author": "author",
+	"wikitext-parameter-publisher": "publisher",
+	"wikitext-parameter-work": "work",
+	"wikitext-parameter-date": "date",
+	"wikitext-parameter-accessdate": "accessdate",
+	"wikitext-parameter-archiveurl": "archiveurl",
+	"wikitext-parameter-archivedate": "archivedate",
+	"wikitext-parameter-deadurl": "deadurl",
+	"wikitext-parameter-via": "via"
 }
