@@ -35,10 +35,12 @@ use Reflinks\Utils;
 
 class PlainCs1Generator extends CitationGenerator {
 	public $options;
-	function __construct( UserOptions $options ) {
+	public $dateFormat;
+	function __construct( UserOptions $options, DateFormat $dateFormat ) {
 		$this->options = $options;
+		$this->dateFormat = $dateFormat;
 	}
-	public function getCitation( Metadata $metadata, DateFormat $format ) {
+	public function getCitation( Metadata $metadata ) {
 		$core = "";
 		// Is the page archived or not?
 		if ( $metadata->exists( "archiveurl" ) ) {
@@ -51,10 +53,10 @@ class PlainCs1Generator extends CitationGenerator {
 		
 		// Generate dates
 		if ( $timestamp = strtotime( $metadata->date ) ) {
-			$date = Utils::generateDate( $timestamp, $format );
+			$date = Utils::generateDate( $timestamp, $this->dateFormat );
 		}
 		if ( $archivets = strtotime( $metadata->archivedate ) ) {
-			$archivedate = Utils::generateDate( $archivets, $format );
+			$archivedate = Utils::generateDate( $archivets, $date->dateFormat );
 		}
 		
 		// Author (Date).
@@ -92,7 +94,7 @@ class PlainCs1Generator extends CitationGenerator {
 		
 		// Retrived on
 		if ( !$this->options->get( "noaccessdate" ) ) {
-			$core .= "Retrieved on " . Utils::generateDate( 0, $format ) . ".";
+			$core .= "Retrieved on " . Utils::generateDate( 0, $this->dateFormat ) . ".";
 		}
 
 		// Via

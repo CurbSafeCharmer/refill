@@ -90,12 +90,12 @@ class Reflinks {
 			'fixed' => array(), // ['url'] contains the original link
 			'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
 		);
-		$dateformat = Utils::detectDateFormat( $wikitext );
+		$dateFormat = Utils::detectDateFormat( $wikitext );
 		$options = &$this->options;
 		$spamFilter = &$this->spamFilter;
 		$limit = $this->options->get( "limit" );
 		$app = &$this;
-		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, &$limit, $dateformat, $app ) {
+		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, &$limit, $dateFormat, $app ) {
 			$status = 0;
 			$core = $citation['content'];
 			$unchanged = false;
@@ -173,11 +173,11 @@ class Reflinks {
 						}
 						// Generate cite template
 						if ( $options->get( "plainlink" ) ) { // use plain CS1
-							$generator = new PlainCs1Generator( $options );
+							$generator = new PlainCs1Generator( $options, $dateFormat );
 						} else { // use {{cite web}}
-							$generator = new CiteTemplateGenerator( $options );
+							$generator = new CiteTemplateGenerator( $options, $dateFormat );
 						}
-						$newcore = $generator->getCitation( $metadata, $dateformat );
+						$newcore = $generator->getCitation( $metadata );
 						$log['fixed'][] = array(
 							'url' => $metadata->url
 						);

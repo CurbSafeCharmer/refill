@@ -35,10 +35,12 @@ use Reflinks\Utils;
 
 class CiteTemplateGenerator extends CitationGenerator {
 	public $options;
-	function __construct( UserOptions $options ) {
+	public $dateFormat;
+	function __construct( UserOptions $options, DateFormat $dateFormat ) {
 		$this->options = $options;
+		$this->dateFormat = $dateFormat;
 	}
-	public function getCitation( Metadata $metadata, DateFormat $format ) {
+	public function getCitation( Metadata $metadata ) {
 		global $config;
 		foreach ( $metadata as $key => $value ) { // we don't want | here
 			if ( $key != "url" ) {
@@ -70,13 +72,13 @@ class CiteTemplateGenerator extends CitationGenerator {
 		}
 		// Date
 		if ( $timestamp = strtotime( $metadata->date ) ) { // date
-			$core .= "|date=" . Utils::generateDate( $timestamp, $format );
+			$core .= "|date=" . Utils::generateDate( $timestamp, $this->dateFormat );
 		} elseif ( $this->options->get( "addblankmetadata" ) ) { // add a blank field
 			$core .= "|date=";
 		}
 		// Archive date
 		if ( $archivets = strtotime( $metadata->archivedate ) ) { // archivedate
-			$core .= "|archivedate=" . Utils::generateDate( $archivets, $format );
+			$core .= "|archivedate=" . Utils::generateDate( $archivets, $this->dateFormat );
 		}
 		// Publisher
 		if ( $metadata->exists( "publisher" ) ) {
@@ -90,7 +92,7 @@ class CiteTemplateGenerator extends CitationGenerator {
 		}
 		// Access date
 		if ( !$this->options->get( "noaccessdate" ) ) {
-			$core .= "|accessdate=" . Utils::generateDate( 0, $format );
+			$core .= "|accessdate=" . Utils::generateDate( 0, $this->dateFormat );
 		}
 		// Via
 		if ( $metadata->exists( "via" ) ) {

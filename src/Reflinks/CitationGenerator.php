@@ -32,6 +32,6 @@ use Reflinks\Metadata;
 use Reflinks\DateFormat;
 
 abstract class CitationGenerator {
-	abstract function __construct( UserOptions $options );
-	abstract public function getCitation( Metadata $metadata, DateFormat $format );
+	abstract function __construct( UserOptions $options, DateFormat $dateFormat );
+	abstract public function getCitation( Metadata $metadata );
 }
