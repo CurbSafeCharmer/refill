@@ -36,7 +36,7 @@ class MetaTagMetadataParser extends MetadataParser {
 		$xpath = Utils::getXpath( $dom );
 		$result = new Metadata();
 		
-		$datenodes = $xpath->query( "//x:meta[@name='date']" );
+		$datenodes = $xpath->query( "//x:meta[@name='date'] | //x:meta[@name='sailthru.date']" );
 		if ( $datenodes->length ) { // date found
 			$result->date = Utils::getFirstNodeAttrContent( $datenodes );
 		}
