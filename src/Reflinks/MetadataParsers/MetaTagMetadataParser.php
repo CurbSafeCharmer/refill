@@ -41,7 +41,7 @@ class MetaTagMetadataParser extends MetadataParser {
 			$result->date = Utils::getFirstNodeAttrContent( $datenodes );
 		}
 		
-		$authornodes = $xpath->query( "//x:meta[@name='author']" );
+		$authornodes = $xpath->query( "//x:meta[@name='author'] | //x:meta[@name='sailthru.author']" );
 		if ( $authornodes->length ) {
 			$result->author = Utils::getFirstNodeAttrContent( $authornodes );
 		}
