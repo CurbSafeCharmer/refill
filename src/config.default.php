@@ -31,6 +31,9 @@ $config['wikis'] = array(
 // Link handler
 $config['linkhandler'] = "Reflinks\LinkHandlers\StandaloneLinkHandler";
 
+// NewYorkTimesLinkHandler
+$config['nyt-articlesearch-api'] = "http://api.nytimes.com/svc/search/v2/articlesearch.json";
+
 // Metadata parser chain
 $config['parserchain'] = array(
 	"TypeFixerMetadataParser",
