@@ -79,6 +79,7 @@ The Bootstrap theme used is [Yeti](http://bootswatch.com/yeti/).
 - [HTML5-PHP](https://github.com/Masterminds/html5-php)
 - [Twig](http://twig.sensiolabs.org/)
 - [Intuition](https://github.com/Krinkle/intuition)
+- [Date](https://github.com/jenssegers/date)
 
 You may want to run `composer licenses` to list the licenses of all Composer dependencies.
 
