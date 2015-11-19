@@ -37,6 +37,7 @@ use Reflinks\Wiki;
 class CiteTemplateGenerator extends CitationGenerator {
 	public $options;
 	public $dateFormat;
+	public $lang = "en";
 	public $wiki = null;
 	public $i18n = null;
 
@@ -44,8 +45,14 @@ class CiteTemplateGenerator extends CitationGenerator {
 		$this->options = $options;
 		$this->dateFormat = $dateFormat;
 	}
+
 	public function setWikiContext( Wiki $wiki ) {
 		$this->wiki = $wiki;
+		if ( !$this->wiki->language ) {
+			$this->lang = "en";
+		} else {
+			$this->lang = $this->wiki->language;
+		}
 	}
 
 	public function setI18n( $i18n ) {
@@ -53,17 +60,11 @@ class CiteTemplateGenerator extends CitationGenerator {
 	}
 	
 	protected function getMessage( $key, $fallback = false ) {
-		if ( !$this->wiki || !$this->wiki->language ) {
-			$lang = "en";
-		} else {
-			$lang = $this->wiki->language;
-		}
-
 		if (
 			$this->i18n && 
-			$this->i18n->msgExists( $key, array( "lang" => $lang ) )
+			$this->i18n->msgExists( $key, array( "lang" => $this->lang ) )
 		) { 
-			return $this->i18n->msg( $key, array( "lang" => $lang ) );
+			return $this->i18n->msg( $key, array( "lang" => $this->lang ) );
 		} else { // fallback to $fallback
 			return $fallback;
 		}
@@ -128,14 +129,14 @@ class CiteTemplateGenerator extends CitationGenerator {
 
 		// Date
 		if ( $timestamp = strtotime( $metadata->date ) ) { // date
-			$core .= $this->getBlankParameter( "date" ) . Utils::generateDate( $timestamp, $this->dateFormat );
+			$core .= $this->getBlankParameter( "date" ) . Utils::generateDate( $timestamp, $this->dateFormat, $this->lang );
 		} elseif ( $this->options->get( "addblankmetadata" ) ) { // add a blank field
 			$core .= $this->getBlankParameter( "date" );
 		}
 
 		// Archive date
 		if ( $archivets = strtotime( $metadata->archivedate ) ) { // archivedate
-			$core .= $this->getBlankParameter( "archivedate" ) . Utils::generateDate( $archivets, $this->dateFormat );
+			$core .= $this->getBlankParameter( "archivedate" ) . Utils::generateDate( $archivets, $this->dateFormat, $this->lang );
 		}
 
 		// Publisher
@@ -149,7 +150,7 @@ class CiteTemplateGenerator extends CitationGenerator {
 		}
 		// Access date
 		if ( !$this->options->get( "noaccessdate" ) ) {
-			$core .= $this->getBlankParameter( "accessdate" ) . Utils::generateDate( 0, $this->dateFormat );
+			$core .= $this->getBlankParameter( "accessdate" ) . Utils::generateDate( 0, $this->dateFormat, $this->lang );
 		}
 		// Via
 		$core .= $this->getFragment( $metadata, "publisher" );

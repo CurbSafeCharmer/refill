@@ -27,6 +27,7 @@
 
 namespace Reflinks;
 
+use Jenssegers\Date\Date;
 use Reflinks\DateFormat;
 
 class Utils {
@@ -42,17 +43,36 @@ class Utils {
 		return date( "YmdHis", $timestamp );
 	}
 
-	public static function generateDate( $timestamp = 0, DateFormat $format ) {
+	public static function generateDate( $timestamp = 0, DateFormat $format, $locale = 'en' ) {
 		if ( !$timestamp ) {
 			$timestamp = time();
 		}
-		switch ( $format->get() ) {
-			default:
-			case DateFormat::DMY:
-				return date( "j F Y", $timestamp );
-			case DateFormat::MDY:
-				return date( "F j, Y", $timestamp );
+		if ( !class_exists( "Jenssegers\\Date\\Date" ) ) { // use date()
+			if ( $locale !== "en" ) return false; // D'oh :(
+			switch ( $format->get() ) {
+				default:
+				case DateFormat::DMY:
+					$result = date( "j F Y", $timestamp );
+					break;
+				case DateFormat::MDY:
+					$result = date( "F j, Y", $timestamp );
+					break;
+			}
+		} else { // always use the library when available
+			Date::setLocale( $locale );
+			$date = new Date( $timestamp );
+			switch ( $format->get() ) {
+				default:
+				case DateFormat::DMY:
+					$result = $date->format( "j F Y" );
+					break;
+				case DateFormat::MDY:
+					$result = $date->format( "F j, Y" );
+					break;
+			}
 		}
+		if ( $locale == "fr" ) $result = strtolower( $result );
+		return $result;
 	}
 
 	public static function generateShortDate( $timestamp = 0 ) {
