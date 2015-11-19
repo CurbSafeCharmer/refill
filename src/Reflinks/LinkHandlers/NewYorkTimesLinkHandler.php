@@ -78,7 +78,7 @@ class NewYorkTimesLinkHandler extends LinkHandler {
 				$api .= "$key=$value&"; // Remember to sanitize user input earlier
 			}
 			$api = rtrim( $api, "&" );
-			$response = $this->spider->fetch( $api, false );
+			$response = $this->spider->fetch( $api, "", false );
 			if ( !$response->successful ) { // failed
 				throw new LinkHandlerException( "Fetching error", self::ERROR_FETCH );
 			} elseif ( $response->header['http_code'] != 200 ) { // http error
@@ -86,7 +86,7 @@ class NewYorkTimesLinkHandler extends LinkHandler {
 			} elseif ( empty( $response->html ) ) { // empty response
 				throw new LinkHandlerException( "Empty response", self::ERROR_EMPTY );
 			}
-			$array = json_decode( $response, true );
+			$array = json_decode( $response->html, true );
 			if ( !$array['response']['meta']['hits'] ) {
 				throw new LinkHandlerException( "Not found in NYT catalog", self::ERROR_NOTFOUND );
 			}
