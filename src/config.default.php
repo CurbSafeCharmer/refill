@@ -29,7 +29,13 @@ $config['wikis'] = array(
 );
 
 // Link handler
-$config['linkhandler'] = "Reflinks\LinkHandlers\StandaloneLinkHandler";
+$config['linkhandlers'] = array(
+	array(
+		"regex" => "/^http\:\/\/www\.nytimes\.com/",
+		"handler" => "NewYorkTimesLinkHandler"
+	),
+	"StandaloneLinkHandler",
+);
 
 // NewYorkTimesLinkHandler
 $config['nyt-articlesearch-api'] = "http://api.nytimes.com/svc/search/v2/articlesearch.json";

@@ -28,6 +28,7 @@
 namespace Reflinks;
 
 use Reflinks\Exceptions\LinkHandlerException;
+use Reflinks\LinkHandler;
 use Reflinks\WikiProvider;
 use Reflinks\Utils;
 
@@ -40,6 +41,7 @@ class Reflinks {
 	public $options = null;
 	public $spamFilter = null;
 	public $wikiProvider = null;
+	public $linkHandlers = array();
 	public $wiki = null;
 	
 	const SKIPPED_UNKNOWN = 0;
@@ -47,6 +49,7 @@ class Reflinks {
 	const SKIPPED_HANDLER = 2;
 	const SKIPPED_SPAM = 3;
 	const SKIPPED_CONFIGBL = 4;
+	const SKIPPED_NOHANDLER = 5;
 	
 	const STATUS_SUCCESS = 0;
 	const STATUS_FAILED = 1;
@@ -69,12 +72,12 @@ class Reflinks {
 
 		$this->spamFilter = new SpamFilter();
 
-		$this->linkHandler = new $config['linkhandler']( $this->spider );
+		$this->linkHandlers = $config['linkhandlers'];
 
 		$wikiProvider = Utils::getClass( $config['wikiprovider'], "Reflinks\\WikiProviders" );
 		if ( !$wikiProvider ) {
 			throw new NoSuchWikiProviderException( $config['wikiprovider'] );
-		} else if ( is_subclass_of( $wikiProvider, "WikiProvider" ) ) {
+		} else if ( $wikiProvider instanceof WikiProvider ) {
 			throw new ErroneousWikiProviderException( $config['wikiprovider'] );
 		} else { // All good
 			$this->wikiProvider = new $wikiProvider( $config['wikiproviderargs'] );
@@ -88,6 +91,33 @@ class Reflinks {
 			$this->wiki = $wiki;
 		} else {
 			$this->wiki = null;
+		}
+	}
+
+	protected function getLinkHandler( $url ) {
+		$handler = null;
+		foreach ( $this->linkHandlers as $handlerinfo ) {
+			if ( !is_array( $handlerinfo ) ) { // matches all links
+				$handler = $handlerinfo;
+				break;
+			} else { // matches specific links
+				if ( preg_match( $handlerinfo['regex'], $url ) ) {
+					$handler = $handlerinfo['handler'];
+					break;
+				}
+			}
+		}
+		if ( $handler ) {
+			$linkHandler = Utils::getClass( $handler, "Reflinks\\LinkHandlers" );
+			if ( !$linkHandler ) {
+				throw new NoSuchLinkHandlerException( $handler );
+			} else if ( $linkHandler instanceof LinkHandler ) {
+				throw new ErroneousLinkHandlerException( $handler );
+			} else {
+				return new $linkHandler( $this->spider );
+			}
+		} else {
+			return false;
 		}
 	}
 	
@@ -151,9 +181,17 @@ class Reflinks {
 							return;	
 					}
 				}
-
+				$linkHandler = $this->getLinkHandler( $metadata->url );
+				if ( !$linkHandler ) {
+					$log['skipped'][] = array(
+						'ref' => $core,
+						'reason' => $app::SKIPPED_NOHANDLER,
+						'status' => $status,
+					);
+					return;
+				}
 				try {
-					$metadata = $app->linkHandler->getMetadata( $metadata->url, $metadata );
+					$metadata = $linkHandler->getMetadata( $metadata->url, $metadata );
 				} catch ( LinkHandlerException $e ) {
 					$message = $e->getMessage();
 					if ( !empty( $message ) ) {
@@ -330,6 +368,8 @@ class Reflinks {
 				return "Spam blacklist";
 			case self::SKIPPED_CONFIGBL:
 				return "Blacklisted";
+			case self::SKIPPED_NOHANDLER:
+				return "No suitable handler found";
 		}
 	}
 }
