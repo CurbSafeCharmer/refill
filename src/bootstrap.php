@@ -30,7 +30,7 @@ require_once __DIR__ . "/config.default.php";
 
 // Intuition I18N
 $I18N = new Intuition( $config['i18n']['domain'] );
-$I18N->registerDomain( $config['i18n']['domain'], __DIR__ . "/../language" );
+$I18N->registerDomain( $config['i18n']['domain'], __DIR__ . "/../messages" );
 
 // Twig templating engine
 $twigLoader = new Twig_Loader_Filesystem( __DIR__ . "/../templates" );
