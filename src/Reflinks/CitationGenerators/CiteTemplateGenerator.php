@@ -153,7 +153,7 @@ class CiteTemplateGenerator extends CitationGenerator {
 			$core .= $this->getBlankParameter( "accessdate" ) . Utils::generateDate( 0, $this->dateFormat, $this->lang );
 		}
 		// Via
-		$core .= $this->getFragment( $metadata, "publisher" );
+		$core .= $this->getFragment( $metadata, "via" );
 
 		$core .= $config['citeextra'] . "}}";
 		return $core;
