@@ -96,8 +96,8 @@ class NewYorkTimesLinkHandler extends LinkHandler {
 			$metadata->title = $info['headline']['main']; // Maybe "print_headline" suits better? Not sure.
 			$metadata->date = $info['pub_date'];
 			$metadata->work = $info['source'];
-			if ( $info['source'] !== "New York Times" ) {
-				$metadata->via = "New York Times";
+			if ( $info['source'] !== "The New York Times" ) {
+				$metadata->via = "The New York Times";
 			}
 			return $metadata;
 		}
