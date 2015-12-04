@@ -340,9 +340,12 @@ class Reflinks {
 		$counterskipped = count( $result['log']['skipped'] );
 		if ( !isset( $config['summary'] ) ) { //Use the I18N engine
 			$toollink = $I18N->msg( "toollink" );
-			$result['summary'] = $I18N->msg( "summary", array( "variables" => array(
-				$counter, $counterskipped, $toollink
-			) ) );
+			$result['summary'] = $I18N->msg( "summary", array(
+				"lang" => $this->wiki->language,
+				"variables" => array(
+					$counter, $counterskipped, $toollink
+				),
+			) );
 		} else { // Use the one supplied by the local config
 			$result['summary'] = str_replace( "%numfixed%", $counter, $config['summary'] );
 			$result['summary'] = str_replace( "%numskipped%", $counterskipped, $result['summary'] );
