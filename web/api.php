@@ -95,7 +95,7 @@ EOF;
 					$citegen = "Reflinks\\CitationGenerators\\" . $_GET['format'];
 					if ( class_exists( $citegen ) ) {
 						$result['success'] = true;
-						$generator = new $citegen( new UserOptions() );
+						$generator = new $citegen( new UserOptions(), new DateFormat() );
 						$result['citation'] = $generator->getCitation( $metadata, new DateFormat() );
 					} else {
 						$result['success'] = false;
