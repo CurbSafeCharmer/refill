@@ -136,7 +136,7 @@ class Reflinks {
 		$spamFilter = &$this->spamFilter;
 		$limit = $this->options->get( "limit" );
 		$app = &$this;
-		$callback = function( $citation ) use ( &$cm, &$log, &$options, &$spamFilter, &$limit, $dateFormat, $app ) {
+		$callback = function( $citation, $id ) use ( &$cm, &$log, &$options, &$spamFilter, &$limit, $dateFormat, $app ) {
 			global $I18N;
 			$status = 0;
 			$core = $citation['content'];
@@ -145,10 +145,13 @@ class Reflinks {
 			if ( preg_match( "/\{\{(Dead link|404|dl|dead|Broken link)/i", $core ) ) { // dead link tag
 				return;
 			}
+			if ( $citation['stub'] ) {
+				return;
+			}
 			if ( Utils::isCitationEmpty( $citation['content'] ) ) {
 				if ( count( $citation['attributes'] ) > 0 ) { // has some attributes - let's turn it into a stub
 					$stub = $cm->generateStub( $citation['attributes'] );
-					$cm->replaceIdentical( $citation['complete'], $stub );
+					$cm->replace( $id, $stub );
 				}
 				return;
 			}
@@ -246,8 +249,20 @@ class Reflinks {
 				$duplicates = $cm->searchByContent( $core );
 				$attributes = array();
 				$startAttrs = "";
-				foreach ( $duplicates as $duplicate ) {
-					if ( isset( $duplicate['attributes'] ) ) { // So one of the duplicates has a name
+				$ids = array(); // citations to replace
+				$names = array();
+				foreach ( $duplicates as $id => $duplicate ) {
+					$ids[] = $id;
+					if ( isset( $duplicate['attributes'] ) ) { // So one of the duplicates has a name (or another attribute)
+						if ( isset( $duplicate['attributes']['name'] ) ) {
+							if ( !in_array( $duplicate['attributes']['name'], $names ) ) { // find out all stubs with the same name
+								$names[] = $duplicate['attributes']['name'];
+								$namesake = $cm->searchByAttribute( "name", $duplicate['attributes']['name']);
+								foreach ( $namesake as $nid => $c ) {
+									if ( $c['stub'] ) $ids[] = $nid;
+								}
+							}
+						}
 						foreach ( $duplicate['attributes'] as $name => $value ) {
 							$attributes[$name] = $value;
 						}
@@ -277,7 +292,14 @@ class Reflinks {
 				}
 				$replacement = $cm->generateCitation( $newcore, $attributes );
 				$stub = $cm->generateStub( $attributes );
-				$cm->replaceByContent( $core, $replacement, $stub );
+				$i = 0;
+				foreach ( $ids as $id ) {
+					if ( $i++ == 0 ) {
+						$cm->replace( $id, $replacement );
+					} else {
+						$cm->replace( $id, $stub );
+					}
+				}
 			} elseif ( !$unchanged ) { // Just keep the original surrounding tags
 				$replacement = $citation['startTag'] . $newcore . $citation['endTag'];
 				$cm->replaceByContent( $core, $replacement );
