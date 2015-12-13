@@ -20,6 +20,10 @@
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+body {
+	padding-bottom: 50px;
+}
+
 #footerlinks {
 	padding: 0;
 	margin: 0;
