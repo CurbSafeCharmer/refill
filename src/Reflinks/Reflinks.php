@@ -220,6 +220,7 @@ class Reflinks {
 							'status' => $response->header['http_code'],
 						);
 						$unchanged = true;
+						$newcore = $core;
 					} else {
 						if ( !$metadata->exists( "work" ) && !$metadata->exists( "via" ) && $options->get( "usedomainaswork" ) ) { // Use the base domain as work
 							$metadata->work = Utils::getBaseDomain( $metadata->url );
