@@ -23,29 +23,40 @@
 
 namespace Reflinks;
 
+require_once( __DIR__ . "/CitationGeneratorMock.php" );
 class CitationTest extends \PHPUnit_Framework_TestCase {
 	public function dataChanges() {
 			return array(
-				"Tags reuse" => array(
+				"Tag reuse" => array(
 					"<ref    name='reusethis'>Original</ref>", // original
 					"<ref    name='reusethis'>Changed</ref>", // expected
 					array( // changes to the citation
 						"content" => "Changed",
 					)
 				),
-				"Attributes reuse #1" => array(
+				"Attribute reuse #1" => array(
 					"<ref name='reusethis'>Remove content</ref>",
 					"<ref name='reusethis'/>",
 					array(
 						"isStub" => true,
 					)
 				),
-				"Attributes reuse #2" => array(
+				"Attribute reuse #2" => array(
 					"<ref name='reusethis'/>",
 					"<ref name='reusethis'>Content added</ref>",
 					array(
 						"isStub" => false,
 						"content" => "Content added",
+					)
+				),
+				"Attribute generation" => array(
+					"<ref name='roar'>Content</ref>",
+					"<ref name=\"meow\" group=\"nb\">Content</ref>",
+					array(
+						"attributes" => array(
+							"name" => "meow",
+							"group" => "nb",
+						)
 					)
 				)
 			);
@@ -58,6 +69,24 @@ class CitationTest extends \PHPUnit_Framework_TestCase {
 		foreach ( $changes as $property => $value ) {
 			$citation->{$property} = $value;
 		}
+		$this->assertEquals( $expected, $citation->getCode() );
+	}
+
+	public function testCitationGenerator() {
+		$original = "<ref>Throw this away</ref>";
+		$expectedContent = "We need this instead :P";
+		$expected = "<ref>$expectedContent</ref>";
+		$citation = new Citation( $original );
+		$generator = $this->getMockBuilder( 'Reflinks\\CitationGenerators\\UnitTestMockCitationGenerator' )
+		                  ->disableOriginalConstructor()
+						  ->getMock();
+		$generator->expects( $this->any() )
+		          ->method( "getCitation" )
+		          ->willReturn( $expectedContent );
+		$metadata = $this->getMockBuilder( "Metadata" )
+		                 ->getMock();
+		$citation->generator = $generator;
+		$citation->useGenerator = true;
 		$this->assertEquals( $expected, $citation->getCode() );
 	}
 }

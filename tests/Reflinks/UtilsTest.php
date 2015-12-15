@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2015, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -21,27 +21,20 @@
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*
-	Citation generator model
-
-	If a wiki context is set, the generator should adapt to the wiki's preference
-	with the aid of the I18N engine (if available).
-*/
-
 namespace Reflinks;
 
-use Reflinks\Wiki;
-use Reflinks\UserOptions;
-use Reflinks\Metadata;
-use Reflinks\DateFormat;
+class UtilsTest extends \PHPUnit_Framework_TestCase {
+    protected function setUp() {
+        date_default_timezone_set( "America/Los_Angeles" );
+    }
 
-abstract class CitationGenerator {
-	abstract public function __construct( UserOptions $options, DateFormat $dateFormat );
-	abstract public function getCitation( Metadata $metadata );
-	public function setWikiContext( Wiki $wiki ) {
-		return true;
-	}
-	public function setI18n( $i18n ) {
-		return true;
-	}
+    public function testTimestamp() {
+        $this->assertEquals( "20151215014046", Utils::generateWikiTimestamp( 1450172446 ) );
+    }
+
+    public function testEmptyCitation() {
+        $this->assertFalse( Utils::isCitationEmpty( "[http://example.com]" ) );
+        $this->assertTrue( Utils::isCitationEmpty( "" ) );
+        $this->assertTrue( Utils::isCitationEmpty( "{{cite web}}" ) );
+    }
 }

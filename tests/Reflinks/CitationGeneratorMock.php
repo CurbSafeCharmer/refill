@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2015, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -21,27 +21,14 @@
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*
-	Citation generator model
+namespace Reflinks\CitationGenerators;
 
-	If a wiki context is set, the generator should adapt to the wiki's preference
-	with the aid of the I18N engine (if available).
-*/
-
-namespace Reflinks;
-
-use Reflinks\Wiki;
 use Reflinks\UserOptions;
 use Reflinks\Metadata;
 use Reflinks\DateFormat;
+use Reflinks\CitationGenerator;
 
-abstract class CitationGenerator {
-	abstract public function __construct( UserOptions $options, DateFormat $dateFormat );
-	abstract public function getCitation( Metadata $metadata );
-	public function setWikiContext( Wiki $wiki ) {
-		return true;
-	}
-	public function setI18n( $i18n ) {
-		return true;
-	}
+class UnitTestMockCitationGenerator extends CitationGenerator {
+    public function __construct( UserOptions $options, DateFormat $dateFormat ) {}
+    public function getCitation( Metadata $metadata ) {}
 }

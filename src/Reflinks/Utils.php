@@ -31,11 +31,13 @@ use Jenssegers\Date\Date;
 use Reflinks\DateFormat;
 
 class Utils {
+	// @codeCoverageIgnoreStart
 	// Utils should never be constructed
 	function __construct() {
 		return null;
 	}
-	
+	// @codeCoverageIgnoreEnd
+
 	public static function generateWikiTimestamp( $timestamp = 0 ) {
 		if ( !$timestamp ) {
 			$timestamp = time();
@@ -89,28 +91,30 @@ class Utils {
 			return new DateFormat( DateFormat::DMY );
 		}
 	}
-	
+
 	public static function getFirstNodeAttrContent( \DOMNodeList $nodelist ) {
 		return trim( $nodelist->item( 0 )->attributes->getNamedItem( "content" )->nodeValue );
 	}
-	
+
 	public static function getFirstNodeValue( \DOMNodeList $nodelist ) {
 		return trim( $nodelist->item( 0 )->nodeValue );
 	}
-	
+
 	public static function getXpath( \DOMDocument $dom ) {
 		$xpath = new \DOMXPath( $dom );
 		$xpath->registerNamespace( "x", "http://www.w3.org/1999/xhtml" );
 		return $xpath;
 	}
-	
+
+	// @codeCoverageIgnoreStart
 	public static function getBaseDomain( $url ) {
 		$pslManager = new \Pdp\PublicSuffixListManager();
 		$parser = new \Pdp\Parser( $pslManager->getList() );
 		$result = $parser->parseUrl( $url );
 		return $result->host->registerableDomain;
 	}
-	
+	// @codeCoverageIgnoreEnd
+
 	public static function removeBareUrlTags( $source ) {
 		$pattern = "/\{\{(Bare|Bare links|Barelinks|Bare references|Bare refs|Bare URLs|Cleanup link rot|Cleanup link-rot|Cleanup-link-rot|Cleanup-linkrot|Link rot|Linkrot|Cleanup-bare URLs)([^\}])*\}\}/i";
 		return preg_replace( $pattern, "", $source );
