@@ -43,23 +43,23 @@ class Reflinks {
 	public $wikiProvider = null;
 	public $linkHandlers = array();
 	public $wiki = null;
-	
+
 	const SKIPPED_UNKNOWN = 0;
 	const SKIPPED_NOTITLE = 1;
 	const SKIPPED_HANDLER = 2;
 	const SKIPPED_SPAM = 3;
 	const SKIPPED_CONFIGBL = 4;
 	const SKIPPED_NOHANDLER = 5;
-	
+
 	const STATUS_SUCCESS = 0;
 	const STATUS_FAILED = 1;
-	
+
 	const FAILURE_NOSOURCE = 1;
 	const FAILURE_PAGENOTFOUND = 2;
-	
+
 	const SOURCE_TEXT = 0;
 	const SOURCE_WIKI = 1;
-	
+
 	function __construct() {
 		global $config;
 		$this->optionsProvider = new UserOptionsProvider();
@@ -120,7 +120,7 @@ class Reflinks {
 			return false;
 		}
 	}
-	
+
 	public function fix( $wikitext, &$log = array(), &$unfinished = false ) {
 		/*
 			FIXME: This is, by far, one of the worst
@@ -132,69 +132,66 @@ class Reflinks {
 			'skipped' => array(), // ['ref'] contains the original ref, ['reason'] contains the reason const, ['status'] contains the status code
 		);
 		$dateFormat = Utils::detectDateFormat( $wikitext );
-		$options = &$this->options;
-		$spamFilter = &$this->spamFilter;
 		$limit = $this->options->get( "limit" );
 		$app = &$this;
-		$callback = function( $citation, $id ) use ( &$cm, &$log, &$options, &$spamFilter, &$limit, $dateFormat, $app ) {
+		$callback = function( $citation ) use ( &$cm, &$log, &$limit, $dateFormat, $app ) {
 			global $I18N;
 			$status = 0;
-			$core = $citation['content'];
 			$unchanged = false;
 			// Let's check if we are supposed to mess with it first...
-			if ( preg_match( "/\{\{(Dead link|404|dl|dead|Broken link)/i", $core ) ) { // dead link tag
+			if ( preg_match( "/\{\{(Dead link|404|dl|dead|Broken link)/i", $citation->content ) ) { // dead link tag
+				// FIXME: Add proper detection
 				return;
 			}
-			if ( $citation['stub'] ) {
+			if ( $citation->isStub ) { // A stub? Let's not mess with it then
 				return;
 			}
-			if ( Utils::isCitationEmpty( $citation['content'] ) ) {
-				if ( count( $citation['attributes'] ) > 0 ) { // has some attributes - let's turn it into a stub
-					$stub = $cm->generateStub( $citation['attributes'] );
-					$cm->replace( $id, $stub );
+			if ( Utils::isCitationEmpty( $citation->content ) ) {
+				if ( count( $citation->attributes ) > 0 ) { // has some attributes - let's turn it into a stub
+					$citation->isStub = true;
+				} else { // No? Let's just delete it then
+					$citation->isDeleted = true;
 				}
+				$cm->replace( $citation->id, $citation );
 				return;
 			}
 
 			// Let's find out what kind of reference it is...
-			$parser = new CitationParser();
-			$metadata = $parser->parse( $core );
-
-			if ( $metadata ) { // Needs fixing
+			if ( $citation->type !== Citation::TYPE_UNKNOWN ) { // Needs fixing
 				if ( $limit !== -1 ) {
 					$limit--;
 				}
 
-				if ( $spam = $spamFilter->check( $metadata->url ) ) {
+				if ( $spam = $app->spamFilter->check( $citation->metadata->url ) ) {
 					switch ( $spam ) {
 						default:
 						case SpamFilter::TYPE_SPAM:
 							$log['skipped'][] = array(
-								'ref' => $core,
+								'ref' => $citation->content,
 								'reason' => $app::SKIPPED_SPAM,
 								'status' => $status,
 							);
 							return;
 						case SpamFilter::TYPE_CONFIGBL:
 							$log['skipped'][] = array(
-								'ref' => $core,
+								'ref' => $citation->content,
 								'reason' => $app::SKIPPED_CONFIGBL,
 								'status' => $status,
 							);
-							return;	
+							return;
 					}
 				}
-				$linkHandler = $this->getLinkHandler( $metadata->url );
+				$linkHandler = $this->getLinkHandler( $citation->metadata->url );
 				if ( !$linkHandler ) {
 					$log['skipped'][] = array(
-						'ref' => $core,
+						'ref' => $citation->content,
 						'reason' => $app::SKIPPED_NOHANDLER,
 						'status' => $status,
 					);
 					return;
 				}
 				try {
-					$metadata = $linkHandler->getMetadata( $metadata->url, $metadata );
+					$citation->metadata = $linkHandler->getMetadata( $citation->metadata->url, $citation->metadata );
 				} catch ( LinkHandlerException $e ) {
 					$message = $e->getMessage();
 					if ( !empty( $message ) ) {
@@ -203,86 +200,86 @@ class Reflinks {
 						$description = $app->linkHandler->explainErrorCode( $e->getCode() );
 					}
 					$log['skipped'][] = array(
-						'ref' => $core,
+						'ref' => $citation->content,
 						'reason' => $app::SKIPPED_HANDLER,
 						'description' => $description,
 					);
 					$unchanged = true;
-					$newcore = $core;
 				}
 
 				// finally{} is available on PHP 5.5+, but we need to maintain compatibility with 5.3... What a pity :(
 				if ( !$unchanged ) {
-					if ( empty( $metadata->title ) ) {
+					if ( empty( $citation->metadata->title ) ) {
 						$log['skipped'][] = array(
-							'ref' => $core,
+							'ref' => $citation->content,
 							'reason' => $app::SKIPPED_NOTITLE,
 							'status' => $response->header['http_code'],
 						);
 						$unchanged = true;
-						$newcore = $core;
 					} else {
-						if ( !$metadata->exists( "work" ) && !$metadata->exists( "via" ) && $options->get( "usedomainaswork" ) ) { // Use the base domain as work
-							$metadata->work = Utils::getBaseDomain( $metadata->url );
+						if (
+							!$citation->metadata->exists( "work" ) &&
+							!$citation->metadata->exists( "via" ) &&
+							$app->options->get( "usedomainaswork" )
+						) { // Use the base domain as work
+							$citation->metadata->work = Utils::getBaseDomain( $citation->metadata->url );
 						}
 						// Generate cite template
-						if ( $options->get( "plainlink" ) ) { // use plain CS1
-							$generator = new PlainCs1Generator( $options, $dateFormat );
+						if ( $app->options->get( "plainlink" ) ) { // use plain CS1
+							$generator = new PlainCs1Generator( $app->options, $dateFormat );
 						} else { // use {{cite web}}
-							$generator = new CiteTemplateGenerator( $options, $dateFormat );
+							$generator = new CiteTemplateGenerator( $app->options, $dateFormat );
 						}
 						$generator->setI18n( $I18N );
 						if ( $app->wiki ) {
 							$generator->setWikiContext( $app->wiki );
 						}
-						$newcore = $generator->getCitation( $metadata );
+						$citation->generator = $generator;
+						$citation->useGenerator = true;
 						$log['fixed'][] = array(
-							'url' => $metadata->url
+							'url' => $citation->metadata->url
 						);
 					}
 				}
 			} else {
 				$unchanged = true;
-				$newcore = $core;
 			}
 
-			if ( $cm->hasDuplicates( $core ) ) {
-				$duplicates = $cm->searchByContent( $core );
+			if ( $cm->hasDuplicates( $citation->content ) ) {
+				$duplicates = $cm->searchByContent( $citation->content );
 				$attributes = array();
 				$startAttrs = "";
-				$ids = array(); // citations to replace
+				$ids = array( $citation->id ); // citations to replace
 				$names = array();
 				foreach ( $duplicates as $id => $duplicate ) {
 					$ids[] = $id;
-					if ( isset( $duplicate['attributes'] ) ) { // So one of the duplicates has a name (or another attribute)
-						if ( isset( $duplicate['attributes']['name'] ) ) {
-							if ( !in_array( $duplicate['attributes']['name'], $names ) ) { // find out all stubs with the same name
-								$names[] = $duplicate['attributes']['name'];
+					if ( count( $duplicate->attributes ) ) { // So one of the duplicates has a name (or another attribute)
+						if ( isset( $duplicate->attributes['name'] ) ) {
+							if ( !in_array( $duplicate->attributes['name'], $names ) ) { // find out all stubs with the same name
+								$names[] = $duplicate->attributes['name'];
 								$namesake = $cm->searchByAttribute( "name", $duplicate['attributes']['name']);
 								foreach ( $namesake as $nid => $c ) {
 									if ( $c['stub'] ) $ids[] = $nid;
 								}
 							}
 						}
-						foreach ( $duplicate['attributes'] as $name => $value ) {
+						foreach ( $duplicate->attributes as $name => $value ) {
 							$attributes[$name] = $value;
 						}
 					}
 				}
 				if ( empty( $attributes['name'] ) ) {
-					if ( $metadata ) {
-						if ( !empty( $metadata->author ) ) {
-							$attributes['name'] = strtolower( str_replace( " ", "", $metadata->author ) );
-						} else {
-							$attributes['name'] = Utils::getBaseDomain( $metadata->url );
-						}
+					if ( !empty( $citation->metadata->author ) ) {
+						$attributes['name'] = strtolower( str_replace( " ", "", $citation->metadata->author ) );
+					} else if ( !empty( $citation->metadata->url ) ) {
+						$attributes['name'] = Utils::getBaseDomain( $citation->metadata->url );
 					} else {
 						$attributes['name'] = "auto";
 					}
-					if ( $cm->hasExactAttribute( "name", $attributes['name'] ) ) {
+					if ( count( $cm->searchByAttribute( "name", $attributes['name'] ) ) ) {
 						$suffix = 1;
 						while ( true ) {
-							if ( $cm->hasExactAttribute( "name", $attributes['name'] . $suffix ) ) {
+							if ( count( $cm->searchByAttribute( "name", $attributes['name'] . $suffix ) ) ) {
 								$suffix++;
 							} else {
 								break;
@@ -291,19 +288,19 @@ class Reflinks {
 						$attributes['name'] .= $suffix;
 					}
 				}
-				$replacement = $cm->generateCitation( $newcore, $attributes );
-				$stub = $cm->generateStub( $attributes );
+				$citation->attributes = $attributes;
 				$i = 0;
+				$stub = clone $citation;
+				$stub->isStub = true;
 				foreach ( $ids as $id ) {
 					if ( $i++ == 0 ) {
-						$cm->replace( $id, $replacement );
+						$cm->replace( $id, $citation );
 					} else {
 						$cm->replace( $id, $stub );
 					}
 				}
-			} elseif ( !$unchanged ) { // Just keep the original surrounding tags
-				$replacement = $citation['startTag'] . $newcore . $citation['endTag'];
-				$cm->replaceByContent( $core, $replacement );
+			} elseif ( !$unchanged ) { // Just replace this particular citation
+				$cm->replace( $citation->id, $citation );
 			}
 			if ( $limit === 0 ) {
 				return true; // limit exceeded
@@ -320,7 +317,7 @@ class Reflinks {
 	public function getResult() {
 		global $config, $I18N;
 		$result = array();
-		
+
 		// Fetch the source wikitext
 		if ( $text = $this->options->get( "text" ) ) {
 			$result['old'] = $text;
@@ -347,7 +344,7 @@ class Reflinks {
 			$result['failure'] = self::FAILURE_NOSOURCE;
 			return $result;
 		}
-		
+
 		// Fix the wikitext
 		$result['new'] = $this->fix( $result['old'], $result['log'], $result['unfinished'] );
 		if (
@@ -357,7 +354,7 @@ class Reflinks {
 		) { // Remove bare URL tags
 			$result['new'] = Utils::removeBareUrlTags( $result['new'] );
 		}
-		
+
 		// Generate default summary
 		$counter = count( $result['log']['fixed'] );
 		$counterskipped = count( $result['log']['skipped'] );
@@ -377,7 +374,7 @@ class Reflinks {
 			$result['summary'] .= $config['summaryextra']; // Add extra information
 		}
 		$result['timestamp'] = Utils::generateWikiTimestamp();
-		
+
 		$result['status'] = self::STATUS_SUCCESS;
 		return $result;
 	}
@@ -399,4 +396,3 @@ class Reflinks {
 		}
 	}
 }
-

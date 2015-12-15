@@ -7,196 +7,139 @@
 namespace Reflinks;
 
 class CitationManipulator {
-	private $wikitext;
-	private $citations;
-	private $supportedAttributes = array( "name", "group" );
+	protected $wikitext;
+	protected $citations;
+	protected $replacedList = array();
+
 	public static $markerStart = "?REFILL";
 	public static $markerEnd = "REF?";
 	public static $markerProtector = "x";
 	public static $markerRegex = "/\?REFILL(?'citationId'[0-9]+)REF\?/";
 	public static $markerProtectedRegex = "/\?REFILLx(?'citationId'[0-9]+)REF\?/";
-	function __construct( $wikitext ) {
+
+	/**
+	 * Initialize the object
+	 * @param string $wikitext The wikitext
+	 */
+	public function __construct( $wikitext ) {
 		$this->citations = array();
 		$this->wikitext = $wikitext;
 		$this->parse();
 	}
-	private function protectMarkers( $wikitext ) {
-		$callback = function( $matches ) {
-			return self::$markerStart . self::$markerProtector . $matches[1] . self::$markerEnd;
-		};
-		return preg_replace_callback( self::$markerRegex, $callback, $wikitext );
-	}
-	private function unprotectMarkers( $wikitext ) {
-		$callback = function( $matches ) {
-			return self::$markerStart . $matches[1] . self::$markerEnd;
-		};
-		return preg_replace_callback( self::$markerProtectedRegex, $callback, $wikitext );
-	}
-	private function parse() {
-		$this->citations = array();
-		$this->wikitext = $this->protectMarkers( $this->wikitext );
-		$id = 0; // Citation ID counter
-		$pattern = "/"
-			 // scenario #1: A full <ref></ref> pair
-			 . "("
-		         . "(?'startTag'\<ref(?'startAttrs'[^\>\/]*)\>)" // the starting <ref> tag, possibly with attributes
-		         . "(?'content'.*?)" // content of the citation (inside the surround tags)
-			 . "(?'endTag'\<\/ref\>)" // the ending </ref> tag
-			 . ")"
-			 // end scenario #1
-			 . "|" // or...
-			 // scenario #2: A self-closing <ref/>
-			 . "("
-			 . "\<ref"
-			 . "(?'stubAttrs'[^\>\/]*)"
-			 . "\/>"
-			 . ")"
-			 // end scenario #2
-			 . "/i";
-		$callback = function( $matches ) use ( &$id ) {
-			if ( empty( $matches['stubAttrs'] ) ) { // a full <ref></ref> pair
-				$citation = array(
-					'complete' => $matches[0],
-					'startTag' => $matches['startTag'],
-					'startAttrs' => $matches['startAttrs'],
-					'content' => $matches['content'],
-					'endTag' => $matches['endTag'],
-					'stub' => false
-				);
-			} else { // a self-closing <ref/>
-				$citation = array(
-					'complete' => $matches[0],
-					'startAttrs' => $matches['stubAttrs'],
-					'stub' => true
-				);
-			}
-			foreach ( $this->supportedAttributes as $attribute ) {
-				$value = $this->parseAttribute( $citation['startAttrs'], $attribute );
-				if ( !empty( $value ) ) {
-					$citation['attributes'][$attribute] = $value;
-				}
-			}
-			$this->citations[$id] = $citation;
-			$marked = self::$markerStart . $id . self::$markerEnd;
-			$id++;
-			return $marked;
-		};
-		$this->wikitext = preg_replace_callback( $pattern, $callback, $this->wikitext );
-	}
-	public function parseAttribute( $startAttrs, $attribute ) {
-		$template = "/"
-		         . "\\s*" // allow whitespace
-		         . "%s\\=" // %s is the attribute name ("name" or "group" or whatever), to be filled with sprintf()
-			 . "(" // there are two possiblities here...
-			 // scenario #1: the value is quoted with "
-			 . "("
-			 . "\\\""
-			 . "(?'doubleQuotedValue'[^\\\"]*)"
-			 . "\\\""
-			 . ")"
-			 // end scenario #1
-			 . "|" // or...
-			 // scenario #2: the value is quoted with '
-			 . "("
-			 . "\\'"
-			 . "(?'singleQuotedValue'[^\\']*)"
-			 . "\\'"
-			 . ")"
-			 // end scenario #2
-			 . "|" // or...
-			 // scenario #3: the value is not quoted, so no spaces allowed in the value
-			 . "(?'unquotedValue'\S+)"
-			 . ")"
-			 // end scenario #3
-			 . "\\s*" // allow whitespace
-			 . "/i";
-		$pattern = sprintf( $template, $attribute );
-		if ( preg_match( $pattern,  $startAttrs, $matches ) ) {
-			foreach ( array( "doubleQuotedValue", "singleQuotedValue", "unquotedValue" ) as $type )
-				if ( !empty( $matches[$type] ) )
-					return $matches[$type];
-		}
-	}
-	public function hasExactAttribute( $name, $value ) {
-		return preg_match( "/$name\\=." . preg_quote( $value ) . "/", $this->wikitext );
-	}
-	public function generateAttribute( $attribute, $value ) {
-		return $attribute . '="' . htmlentities( $value ) . '"';
-	}
-	public function generateAttributes( $attributes ) {
-		$startAttr = "";
-		foreach ( $attributes as $name => $attribute ) {
-			$startAttr .= $this->generateAttribute( $name, $attribute ) . " ";
-		}
-		return $startAttr;
 
-	}
-	public function generateCitation( $content, $startAttrs = "" ) {
-		if ( is_array( $startAttrs ) ) {
-			$startAttrs = $this->generateAttributes( $startAttrs );
-		}
-		$startAttrs = trim( $startAttrs );
-		if ( !empty( $startAttrs ) ) {
-			return "<ref $startAttrs>$content</ref>";
-		} else {
-			return "<ref>$content</ref>";
-		}
-	}
-	public function generateStub( $startAttrs ) {
-		if ( is_array( $startAttrs ) ) {
-			$startAttrs = $this->generateAttributes( $startAttrs );
-		}
-		$startAttrs = trim( $startAttrs );
-		return "<ref $startAttrs/>";
-	}
-	public function hasDuplicates( $content ) {
-		return count( $this->searchByContent( $content ) ) > 1;
-	}
-	public function searchByContent( $content ) {
-		$result = array();
-		foreach ( $this->citations as $id => $citation ) {
-			if ( $citation['content'] == $content ) {
-				$result[$id] = $citation;
-			}
-		}
-		return $result;
-	}
-	public function searchByAttribute( $attribute, $value ) {
-		$result = array();
-		foreach ( $this->citations as $id => $citation ) {
-			if ( isset( $citation['attributes'][$attribute] ) && $citation['attributes'][$attribute] == $value ) {
-				$result[$id] = $citation;
-			}
-		}
-		return $result;
-	}
-	public function replace( $id, $complete ) {
+	/**
+	 * Get a citation
+	 *
+	 * @param int $id The citation ID
+	 *
+	 * @return Citation|false
+	 */
+	public function getCitation( $id ) {
 		if ( !isset( $this->citations[$id] ) ) {
 			return false;
 		} else {
-			$this->citations[$id] = array( "complete" => $complete );
+			return $this->citations[$id];
+		}
+	}
+
+	/**
+	 * Check whether there are more than one citation with the specified content
+	 *
+	 * @param string $content The content to search for
+	 *
+	 * @return bool True if there are indeed duplicates
+	 */
+	public function hasDuplicates( $content ) {
+		return count( $this->searchByContent( $content ) ) > 1;
+	}
+
+	/**
+	 * Search for citations with the specified content
+	 *
+	 * @param string $content The content to search for
+	 *
+	 * @return Citation[] An associative array containing the matching citations
+	 */
+	public function searchByContent( $content ) {
+		$result = array();
+		foreach ( $this->citations as $id => $citation ) {
+			if ( $citation->isStub || $citation->useGenerator ) {
+				// Skip if there is no content or it's dynamically generated
+				continue;
+			}
+			if ( $citation->content == $content ) {
+				$result[$id] = $citation;
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Search for citations with a specified attribute-value pair
+	 *
+	 * @param string $attribute The name of the attribute
+	 * @param string $value The value of the attribute
+	 *
+	 * @return Citation[] An associative array containing the matching citations
+	 */
+	public function searchByAttribute( $attribute, $value ) {
+		$result = array();
+		foreach ( $this->citations as $id => $citation ) {
+			if ( isset( $citation->attributes[$attribute] ) && $citation->attributes[$attribute] == $value ) {
+				$result[$id] = $citation;
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Replace a citation
+	 *
+	 * @param int $id The ID of the citation being replaced
+	 * @param Citation $replacement The replacement citation
+	 *
+	 * @return bool True if successful
+	 */
+	public function replace( $id, Citation $replacement ) {
+		if ( !isset( $this->citations[$id] ) ) {
+			return false;
+		} else {
+			$replacement->id = $id;
+			$this->citations[$id] = $replacement;
+			if ( !in_array( $id, $this->replacedList ) ) {
+				$this->replacedList[] = $id;
+			}
 			return true;
 		}
 	}
-	/*
-		Change all citations with identical content
-	*/
-	public function replaceByContent( $content, $first, $remaining = null ) {
-		$citations = $this->searchByContent( $content );
+
+	/**
+	 * Change all citations with identical content
+	 *
+	 * Replace the first citation with content identical to $content with $first,
+	 * and the remaining with $remaining
+	 *
+	 * @param string $search The content to search for
+	 * @param Citation $first The replacement citation for the first match
+	 * @param Citation $remaining The replacement citation for the remaining match(es)
+	 */
+	public function replaceByContent( $search, Citation $first, Citation $remaining = null ) {
+		$citations = $this->searchByContent( $search );
 		$i = 0;
 		// Some code smell here...
 		foreach ( $citations as $id => $citation ) {
 			if ( !empty( $remaining ) && $i++ != 0 ) {
-				$new = array( "complete" => $remaining );
+				$this->replace( $id, $remaining );
 			} else {
-				$new = array( "complete" => $first );
+				$this->replace( $id, $first );
 			}
-			$this->citations[$id] = $new;
 		}
 	}
-	public function dumpCitations() {
-		return $this->citations;
-	}
+
+	/**
+	 * Get the resulting wikitext
+	 * @return string The resulting wikitext
+	 */
 	public function exportWikitext() {
 		$result = "";
 		$callback = function( $matches ) {
@@ -206,10 +149,10 @@ class CitationManipulator {
 				return "<ref>reFill error: Missing citation #$id</ref>";
 			} else {
 				$citation = $this->citations[$id];
-				if ( empty( $citation['complete'] ) ) {
+				if ( $citation->isDeleted ) {
 					return ""; // citation deleted
 				} else {
-					return $citation['complete']; // When will Tool Labs have PHP 7.0?
+					return $citation->getCode();
 				}
 			}
 		};
@@ -217,21 +160,89 @@ class CitationManipulator {
 		$result = $this->unprotectMarkers( $result );
 		return $result;
 	}
-	/*
-		Loop through the citations. A citation is
-		passed to the first and only parameter of
-		the callback function. You can modify other
-		citations in the callback, as it's smart
-		enough.
-	*/
-	public function loopCitations( $callback ) {
+
+	/**
+	 * Loop through the citations
+	 *
+	 * @param callable $callback The callback function
+	 * 	A Citation is passed to the first and only parameter of
+	 * 	the callback function.
+	 * @param bool $skipReplaceed Skip references that have been replaced
+	 *	earlier in the loop
+	 *
+	 * @return bool True if all references have been traversed or replaced
+	 */
+	public function loopCitations( $callback, $skipReplaced = true ) {
 		foreach ( $this->citations as $id => $citation ) {
-			if ( !in_array( $citation['content'], $processed ) ) {
-				if ( call_user_func( $callback, $citation, $id ) === true ) { // stop the loop
+			if ( !$skipReplaced || !in_array( $id, $this->replacedList ) ) {
+				if ( call_user_func( $callback, $citation ) === true ) { // stop the loop
 					return false; // we stopped prematurely
 				}
 			}
 		}
 		return true; // all references traversed!
+	}
+
+	/**
+	 * Protect the markers already in the wikitext before processing
+	 *
+	 * @param string $wikitext The wikitext
+	 *
+	 * @return string The resulting wikitext
+	 */
+	protected function protectMarkers( $wikitext ) {
+		$callback = function( $matches ) {
+			return self::$markerStart . self::$markerProtector . $matches[1] . self::$markerEnd;
+		};
+		return preg_replace_callback( self::$markerRegex, $callback, $wikitext );
+	}
+
+	/**
+	 * Unprotect the markers already in the wikitext before processing
+	 *
+	 * @param string $wikitext The wikitext
+	 *
+	 * @return The resulting wikitext
+	 */
+	protected function unprotectMarkers( $wikitext ) {
+		$callback = function( $matches ) {
+			return self::$markerStart . $matches[1] . self::$markerEnd;
+		};
+		return preg_replace_callback( self::$markerProtectedRegex, $callback, $wikitext );
+	}
+
+	/**
+	 * Parse the given wikitext
+	 */
+	protected function parse() {
+		$this->citations = array();
+		$this->wikitext = $this->protectMarkers( $this->wikitext );
+		$id = 0; // Citation ID counter
+		$pattern = "/"
+			 // scenario #1: A full <ref></ref> pair
+			 . "(?'pair'"
+		         . "(\<ref([^\>\/]*)\>)" // the starting <ref> tag, possibly with attributes
+		         . "(.*?)" // content of the citation (inside the surround tags)
+			 . "(\<\/ref\>)" // the ending </ref> tag
+			 . ")"
+			 // end scenario #1
+			 . "|" // or...
+			 // scenario #2: A self-closing <ref/>
+			 . "(?'stub'"
+			 . "\<ref"
+			 . "([^\>\/]*)"
+			 . "\/>"
+			 . ")"
+			 // end scenario #2
+			 . "/i";
+		$callback = function( $matches ) use ( &$id ) {
+			$code = empty( $matches['pair'] ) ? $matches['stub'] : $matches['pair'];
+			$this->citations[$id] = new Citation( $code );
+			$this->citations[$id]->id = $id;
+			$marked = self::$markerStart . $id . self::$markerEnd;
+			$id++;
+			return $marked;
+		};
+		$this->wikitext = preg_replace_callback( $pattern, $callback, $this->wikitext );
 	}
 }

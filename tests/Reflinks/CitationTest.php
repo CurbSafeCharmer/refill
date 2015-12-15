@@ -23,61 +23,41 @@
 
 namespace Reflinks;
 
-class CitationParserTest extends \PHPUnit_Framework_TestCase {
-	public function dataProvider() {
-		return array(
-			"bare" => array(
-				"http://zhaofeng.li",
-				array(
-					"url" => "http://zhaofeng.li"
+class CitationTest extends \PHPUnit_Framework_TestCase {
+	public function dataChanges() {
+			return array(
+				"Tags reuse" => array(
+					"<ref    name='reusethis'>Original</ref>", // original
+					"<ref    name='reusethis'>Changed</ref>", // expected
+					array( // changes to the citation
+						"content" => "Changed",
+					)
 				),
-				Citation::TYPE_BARE
-			),
-			"bare-malformed" => array(
-				"scheme://not.a.supported.scheme",
-				false,
-				Citation::TYPE_UNKNOWN
-			),
-			"uncaptioned" => array(
-				"[http://zhaofeng.li]",
-				array(
-					"url" => "http://zhaofeng.li"
+				"Attributes reuse #1" => array(
+					"<ref name='reusethis'>Remove content</ref>",
+					"<ref name='reusethis'/>",
+					array(
+						"isStub" => true,
+					)
 				),
-				Citation::TYPE_BARE
-			),
-			"captioned" => array(
-				"[http://zhaofeng.li Caption]",
-				array(
-					"url" => "http://zhaofeng.li",
-					"title" => "Caption"
-				),
-				Citation::TYPE_CAPTIONED
-			),
-			"template" => array(
-				"{{cite web|url=http://zhaofeng.li}}",
-				array(
-					"url" => "http://zhaofeng.li"
-				),
-				Citation::TYPE_TEMPLATE
-			)
-		);
+				"Attributes reuse #2" => array(
+					"<ref name='reusethis'/>",
+					"<ref name='reusethis'>Content added</ref>",
+					array(
+						"isStub" => false,
+						"content" => "Content added",
+					)
+				)
+			);
 	}
-
 	/**
-	 * @dataProvider dataProvider
+	 * @dataProvider dataChanges
 	 */
-	public function testCitationParser( $citation, $expectedMetadata, $expectedType ) {
-		$parser = new CitationParser;
-		$metadata = new Metadata();
-		$type = -1;
-		$parser->parseContent( $citation, $metadata, $type );
-		if ( is_array( $expectedMetadata ) ) {
-			foreach ( $expectedMetadata as $name => $value ) {
-				$this->assertEquals( $value, $metadata->get( $name ) );
-			}
+	public function testChanges( $original, $expected, $changes ) {
+		$citation = new Citation( $original );
+		foreach ( $changes as $property => $value ) {
+			$citation->{$property} = $value;
 		}
-		if ( false !== $expectedType ) {
-			$this->assertEquals( $expectedType, $type );
-		}
+		$this->assertEquals( $expected, $citation->getCode() );
 	}
 }
