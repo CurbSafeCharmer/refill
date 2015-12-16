@@ -23,10 +23,10 @@
 
 /*
 	Wayback Machine metadata fixer
-	
+
 	This parser, when used in a MetadataParserChain, performs the following
 	things on metadata of Wayback Machine ("archive.org") pages:
-	
+
 	* Move the archive URL to "archiveurl"
 	* Change the "url" to the source URL
 	* Extract the date of archival to "archivedate"
@@ -47,6 +47,9 @@ class WaybackMachineFixerMetadataParser extends MetadataParser {
 			$metadata->url = $matches[2]; // source link
 			$metadata->archiveurl = $matches[0];
 			$metadata->archivedate = $matches[1];
+			if ( stripos( $metadata->url, "http" ) !== 0 ) {
+				$metadata->url = "http://" . $metadata->url;
+			}
 		}
 	}
 }
