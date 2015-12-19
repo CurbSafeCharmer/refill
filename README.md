@@ -1,4 +1,5 @@
 # reFill [![Build Status](https://img.shields.io/travis/zhaofengli/refill.svg)](https://travis-ci.org/zhaofengli/refill) [![Coverage Status](https://img.shields.io/coveralls/zhaofengli/refill.svg)](https://coveralls.io/r/zhaofengli/refill?branch=master)
+
 **[reFill](https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill)** (formerly **Reflinks**) is a tool for Wikipedia that adds information (page title, work/website, author and publication date, etc.) to [bare references](https://en.wikipedia.org/wiki/WP:BURL) semi-automatically. This is a rewrite of the closed-source original tool by [Dispenser](https://en.wikipedia.org/wiki/User:Dispenser).
 A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/reflinks/), and there is also an [experimental version](https://tools.wmflabs.org/fengtools/reflinkstest/), automatically pulled from the latest commit.
 
@@ -10,7 +11,7 @@ Setting up your reFill instance is fairly simple. You will need [Composer](http:
 git clone --recursive https://github.com/zhaofengli/refill.git
 ```
 
-The complete source code of reFill is now cloned in the `reflinks` directory. `cd` into it, and:
+The complete source code of reFill will be cloned in the `refill` directory. `cd` into it, and:
 ```sh
 php composer.phar install
 ```
