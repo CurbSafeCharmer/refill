@@ -257,9 +257,9 @@ class Reflinks {
 						if ( isset( $duplicate->attributes['name'] ) ) {
 							if ( !in_array( $duplicate->attributes['name'], $names ) ) { // find out all stubs with the same name
 								$names[] = $duplicate->attributes['name'];
-								$namesake = $cm->searchByAttribute( "name", $duplicate['attributes']['name']);
-								foreach ( $namesake as $nid => $c ) {
-									if ( $c['stub'] ) $ids[] = $nid;
+								$namesake = $cm->searchByAttribute( "name", $duplicate->attributes['name']);
+								foreach ( $namesake as $c ) {
+									if ( $c->isStub ) $ids[] = $c->id;
 								}
 							}
 						}
