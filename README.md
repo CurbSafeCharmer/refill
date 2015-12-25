@@ -1,4 +1,4 @@
-# reFill [![Build Status](https://img.shields.io/travis/zhaofengli/refill.svg)](https://travis-ci.org/zhaofengli/refill) [![Coverage Status](https://img.shields.io/coveralls/zhaofengli/refill.svg)](https://coveralls.io/r/zhaofengli/refill?branch=master)
+# reFill [![Build Status](https://img.shields.io/travis/zhaofengli/refill.svg)](https://travis-ci.org/zhaofengli/refill) [![Coverage Status](https://img.shields.io/codecov/c/github/zhaofengli/refill.svg)](https://codecov.io/github/zhaofengli/refill/)
 
 **[reFill](https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill)** (formerly **Reflinks**) is a tool for Wikipedia that adds information (page title, work/website, author and publication date, etc.) to [bare references](https://en.wikipedia.org/wiki/WP:BURL) semi-automatically. This is a rewrite of the closed-source original tool by [Dispenser](https://en.wikipedia.org/wiki/User:Dispenser).
 A live version is running on [WMF Labs](https://tools.wmflabs.org/fengtools/reflinks/), and there is also an [experimental version](https://tools.wmflabs.org/fengtools/reflinkstest/), automatically pulled from the latest commit.
@@ -88,3 +88,11 @@ You may want to run `composer licenses` to list the licenses of all Composer dep
 - [jQuery](http://jquery.com)
 - [Chosen](http://harvesthq.github.io/chosen/)
 - [Bootstrap](http://getbootstrap.com/)
+
+## External links
+- [Citoid](https://www.mediawiki.org/wiki/Citoid)
+- [schema.org](https://schema.org/)
+- [The Open Graph protocol](http://ogp.me/)
+- [Horizon Meta Tags](http://getstarted.sailthru.com/web/horizon-overview/horizon-meta-tags/)
+- [Zhaofeng Li](https://zhaofeng.li)
+
