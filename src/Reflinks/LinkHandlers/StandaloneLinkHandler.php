@@ -43,7 +43,7 @@ class StandaloneLinkHandler extends LinkHandler {
 	const ERROR_UNKNOWN = 0;
 	const ERROR_FETCH = 1;
 	const ERROR_HTTPERROR = 2;
-	const ERROR_EMPTY = 3; 
+	const ERROR_EMPTY = 3;
 
 	function __construct( Spider $spider ) {
 		global $config;
@@ -59,7 +59,7 @@ class StandaloneLinkHandler extends LinkHandler {
 		} elseif ( $response->header['http_code'] != 200 ) { // http error
 			throw new LinkHandlerException( "HTTP Error: " . $response->header['http_code'], self::ERROR_HTTPERROR, $response->header );
 		} elseif ( empty( $response->html ) ) { // empty response
-			throw new LinkHandlerException( "Empty response", self::ERROR_EMPTY );	
+			throw new LinkHandlerException( "Empty response", self::ERROR_EMPTY );
 		}
 
 		// Determine the page's encoding
@@ -77,11 +77,22 @@ class StandaloneLinkHandler extends LinkHandler {
 			$encoding = "UTF-8";
 		}
 		if ( $encoding != "UTF-8" ) {
-			$utf8Html = iconv( $encoding, "UTF-8", $response->html );
-			if ( false === $utf8Html ) {
-				$utf8Html = $response->html;
+			// Not UTF-8
+			if ( false !== $utf8Html = iconv( $encoding, "UTF-8", $response->html ) ) {
+				// Great! Successful without //TRANSLIT or //IGNORE :)
+			} else if ( false !== $utf8Html = iconv( $encoding, "UTF-8//TRANSLIT", $response->html ) ) {
+				// Successful with //TRANSLIT
+				// TODO: We probably should tell the user about this
+			} else if ( false !== $utf8Html = iconv( $encoding, "UTF-8//TRANSLIT//IGNORE", $response->html ) ) {
+				// Successful with //TRANSLIT//IGNORE
+				// TODO: We probably should tell the user about this
+			} else {
+				// We failed after all the tries :(
+				// FIXME: The user may see gibberish in the output. We should add a warning.
+				$utf8Html = $response->html; // not UTF-8, obviously :P
 			}
 		} else {
+			// It's already UTF-8 :)
 			$utf8Html = $response->html;
 		}
 
@@ -112,4 +123,3 @@ class StandaloneLinkHandler extends LinkHandler {
 		}
 	}
 }
-
