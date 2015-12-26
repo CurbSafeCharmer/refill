@@ -41,7 +41,7 @@ class CitationParser {
 			"metadata" => array( "url" => 1, "title" => 2 )
 		),
 		Citation::TYPE_BARETEMPLATE => array(
-			"regex" => "/^\{\{cite web\s*\|\s*url=([^ ]+)\s*\}\}$/i",
+			"regex" => "/^\{\{cite web\s*\|\s*url=([^\| ]+)\s*\}\}$/i",
 			"metadata" => array( "url" => 1 )
 		)
 	);
