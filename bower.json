@@ -18,7 +18,7 @@
 	],
 	"dependencies": {
 		"jquery": "~2.1.1",
-		"bootstrap": "~3.3.1",
+		"bootstrap": "4.0.0-alpha",
 		"chosen": "~1.4.2"
 	}
 }
