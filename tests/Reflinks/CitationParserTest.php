@@ -58,7 +58,17 @@ class CitationParserTest extends \PHPUnit_Framework_TestCase {
 				array(
 					"url" => "http://zhaofeng.li"
 				),
-				Citation::TYPE_TEMPLATE
+				Citation::TYPE_BARETEMPLATE
+			),
+			"nottemplate" => array(
+				"{{cite web|url=http://zhaofeng.li|title=PleaseLeaveThisAlone}}",
+				false,
+				Citation::TYPE_UNKNOWN
+			),
+			"nottemplate2" => array(
+				"{{cite web|url=http://zhaofeng.li|title=Please leave this alone}}",
+				false,
+				Citation::TYPE_UNKNOWN
 			)
 		);
 	}
