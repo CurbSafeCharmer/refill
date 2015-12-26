@@ -88,8 +88,7 @@ class StandaloneLinkHandler extends LinkHandler {
 				// TODO: We probably should tell the user about this
 			} else {
 				// We failed after all the tries :(
-				// FIXME: The user may see gibberish in the output. We should add a warning.
-				$utf8Html = $response->html; // not UTF-8, obviously :P
+				$utf8Html = mb_convert_encoding( $response->html, "UTF-8", $encoding );
 			}
 		} else {
 			// It's already UTF-8 :)
