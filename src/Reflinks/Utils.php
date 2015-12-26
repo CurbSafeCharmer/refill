@@ -46,32 +46,26 @@ class Utils {
 	}
 
 	public static function generateDate( $timestamp = 0, DateFormat $format, $locale = 'en' ) {
+		global $config; // FIXME: This should probably be made cleaner
 		if ( !$timestamp ) {
 			$timestamp = time();
 		}
+		// Find the correct format string
+		if ( !empty( $config['dateFormatOverrides'][$locale] ) ) {
+			$formatString = $config['dateFormatOverrides'][$locale];
+		} else if ( DateFormat::MDY == $format->get() ) {
+			$formatString = "F j, Y";
+		} else {
+			$formatString = "j F Y";
+		}
+		// Generate the date string
 		if ( !class_exists( "Jenssegers\\Date\\Date" ) ) { // use date()
 			if ( $locale !== "en" ) return false; // D'oh :(
-			switch ( $format->get() ) {
-				default:
-				case DateFormat::DMY:
-					$result = date( "j F Y", $timestamp );
-					break;
-				case DateFormat::MDY:
-					$result = date( "F j, Y", $timestamp );
-					break;
-			}
+			$result = date( $formatString, $timestamp );
 		} else { // always use the library when available
 			Date::setLocale( $locale );
 			$date = new Date( $timestamp );
-			switch ( $format->get() ) {
-				default:
-				case DateFormat::DMY:
-					$result = $date->format( "j F Y" );
-					break;
-				case DateFormat::MDY:
-					$result = $date->format( "F j, Y" );
-					break;
-			}
+			$result = $date->format( $formatString );
 		}
 		if ( $locale == "fr" ) $result = strtolower( $result );
 		return $result;

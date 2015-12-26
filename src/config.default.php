@@ -87,6 +87,11 @@ $config['i18n']['domain'] = "refill";
 // Blacklist
 $config['blacklist'] = array();
 
+// Date format overrides
+$config['dateFormatOverrides'] = array(
+	"zh" => "Y-m-d"
+);
+
 // User-settable options
 $config['options'] = array(
 	"page" => array(
