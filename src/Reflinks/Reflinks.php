@@ -140,7 +140,7 @@ class Reflinks {
 			$unchanged = false;
 			// Let's check if we are supposed to mess with it first...
 			if ( preg_match( "/\{\{(Dead link|404|dl|dead|Broken link)/i", $citation->content ) ) { // dead link tag
-				// FIXME: Add proper detection
+				// FIXME: Make this compatible with different wikis
 				return;
 			}
 			if ( $citation->isStub ) { // A stub? Let's not mess with it then
@@ -157,7 +157,10 @@ class Reflinks {
 			}
 
 			// Let's find out what kind of reference it is...
-			if ( $citation->type !== Citation::TYPE_UNKNOWN ) { // Needs fixing
+			if (
+				$citation->type !== Citation::TYPE_UNKNOWN &&
+				$app->options->get( "fixtypes" ) & $citation->type
+			) { // Needs fixing
 				if ( $limit !== -1 ) {
 					$limit--;
 				}

@@ -149,22 +149,22 @@ class Citation {
 	/**
 	 * An unknown kind of citation.
 	 */
-	const TYPE_UNKNOWN = 0;
+	const TYPE_UNKNOWN = 1;
 
 	/**
 	 * A citation with only a plain link.
 	 */
-	const TYPE_BARE = 1;
+	const TYPE_BARE = 2;
 
 	/**
 	 * A citation with only a captioned plain link.
 	 */
-	const TYPE_CAPTIONED = 2;
+	const TYPE_CAPTIONED = 4;
 
 	/**
-	 * A citation with only a template.
+	 * A citation with only a template containing only a bare URL.
 	 */
-	const TYPE_TEMPLATE = 3;
+	const TYPE_BARETEMPLATE = 8;
 
 	/**
 	 * Initialize the Citation object with some wikitext

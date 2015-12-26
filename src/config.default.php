@@ -2,13 +2,14 @@
 /*
 	This is the default configuation of Reflinks.
 
-	Please don't edit this file, unless you want to change the 
+	Please don't edit this file, unless you want to change the
 	default configuations and submit it to the code repository.
 
 	To override these configuations, create a file named "config.php" under "/config"
 */
 
 use Reflinks\UserOptionsProvider;
+use Reflinks\Citation;
 
 // The useragent used when fetching web pages and accessing MediaWiki API
 $config['useragent'] = "Reflinks/1.0 (by Zhaofeng Li: https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill )";
@@ -105,6 +106,10 @@ $config['options'] = array(
 		"type" => UserOptionsProvider::TYPE_SPECIAL,
 		"name" => "Limit",
 		"default" => -1,
+	),
+	"fixtypes" => array(
+		"type" => UserOptionsProvider::TYPE_SPECIAL,
+		"default" => Citation::TYPE_BARE | Citation::TYPE_CAPTIONED | Citation::TYPE_BARETEMPLATE,
 	),
 	"plainlink" => array(
 		"type" => UserOptionsProvider::TYPE_CHECKBOX,

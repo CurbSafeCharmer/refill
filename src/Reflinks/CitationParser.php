@@ -40,7 +40,7 @@ class CitationParser {
 			"regex" => "/^\[([^ ]+) (.+)\]$/",
 			"metadata" => array( "url" => 1, "title" => 2 )
 		),
-		Citation::TYPE_TEMPLATE => array(
+		Citation::TYPE_BARETEMPLATE => array(
 			"regex" => "/^\{\{cite web\s*\|\s*url=([^ ]+)\s*\}\}$/i",
 			"metadata" => array( "url" => 1 )
 		)
