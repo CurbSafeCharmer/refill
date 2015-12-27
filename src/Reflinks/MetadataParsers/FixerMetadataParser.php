@@ -23,7 +23,7 @@
 
 /*
 	Metadata fixer as a parser
-	
+
 	This parser, when used in a MetadataParserChain,  cleans up the metadata
 	using hard-coded rules.
 */
@@ -32,6 +32,7 @@ namespace Reflinks\MetadataParsers;
 
 use Reflinks\MetadataParser;
 use Reflinks\Metadata;
+use Reflinks\Utils;
 
 class FixerMetadataParser extends MetadataParser {
 	public function parse( \DOMDocument $dom ) {}
@@ -39,7 +40,7 @@ class FixerMetadataParser extends MetadataParser {
 		if ( $metadata->work == "Google Books" ) {
 			unset( $metadata->work );
 		}
-		
+
 		if ( $metadata->work == "Los Angeles Times Articles" ) {
 			$metadata->work = "Los Angeles Times";
 		}
@@ -48,17 +49,24 @@ class FixerMetadataParser extends MetadataParser {
 			$metadata->via = "YouTube";
 			unset( $metadata->work );
 		}
-		
+
+		if (
+			Utils::endsWith( $metadata->author, "corporation", true ) ||
+			Utils::endsWith( $metadata->author, "company", true )
+		) {
+			$metadata->publisher = $metadata->author;
+			unset( $metadata->author );
+		}
+
 		if ( $metadata->exists( "author" ) ) {
 			$metadata->author = preg_replace( "/(?:by|from)\s+(.+)/i", "$1", $metadata->author ); // clean it up a bit
 			if ( preg_match( "/(www.|.com|\w{5,}\.\w{2,3})/", $metadata->author ) ) { // looks like a domain name (Actually, there are exceptions, like will.i.am)
 				unset( $metadata->author );
 			}
 		}
-		
+
 		if ( $metadata->author == $metadata->publisher ) {
 			unset( $metadata->author );
 		}
 	}
 }
-
