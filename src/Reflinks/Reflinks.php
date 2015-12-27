@@ -254,7 +254,7 @@ class Reflinks {
 			}
 
 			if ( count( $duplicates ) ) {
-				$attributes = array();
+				$attributes = $citation->attributes;
 				$startAttrs = "";
 				$ids = array( $citation->id ); // citations to replace
 				$names = array();
