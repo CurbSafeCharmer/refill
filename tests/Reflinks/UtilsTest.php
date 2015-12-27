@@ -37,4 +37,18 @@ class UtilsTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue( Utils::isCitationEmpty( "" ) );
         $this->assertTrue( Utils::isCitationEmpty( "{{cite web}}" ) );
     }
+
+    public function testEndsWith() {
+        // #1: Does not match at all
+        $this->assertFalse( Utils::endsWith( "jpg", "f" ) );
+        $this->assertFalse( Utils::endsWith( "jpg", "f", true ) );
+        $this->assertFalse( Utils::endsWith( "jpg", "F", true ) );
+        // #2: $endsWith longer than $subject
+        $this->assertFalse( Utils::endsWith( "g", "jpg" ) );
+        $this->assertFalse( Utils::endsWith( "g", "jpg", true ) );
+        $this->assertFalse( Utils::endsWith( "g", "JPG", true ) );
+        // #3: Case sensitivity
+        $this->assertFalse( Utils::endsWith( "jpg", "G" ) );
+        $this->assertTrue( Utils::endsWith( "jpg", "G", true ) ); // case-insensitive
+    }
 }

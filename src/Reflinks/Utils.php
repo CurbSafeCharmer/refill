@@ -45,6 +45,13 @@ class Utils {
 		return date( "YmdHis", $timestamp );
 	}
 
+	public static function endsWith( $subject, $endsWith, $caseInsensitive = false ) {
+		$strlen = strlen( $subject );
+		$testlen = strlen( $endsWith );
+		if ( $testlen > $strlen ) return false;
+		return substr_compare( $subject, $endsWith, $strlen - $testlen, $testlen, $caseInsensitive ) === 0;
+	}
+
 	public static function generateDate( $timestamp = 0, DateFormat $format, $locale = 'en' ) {
 		global $config; // FIXME: This should probably be made cleaner
 		if ( !$timestamp ) {
