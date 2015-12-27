@@ -66,12 +66,16 @@ class StandaloneLinkHandler extends LinkHandler {
 		$encodings = array(
 			"GB2312", "GBK", "BIG5", "EUC-JP", "SJIS", "eucJP-win", "SJIS-win", "JIS", "ISO-2022-JP", "UTF-8", "UTF-7", "ASCII", "LATIN1"
 		);
-		if ( preg_match( "/\<meta[^\>]+charset\=[\\\"\']?([\w\-]+)/i", $response->html, $matches ) ) { // Charset declaration in HTML
+		/*
+			From http://www.w3.org/International/questions/qa-html-encoding-declarations.en :
+			"the HTTP header has a higher precedence than the in-document meta declarations"
+		*/
+		if ( preg_match( "/charset\=([\w\-]+)/i", $response->header['content_type'], $matches ) ) { // Content-Type in HTTP header
+			$encoding = $matches[1];
+		} else if ( preg_match( "/\<meta[^\>]+charset\=[\\\"\']?([\w\-]+)/i", $response->html, $matches ) ) { // Charset declaration in HTML
 			// The regex matches both the old-school `http-equiv` attribute and the HTML5 `charset` attribute
 			$encoding = $matches[1];
-		} elseif ( preg_match( "/charset\=([\w\-]+)/i", $response->header['content_type'], $matches ) ) { // Content-Type in HTTP header
-			$encoding = $matches[1];
-		} elseif ( false === $encoding = mb_detect_encoding( $response->html, $encodings ) ) {
+		} else if ( false === $encoding = mb_detect_encoding( $response->html, $encodings ) ) {
 			// *sigh* Let's assume it's UTF-8 then
 			// (what a bad guess)
 			$encoding = "UTF-8";
