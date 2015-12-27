@@ -38,6 +38,16 @@ class CitationParserTest extends \PHPUnit_Framework_TestCase {
 				false,
 				Citation::TYPE_UNKNOWN
 			),
+			"bare-malformed2" => array(
+				"httphttp://not.really.http.mind.you",
+				false,
+				Citation::TYPE_UNKNOWN
+			),
+			"bare-malformed3" => array(
+				"httpshttps://not.really.https.mind.you",
+				false,
+				Citation::TYPE_UNKNOWN
+			),
 			"uncaptioned" => array(
 				"[http://zhaofeng.li]",
 				array(

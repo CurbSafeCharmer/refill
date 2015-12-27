@@ -67,9 +67,12 @@ class CitationParser {
 					}
 				}
 				if (
-					!$metadata->exists( "url" )
-					|| !filter_var( $metadata->url, FILTER_VALIDATE_URL )
-					|| strpos( $metadata->url, "http" ) !== 0
+					!$metadata->exists( "url" ) ||
+					!filter_var( $metadata->url, FILTER_VALIDATE_URL ) ||
+					(
+						"http" != parse_url( $metadata->url, PHP_URL_SCHEME ) &&
+						"https" != parse_url( $metadata->url, PHP_URL_SCHEME )
+					)
 				) {
 					continue;
 				} else if (
