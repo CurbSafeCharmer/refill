@@ -41,12 +41,12 @@ use Reflinks\Utils;
 class WaybackMachineFixerMetadataParser extends MetadataParser {
 	public function parse( \DOMDocument $dom ) {}
 	public function chain( \DOMDocument $dom, Metadata &$metadata ) {
-		$pattern = "/^https?\:\/\/web.archive.org\/web\/([0-9]{14})\/(.+)$/";
+		$pattern = "/^https?\:\/\/web.archive.org\/(web\/)?(?'archivedate'[0-9]{14})\/(?'url'.+)$/";
 		$matches = array();
 		if ( preg_match( $pattern, $metadata->url, $matches ) ) { // matched
-			$metadata->url = $matches[2]; // source link
+			$metadata->url = $matches['url']; // source link
 			$metadata->archiveurl = $matches[0];
-			$metadata->archivedate = $matches[1];
+			$metadata->archivedate = $matches['archivedate'];
 			if ( stripos( $metadata->url, "http" ) !== 0 ) {
 				$metadata->url = "http://" . $metadata->url;
 			}
