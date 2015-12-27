@@ -248,8 +248,12 @@ class Reflinks {
 				$unchanged = true;
 			}
 
-			if ( $cm->hasDuplicates( $citation->content ) ) {
-				$duplicates = $cm->searchByContent( $citation->content );
+			$duplicates = $cm->searchByContent( $citation->content );
+			if ( isset( $duplicates[$citation->id] ) ) {
+				unset( $duplicates[$citation->id] );
+			}
+
+			if ( count( $duplicates ) ) {
 				$attributes = array();
 				$startAttrs = "";
 				$ids = array( $citation->id ); // citations to replace
