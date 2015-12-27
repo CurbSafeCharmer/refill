@@ -276,7 +276,8 @@ class Reflinks {
 						$attributes['name'] = strtolower( str_replace( " ", "", $citation->metadata->author ) );
 					} else if ( !empty( $citation->metadata->url ) ) {
 						$attributes['name'] = Utils::getBaseDomain( $citation->metadata->url );
-					} else {
+					}
+					if ( empty( $attributes['name'] ) ) {
 						$attributes['name'] = "auto";
 					}
 					if ( count( $cm->searchByAttribute( "name", $attributes['name'] ) ) ) {
