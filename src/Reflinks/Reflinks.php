@@ -271,6 +271,7 @@ class Reflinks {
 						}
 					}
 				}
+				$ids = array_unique( $ids );
 				if ( empty( $attributes['name'] ) ) {
 					if ( !empty( $citation->metadata->author ) ) {
 						$attributes['name'] = strtolower( str_replace( " ", "", $citation->metadata->author ) );
