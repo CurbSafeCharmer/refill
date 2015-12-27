@@ -35,12 +35,12 @@ class TitleMetadataParser extends MetadataParser {
 	public function parse( \DOMDocument $dom ) {
 		$xpath = Utils::getXpath( $dom );
 		$result = new Metadata();
-		
+
 		$titlenodes = $xpath->query( "//x:title" );
 		if ( $titlenodes->length ) {
 			$result->title = Utils::getFirstNodeValue( $titlenodes );
 		}
-		
+
 		$titles = array();
 		$titlenodes = $xpath->query( "//x:*[@itemprop='headline'] | //x:h1" );
 		if ( $titlenodes->length ) {
@@ -48,7 +48,7 @@ class TitleMetadataParser extends MetadataParser {
 				$titles[] = trim( $titlenodes->item( $i )->nodeValue );
 			}
 		}
-		
+
 		$titlenodes = $xpath->query( "//x:meta[@property='og:title'] | //x:meta[@name='sailthru.title']" );
 		if ( $titlenodes->length ) {
 			$titles[] = Utils::getFirstNodeAttrContent( $titlenodes );
@@ -61,7 +61,8 @@ class TitleMetadataParser extends MetadataParser {
 				$result->title = $title;
 			}
 		}
+		$result->title = str_replace( "\r", "", $result->title );
+		$result->title = str_replace( "\n", "", $result->title );
 		return $result;
 	}
 }
-
