@@ -80,12 +80,15 @@ class CitoidLinkHandler extends LinkHandler {
 
 	public function getMetadata( $url, Metadata $baseMetadata = null ) {
 		// Call the Citoid API
-		$api = $this->api . "/url";
+		$api = $this->api . "/api?";
 		$data = array(
-			'url' => $url,
+			'search' => urlencode( urldecode( $url ) ),
 			'format' => "mediawiki"
 		);
-		$this->spider->postData = $data;
+		foreach ( $data as $key => $value ) {
+			$api .= "$key=$value&";
+		}
+		$api = rtrim( $api, "&" );
 		$response = $this->spider->fetch( $api, "", false );
 		if ( !$response->successful ) { // failed
 			throw new LinkHandlerException( "Fetching error", self::ERROR_FETCH );
