@@ -39,22 +39,28 @@ class CitoidLinkHandler extends LinkHandler {
 	private $spider = null;
 	public $api = "https://citoid.wmflabs.org";
 	public static $mapping = array(
-		// Citoid => Metadata
-		'url' => "url",
-		'title' => "title",
-		"author" => "authors",
-		"editor" => "editors",
-		"publisher" => "publisher",
-		"date" => "date",
-		"volume" => "volume",
-		"issue" => "issue",
-		"pages" => "pages",
-		"PMID" => "pmid",
-		"PMCID" => "pmc",
-		"DOI" => "doi",
-		"libraryCatalog" => "via",
-		"journalAbbreviation" => "journal",
-		"bookTitle" => "book"
+		"default" => array(
+			// Metadata => Citoid
+			'url' => "url",
+			'title' => "title",
+			"authors" => "author",
+			"editors" => "editor",
+			"publisher" => "publisher",
+			"date" => "date",
+			"volume" => "volume",
+			"issue" => "issue",
+			"pages" => "pages",
+			"pmid" => "PMID",
+			"pmc" => "PMCID",
+			"doi" => "DOI",
+			"via" => "libraryCatalog"
+		),
+		"book" => array(
+			"title" => "bookTitle"
+		),
+		"journal" => array(
+			"journal" => "journalAbbreviation"
+		)
 	);
 	public static $typeMapping = array(
 		"journalArticle" => "journal",
@@ -95,9 +101,15 @@ class CitoidLinkHandler extends LinkHandler {
 		if ( isset( $this::$typeMapping[$json['itemType']] ) ) {
 			$metadata->type = $this::$typeMapping[$json['itemType']];
 		}
+		$mapping = $this::$mapping['default'];
+		if ( isset( $this::$mapping[$metadata->type] ) ) {
+			$mapping = array_merge( $mapping, $this::$mapping[$metadata->type] );
+		}
+		// Citoid key: $mapping[$metadataKey]
 		foreach ( $json as $key => $value ) {
-			if ( isset( $this::$mapping[$key] ) ) {
-				$metadata->set( $this::$mapping[$key], $value );
+			if ( in_array( $key, $mapping ) ) {
+				$metadataKey = array_search( $key, $mapping );
+				$metadata->set( $metadataKey, $value );
 			}
 		}
 
