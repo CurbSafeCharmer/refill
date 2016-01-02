@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2016, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -39,8 +39,26 @@ class CitoidLinkHandler extends LinkHandler {
 	private $spider = null;
 	public $api = "https://citoid.wmflabs.org";
 	public static $mapping = array(
+		// Citoid => Metadata
 		'url' => "url",
-		'title' => "title"
+		'title' => "title",
+		"author" => "authors",
+		"editor" => "editors",
+		"publisher" => "publisher",
+		"date" => "date",
+		"volume" => "volume",
+		"issue" => "issue",
+		"pages" => "pages",
+		"PMID" => "pmid",
+		"PMCID" => "pmc",
+		"DOI" => "doi",
+		"libraryCatalog" => "via",
+		"journalAbbreviation" => "journal",
+		"bookTitle" => "book"
+	);
+	public static $typeMapping = array(
+		"journalArticle" => "journal",
+		"bookSection" => "book"
 	);
 
 	const ERROR_UNKNOWN = 0;
@@ -74,8 +92,11 @@ class CitoidLinkHandler extends LinkHandler {
 		} else {
 			$metadata = new Metadata();
 		}
+		if ( isset( $this::$typeMapping[$json['itemType']] ) ) {
+			$metadata->type = $this::$typeMapping[$json['itemType']];
+		}
 		foreach ( $json as $key => $value ) {
-			if ( in_array( $key, $this::$mapping ) ) {
+			if ( isset( $this::$mapping[$key] ) ) {
 				$metadata->set( $this::$mapping[$key], $value );
 			}
 		}
@@ -93,4 +114,3 @@ class CitoidLinkHandler extends LinkHandler {
 		}
 	}
 }
-
