@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2016, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -50,7 +50,7 @@ class PlainCs1Generator extends CitationGenerator {
 			$url = $metadata->url;
 			$isArchived = false;
 		}
-		
+
 		// Generate dates
 		if ( $timestamp = strtotime( $metadata->date ) ) {
 			$date = Utils::generateDate( $timestamp, $this->dateFormat );
@@ -58,19 +58,27 @@ class PlainCs1Generator extends CitationGenerator {
 		if ( $archivets = strtotime( $metadata->archivedate ) ) {
 			$archivedate = Utils::generateDate( $archivets, $date->dateFormat );
 		}
-		
-		// Author (Date).
-		if ( $metadata->exists( "author" ) ) {
-			$core .= $metadata->author;
+
+		// Authors (Date).
+		if ( $metadata->exists( "authors" ) ) {
+			foreach ( $metadata->authors as $author ) {
+				if ( is_array( $author ) ) {
+					$core .= $author[1] . ", " . $author[0];
+				} else {
+					$core .= $author;
+				}
+				$core .= "; ";
+			}
+			$core = rtrim( $core, "; " );
 			if ( !empty( $date ) ) {
 				$core .= " ($date)";
 			}
 			$core .= ". ";
 		}
-		
+
 		// "Title".
 		$core .= "[" . $url . ' "' . $metadata->title . '"]. ';
-		
+
 		// ''Work'' (Publisher).
 		if ( $metadata->exists( "work" ) ) {
 			$core .= "''" . $metadata->work . "''";
@@ -81,17 +89,17 @@ class PlainCs1Generator extends CitationGenerator {
 		} elseif ( $metadata->exists( "publisher" ) ) { // Publisher
 			$core .= $metadata->publisher . ". ";
 		}
-		
-		// Date. <-- When without author
-		if ( !$metadata->exists( "author" ) && !empty( $date ) ) {
+
+		// Date. <-- When without authors
+		if ( !$metadata->exists( "authors" ) && !empty( $date ) ) {
 			$core .= $date . ". ";
 		}
-		
+
 		// Archived from
 		if ( $isArchived ) {
 			$core .= "Archived from [{$metadata->url} the original] on $archivedate. ";
 		}
-		
+
 		// Retrived on
 		if ( !$this->options->get( "noaccessdate" ) ) {
 			$core .= "Retrieved on " . Utils::generateDate( 0, $this->dateFormat ) . ".";

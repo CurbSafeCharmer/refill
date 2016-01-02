@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014-2015, Zhaofeng Li
+	Copyright (c) 2014-2016, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -139,5 +139,19 @@ class Utils {
 		} else {
 			return false;
 		}
+	}
+
+	public static function parseAuthors( $string ) {
+		$separators = array(
+			",", // comma
+			"、", // Chinese comma (U+3001), see [[zh:顿号]]
+			";", // semicolon
+		);
+		foreach ( $separators as $separator ) {
+			if ( false !== strpos( $string, $separator ) ) {
+				return explode( $separator, $string );
+			}
+		}
+		return array( $string );
 	}
 }

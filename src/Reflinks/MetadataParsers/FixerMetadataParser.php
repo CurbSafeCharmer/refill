@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2016, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -50,23 +50,23 @@ class FixerMetadataParser extends MetadataParser {
 			unset( $metadata->work );
 		}
 
-		if (
-			Utils::endsWith( $metadata->author, "corporation", true ) ||
-			Utils::endsWith( $metadata->author, "company", true )
-		) {
-			$metadata->publisher = $metadata->author;
-			unset( $metadata->author );
-		}
-
-		if ( $metadata->exists( "author" ) ) {
-			$metadata->author = preg_replace( "/(?:by|from)\s+(.+)/i", "$1", $metadata->author ); // clean it up a bit
-			if ( preg_match( "/(www.|.com|\w{5,}\.\w{2,3})/", $metadata->author ) ) { // looks like a domain name (Actually, there are exceptions, like will.i.am)
-				unset( $metadata->author );
+		if ( $metadata->exists( "authors" ) ) {
+			foreach ( $metadata->authors as &$author ) {
+				$author = preg_replace( "/(?:by|from)\s+(.+)/i", "$1", $author ); // clean it up a bit
+				if ( preg_match( "/(www.|.com|\w{5,}\.\w{2,3})/", $author ) ) { // looks like a domain name (Actually, there are exceptions, like will.i.am)
+					unset( $author );
+				}
+				if (
+					Utils::endsWith( $author, "corporation", true ) ||
+					Utils::endsWith( $author, "company", true )
+				) {
+					$metadata->publisher = $author;
+					unset( $author );
+				}
+				if ( $author == $metadata->publisher ) {
+					unset( $author );
+				}
 			}
-		}
-
-		if ( $metadata->author == $metadata->publisher ) {
-			unset( $metadata->author );
 		}
 	}
 }

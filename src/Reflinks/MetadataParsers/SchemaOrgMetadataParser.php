@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2016, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -35,25 +35,24 @@ class SchemaOrgMetadataParser extends MetadataParser {
 	public function parse( \DOMDocument $dom ) {
 		$xpath = Utils::getXpath( $dom );
 		$result = new Metadata();
-		
+
 		$authornodes = $xpath->query( "//x:*[@itemprop='author']" );
 		if ( $authornodes->length ) { // author found
 			if ( $authornodes->item( 0 )->childNodes->length > 1 ) { // It has child nodes!
 				$authornodes = $xpath->query( "//x:*[@itemprop='author']//*[@itemprop='name']" ); // dirty...
 				if ( $authornodes->length ) {
-					$result->author = Utils::getFirstNodeValue( $authornodes );
+					$result->addAuthors( Utils::getFirstNodeValue( $authornodes ) );
 				}
 			} else { // Okay, simple one...
-				$result->author = Utils::getFirstNodeValue( $authornodes );
+				$result->addAuthors( Utils::getFirstNodeValue( $authornodes ) );
 			}
 		}
-		
+
 		$datenodes = $xpath->query( "//x:*[@itemprop='datePublished']" );
 		if ( $datenodes->length ) { // date found
 			$result->date = Utils::getFirstNodeAttrContent( $datenodes );
 		}
-		
+
 		return $result;
 	}
 }
-

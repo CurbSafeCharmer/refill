@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2015, Zhaofeng Li
+	Copyright (c) 2016, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -58,40 +58,80 @@ class CiteTemplateGenerator extends CitationGenerator {
 	public function setI18n( $i18n ) {
 		$this->i18n = $i18n;
 	}
-	
-	protected function getMessage( $key, $fallback = false ) {
+
+	protected function getMessage( $key, $fallback = false, $variables = array() ) {
 		if (
-			$this->i18n && 
-			$this->i18n->msgExists( $key, array( "lang" => $this->lang ) )
-		) { 
-			return $this->i18n->msg( $key, array( "lang" => $this->lang ) );
+			$this->i18n &&
+			$this->i18n->msgExists( $key, array( "lang" => $this->lang, "variables" => $variables ) )
+		) {
+			return $this->i18n->msg( $key, array( "lang" => $this->lang, "variables" => $variables ) );
 		} else { // fallback to $fallback
 			return $fallback;
 		}
 
 	}
 
-	public function getTemplateName( $type = "web" ) {
+	public function getTemplateName( $type = "web", $variables = array() ) {
 		if ( empty( $type ) ) return false;
 		$typekey = str_replace( " ", "-", $type );
-		return $this->getMessage( "wikitext-template-$typekey", "cite $type" );
+		return $this->getMessage( "wikitext-template-$typekey", "cite $type", $variables );
 	}
 
-	public function getParameterName( $parameter = "" ) {
+	public function getParameterName( $parameter = "", $variables = array() ) {
 		if ( empty( $parameter ) ) return false;
 		$parameterkey = str_replace( " ", "-", $parameter );
-		return $this->getMessage( "wikitext-parameter-$parameterkey", $parameter );
+		return $this->getMessage( "wikitext-parameter-$parameterkey", $parameter, $variables );
 	}
 
-	public function getBlankParameter( $parameter ) {
-		return "|" . $this->getParameterName( $parameter ) . "=";
+	public function getBlankParameter( $parameter, $variables = array() ) {
+		return "|" . $this->getParameterName( $parameter, $variables ) . "=";
 	}
 
-	public function getFragment( $metadata, $parameter ) {
+	public function getCustomFragment( $parameter, $value = "", $variables = array() ) {
+		return $this->getBlankParameter( $parameter, $variables ) . $value;
+	}
+
+	public function getFragment( $metadata, $parameter, $value = "" ) {
 		if ( $metadata->exists( $parameter ) ) {
-			return $this->getBlankParameter( $parameter ) . $metadata->get( $parameter );
+			return $this->getCustomFragment( $parameter, $metadata->get( $parameter ) );
 		} else {
 			return "";
+		}
+	}
+
+	public function getPeopleList( $metadata, $type = "authors" ) {
+		if ( $type == "authors" ) {
+			$singleKey = "author";
+			$multipleKey = "multiauthor";
+		} else if ( $type == "editors" ) {
+			$singleKey = "editor";
+			$multipleKey = "multieditor";
+		} else {
+			return "";
+		}
+		$people = $metadata->{$type};
+		$count = count( $people );
+		if ( $count == 0 ) {
+			return "";
+		} else if ( $count == 1 ) { // 1 person
+			$name = reset( $people );
+			if ( is_string( $name ) ) {
+				return $this->getCustomFragment( $singleKey, $name );
+			} else {
+				return $this->getCustomFragment( "$singleKey-first", $name[0] ) . $this->getCustomFragment( "$singleKey-last", $name[1] );
+			}
+		} else { // lots of people!
+			$i = 1;
+			$result = "";
+			foreach ( $people as $name ) {
+				if ( is_string( $name ) ) {
+					$result .= $this->getCustomFragment( $multipleKey, $name, array( $i ) );
+				} else {
+					$result .= $this->getCustomFragment( "$multipleKey-first", $name[0], array( $i ) ) . $this->getCustomFragment( "$multipleKey-last", $name[1], array( $i ) );
+				}
+				$i++;
+			}
+			return $result;
 		}
 	}
 
@@ -120,12 +160,15 @@ class CiteTemplateGenerator extends CitationGenerator {
 		// Title
 		$core .= $this->getFragment( $metadata, "title" );
 
-		// Author
-		if ( $fragment = $this->getFragment( $metadata, "author" ) ) {
+		// Author(s)
+		if ( $fragment = $this->getPeopleList( $metadata, "authors" ) ) {
 			$core .= $fragment;
 		} elseif ( $this->options->get( "addblankmetadata" ) ) { // add a blank field
 			$core .= $this->getBlankParameter( "author" );
 		}
+
+		// Editor(s)
+		$core .= $this->getPeopleList( $metadata, "editors" );
 
 		// Date
 		if ( $timestamp = strtotime( $metadata->date ) ) { // date
@@ -148,12 +191,27 @@ class CiteTemplateGenerator extends CitationGenerator {
 		} elseif( !$metadata->exists( "publisher" ) ) { // no |work= or |publisher= extracted, add an empty |publisher=
 			$core .= $this->getBlankParameter( "publisher" );
 		}
+
+		// Publication
+		$core .= $this->getFragment( $metadata, "journal" );
+		$core .= $this->getFragment( $metadata, "book" );
+
+		// In-source location
+		$core .= $this->getFragment( $metadata, "volume" );
+		$core .= $this->getFragment( $metadata, "issue" );
+		$core .= $this->getFragment( $metadata, "pages" );
+
 		// Access date
 		if ( !$this->options->get( "noaccessdate" ) ) {
 			$core .= $this->getBlankParameter( "accessdate" ) . Utils::generateDate( 0, $this->dateFormat, $this->lang );
 		}
 		// Via
 		$core .= $this->getFragment( $metadata, "via" );
+
+		// Various IDs
+		$core .= $this->getFragment( $metadata, "doi" );
+		$core .= $this->getFragment( $metadata, "pmid" );
+		$core .= $this->getFragment( $metadata, "pmc" );
 
 		$core .= $config['citeextra'] . "}}";
 		return $core;

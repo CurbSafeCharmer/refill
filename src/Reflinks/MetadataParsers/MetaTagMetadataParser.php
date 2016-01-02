@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright (c) 2014, Zhaofeng Li
+	Copyright (c) 2016, Zhaofeng Li
 	All rights reserved.
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -35,18 +35,17 @@ class MetaTagMetadataParser extends MetadataParser {
 	public function parse( \DOMDocument $dom ) {
 		$xpath = Utils::getXpath( $dom );
 		$result = new Metadata();
-		
+
 		$datenodes = $xpath->query( "//x:meta[@name='date'] | //x:meta[@name='sailthru.date']" );
 		if ( $datenodes->length ) { // date found
 			$result->date = Utils::getFirstNodeAttrContent( $datenodes );
 		}
-		
+
 		$authornodes = $xpath->query( "//x:meta[@name='author'] | //x:meta[@name='sailthru.author']" );
 		if ( $authornodes->length ) {
-			$result->author = Utils::getFirstNodeAttrContent( $authornodes );
+			$result->addAuthors( Utils::getFirstNodeAttrContent( $authornodes ) );
 		}
-		
+
 		return $result;
 	}
 }
-
