@@ -71,6 +71,17 @@ class CiteTemplateGenerator extends CitationGenerator {
 
 	}
 
+	protected function getParameterSupport( $parameter ) {
+		if (
+			$this->i18n &&
+			$this->i18n->msgExists( "wikitext-support-parameter-$parameter", array( "lang" => $this->lang ) )
+		) {
+			return "y" == $this->i18n->msg( "wikitext-support-parameter-$parameter", array( "lang" => $this->lang ) )
+		} else {
+			return false;
+		}
+	}
+
 	public function getTemplateName( $type = "web", $variables = array() ) {
 		if ( empty( $type ) ) return false;
 		$typekey = str_replace( " ", "-", $type );
@@ -111,25 +122,43 @@ class CiteTemplateGenerator extends CitationGenerator {
 		}
 		$people = $metadata->{$type};
 		$count = count( $people );
-		if ( $count == 0 ) {
+		if ( $count == 0 || !$this->getParameterSupport( $singleKey ) ) {
 			return "";
 		} else if ( $count == 1 ) { // 1 person
 			$name = reset( $people );
 			if ( is_string( $name ) ) {
 				return $this->getCustomFragment( $singleKey, $name );
-			} else {
+			} else if ( $this->getParameterSupport( "$singleKey-first-last" ) ) { // first name and last name
 				return $this->getCustomFragment( "$singleKey-first", $name[0] ) . $this->getCustomFragment( "$singleKey-last", $name[1] );
+			} else { // first name and last name, manually combined
+				return $this->getCustomFragment( $singleKey, $name[0] . " " . $name[1] );
 			}
 		} else { // lots of people!
 			$i = 1;
 			$result = "";
-			foreach ( $people as $name ) {
-				if ( is_string( $name ) ) {
-					$result .= $this->getCustomFragment( $multipleKey, $name, array( $i ) );
-				} else {
-					$result .= $this->getCustomFragment( "$multipleKey-first", $name[0], array( $i ) ) . $this->getCustomFragment( "$multipleKey-last", $name[1], array( $i ) );
+			if ( $this->getParameterSupport( "$multipleKey" ) ) {
+				// wiki supports parameters like |author1=, |author2=, etc.
+				foreach ( $people as $name ) {
+					if ( is_string( $name ) ) {
+						$result .= $this->getCustomFragment( $multipleKey, $name, array( $i ) );
+					} else if ( $this->getParameterSupport( "$multipleKey-first-last" ) ) {
+						$result .= $this->getCustomFragment( "$multipleKey-first", $name[0], array( $i ) ) . $this->getCustomFragment( "$multipleKey-last", $name[1], array( $i ) );
+					} else {
+						$result .= $this->getCustomFragment( $multipleKey, $name[0] . " " . $name[1], array( $i ) );
+					}
+					$i++;
 				}
-				$i++;
+			} else {
+				$result = $this->getBlankParameter( $type );
+				foreach ( $people as $name ) {
+					if ( is_string( $name ) ) {
+						$result .= $name;
+					} else {
+						$result .= $name[0] . " " . $name[1];
+					}
+					$result .= "; ";
+				}
+				$result = rtrim( $result, "; " );
 			}
 			return $result;
 		}

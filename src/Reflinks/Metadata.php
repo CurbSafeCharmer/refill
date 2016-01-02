@@ -76,8 +76,6 @@ class Metadata implements \Iterator {
 		"via",
 		// Journal
 		"journal",
-		// Book
-		"book",
 		// Volume
 		"volume",
 		// Issue
