@@ -223,7 +223,6 @@ class CiteTemplateGenerator extends CitationGenerator {
 
 		// Publication
 		$core .= $this->getFragment( $metadata, "journal" );
-		$core .= $this->getFragment( $metadata, "book" );
 
 		// In-source location
 		$core .= $this->getFragment( $metadata, "volume" );
