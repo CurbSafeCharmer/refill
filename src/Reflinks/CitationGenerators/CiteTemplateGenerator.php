@@ -76,7 +76,7 @@ class CiteTemplateGenerator extends CitationGenerator {
 			$this->i18n &&
 			$this->i18n->msgExists( "wikitext-support-parameter-$parameter", array( "lang" => $this->lang ) )
 		) {
-			return "y" == $this->i18n->msg( "wikitext-support-parameter-$parameter", array( "lang" => $this->lang ) )
+			return "y" == $this->i18n->msg( "wikitext-support-parameter-$parameter", array( "lang" => $this->lang ) );
 		} else {
 			return false;
 		}
