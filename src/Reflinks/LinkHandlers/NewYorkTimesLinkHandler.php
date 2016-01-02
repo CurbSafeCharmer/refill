@@ -63,7 +63,7 @@ class NewYorkTimesLinkHandler extends LinkHandler {
 		if ( "nytimes.com" !==Utils::getBaseDomain( $url ) ) {
 			throw new LinkHandlerException( "Unsupported URL", self::ERROR_UNSUPPORTED );
 		} else if ( empty( $this->key ) ) { // no key...
-			throw new LinkHandlerException( "Not API key configured", self::ERROR_NOAPIKEY );
+			throw new LinkHandlerException( "No API key configured", self::ERROR_NOAPIKEY );
 		} else { // Let's do it!
 			if ( false !== $qpos = strpos( $url, "?" ) ) { // Strip the query string off the URL
 				$url = substr( $url, 0, $qpos );
