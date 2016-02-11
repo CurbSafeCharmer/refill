@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Oli Vier"
+			"Oli Vier",
+			"Gomoko"
 		]
 	},
 	"appname": "reFill",
@@ -20,6 +21,7 @@
 	"placeholder-url": "URL",
 	"label-fixpage": "Corriger la page",
 	"label-fixwikitext": "Corriger le wikitexte",
+	"label-pretendwiki": "Prétendre que cela provient de :",
 	"label-toggleadv": "Contrôles avancés",
 	"label-generate": "Créer",
 	"label-manual": "Manuel d'utilisation",
@@ -49,6 +51,7 @@
 	"developedby": "par $1",
 	"translatedby": "Cet outil à été traduit par :",
 	"summary": "$1 lien(s) externe(s) mis en forme avec $3",
+	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-plainlink": "Utiliser le formatage simple au lieu de {{Lien web}}",
 	"option-plainlink-description": "Si sélectionné, les liens externes bruts seront mis en forme sans utiliser {{Lien web}}. Ceci est déconseillé car les modèles bibliographiques offrent un style uniforme et permettent de simplifier l'analyse par les programmes.",
 	"option-noremovetag": "Ne pas supprimer les balises de liens morts (non disponible sur wp.fr)",
@@ -89,6 +92,9 @@
 	"wikitext-support-parameter-author": "y",
 	"wikitext-support-parameter-editor": "n",
 	"wikitext-support-parameter-author-first-last": "y",
+	"wikitext-support-parameter-editor-first-last": "y",
 	"wikitext-support-parameter-multiauthor": "y",
-	"wikitext-support-parameter-multiauthor-first-last": "y"
+	"wikitext-support-parameter-multiauthor-first-last": "y",
+	"wikitext-support-parameter-multieditor": "y",
+	"wikitext-support-parameter-multieditor-first-last": "y"
 }

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"heading-options": "Opzioni",
+	"heading-manual": "Manuale",
+	"heading-acknowledgements": "Riconoscimenti",
+	"heading-reportbugs": "Segnala errori",
+	"placeholder-url": "URL",
+	"label-manual": "Manuale",
+	"diff-insert": "Aggiunto",
+	"diff-delete": "Rimosso",
+	"option-plainlink": "Uso formattazione semplice invece di {{cita web}}",
+	"option-addblankmetadata": "Aggiungi campi metadati vuoti, quando l'informazione non è disponibile",
+	"option-noaccessdate": "Non aggiungere date di accesso",
+	"wmflabs-latestcommit": "Ultimo commit: $1"
+}
