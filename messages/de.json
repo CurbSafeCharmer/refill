@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wasilis Mandratzis-Walz"
+			"Wasilis Mandratzis-Walz",
+			"Metalhead64"
 		]
 	},
 	"appname": "reFill",
@@ -20,6 +21,7 @@
 	"placeholder-url": "URL",
 	"label-fixpage": "Seite reparieren",
 	"label-fixwikitext": "Wikitext reparieren",
+	"label-pretendwiki": "Vortäuschen von:",
 	"label-toggleadv": "Erweiterte Eingabe",
 	"label-generate": "Generieren",
 	"label-manual": "Handbuch",
@@ -49,6 +51,7 @@
 	"developedby": "bei $1",
 	"translatedby": "Dieses Tool ist übersetzt von:",
 	"summary": "Ausgefüllt $1 bloßer Verweis(e) mit $3",
+	"toollink": "[[:w:User:Zhaofeng Li/reFill|reFill]]",
 	"option-plainlink": "Verwenden Sie eine einfache Formatierung anstatt {{cite web}}",
 	"option-plainlink-description": "Wenn ausgewählt, werden leere Referenzen ohne Verwendung erweitert {{cite web}}. Dazu wird abgeraten, da zitierte Vorlagen einen konsistenten Zitierstil bieten und eine einfache Analyse von Programmen ermöglichen.",
 	"option-noremovetag": "Verknüpfung rot-Tags nicht entfernen",

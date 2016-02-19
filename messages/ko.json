@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"SeoJeongHo"
+		]
+	},
+	"heading-options": "설정",
+	"heading-result": "결과",
+	"heading-error": "오류",
+	"heading-reportbugs": "오류 보고하기",
+	"placeholder-pagename": "페이지 이름",
+	"placeholder-url": "URL 주소",
+	"label-fixpage": "페이지 고치기",
+	"label-generate": "생성하기",
+	"label-sourcecode": "출처",
+	"label-reportbugs": "오류 보고하기",
+	"label-switchlang": "언어들",
+	"label-gadgetoptions": "(설정)",
+	"responsibility": "당신은 당신이 한 모든 수정에 대해 책임이 있습니다.",
+	"pleasedoublecheck": "저장하기 전에 두 번 확인 하세요!",
+	"colour-insert": "파란색",
+	"colour-delete": "오렌지색",
+	"loadingoptions": "설정 가져오는 중...",
+	"comingsoon": "준비 중",
+	"uhoh": "이런!",
+	"developedby": "$1에 의해 개발되었음."
+}

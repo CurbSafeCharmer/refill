@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sujiniku"
+		]
+	},
+	"heading-options": "オプション",
+	"heading-result": "結果",
+	"heading-error": "エラー",
+	"heading-manual": "マニュアル",
+	"heading-acknowledgements": "謝辞",
+	"heading-reportbugs": "バグを報告",
+	"placeholder-pagename": "ページ名",
+	"placeholder-url": "URL",
+	"label-generate": "生成",
+	"label-manual": "マニュアル",
+	"label-sourcecode": "ソース",
+	"label-acknowledgements": "謝辞",
+	"label-reportbugs": "バグを報告",
+	"label-switchlang": "言語",
+	"colour-insert": "青",
+	"colour-delete": "オレンジ",
+	"diff-delete": "除去",
+	"option-noaccessdate": "アクセス日を追加しないでください",
+	"wmflabs-latestcommit": "最新のコミット: $1"
+}

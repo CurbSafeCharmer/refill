@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"heading-fetchfromwiki": "Obtener contenido de un wiki",
+	"heading-options": "Opciones",
+	"heading-citegen": "Generar una referencia",
+	"heading-result": "Resultado",
+	"heading-error": "Error",
+	"heading-manual": "Manual",
+	"heading-acknowledgements": "Reconocimientos",
+	"heading-reportbugs": "Informar errores",
+	"placeholder-pagename": "Nombre de la página:",
+	"placeholder-url": "URL",
+	"label-fixpage": "Corregir página",
+	"label-fixwikitext": "Corregir wikitexto",
+	"label-pretendwiki": "Pretender que es de:",
+	"label-generate": "Generar",
+	"label-manual": "Manual",
+	"label-sourcecode": "Fuente",
+	"label-acknowledgements": "Reconocimientos",
+	"label-reportbugs": "Informar errores",
+	"label-switchlang": "Idiomas",
+	"label-gadgetoptions": "(opciones)",
+	"fixed": "$1 referencia(s) corregida(s)",
+	"nofixed": "Ninguna referencia corregida.",
+	"colourlegend": "Colores:",
+	"colour-insert": "Azul",
+	"colour-delete": "Naranja",
+	"diff-insert": "Añadido",
+	"diff-delete": "Eliminado",
+	"loadingoptions": "Cargando opciones...",
+	"comingsoon": "Próximamente",
+	"developedby": "por $1",
+	"translatedby": "Esta herramienta está traducida por:",
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"option-noaccessdate": "No agregar fechas de acceso"
+}

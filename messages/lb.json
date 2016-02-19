@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"heading-options": "Optiounen",
+	"heading-citegen": "Eng Referenz generéieren",
+	"heading-result": "Resultat",
+	"heading-error": "Feeler",
+	"heading-manual": "Manuell",
+	"heading-reportbugs": "Feeler (bugs) mellen",
+	"placeholder-pagename": "Numm vun der Säit",
+	"placeholder-url": "URL",
+	"label-fixpage": "Säit flécken",
+	"label-generate": "Generéieren",
+	"label-manual": "Manuell",
+	"label-sourcecode": "Quell",
+	"label-acknowledgements": "E Merci fir",
+	"label-reportbugs": "Feeler (bugs) mellen",
+	"label-switchlang": "Sproochen",
+	"label-gadgetoptions": "(Optiounen)",
+	"fixed": "$1 Referenz(e) gefléckt!",
+	"chancetoreview": "Dir kritt d'Méiglechkeet fir d'Ännerung nozekucken ier se gespäichert gëtt.",
+	"colourlegend": "Faarwen:",
+	"colour-insert": "Blo",
+	"colour-delete": "Orange",
+	"diff-insert": "Derbäigesat",
+	"diff-delete": "Ewechgeholl",
+	"loadingoptions": "Optioune gi gelueden...",
+	"comingsoon": "Geschwënn disponibel",
+	"uhoh": "Ups!",
+	"developedby": "vum $1"
+}
