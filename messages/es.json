@@ -26,6 +26,7 @@
 	"label-gadgetoptions": "(opciones)",
 	"fixed": "$1 referencia(s) corregida(s)",
 	"nofixed": "Ninguna referencia corregida.",
+	"responsibility": "Eres responsable de todos los cambios que haces.",
 	"colourlegend": "Colores:",
 	"colour-insert": "Azul",
 	"colour-delete": "Naranja",
@@ -36,5 +37,6 @@
 	"developedby": "por $1",
 	"translatedby": "Esta herramienta está traducida por:",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
-	"option-noaccessdate": "No agregar fechas de acceso"
+	"option-noaccessdate": "No agregar fechas de acceso",
+	"option-noaccessdate-description": "Si se selecciona, en el resultado se omitirán las fechas de acceso."
 }
