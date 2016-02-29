@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Wasilis Mandratzis-Walz",
-			"Metalhead64"
+			"Metalhead64",
+			"Purodha"
 		]
 	},
 	"appname": "reFill",
@@ -63,7 +64,7 @@
 	"option-noaccessdate-description": "Wenn ausgewählt, werden Daten für den Zugang in das Ergebnis einbezogen.",
 	"option-usedomainaswork": "Verwenden Sie den Basisdomänennamen als Arbeit, wenn diese Informationen nicht analysiert werden",
 	"wmflabs-thankyoutest": "Wir danken Ihnen für die Prüfung der experimentellen Version von $1. Bitte melden Sie uns Fehler, wenn Sie welche entdecken.",
-	"wmflabs-latestcommit": "Aktuelle Verpflichtung:: $1",
+	"wmflabs-latestcommit": "Letztes Commit: $1",
 	"wmflabs-poweredby": "Bereitgestellt von Wikimedia Labs",
 	"wmflabs-testsummary": "Ausgefüllt $1 bloßer Verweis(e) mit der Testversion von $3"
 }

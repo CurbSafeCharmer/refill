@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"heading-fetchfromwiki": "Holl dä Enhalld vun enem Wikki",
+	"heading-rawwikitext": "Wikkitäx enjävve",
+	"heading-options": "Ußwahle",
+	"heading-citegen": "Donn e Zetaht aanlähje",
+	"heading-result": "Erus jekumme es",
+	"heading-newwikitext": "Dä neue Wikkitäx",
+	"heading-error": "Fähler",
+	"heading-manual": "Handbohch",
+	"heading-acknowledgements": "Danksaaronge",
+	"heading-reportbugs": "Fähler mällde",
+	"placeholder-pagename": "Dä Sigg ier Övverschreff:",
+	"placeholder-url": "<i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Uniform Ressource Locator\">URL</i>",
+	"label-manual": "Handbohch",
+	"label-sourcecode": "Quäll",
+	"label-acknowledgements": "Danksaaronge",
+	"label-reportbugs": "Fähler mällde",
+	"label-switchlang": "Schprohche",
+	"colourlegend": "Färve:",
+	"colour-insert": "Blou",
+	"colour-delete": "Appelsihn",
+	"diff-insert": "Dobei jedonn",
+	"diff-delete": "Fott jenumme",
+	"loadingoptions": "Ben aam lahde...",
+	"comingsoon": "Kütt bahl",
+	"developedby": "fum $1",
+	"translatedby": "Dat Projramm heh wodd övversaz vum:"
+}
