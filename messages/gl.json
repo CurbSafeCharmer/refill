@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Banjo"
+		]
+	},
+	"heading-options": "Opcións",
+	"heading-citegen": "Xerar unha referencia",
+	"heading-result": "Resultado",
+	"heading-error": "Erro",
+	"heading-manual": "Manual",
+	"heading-acknowledgements": "Recoñecementos",
+	"heading-reportbugs": "Informar dun erro",
+	"placeholder-pagename": "Nome da páxina",
+	"placeholder-url": "URL",
+	"label-fixpage": "Arranxar páxina",
+	"label-fixwikitext": "Arranxar texto wiki",
+	"label-generate": "Xerar",
+	"label-manual": "Manual",
+	"label-sourcecode": "Orixe",
+	"label-acknowledgements": "Recoñecementos",
+	"label-reportbugs": "Informar dun erro",
+	"label-switchlang": "Linguas",
+	"label-gadgetoptions": "(opcións)",
+	"fixed": "$1 referencia(s) arranxada(s)!",
+	"nofixed": "Non se arranxou ningunha referencia.",
+	"colourlegend": "Cores:",
+	"colour-insert": "Azul",
+	"colour-delete": "Laranxa",
+	"diff-insert": "Engadido",
+	"diff-delete": "Eliminado",
+	"loadingoptions": "Cargando opcións...",
+	"comingsoon": "En breve",
+	"option-addblankmetadata": "Engadir campos de metadatos baleiros cando a información non está dispoñible",
+	"option-noaccessdate": "Non engadir datas de acceso"
+}
