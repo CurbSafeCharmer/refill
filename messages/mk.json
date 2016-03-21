@@ -46,5 +46,6 @@
 	"translatedby": "Алаткава ја преведе:",
 	"summary": "Пополнети $1 прост(и) навод(и) со $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
-	"option-plainlink": "Користи просто форматирање место {{cite web}}"
+	"option-plainlink": "Користи просто форматирање место {{cite web}}",
+	"wmflabs-latestcommit": "Последно издавање: $1"
 }
