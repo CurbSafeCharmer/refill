@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Visem"
+		]
+	},
+	"heading-options": "Параметри",
+	"heading-citegen": "Генерувати посилання",
+	"heading-result": "Результат",
+	"heading-newwikitext": "Нові Вікі-розмітки",
+	"heading-error": "Помилка",
+	"placeholder-pagename": "Назва сторінки:",
+	"placeholder-url": "URL",
+	"label-fixpage": "Виправити сторінку",
+	"label-fixwikitext": "Виправити вікітекст",
+	"label-sourcecode": "Джерело",
+	"label-switchlang": "Мови",
+	"label-save": "Попередній перегляд / Зберегти на Вікі",
+	"colourlegend": "Кольори:",
+	"colour-insert": "Синій",
+	"colour-delete": "Помаранчевий",
+	"diff-insert": "Додано",
+	"diff-delete": "Вилучено",
+	"loadingoptions": "Завантаження функцій...",
+	"comingsoon": "Найближчим часом",
+	"uhoh": "Ой-ой!"
+}
