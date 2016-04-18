@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"heading-fetchfromwiki": "Hämta innehåll från en wiki",
+	"heading-rawwikitext": "Ange wikitext",
+	"heading-options": "Alternativ",
+	"heading-citegen": "Skapa en referens",
+	"heading-result": "Resultat",
+	"heading-newwikitext": "Ny wikitext",
+	"heading-error": "Fel",
+	"heading-manual": "Manual",
+	"heading-reportbugs": "Rapportera buggar",
+	"placeholder-pagename": "Sidnamn",
+	"placeholder-url": "URL",
+	"label-fixpage": "Fixa sidan",
+	"label-fixwikitext": "Fixa wikitext",
+	"label-pretendwiki": "Låtsas att det är från:",
+	"label-generate": "Generera",
+	"label-manual": "Manual",
+	"label-sourcecode": "Källa",
+	"label-reportbugs": "Rapportera buggar",
+	"label-switchlang": "Språk",
+	"label-save": "Förhandsgranskning / Spara på Wiki",
+	"label-gadgetoptions": "(alternativ)",
+	"label-homepage": "Verktygets webbplats",
+	"fixed": "$1 referens(er) fixade!",
+	"nofixed": "Inga referenser fixade.",
+	"skipped": "Följande referens(er) kunde inte fyllas i:",
+	"responsibility": "Du är ansvarig för varje redigering som du gör.",
+	"pleasedoublecheck": "Vänligen dubbelkolla redigeringen innan du sparar!",
+	"chancetoreview": "Du kommer att ha en chans att granska redigeringen innan den sparas.",
+	"unfinished": "På grund av begränsningar kunde programmet inte fixa alla referenser. Pröva att spara och kör verktyget på nytt.",
+	"colourlegend": "Färger:",
+	"colour-insert": "Blå",
+	"colour-delete": "Orange"
+}

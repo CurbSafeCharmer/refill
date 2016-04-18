@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"Lemondoge"
 		]
 	},
 	"heading-fetchfromwiki": "Obtener contenido de un wiki",
+	"heading-rawwikitext": "Introduzca formato wiki",
 	"heading-options": "Opciones",
 	"heading-citegen": "Generar una referencia",
 	"heading-result": "Resultado",
+	"heading-newwikitext": "Nuevo formato wiki",
 	"heading-error": "Error",
 	"heading-manual": "Manual",
 	"heading-acknowledgements": "Reconocimientos",
@@ -17,18 +20,22 @@
 	"label-fixpage": "Corregir página",
 	"label-fixwikitext": "Corregir wikitexto",
 	"label-pretendwiki": "Pretender que es de:",
+	"label-toggleadv": "Alternar avanzados de entrada",
 	"label-generate": "Generar",
 	"label-manual": "Manual",
 	"label-sourcecode": "Fuente",
 	"label-acknowledgements": "Reconocimientos",
 	"label-reportbugs": "Informar errores",
 	"label-switchlang": "Idiomas",
+	"label-save": "Vista previa o Guardar en el Wiki",
 	"label-gadgetoptions": "(opciones)",
+	"label-homepage": "Herramienta de página de inicio",
 	"fixed": "$1 referencia(s) corregida(s)",
 	"nofixed": "Ninguna referencia corregida.",
 	"skipped": "Las siguientes referencias no se pudieron completar:",
 	"responsibility": "Eres responsable de todos los cambios que haces.",
 	"pleasedoublecheck": "¡Vuelve a comprobar la edición antes de guardar!",
+	"noaccessdate": "Nota: las Fechas de acceso son omitidos en el resultado. Por favor, compruebe si las referencias que siguen apoyando a los estados financieros, y agregar las fechas apropiadas.",
 	"chancetoreview": "Tendrás la oportunidad de revisar la edición antes de guardarla.",
 	"unfinished": "Debido a los límites, el programa no puede solucionar todas las referencias. Intenta guardar y ejecutar la herramienta de nuevo.",
 	"colourlegend": "Colores:",
