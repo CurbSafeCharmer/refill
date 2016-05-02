@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Iniquity"
+		]
+	},
+	"heading-options": "Параметры",
+	"heading-result": "Результат",
+	"heading-error": "Ошибка",
+	"heading-acknowledgements": "Благодарности",
+	"heading-reportbugs": "Сообщить об ошибке",
+	"placeholder-pagename": "Название страницы",
+	"placeholder-url": "URL",
+	"label-generate": "Сгенерировать",
+	"label-sourcecode": "Источник",
+	"label-acknowledgements": "Благодарности",
+	"label-reportbugs": "Сообщить об ошибке",
+	"label-switchlang": "Языки",
+	"label-save": "Предварительный просмотр / Сохранить на Вики",
+	"label-homepage": "Домашняя страница инструмента",
+	"colourlegend": "Цвета:",
+	"colour-insert": "Синий",
+	"colour-delete": "Оранжевый",
+	"diff-insert": "Добавлено",
+	"diff-delete": "Удалено",
+	"loadingoptions": "Загрузка функций...",
+	"comingsoon": "Скоро",
+	"uhoh": "Э-э-эх!",
+	"translatedby": "Этот инструмент переведен by",
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"option-noaccessdate": "Не добавлять даты проверки (|accessdate=)",
+	"wmflabs-poweredby": "Powered by Wikimedia Labs"
+}
