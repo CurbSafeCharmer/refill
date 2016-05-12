@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"tagline": "Espander fácilmente les referencies",
+	"heading-fetchfromwiki": "Llograr conteníu d'una wiki",
+	"heading-rawwikitext": "Escribir formatu wiki",
+	"heading-options": "Opciones",
+	"heading-citegen": "Xenerar una referencia",
+	"heading-result": "Resultáu",
+	"heading-newwikitext": "Nuevu formatu wiki",
+	"heading-error": "Error",
+	"heading-manual": "Manual",
+	"heading-acknowledgements": "Reconocencies",
+	"heading-reportbugs": "Informar de fallos",
+	"placeholder-pagename": "Nome de la páxina",
+	"placeholder-url": "URL",
+	"label-fixpage": "Correxir páxina",
+	"label-fixwikitext": "Correxir testu wiki",
+	"label-pretendwiki": "Pretender que ye de:",
+	"label-toggleadv": "Conmutar entrada avanzada",
+	"label-generate": "Xenerar",
+	"label-manual": "Manual",
+	"label-sourcecode": "Fonte",
+	"label-acknowledgements": "Reconocencies",
+	"label-reportbugs": "Informar de fallos",
+	"label-switchlang": "Llingües"
+}
