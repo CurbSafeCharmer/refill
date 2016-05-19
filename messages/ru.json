@@ -4,6 +4,7 @@
 			"Iniquity"
 		]
 	},
+	"heading-fetchfromwiki": "Достать текст из вики",
 	"heading-options": "Параметры",
 	"heading-result": "Результат",
 	"heading-error": "Ошибка",
@@ -16,7 +17,7 @@
 	"label-fixwikitext": "Исправить вики-текст",
 	"label-generate": "Сгенерировать",
 	"label-manual": "Руководство",
-	"label-sourcecode": "Источник",
+	"label-sourcecode": "Исходник",
 	"label-acknowledgements": "Благодарности",
 	"label-reportbugs": "Сообщить об ошибке",
 	"label-switchlang": "Языки",
@@ -42,6 +43,8 @@
 	"option-plainlink": "Использовать простое форматирование вместо {{cite web}}",
 	"option-plainlink-description": "Если выбрано, то голые ссылки будут расширены, не используя {{cite web}}. Это не рекомендуется, поскольку шаблоны обеспечивают единый стиль при цитировании и удобный анализ программами.",
 	"option-noremovetag": "Не удалять метки о вымирающих ссылках",
+	"option-addblankmetadata": "Добавлять пустые поля метаданных, когда информация недоступна",
 	"option-noaccessdate": "Не добавлять даты проверки (|accessdate=)",
+	"option-usedomainaswork": "Использовать основное имя домена, как значение для |work=, если информация не может быть проанализирована",
 	"wmflabs-poweredby": "Powered by Wikimedia Labs"
 }

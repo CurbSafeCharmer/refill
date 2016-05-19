@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jopparn"
+			"Jopparn",
+			"Lokal Profil"
 		]
 	},
 	"heading-fetchfromwiki": "Hämta innehåll från en wiki",
@@ -35,5 +36,12 @@
 	"unfinished": "På grund av begränsningar kunde programmet inte fixa alla referenser. Pröva att spara och kör verktyget på nytt.",
 	"colourlegend": "Färger:",
 	"colour-insert": "Blå",
-	"colour-delete": "Orange"
+	"colour-delete": "Orange",
+	"diff-insert": "Tillagd",
+	"diff-delete": "Borttagen",
+	"loadingoptions": "Laddar alternativ...",
+	"comingsoon": "Kommer snart",
+	"developedby": "av $1",
+	"translatedby": "Detta verktyg är översatt av:",
+	"wmflabs-poweredby": "Drivs av Wikimedia Labs"
 }
