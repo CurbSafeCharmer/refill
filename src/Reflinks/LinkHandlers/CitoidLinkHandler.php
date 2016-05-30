@@ -37,7 +37,7 @@ use Reflinks\Exceptions\LinkHandlerException;
 
 class CitoidLinkHandler extends LinkHandler {
 	private $spider = null;
-	public $api = "https://citoid.wmflabs.org";
+	public $api = "https://citoid.wikimedia.org";
 	public static $mapping = array(
 		"default" => array(
 			// Metadata => Citoid
