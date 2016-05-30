@@ -154,10 +154,11 @@ class Metadata implements \Iterator {
 	}
 
 	public function &__get( $name ) {
+		$null = null;
 		if ( !self::validField( $name ) ) {
 			throw new NoSuchMetadataFieldException( $name );
 		} else if ( !isset( $this->rawMetadata[$name] ) ) {
-			return null;
+			return $null;
 		} else {
 			return $this->rawMetadata[$name];
 		}
