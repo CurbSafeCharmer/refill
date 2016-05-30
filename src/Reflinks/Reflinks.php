@@ -277,8 +277,8 @@ class Reflinks {
 				}
 				$ids = array_unique( $ids );
 				if ( empty( $attributes['name'] ) ) {
-					if ( !empty( $citation->metadata->author ) ) {
-						$attributes['name'] = strtolower( str_replace( " ", "", $citation->metadata->author ) );
+					if ( !empty( $citation->metadata->authors ) ) {
+						$attributes['name'] = strtolower( str_replace( " ", "", $citation->metadata->authors[0] ) );
 					} else if ( !empty( $citation->metadata->url ) ) {
 						$attributes['name'] = Utils::getBaseDomain( $citation->metadata->url );
 					}
