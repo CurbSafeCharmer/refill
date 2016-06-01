@@ -54,7 +54,8 @@
 				{% endif %}
 				{% if saveable %}
 					<div class="form-group">
-						<input type="submit" class="btn btn-primary" name="wpDiff" value="{{ msg( 'label-save' ) }}">
+						<input id="btn-save" type="submit" class="btn btn-primary" name="wpDiff" value="{{ msg( 'label-save' ) }}">
+						<input id="btn-saveandreturn" type="submit" class="btn" name="wpDiff" value="{{ msg( 'label-saveandreturn' ) }}" title="{{ msg( 'tooltip-saveandreturn' ) }}">
 						<span id="helpBlock" class="help-block">{{ msg( 'chancetoreview' ) }}</span>
 					</div>
 				{% endif %}

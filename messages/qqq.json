@@ -29,6 +29,7 @@
 	"label-reportbugs": "This is used as the label of a link in the navigation bar.",
 	"label-switchlang": "This is used as the label of a link in the navigation bar.\n{{Identical|Language}}",
 	"label-save": "This is used as the button label.",
+	"label-saveandreturn": "This is used as the button label. When clicked, the tool will open the edit interface in a new tab/window, then quietly navigate back to the tool's main page.",
 	"label-gadgetoptions": "{{Identical|Options}}",
 	"fixed": "Please keep the $1 intact. It'll be replaced by a number at run-time.",
 	"colourlegend": "This will be followed by a colour legend.\n{{Identical|Color}}",

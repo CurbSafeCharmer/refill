@@ -38,4 +38,16 @@ function updateDiff() {
 	$( "#diffcontent" ).html( diff );
 }
 
-$( document ).ready( initDiff() );
+function saveAndReturn( e ) {
+	$( "#form-wikitext" ).attr( "target", "_blank" );
+	$( "#form-wikitext" ).submit( function() {
+		setTimeout( function() {
+			window.location.href = "index.php";
+		}, 1 );
+	} );
+}
+
+$( document ).ready( function() {
+	initDiff()
+	$( "#btn-saveandreturn" ).click( saveAndReturn );
+} );
