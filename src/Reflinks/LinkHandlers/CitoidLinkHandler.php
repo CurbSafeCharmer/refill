@@ -116,6 +116,10 @@ class CitoidLinkHandler extends LinkHandler {
 			}
 		}
 
+		if ( $metadata->title == $metadata->url || $metadata->title == $url ) {
+			unset( $metadata->title );
+		}
+
 		return $metadata;
 	}
 
