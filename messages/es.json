@@ -31,6 +31,7 @@
 	"label-saveandreturn": "Guardar y regresar",
 	"label-gadgetoptions": "(opciones)",
 	"label-homepage": "Herramienta de página de inicio",
+	"tooltip-saveandreturn": "Abrir la interfaz de edición en una nueva pestaña/ventana, y luego tranquilamente volver a la página principal.",
 	"fixed": "$1 referencia(s) corregida(s)",
 	"nofixed": "Ninguna referencia corregida.",
 	"skipped": "Las siguientes referencias no se pudieron completar:",

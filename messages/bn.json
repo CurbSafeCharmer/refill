@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aftabuzzaman ullah"
+			"Aftabuzzaman ullah",
+			"Aftabuzzaman"
 		]
 	},
 	"appname": "সূত্রপূরণ",
@@ -28,9 +29,11 @@
 	"label-acknowledgements": "প্রাপ্তি স্বীকার",
 	"label-reportbugs": "বাগ অভিযোগ",
 	"label-switchlang": "ভাষা",
-	"label-save": "প্রাকদর্শন / উইকিতে সংরক্ষণ",
+	"label-save": "উইকিতে প্রাকদর্শন / সংরক্ষণ",
+	"label-saveandreturn": "সংরক্ষণ ও ফিরুন",
 	"label-gadgetoptions": "(বিকল্প)",
 	"label-homepage": "সরঞ্জামের মূলপাতা",
+	"tooltip-saveandreturn": "একটি নতুন ট্যাব/উইন্ডোতে সম্পাদনা ইন্টারফেস খোলে, তারপর আস্তে আস্তে প্রধান পৃষ্ঠায় ফেরত আসে।",
 	"fixed": "$1টি তথ্যসূত্র ঠিক করা হয়েছে!",
 	"nofixed": "কোন তথ্যসূত্র ঠিক করা হয়নি।",
 	"skipped": "নিম্নলিখিত তথ্যসূত্র(সমূহ) পূরণ করা যাবে না:",
@@ -66,6 +69,8 @@
 	"wmflabs-poweredby": "উইকিমিডিয়া ল্যাবস দ্বারা চালিত",
 	"wmflabs-testsummary": "$3-এর পরীক্ষামূলক সংস্করণ ব্যবহার করে $1টি অনাবৃত তথ্যসূত্র পূরণ করা হয়েছে",
 	"wikitext-template-web": "ওয়েব উদ্ধৃতি",
+	"wikitext-template-book": "বই উদ্ধৃতি",
+	"wikitext-template-journal": "সাময়িকী উদ্ধৃতি",
 	"wikitext-template-av-media": "cite av media",
 	"wikitext-parameter-url": "url",
 	"wikitext-parameter-title": "title",

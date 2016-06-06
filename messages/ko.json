@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"SeoJeongHo"
+			"SeoJeongHo",
+			"Ykhwong"
 		]
 	},
 	"heading-options": "설정",
@@ -15,6 +16,7 @@
 	"label-sourcecode": "출처",
 	"label-reportbugs": "오류 보고하기",
 	"label-switchlang": "언어들",
+	"label-saveandreturn": "저장하고 돌아가기",
 	"label-gadgetoptions": "(설정)",
 	"responsibility": "당신은 당신이 한 모든 수정에 대해 책임이 있습니다.",
 	"pleasedoublecheck": "저장하기 전에 두 번 확인 하세요!",
