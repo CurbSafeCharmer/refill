@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rachmat.Wahidi"
+		]
+	},
+	"label-saveandreturn": "Simpan & Kembali",
+	"tooltip-saveandreturn": "Buka antarmuka sunting dalam tab/jendela baru, lalu kembali ke halaman utama dengan diam-diam."
+}

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"heading-fetchfromwiki": "Hämta innehåll från en wiki",
@@ -41,6 +42,7 @@
 	"diff-delete": "Borttagen",
 	"loadingoptions": "Laddar alternativ...",
 	"comingsoon": "Kommer snart",
+	"uhoh": "Hoppsan!",
 	"developedby": "av $1",
 	"translatedby": "Detta verktyg är översatt av:",
 	"wmflabs-poweredby": "Drivs av Wikimedia Labs"
