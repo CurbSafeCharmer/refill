@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Iniquity"
+			"Iniquity",
+			"Kaganer"
 		]
 	},
 	"heading-fetchfromwiki": "Достать текст из вики",
@@ -21,7 +22,7 @@
 	"label-acknowledgements": "Благодарности",
 	"label-reportbugs": "Сообщить об ошибке",
 	"label-switchlang": "Языки",
-	"label-save": "Предварительный просмотр / Сохранить на Вики",
+	"label-save": "Предпросмотр / Сохранить в вики",
 	"label-gadgetoptions": "(необязательно)",
 	"label-homepage": "Домашняя страница инструмента",
 	"fixed": "Исправлено ссылок: $1!",
