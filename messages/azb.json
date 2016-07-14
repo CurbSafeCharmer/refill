@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alp Er Tunqa"
+			"Alp Er Tunqa",
+			"Ilğım"
 		]
 	},
-	"heading-result": "نتیجه"
+	"heading-options": "سئچه‌نکلر",
+	"heading-result": "نتیجه",
+	"heading-reportbugs": "باقلاری راپورت ائت"
 }
