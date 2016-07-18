@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"VASANTH S.N."
+		]
+	},
+	"heading-options": "ಆಯ್ಕೆಲು",
+	"heading-result": "ಫಲಿತಾಂಶ",
+	"heading-error": "ದೋಷ",
+	"heading-manual": "ಕೈಪಿಡಿ",
+	"heading-reportbugs": "ತೊಂದರೆನ್ ತೆರಿಪಾಲೆ",
+	"placeholder-pagename": "ಪುಟೊತ ಪುದರ್",
+	"label-manual": "ಕೈಪಿಡಿ",
+	"label-sourcecode": "ಮೂಲೊ",
+	"label-reportbugs": "ತೊಂದರೆನ್ ತೆರಿಪಾಲೆ",
+	"label-switchlang": "ಭಾಸೆಲು",
+	"colourlegend": "ಬಣ್ಣೊ:",
+	"colour-insert": "ನೀಲಿ"
+}

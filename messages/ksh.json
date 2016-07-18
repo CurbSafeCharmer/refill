@@ -18,6 +18,7 @@
 	"placeholder-url": "<i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Uniform Ressource Locator\">URL</i>",
 	"label-fixpage": "Sigg reparrehre",
 	"label-fixwikitext": "Wikitäx reparrehre",
+	"label-pretendwiki": "Donn, als wi wänn et wöhr vum:",
 	"label-generate": "Lohß jonn!",
 	"label-manual": "Handbohch",
 	"label-sourcecode": "Quäll",
@@ -26,6 +27,7 @@
 	"label-switchlang": "Schprohche",
 	"label-saveandreturn": "Faßhallde un Retuhr",
 	"label-gadgetoptions": "(Enschtällonge)",
+	"tooltip-saveandreturn": "Maach e neu Finster udder ene Rigger zom Beärrbeijde op, un dann jangk leijs op de Houpsigg zerök.",
 	"fixed": "$1 Verbendong(e) reparrehrt!",
 	"nofixed": "Kein Verbendonge reparrehrt.",
 	"responsibility": "Do bes verantwootlesch för jede Ännderong, di De määß.",
@@ -40,5 +42,6 @@
 	"comingsoon": "Kütt bahl",
 	"developedby": "fum $1",
 	"translatedby": "Dat Projramm heh wodd övversaz vum:",
-	"wmflabs-latestcommit": "Läzde Ännderong: $1"
+	"wmflabs-latestcommit": "Läzde Ännderong: $1",
+	"wmflabs-poweredby": "Parraht jeschtallt vun de Wikkimehdija <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"„Labohre“\">Labs</i>"
 }
