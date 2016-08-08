@@ -21,6 +21,7 @@
 	"label-acknowledgements": "Recoñecementos",
 	"label-reportbugs": "Informar dun erro",
 	"label-switchlang": "Linguas",
+	"label-saveandreturn": "Gardar e volver",
 	"label-gadgetoptions": "(opcións)",
 	"fixed": "$1 referencia(s) arranxada(s)!",
 	"nofixed": "Non se arranxou ningunha referencia.",
@@ -31,6 +32,7 @@
 	"diff-delete": "Eliminado",
 	"loadingoptions": "Cargando opcións...",
 	"comingsoon": "En breve",
+	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-addblankmetadata": "Engadir campos de metadatos baleiros cando a información non está dispoñible",
 	"option-noaccessdate": "Non engadir datas de acceso"
 }
