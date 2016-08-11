@@ -45,8 +45,11 @@
 	"option-nowatch-description": "\"Watch this page\" is a message: {{msg-mw|watchthis}}",
 	"wmflabs-thankyoutest": "Used on the main page of the experimental version on Tool Labs. The $1 will be replaced by the application name at run-time.",
 	"wmflabs-latestcommit": "Information about the software commit. The $1 will be replaced by the actual commit information. Keep it intact.",
+	"wikitext-parameter-title": "{{optional}}\n{{Identical|Title}}",
 	"wikitext-parameter-author": "{{Identical|Author}}",
 	"wikitext-parameter-author-first": "{{Identical|First}}",
+	"wikitext-parameter-publisher": "{{optional}}\n{{Identical|Publisher}}",
 	"wikitext-parameter-date": "{{Identical|Date}}",
-	"wikitext-parameter-journal": "{{Identical|Journal}}"
+	"wikitext-parameter-journal": "{{Identical|Journal}}",
+	"wikitext-parameter-pages": "{{optional}}\n{{Identical|Page}}"
 }
