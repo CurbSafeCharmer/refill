@@ -22,6 +22,7 @@
 	"placeholder-url": "URL",
 	"label-fixpage": "修復頁面",
 	"label-fixwikitext": "修復維基代碼",
+	"label-pretendwiki": "假設此來自於：",
 	"label-toggleadv": "顯示進階選項",
 	"label-generate": "產生",
 	"label-manual": "說明",

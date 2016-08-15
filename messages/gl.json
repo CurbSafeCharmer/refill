@@ -32,6 +32,9 @@
 	"diff-delete": "Eliminado",
 	"loadingoptions": "Cargando opcións...",
 	"comingsoon": "En breve",
+	"uhoh": "Oh-oh!",
+	"developedby": "por $1",
+	"translatedby": "Esta ferramenta foi traducida por:",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-addblankmetadata": "Engadir campos de metadatos baleiros cando a información non está dispoñible",
 	"option-noaccessdate": "Non engadir datas de acceso"

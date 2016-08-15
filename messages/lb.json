@@ -13,6 +13,7 @@
 	"placeholder-pagename": "Numm vun der Säit",
 	"placeholder-url": "URL",
 	"label-fixpage": "Säit flécken",
+	"label-fixwikitext": "Wikitext flécken",
 	"label-generate": "Generéieren",
 	"label-manual": "Manuell",
 	"label-sourcecode": "Quell",
@@ -22,6 +23,10 @@
 	"label-saveandreturn": "Späicheren & Zréck",
 	"label-gadgetoptions": "(Optiounen)",
 	"fixed": "$1 Referenz(e) gefléckt!",
+	"nofixed": "Keng Referenze gefléckt.",
+	"skipped": "Dës Referenz(e) konnt(en) net gefëllt ginn:",
+	"responsibility": "Dir sidd responsabel fir all Ännerung déi Dir maacht.",
+	"pleasedoublecheck": "Kuckt d'Ännerung w.e.g. no ier Dir späichert!",
 	"chancetoreview": "Dir kritt d'Méiglechkeet fir d'Ännerung nozekucken ier se gespäichert gëtt.",
 	"colourlegend": "Faarwen:",
 	"colour-insert": "Blo",
@@ -31,5 +36,6 @@
 	"loadingoptions": "Optioune gi gelueden...",
 	"comingsoon": "Geschwënn disponibel",
 	"uhoh": "Ups!",
-	"developedby": "vum $1"
+	"developedby": "vum $1",
+	"translatedby": "Dësen Tool ass iwwersat vun:"
 }
