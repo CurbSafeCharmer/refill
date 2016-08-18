@@ -34,6 +34,7 @@
 	"label-saveandreturn": "儲存並返回",
 	"label-gadgetoptions": "(選項)",
 	"label-homepage": "工具主頁",
+	"tooltip-saveandreturn": "開啟編輯介面在新分頁/視窗，之後默默地返回至主頁面。",
 	"fixed": "修復了 $1 個來源！",
 	"nofixed": "沒有來源被修復。",
 	"skipped": "下列的引用來源未能補充：",
