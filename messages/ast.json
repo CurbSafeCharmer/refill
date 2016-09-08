@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"Crucifunked"
 		]
 	},
 	"tagline": "Espander fácilmente les referencies",
@@ -26,5 +27,30 @@
 	"label-sourcecode": "Fonte",
 	"label-acknowledgements": "Reconocencies",
 	"label-reportbugs": "Informar de fallos",
-	"label-switchlang": "Llingües"
+	"label-switchlang": "Llingües",
+	"label-save": "Vista previa / Guardar na Wiki",
+	"label-saveandreturn": "Guardar y tornar",
+	"label-gadgetoptions": "(opciones)",
+	"label-homepage": "Ferramienta de páxina d'entamu",
+	"fixed": "$1 referencia(es) correxida(es)",
+	"nofixed": "Nenguna referencia correxida.",
+	"skipped": "La(es) siguiente(s) referencia(es) nun pudieron completase:",
+	"responsibility": "Yes responsable de toes les ediciones que faes.",
+	"pleasedoublecheck": "¡Vuelve a comprobar la edición enantes de guardar!",
+	"colourlegend": "Colores:",
+	"colour-insert": "Azul",
+	"colour-delete": "Naranxa",
+	"diff-insert": "Amestáu",
+	"diff-delete": "Desaniciáu",
+	"loadingoptions": "Cargando les opciones...",
+	"comingsoon": "Llueu",
+	"uhoh": "¡Oh-oh!",
+	"developedby": "por $1",
+	"translatedby": "Esta ferramienta ta traducida por:",
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"option-plainlink": "Emplegar formatu wiki en clas de {{cite web}}",
+	"option-noaccessdate": "Nun amestar feches d'accesu",
+	"option-noaccessdate-description": "Si s'escueye, s'omitirán es feches d'accesu nel resultáu.",
+	"wmflabs-latestcommit": "Últimu \"commit\": $1",
+	"wmflabs-poweredby": "Impulsáu por Wikipedia Labs"
 }

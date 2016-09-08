@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gwenn-Ael"
+		]
+	},
+	"heading-fetchfromwiki": "Eztennañ endalc'had ur wiki",
+	"heading-rawwikitext": "Kas an destenn griz wiki",
+	"heading-options": "Dibarzhioù",
+	"heading-citegen": "Krouiñ ul liamm diabarzh",
+	"heading-result": "Disoc'h",
+	"heading-error": "Fazi",
+	"heading-manual": "Gant an dorn",
+	"heading-acknowledgements": "Trugarekadennoù",
+	"heading-reportbugs": "Kas keloù diwar-benn drein",
+	"placeholder-pagename": "Anv ar bajenn",
+	"placeholder-url": "URL",
+	"label-fixpage": "Reizhañ ar bajenn",
+	"label-generate": "Genel",
+	"label-manual": "Gant an dorn",
+	"label-sourcecode": "Mammenn",
+	"label-acknowledgements": "Trugarekadennoù",
+	"label-reportbugs": "Kas keloù diwar-benn drein",
+	"label-switchlang": "Yezhoù",
+	"label-save": "Rakwelet / Enrollañ war ar wiki",
+	"label-saveandreturn": "Enrollañ & Distreiñ",
+	"label-gadgetoptions": "(dibarzhioù)",
+	"label-homepage": "Pajenn degemer ar benveg",
+	"tooltip-saveandreturn": "Digeriñ an embanner en un ivinell/prenestr nevez, ha distreiñ war ar bajenn bennañ da-heul.",
+	"fixed": "$1 liamm diavaez reizhet !",
+	"nofixed": "Liamm diabarzh reizhet ebet.",
+	"pleasedoublecheck": "Gwiriit ar c'hemmoù dre ziv wech a-raok enrollañ !",
+	"chancetoreview": "Gallout a reot adlenn ar c'hemm a-raok ne vefe enrollet.",
+	"colourlegend": "Livioù:",
+	"colour-insert": "Glas",
+	"colour-delete": "Orañjez",
+	"diff-insert": "Ouzhpennet",
+	"diff-delete": "Tennet kuit",
+	"loadingoptions": "O kargañ an dibarzhioù...",
+	"comingsoon": "A c'hallor kaout a-benn nebeut",
+	"developedby": "gant $1",
+	"translatedby": "Troet eo bet ar benveg-mañ gant :"
+}
