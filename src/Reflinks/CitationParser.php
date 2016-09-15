@@ -172,7 +172,10 @@ class CitationParser {
 	public function parseSingleAttribute( $rawAttributes, $attribute ) {
 		$template = "/"
 		         . "\\s*" // allow whitespace
-		         . "%s\\=" // %s is the attribute name ("name" or "group" or whatever), to be filled with sprintf()
+		         . "%s" // %s is the attribute name ("name" or "group" or whatever), to be filled with sprintf()
+		         . "\\s*" // allow whitespace
+		         . "\\=" // Equal sign
+		         . "\\s*" // allow whitespace
 			 . "(" // there are two possiblities here...
 			 // scenario #1: the value is quoted with "
 			 . "("
