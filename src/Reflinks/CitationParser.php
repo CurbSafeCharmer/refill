@@ -176,29 +176,29 @@ class CitationParser {
 		         . "\\s*" // allow whitespace
 		         . "\\=" // Equal sign
 		         . "\\s*" // allow whitespace
-			 . "(" // there are two possiblities here...
-			 // scenario #1: the value is quoted with "
-			 . "("
-			 . "\\\""
-			 . "(?'doubleQuotedValue'[^\\\"]*)"
-			 . "\\\""
-			 . ")"
-			 // end scenario #1
-			 . "|" // or...
-			 // scenario #2: the value is quoted with '
-			 . "("
-			 . "\\'"
-			 . "(?'singleQuotedValue'[^\\']*)"
-			 . "\\'"
-			 . ")"
-			 // end scenario #2
-			 . "|" // or...
-			 // scenario #3: the value is not quoted, so no spaces allowed in the value
-			 . "(?'unquotedValue'\S+)"
-			 . ")"
-			 // end scenario #3
-			 . "\\s*" // allow whitespace
-			 . "/i";
+		         . "(" // there are two possiblities here...
+		         // scenario #1: the value is quoted with "
+		         . "("
+		         . "\\\""
+		         . "(?'doubleQuotedValue'[^\\\"]*)"
+		         . "\\\""
+		         . ")"
+		         // end scenario #1
+		         . "|" // or...
+		         // scenario #2: the value is quoted with '
+		         . "("
+		         . "\\'"
+		         . "(?'singleQuotedValue'[^\\']*)"
+		         . "\\'"
+		         . ")"
+		         // end scenario #2
+		         . "|" // or...
+		         // scenario #3: the value is not quoted, so no spaces allowed in the value
+		         . "(?'unquotedValue'\S+)"
+		         . ")"
+		         // end scenario #3
+		         . "\\s*" // allow whitespace
+		         . "/i";
 		$pattern = sprintf( $template, $attribute );
 		if ( preg_match( $pattern,  $rawAttributes, $matches ) ) {
 			foreach ( array( "doubleQuotedValue", "singleQuotedValue", "unquotedValue" ) as $type )
