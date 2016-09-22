@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alpkant"
+			"Alpkant",
+			"Kumkumuk"
 		]
 	},
 	"heading-options": "Ayarlar",
@@ -14,5 +15,6 @@
 	"placeholder-url": "Link",
 	"label-fixpage": "Sayfayı düzelt",
 	"label-fixwikitext": "Vikimetin düzelt",
-	"label-generate": "Oluştur"
+	"label-generate": "Oluştur",
+	"wikitext-parameter-pages": "sayfalar"
 }

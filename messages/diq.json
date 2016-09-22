@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kumkumuk"
+			"Kumkumuk",
+			"Asmen"
 		]
 	},
 	"heading-options": "Weçinegi",
@@ -49,6 +50,7 @@
 	"wikitext-parameter-multiauthor-last": "peyên$1",
 	"wikitext-parameter-editor": "editor",
 	"wikitext-parameter-editors": "editori",
+	"wikitext-parameter-pages": "peli",
 	"wikitext-parameter-via": "ya",
 	"wikitext-support-parameter-author": "y",
 	"wikitext-support-parameter-editor": "y",
