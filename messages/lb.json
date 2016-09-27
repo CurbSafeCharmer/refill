@@ -9,6 +9,7 @@
 	"heading-result": "Resultat",
 	"heading-error": "Feeler",
 	"heading-manual": "Manuell",
+	"heading-acknowledgements": "E Merci fir",
 	"heading-reportbugs": "Feeler (bugs) mellen",
 	"placeholder-pagename": "Numm vun der Säit",
 	"placeholder-url": "URL",
@@ -20,6 +21,7 @@
 	"label-acknowledgements": "E Merci fir",
 	"label-reportbugs": "Feeler (bugs) mellen",
 	"label-switchlang": "Sproochen",
+	"label-save": "Kucken ouni ze späicheren / Op der Wiki späicheren",
 	"label-saveandreturn": "Späicheren & Zréck",
 	"label-gadgetoptions": "(Optiounen)",
 	"fixed": "$1 Referenz(e) gefléckt!",
@@ -37,5 +39,7 @@
 	"comingsoon": "Geschwënn disponibel",
 	"uhoh": "Ups!",
 	"developedby": "vum $1",
-	"translatedby": "Dësen Tool ass iwwersat vun:"
+	"translatedby": "Dësen Tool ass iwwersat vun:",
+	"wmflabs-latestcommit": "Leschte Commit: $1",
+	"wmflabs-poweredby": "Mat Hëllef vu Wikimedia Labs"
 }
