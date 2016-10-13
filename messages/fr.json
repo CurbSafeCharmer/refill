@@ -4,7 +4,8 @@
 			"Oli Vier",
 			"Gomoko",
 			"Wladek92",
-			"Trial"
+			"Trial",
+			"Zetud"
 		]
 	},
 	"appname": "reFill",
@@ -53,7 +54,7 @@
 	"comingsoon": "Bientôt disponible",
 	"uhoh": "Oups !",
 	"developedby": "par $1",
-	"translatedby": "Cet outil à été traduit par :",
+	"translatedby": "Cet outil a été traduit par :",
 	"summary": "$1 lien(s) externe(s) mis en forme avec $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-plainlink": "Utiliser le formatage simple au lieu de {{Lien web}}",
