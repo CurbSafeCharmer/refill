@@ -42,5 +42,6 @@
 	"developedby": "vum $1",
 	"translatedby": "Dësen Tool ass iwwersat vun:",
 	"wmflabs-latestcommit": "Leschte Commit: $1",
-	"wmflabs-poweredby": "Mat Hëllef vu Wikimedia Labs"
+	"wmflabs-poweredby": "Mat Hëllef vu Wikimedia Labs",
+	"wikitext-parameter-title": "Titel"
 }
