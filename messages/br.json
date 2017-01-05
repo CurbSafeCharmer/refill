@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gwenn-Ael"
+			"Gwenn-Ael",
+			"Fulup"
 		]
 	},
 	"heading-fetchfromwiki": "Eztennañ endalc'had ur wiki",
@@ -38,6 +39,8 @@
 	"diff-delete": "Tennet kuit",
 	"loadingoptions": "O kargañ an dibarzhioù...",
 	"comingsoon": "A c'hallor kaout a-benn nebeut",
+	"uhoh": "Hopala !",
 	"developedby": "gant $1",
-	"translatedby": "Troet eo bet ar benveg-mañ gant :"
+	"translatedby": "Troet eo bet ar benveg-mañ gant :",
+	"wmflabs-poweredby": "Gant skoazell Wikimedia Labs"
 }
