@@ -59,5 +59,6 @@
 	"option-noaccessdate-description": "Vid markering kommer besöksdatum att utelämnas i resultatet.",
 	"option-usedomainaswork": "Använd grunddomännamnet som verk när denna information inte kan tolkas",
 	"wmflabs-thankyoutest": "Tack för att du testar den experimentella versionen av $1. Rapportera buggarna du stöter på.",
+	"wmflabs-latestcommit": "Senaste commit: $1",
 	"wmflabs-poweredby": "Drivs av Wikimedia Labs"
 }
