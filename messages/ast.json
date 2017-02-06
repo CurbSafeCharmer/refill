@@ -56,8 +56,10 @@
 	"option-plainlink": "Emplegar formatu wiki en clas de {{cite web}}",
 	"option-plainlink-description": "Si se seleiciona, les referencies pures van espandese ensin usar {{cite web}}. Esto nun ye recomendable porque les plantiyes de cites ufren un estilu de cita consistente y permiten el so analís fácil polos programes.",
 	"option-nowatch": "Nun vixilar la páxina cuando s'usa Wiki como fonte",
+	"option-addblankmetadata": "Amestar campos de metadatos en blanco cuando la información nun ta disponible",
 	"option-noaccessdate": "Nun amestar feches d'accesu",
 	"option-noaccessdate-description": "Si s'escueye, s'omitirán es feches d'accesu nel resultáu.",
+	"wmflabs-thankyoutest": "Gracies por probar la versión esperimental de $1. Informa de los fallos qu'atopes.",
 	"wmflabs-latestcommit": "Últimu \"commit\": $1",
 	"wmflabs-poweredby": "Impulsáu por Wikipedia Labs"
 }
