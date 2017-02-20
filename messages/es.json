@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Lemondoge"
+			"Lemondoge",
+			"Fitoschido"
 		]
 	},
 	"heading-fetchfromwiki": "Obtener contenido de un wiki",
@@ -52,6 +53,7 @@
 	"translatedby": "Esta herramienta está traducida por:",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-plainlink": "Utilizar formato wiki en lugar de {{cite web}}",
+	"option-nowatch-description": "Si se activa, la casilla «Vigilar esta página» de la interfaz de edición del wiki estará desmarcada de manera predeterminada.",
 	"option-noaccessdate": "No agregar fechas de acceso",
 	"option-noaccessdate-description": "Si se selecciona, en el resultado se omitirán las fechas de acceso.",
 	"wmflabs-thankyoutest": "Gracias por probar la versión experimental de $1. Informa los errores que encuentres.",
