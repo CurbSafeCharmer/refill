@@ -56,6 +56,7 @@
 	"option-plainlink": "Emplegar formatu wiki en clas de {{cite web}}",
 	"option-plainlink-description": "Si se seleiciona, les referencies pures van espandese ensin usar {{cite web}}. Esto nun ye recomendable porque les plantiyes de cites ufren un estilu de cita consistente y permiten el so analís fácil polos programes.",
 	"option-nowatch": "Nun vixilar la páxina cuando s'usa Wiki como fonte",
+	"option-nowatch-description": "Si se seleiciona, el caxellu «Vixilar esta páxina» de la interfaz d'edición de la wiki va tar desmarcáu de manera predeterminada.",
 	"option-addblankmetadata": "Amestar campos de metadatos en blanco cuando la información nun ta disponible",
 	"option-noaccessdate": "Nun amestar feches d'accesu",
 	"option-noaccessdate-description": "Si s'escueye, s'omitirán es feches d'accesu nel resultáu.",
