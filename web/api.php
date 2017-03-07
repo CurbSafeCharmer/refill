@@ -12,7 +12,7 @@
 
 namespace Reflinks;
 
-use Reflinks\LinkHandlers\StandaloneLinkHandler;
+use Reflinks\LinkHandlers\CitoidLinkHandler;
 use Reflinks\Exceptions\LinkHandlerException;
 
 require_once __DIR__ . "/../src/bootstrap.php";
@@ -77,7 +77,7 @@ EOF;
 			// TODO: Implement machine-friendly handling
 			break;
 		} else {
-			$handler = new StandaloneLinkHandler( $app->spider );
+			$handler = new CitoidLinkHandler( $app->spider );
 			try {
 				$metadata = $handler->getMetadata( $url );
 			} catch ( LinkHandlerException $e ) {
