@@ -5,6 +5,7 @@
 			"Hidayatsrf"
 		]
 	},
+	"heading-rawwikitext": "Masukan markah wiki",
 	"heading-options": "Pilihan",
 	"heading-citegen": "Dapatkan referensi",
 	"heading-result": "Hasil",
@@ -34,5 +35,10 @@
 	"colour-delete": "Jingga",
 	"diff-insert": "Telah ditambahkan",
 	"diff-delete": "Telah dihapus",
-	"loadingoptions": "Memuat pilihan..."
+	"loadingoptions": "Memuat pilihan...",
+	"comingsoon": "Segera!",
+	"developedby": "oleh $1",
+	"translatedby": "Perkakas ini diterjemahkan oleh:",
+	"option-noaccessdate": "Jangan tambahkan akses data",
+	"wmflabs-poweredby": "Ditenagai oleh Wikimedia Labs"
 }
