@@ -3,7 +3,8 @@
 		"authors": [
 			"Macofe",
 			"Lemondoge",
-			"Fitoschido"
+			"Fitoschido",
+			"Archaeodontosaurus"
 		]
 	},
 	"heading-fetchfromwiki": "Obtener contenido de un wiki",
@@ -53,6 +54,7 @@
 	"translatedby": "Esta herramienta está traducida por:",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-plainlink": "Utilizar formato wiki en lugar de {{cite web}}",
+	"option-noremovetag": "No quite el enlace de la pudrición de las etiquetas",
 	"option-nowatch-description": "Si se activa, la casilla «Vigilar esta página» de la interfaz de edición del wiki estará desmarcada de manera predeterminada.",
 	"option-noaccessdate": "No agregar fechas de acceso",
 	"option-noaccessdate-description": "Si se selecciona, en el resultado se omitirán las fechas de acceso.",
