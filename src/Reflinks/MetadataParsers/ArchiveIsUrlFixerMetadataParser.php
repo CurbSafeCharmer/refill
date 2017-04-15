@@ -36,7 +36,7 @@ use Reflinks\Metadata;
 use Reflinks\Utils;
 
 class ArchiveIsUrlFixerMetadataParser extends MetadataParser {
-	const DOMAINS = array(
+	public $domains = array(
 		"archive.is",
 		"archive.fo",
 	);
@@ -47,7 +47,7 @@ class ArchiveIsUrlFixerMetadataParser extends MetadataParser {
 		}
 
 		$parsed = parse_url( $metadata->url );
-		if ( !in_array( $parsed['host'], self::DOMAINS ) ) {
+		if ( !in_array( $parsed['host'], $this->domains ) ) {
 			return;
 		}
 
