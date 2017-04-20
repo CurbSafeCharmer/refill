@@ -39,6 +39,8 @@ class ArchiveIsUrlFixerMetadataParser extends MetadataParser {
 	public $domains = array(
 		"archive.is",
 		"archive.fo",
+		"archive.li",
+		"archive.today",
 	);
 	public function parse( \DOMDocument $dom ) {}
 	public function chain( \DOMDocument $dom, Metadata &$metadata ) {
