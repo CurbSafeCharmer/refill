@@ -34,6 +34,7 @@ namespace Reflinks\MetadataParsers;
 use Reflinks\MetadataParser;
 use Reflinks\Metadata;
 use Reflinks\Utils;
+use Purl\Url;
 
 class ArchiveIsUrlFixerMetadataParser extends MetadataParser {
 	public $domains = array(
@@ -54,9 +55,20 @@ class ArchiveIsUrlFixerMetadataParser extends MetadataParser {
 		}
 
 		$xpath = Utils::getXpath( $dom );
+		$metadata->url = $this->getUrlFromDocument( $xpath );
+	}
+
+	protected function getUrlFromDocument( \DOMXPath $xpath ) {
 		$nodes = $xpath->query( "//x:input[@id='SHARE_LONGLINK']" );
-		if ( $nodes->length ) {
-			$metadata->url = trim( $nodes->item( 0 )->attributes->getNamedItem( "value" )->nodeValue );
+		if ( !$nodes->length ) {
+			return;
 		}
+
+		$purl = new Url(trim( $nodes->item( 0 )->attributes->getNamedItem( "value" )->nodeValue ));
+		if ( $purl->get('scheme') == 'http' ) {
+			$purl->set('scheme', 'https');
+		}
+		$purl->set( 'path', preg_replace( '|^\/(\d{4})\.(\d{2})\.(\d{2})\-(\d{6})\/|', '/$1$2$3$4/', $purl->get('path') ) );
+		return $purl->getUrl();
 	}
 }
