@@ -56,6 +56,13 @@ class ArchiveIsUrlFixerMetadataParser extends MetadataParser {
 
 		$xpath = Utils::getXpath( $dom );
 		$metadata->url = $this->getUrlFromDocument( $xpath );
+
+		$oinfo = $this->getOriginalInfo( $metadata->url );
+		if ( $oinfo ) {
+			$metadata->archiveurl = $metadata->url;
+			$metadata->archivedate = $oinfo['date'];
+			$metadata->url = $oinfo['url'];
+		}
 	}
 
 	protected function getUrlFromDocument( \DOMXPath $xpath ) {
@@ -70,5 +77,12 @@ class ArchiveIsUrlFixerMetadataParser extends MetadataParser {
 		}
 		$purl->set( 'path', preg_replace( '|^\/(\d{4})\.(\d{2})\.(\d{2})\-(\d{6})\/|', '/$1$2$3$4/', $purl->get('path') ) );
 		return $purl->getUrl();
+	}
+
+	protected function getOriginalInfo( $url ) {
+		if ( preg_match( '|^https?\:\/\/[A-Za-z\.]+\/(\d{8})\d{6}\/(.+)$|', $url, $matches ) ) {
+			return ['url' => $matches[2], 'date' => $matches[1]];
+		}
+		return false;
 	}
 }
