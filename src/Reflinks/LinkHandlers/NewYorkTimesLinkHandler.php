@@ -65,6 +65,9 @@ class NewYorkTimesLinkHandler extends LinkHandler {
 		} else if ( empty( $this->key ) ) { // no key...
 			throw new LinkHandlerException( "No API key configured", self::ERROR_NOAPIKEY );
 		} else { // Let's do it!
+			if ( 0 === strpos( $url, "https://" ) ) { // Won't work with HTTPS
+				$url = "http://" . substr( $url, 8 );
+			}
 			if ( false !== $qpos = strpos( $url, "?" ) ) { // Strip the query string off the URL
 				$url = substr( $url, 0, $qpos );
 			}
