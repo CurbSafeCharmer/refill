@@ -102,7 +102,7 @@ class CiteTemplateGenerator extends CitationGenerator {
 		return $this->getBlankParameter( $parameter, $variables ) . $value;
 	}
 
-	public function getFragment( $metadata, $parameter, $value = "" ) {
+	public function getFragment( $metadata, $parameter ) {
 		if ( $metadata->exists( $parameter ) ) {
 			return $this->getCustomFragment( $parameter, $metadata->get( $parameter ) );
 		} else {
