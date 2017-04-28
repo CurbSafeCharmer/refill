@@ -186,6 +186,11 @@ class CiteTemplateGenerator extends CitationGenerator {
 		// Archive URL
 		$core .= $this->getFragment( $metadata, "archiveurl" );
 
+		// Dead URL (if |archiveurl= exists)
+		if ( $metadata->exists( "archiveurl" ) ) {
+			$core .= $this->getCustomFragment( "deadurl", "yes" );
+		}
+
 		// Title
 		$core .= $this->getFragment( $metadata, "title" );
 
