@@ -37,7 +37,7 @@ use Reflinks\Exceptions\LinkHandlerException;
 
 class CitoidLinkHandler extends LinkHandler {
 	private $spider = null;
-	public $api = "https://citoid.wikimedia.org";
+	public $api = "https://en.wikipedia.org/api/rest_v1/data/citation";
 	public static $mapping = array(
 		"default" => array(
 			// Metadata => Citoid
@@ -59,7 +59,7 @@ class CitoidLinkHandler extends LinkHandler {
 			"title" => "bookTitle"
 		),
 		"journal" => array(
-			"journal" => "journalAbbreviation"
+			"journal" => "publicationTitle"
 		)
 	);
 	public static $typeMapping = array(
@@ -80,15 +80,7 @@ class CitoidLinkHandler extends LinkHandler {
 
 	public function getMetadata( $url, Metadata $baseMetadata = null ) {
 		// Call the Citoid API
-		$api = $this->api . "/api?";
-		$data = array(
-			'search' => urlencode( urldecode( $url ) ),
-			'format' => "mediawiki"
-		);
-		foreach ( $data as $key => $value ) {
-			$api .= "$key=$value&";
-		}
-		$api = rtrim( $api, "&" );
+		$api = $this->api . "/mediawiki/" . urlencode( urldecode( $url ) );
 		$response = $this->spider->fetch( $api, "", false );
 		if ( !$response->successful ) { // failed
 			throw new LinkHandlerException( "Fetching error", self::ERROR_FETCH );
