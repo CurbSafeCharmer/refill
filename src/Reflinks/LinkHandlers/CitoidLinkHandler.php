@@ -53,18 +53,19 @@ class CitoidLinkHandler extends LinkHandler {
 			"pmid" => "PMID",
 			"pmc" => "PMCID",
 			"doi" => "DOI",
-			"via" => "libraryCatalog"
+			"via" => "libraryCatalog",
+			"work" => "websiteTitle",
 		),
 		"book" => array(
-			"title" => "bookTitle"
+			"title" => "bookTitle",
 		),
 		"journal" => array(
-			"journal" => "publicationTitle"
+			"journal" => "publicationTitle",
 		)
 	);
 	public static $typeMapping = array(
 		"journalArticle" => "journal",
-		"bookSection" => "book"
+		"bookSection" => "book",
 	);
 
 	const ERROR_UNKNOWN = 0;
