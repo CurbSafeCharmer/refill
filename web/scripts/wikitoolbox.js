@@ -170,6 +170,6 @@ function ReflinksGadget() {
 
 // Let's put it in global scope for easy debugging
 var rlGadget = new ReflinksGadget();
-$( document ).ready( function() {
+mw.loader.using( 'mediawiki.util' ).then( function () {
 	rlGadget.init();
 } );
