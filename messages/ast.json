@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Xuacu",
-			"Crucifunked"
+			"Crucifunked",
+			"Fitoschido"
 		]
 	},
 	"tagline": "Espander fácilmente les referencies",
@@ -20,7 +21,7 @@
 	"placeholder-url": "URL",
 	"label-fixpage": "Correxir páxina",
 	"label-fixwikitext": "Correxir testu wiki",
-	"label-pretendwiki": "Pretender que ye de:",
+	"label-pretendwiki": "Simular que ye de:",
 	"label-toggleadv": "Conmutar entrada avanzada",
 	"label-generate": "Xenerar",
 	"label-manual": "Manual",
