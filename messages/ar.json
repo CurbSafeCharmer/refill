@@ -4,7 +4,8 @@
 			"967Bytes",
 			"Meno25",
 			"ديفيد",
-			"علاء"
+			"علاء",
+			"Mido"
 		]
 	},
 	"tagline": "وسع المراجع العارية بسهولة",
@@ -48,7 +49,7 @@
 	"colour-delete": "برتقالي",
 	"diff-insert": "تمت إضافته",
 	"diff-delete": "تمت إزالته",
-	"loadingoptions": "جاري تحميل الخيارات...",
+	"loadingoptions": "جارٍ تحميل الخيارات...",
 	"comingsoon": "سيأتي قريباً",
 	"uhoh": "اه اوه!",
 	"developedby": "بواسطة $1",
