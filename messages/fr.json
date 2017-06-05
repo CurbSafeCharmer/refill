@@ -63,7 +63,7 @@
 	"option-noremovetag": "Ne pas supprimer les balises de liens désuets",
 	"option-noremovetag-description": "Si sélectionné, l'outil ne retirera pas les bandeaux « Cleanup-bare URLs » du code source de l'article (bandeau indiquant que l'article comprend des liens externes bruts qui peuvent devenir des liens morts), même si aucun lien brut n'est présent.",
 	"option-nowatch": "Ne pas regarder la page lorsque vous utilisez Wiki comme source",
-	"option-nowatch-description": "Si sélectionné, la case « Suivre cette page » sera décochée par défaut.",
+	"option-nowatch-description": "Si sélectionné, la case « Suivre cette page » de l'interface d'édition du wiki sera décochée par défaut.",
 	"option-addblankmetadata": "Ajouter des champs vides lorsque l'information est indisponible",
 	"option-noaccessdate": "Ne pas ajouter de dates de consultation",
 	"option-noaccessdate-description": "Si sélectionné, les dates de consultation seront omises dans le résultat.",
