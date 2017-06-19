@@ -1,12 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Banjo"
+			"Banjo",
+			"Elisardojm"
 		]
 	},
+	"heading-fetchfromwiki": "Obtener o contido dun wiki",
+	"heading-rawwikitext": "Introduza o texto bruto wiki",
 	"heading-options": "Opcións",
 	"heading-citegen": "Xerar unha referencia",
 	"heading-result": "Resultado",
+	"heading-newwikitext": "Novo formato wiki",
 	"heading-error": "Erro",
 	"heading-manual": "Manual",
 	"heading-acknowledgements": "Recoñecementos",
@@ -15,6 +19,8 @@
 	"placeholder-url": "URL",
 	"label-fixpage": "Arranxar páxina",
 	"label-fixwikitext": "Arranxar texto wiki",
+	"label-pretendwiki": "Simular que é de:",
+	"label-toggleadv": "Activar entradas avanzadas",
 	"label-generate": "Xerar",
 	"label-manual": "Manual",
 	"label-sourcecode": "Orixe",
