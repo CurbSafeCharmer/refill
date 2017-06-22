@@ -56,12 +56,16 @@
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-plainlink": "Emplegar formatu wiki en clas de {{cite web}}",
 	"option-plainlink-description": "Si se seleiciona, les referencies pures van espandese ensin usar {{cite web}}. Esto nun ye recomendable porque les plantiyes de cites ufren un estilu de cita consistente y permiten el so analís fácil polos programes.",
+	"option-noremovetag": "Nun quitar les etiquetes d'enllaz podre",
+	"option-noremovetag-description": "Si se seleiciona, les etiquetes d'enllaz podre caltendránse anque nun se salte inesperadamente nenguna referencia nel procesu.",
 	"option-nowatch": "Nun vixilar la páxina cuando s'usa Wiki como fonte",
 	"option-nowatch-description": "Si se seleiciona, el caxellu «Vixilar esta páxina» de la interfaz d'edición de la wiki va tar desmarcáu de manera predeterminada.",
 	"option-addblankmetadata": "Amestar campos de metadatos en blanco cuando la información nun ta disponible",
 	"option-noaccessdate": "Nun amestar feches d'accesu",
 	"option-noaccessdate-description": "Si s'escueye, s'omitirán es feches d'accesu nel resultáu.",
+	"option-usedomainaswork": "Usar el nome de dominiu de la base como trabayu cuando esta información nun pueda analizase",
 	"wmflabs-thankyoutest": "Gracies por probar la versión esperimental de $1. Informa de los fallos qu'atopes.",
 	"wmflabs-latestcommit": "Últimu \"commit\": $1",
-	"wmflabs-poweredby": "Impulsáu por Wikipedia Labs"
+	"wmflabs-poweredby": "Impulsáu por Wikipedia Labs",
+	"wmflabs-testsummary": "Rellenada $1 referencia(es) balera cola versión de prueba de $3"
 }

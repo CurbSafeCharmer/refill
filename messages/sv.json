@@ -52,6 +52,7 @@
 	"translatedby": "Detta verktyg är översatt av:",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-plainlink": "Använd enkel formatering istället för {{cite web}}",
+	"option-noremovetag": "Ta inte bort länkrotstaggar",
 	"option-nowatch": "Bevaka inte sidan när wiki används som källa",
 	"option-nowatch-description": "Vid markering kommer markeringsrutan \"Bevaka denna sida\" i wikins redigeringsgränssnitt vara avbockad som standard.",
 	"option-addblankmetadata": "Lägg till tomma metadatafält när informationen inte är tillgänglig",
