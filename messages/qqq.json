@@ -50,7 +50,7 @@
 	"wikitext-template-journal": "This means [[Template:Cite journal]] in your wiki, please only translate it if your wiki translated the title of such template. When in doubt, see [[d:Q5624899|Wikidata]].",
 	"wikitext-template-av-media": "This means [[Template:Cite av media]] in your wiki, please only translate it if your wiki translated the title of such template. When in doubt, see [[d:Q6373275|Wikidata]].",
 	"wikitext-parameter-title": "{{optional}}\n{{Identical|Title}}",
-	"wikitext-parameter-author": "{{Identical|Author}}",
+	"wikitext-parameter-author": "{{optional}}\n{{Identical|Author}}",
 	"wikitext-parameter-author-first": "{{Identical|First}}",
 	"wikitext-parameter-publisher": "{{optional}}\n{{Identical|Publisher}}",
 	"wikitext-parameter-date": "{{Identical|Date}}",
