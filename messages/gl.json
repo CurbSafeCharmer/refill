@@ -5,6 +5,7 @@
 			"Elisardojm"
 		]
 	},
+	"tagline": "Formate referencias con facilidade",
 	"heading-fetchfromwiki": "Obtener o contido dun wiki",
 	"heading-rawwikitext": "Introduza o texto bruto wiki",
 	"heading-options": "Opcións",
@@ -27,12 +28,16 @@
 	"label-acknowledgements": "Recoñecementos",
 	"label-reportbugs": "Informar dun erro",
 	"label-switchlang": "Linguas",
+	"label-save": "Vista previa / Gardar na Wiki",
 	"label-saveandreturn": "Gardar e volver",
 	"label-gadgetoptions": "(opcións)",
+	"label-homepage": "Ferramenta de páxina de inicio",
+	"tooltip-saveandreturn": "Abrir a interface de edición nunha nova lapela/xanela, e logo discretamente volver á páxina principal.",
 	"fixed": "$1 referencia(s) arranxada(s)!",
 	"nofixed": "Non se arranxou ningunha referencia.",
 	"skipped": "A(s) seguinte(s) referencia(s) non puideron encherse:",
 	"responsibility": "Eres responsable de todas as edicións que fagas.",
+	"pleasedoublecheck": "Por favor, volva a comprobar a edición antes de gardar!",
 	"chancetoreview": "Terás oportunidade de revisar a edición antes de gardala.",
 	"colourlegend": "Cores:",
 	"colour-insert": "Azul",
@@ -45,6 +50,9 @@
 	"developedby": "por $1",
 	"translatedby": "Esta ferramenta foi traducida por:",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"option-noremovetag": "Non elimine as etiquetas de ligazóns deterioradas",
 	"option-addblankmetadata": "Engadir campos de metadatos baleiros cando a información non está dispoñible",
-	"option-noaccessdate": "Non engadir datas de acceso"
+	"option-noaccessdate": "Non engadir datas de acceso",
+	"wmflabs-latestcommit": "Último \"commit\": $1",
+	"wmflabs-poweredby": "Impulsado por Wikimedia Labs"
 }
