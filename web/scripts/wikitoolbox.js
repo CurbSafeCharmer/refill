@@ -95,15 +95,26 @@ function ReflinksGadget() {
 	}
 	
 	this.loadMessages = function( forceReload ) {
-		var ts = localStorage.getItem( "reflinks-messagests" );
-		if ( ts < (new Date).getTime() - 259200000 || forceReload ) { // older than 3 days
+		var ts;
+
+		try {
+			ts = localStorage.getItem( "reflinks-messagests" );
+		} catch (e) {
+			// LocalStorage can be unavailable for many reasons (full, privacy mode etc)
+			// Ignore such exceptions
+		}
+
+		if ( !ts || ts < (new Date).getTime() - 259200000 || forceReload ) { // older than 3 days
 			this.log( "Loading messages from API" );
 			var obj = this;
 			$.getJSON( this.server + "/api.php?action=i18n&callback=?", function( data ) {
 				obj.messages = data;
 				obj.messagesLoaded = true;
-				localStorage.setItem( "reflinks-messages", JSON.stringify( data ) );
-				localStorage.setItem( "reflinks-messagests", (new Date).getTime() );
+				try {
+					localStorage.setItem( "reflinks-messages", JSON.stringify( data ) );
+					localStorage.setItem( "reflinks-messagests", (new Date).getTime() );
+				} catch (e) {
+				}
 			} );
 		} else if ( ts ) { // Cache exists
 			this.log( "Loading messages from cache @ " + ts );
