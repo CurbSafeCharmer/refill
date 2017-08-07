@@ -56,8 +56,11 @@
 	"option-plainlink": "Utilizar o formato wiki simple en lugar de {{cita web}}",
 	"option-plainlink-description": "Se seleccionado, as referencias non formatadas serán expandidas sen a predefinición {{cita web}}. Iso non é aconsellable xa que as predefinicións de cita garanten un estilo de cita uniforme e permiten unha análise doada por parte de programas.",
 	"option-noremovetag": "Non elimine as etiquetas de ligazóns deterioradas",
+	"option-nowatch-description": "Se se activa, a caixa «Vixiar esta páxina» da interface de edición do wiki estará desmarcada de maneira predeterminada.",
 	"option-addblankmetadata": "Engadir campos de metadatos baleiros cando a información non está dispoñible",
 	"option-noaccessdate": "Non engadir datas de acceso",
+	"option-noaccessdate-description": "Se se selecciona, no resultado omitiranse as datas de acceso.",
+	"wmflabs-thankyoutest": "Grazas por probar a versión experimental de $1. Informe dos erros que atope.",
 	"wmflabs-latestcommit": "Último \"commit\": $1",
 	"wmflabs-poweredby": "Impulsado por Wikimedia Labs"
 }
