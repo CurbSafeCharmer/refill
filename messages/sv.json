@@ -3,9 +3,11 @@
 		"authors": [
 			"Jopparn",
 			"Lokal Profil",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Bengtsson96"
 		]
 	},
+	"tagline": "Utöka referenser med lätthet",
 	"heading-fetchfromwiki": "Hämta innehåll från en wiki",
 	"heading-rawwikitext": "Ange wikitext",
 	"heading-options": "Alternativ",
@@ -38,6 +40,7 @@
 	"skipped": "Följande referens(er) kunde inte fyllas i:",
 	"responsibility": "Du är ansvarig för varje redigering som du gör.",
 	"pleasedoublecheck": "Vänligen dubbelkolla redigeringen innan du sparar!",
+	"noaccessdate": "Besöksdatum tas inte med i resultatet. Verifiera gärna om referenser fortfarande stöder påståendet och lägg sedan till datum på lämpligt ställe.",
 	"chancetoreview": "Du kommer att ha en chans att granska redigeringen innan den sparas.",
 	"unfinished": "På grund av begränsningar kunde programmet inte fixa alla referenser. Pröva att spara och kör verktyget på nytt.",
 	"colourlegend": "Färger:",
@@ -50,6 +53,7 @@
 	"uhoh": "Hoppsan!",
 	"developedby": "av $1",
 	"translatedby": "Detta verktyg är översatt av:",
+	"summary": "Utökade $1 referenser med $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-plainlink": "Använd enkel formatering istället för {{cite web}}",
 	"option-noremovetag": "Ta inte bort länkrotstaggar",
@@ -61,5 +65,6 @@
 	"option-usedomainaswork": "Använd grunddomännamnet som verk när denna information inte kan tolkas",
 	"wmflabs-thankyoutest": "Tack för att du testar den experimentella versionen av $1. Rapportera buggarna du stöter på.",
 	"wmflabs-latestcommit": "Senaste commit: $1",
-	"wmflabs-poweredby": "Drivs av Wikimedia Labs"
+	"wmflabs-poweredby": "Drivs av Wikimedia Labs",
+	"wmflabs-testsummary": "Utökade $1 referenser med testversionen av $3"
 }
