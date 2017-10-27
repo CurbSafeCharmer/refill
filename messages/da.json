@@ -4,7 +4,10 @@
 			"Joedalton"
 		]
 	},
+	"tagline": "Udvid enkelt bare referencer",
 	"heading-fetchfromwiki": "Hent indhold fra en wiki",
+	"heading-rawwikitext": "Indtast wikiopmærkning",
+	"heading-options": "Indstillinger",
 	"heading-citegen": "Opret en reference",
 	"heading-result": "Resultat",
 	"heading-newwikitext": "Ny wikiopmærkning",
@@ -16,6 +19,8 @@
 	"placeholder-url": "Adresse",
 	"label-fixpage": "Ret side",
 	"label-fixwikitext": "Ret wikitekst",
+	"label-pretendwiki": "Lad som om den er fra:",
+	"label-toggleadv": "Slå avancerede inddata til/fra",
 	"label-generate": "Opret",
 	"label-manual": "Manual",
 	"label-sourcecode": "Kilde",
@@ -26,6 +31,7 @@
 	"label-saveandreturn": "Gem og returner",
 	"label-gadgetoptions": "(indstillinger)",
 	"label-homepage": "Værktøjshjemmeside",
+	"chancetoreview": "Du har mulighed for at gennemse redigeringen før den gemmes.",
 	"colourlegend": "Farver:",
 	"colour-insert": "Blå",
 	"colour-delete": "Orange",
