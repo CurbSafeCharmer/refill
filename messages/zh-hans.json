@@ -3,7 +3,8 @@
 		"authors": [
 			"Zhaofeng Li",
 			"Pak Long Wu",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Yfdyh000"
 		]
 	},
 	"appname": "reFill",
@@ -62,12 +63,12 @@
 	"option-nowatch": "不要在使用wiki作为来源时监视页面",
 	"option-nowatch-description": "如果选定，wiki编辑界面上的“监视本页”复选框将默认取消勾选。",
 	"option-addblankmetadata": "当信息不可用时，添加空白元数据字段",
-	"option-noaccessdate": "不要添加访问日期",
-	"option-noaccessdate-description": "如果选定，访问日期将在结果中省略。",
-	"option-usedomainaswork": "当该信息不能解析时，使用基本域名工作",
+	"option-noaccessdate": "不添加访问日期",
+	"option-noaccessdate-description": "如果选中，结果中将不含访问日期。",
+	"option-usedomainaswork": "当其信息无法解析时，使用基础域名代替",
 	"wmflabs-thankyoutest": "感谢您测试$1的实验版本。请报告您遇到的错误。",
 	"wmflabs-latestcommit": "最新提交：$1",
-	"wmflabs-poweredby": "由维基媒体实验室提供技术支持",
+	"wmflabs-poweredby": "由维基媒体实验室提供支持",
 	"wmflabs-testsummary": "通过$3的测试版本填充了$1个裸露的参考文献",
 	"wikitext-template-web": "cite web",
 	"wikitext-template-book": "cite book",
