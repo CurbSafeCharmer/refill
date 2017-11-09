@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"heading-options": "Opziune",
+	"heading-result": "Resultate",
+	"heading-error": "Errore",
+	"heading-manual": "A màne",
+	"heading-acknowledgements": "Recanusceminde",
+	"heading-reportbugs": "Segnale le errore",
+	"placeholder-pagename": "Nome d'a pàgene",
+	"placeholder-url": "URL",
+	"label-fixpage": "Corregge 'a pàgene",
+	"label-fixwikitext": "Corregge 'u uicchiteste",
+	"label-manual": "A màne",
+	"label-sourcecode": "Sorgende",
+	"label-acknowledgements": "Recanusceminde",
+	"label-reportbugs": "Segnale le errore",
+	"label-switchlang": "Lènghe",
+	"colourlegend": "Culure:",
+	"colour-insert": "Blu",
+	"colour-delete": "Arangione",
+	"diff-insert": "Aggiunde",
+	"diff-delete": "Luate",
+	"loadingoptions": "Carecamènde de le opziune...",
+	"comingsoon": "Stonne arrivane",
+	"uhoh": "Uh-oh!",
+	"developedby": "da $1"
+}
