@@ -31,6 +31,9 @@
 	"tooltip-saveandreturn": "Buka antarmuka sunting dalam tab/jendela baru, lalu kembali ke halaman utama dengan diam-diam.",
 	"fixed": "$1 referensi diperbaiki",
 	"nofixed": "Tidak ada referensi diperbaiki",
+	"skipped": "Referensi berikut ini tidak dapat diisikan",
+	"responsibility": "Anda bertanggungjawab atas semua suntingan yang Anda lakukan.",
+	"pleasedoublecheck": "Mohon periksa kembali suntingan sebelum menyimpan!",
 	"colourlegend": "Warna:",
 	"colour-insert": "Biru",
 	"colour-delete": "Jingga",
@@ -40,6 +43,9 @@
 	"comingsoon": "Segera!",
 	"developedby": "oleh $1",
 	"translatedby": "Perkakas ini diterjemahkan oleh:",
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"option-plainlink": "Gunakanlah format polos, bukan {{cite web}}",
+	"option-noremovetag": "Jangan menghapus tag link rot",
 	"option-noaccessdate": "Jangan tambahkan akses data",
 	"wmflabs-poweredby": "Ditenagai oleh Wikimedia Labs"
 }
