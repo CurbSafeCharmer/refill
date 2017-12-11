@@ -45,5 +45,9 @@
 	"diff-delete": "Fjernet",
 	"loadingoptions": "Indlæser indstillinger ...",
 	"comingsoon": "Kommer snart",
-	"developedby": "af $1"
+	"developedby": "af $1",
+	"translatedby": "Dette værktøj er oversat af:",
+	"option-nowatch": "Overvåg ikke siden når Wiki bruges som kilde",
+	"option-noaccessdate": "Tilføj ikke besøgsdatoer",
+	"wmflabs-latestcommit": "Seneste indsendelse: $1"
 }
