@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Susant purohit"
+		]
+	},
+	"heading-options": "ବିକଳ୍ପମାନ",
+	"heading-result": "ପରିଣାମ",
+	"heading-error": "ଭୁଲ",
+	"heading-manual": "ସହାୟକ ବହି",
+	"heading-reportbugs": "ବଗ ଦାଖଲ କରିବେ",
+	"placeholder-pagename": "ପୃଷ୍ଠା ନାମ",
+	"placeholder-url": "ଇଉଆରଏଲ",
+	"label-sourcecode": "ମୂଳାଧାର",
+	"label-reportbugs": "ବଗ ଦାଖଲ କରିବେ",
+	"label-switchlang": "ଭାଷା",
+	"label-saveandreturn": "ସାଇତିବେ ଓ ଫେରିବେ",
+	"label-gadgetoptions": "(ବିକଳ୍ପସବୁ )",
+	"colourlegend": "ରଙ୍ଗସବୁ:",
+	"colour-insert": "ନୀଳ",
+	"colour-delete": "କମଳା",
+	"diff-insert": "ଯୋଡ଼ାଗଲା",
+	"diff-delete": "କାଢ଼ିଦିଆଗଲା",
+	"comingsoon": "ଶୀଘ୍ର ଆସୁଛି",
+	"developedby": "$1ଙ୍କ ଦ୍ୱାରା"
+}

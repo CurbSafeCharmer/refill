@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saraiki"
+		]
+	},
+	"heading-options": "اختیارات",
+	"heading-result": "نتیجہ",
+	"heading-error": "نقص",
+	"heading-manual": "دستی",
+	"heading-acknowledgements": "تشکر",
+	"placeholder-pagename": "ورقے دا ناں",
+	"placeholder-url": "یوآرایل",
+	"label-fixpage": "ورقہ ٹھیک کرو",
+	"label-manual": "دستی",
+	"label-sourcecode": "ماخذ",
+	"label-switchlang": "زباناں",
+	"label-gadgetoptions": "(اختیارات)",
+	"colourlegend": "رنگ:",
+	"colour-insert": "نیلا",
+	"colour-delete": "مالٹا",
+	"diff-insert": "جمع تھی ڳئے",
+	"diff-delete": "ہٹا ݙتے"
+}
