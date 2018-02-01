@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Zoranzoki21"
 		]
 	},
 	"appname": "{{Optional|Translate it only if you have a good name that is concise and gives a basic idea of what the tool does in your language.}}",
@@ -37,6 +38,7 @@
 	"colour-delete": "This is used in the diff highlighting colour legend.\n{{Identical|Orange}}",
 	"diff-insert": "This is used in the diff highlighting colour legend for added text.\n{{Identical|Added}}",
 	"diff-delete": "This is used in the diff highlighting colour legend for removed text.\n{{Identical|Removed}}",
+	"uhoh": "Uh-oh!",
 	"developedby": "The $1 will be replaced by the names of the developers. Keep it intact.\n{{Identical|By}}",
 	"summary": "The default edit summary. $1 will be replaced by the fixed count, $2 by the skipped count and $3 by a wikilink to the manual page",
 	"toollink": "A wikilink to the documentation page",

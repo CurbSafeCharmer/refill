@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Purodha"
+			"Purodha",
+			"Zoranzoki21"
 		]
 	},
 	"heading-fetchfromwiki": "Holl dä Enhalld vun enem Wikki",
@@ -40,6 +41,7 @@
 	"diff-delete": "Fott jenumme",
 	"loadingoptions": "Ben aam lahde...",
 	"comingsoon": "Kütt bahl",
+	"uhoh": "Uh-oh!",
 	"developedby": "fum $1",
 	"translatedby": "Dat Projramm heh wodd övversaz vum:",
 	"wmflabs-latestcommit": "Läzde Ännderong: $1",
