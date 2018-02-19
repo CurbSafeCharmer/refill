@@ -3,7 +3,8 @@
 		"authors": [
 			"Pak Long Wu",
 			"LNDDYL",
-			"Kly"
+			"Kly",
+			"Liuxinyu970226"
 		]
 	},
 	"appname": "reFill",
@@ -68,5 +69,6 @@
 	"wmflabs-thankyoutest": "感謝您幫助測試 $1 測試版本。請回報你遇到的問題。",
 	"wmflabs-latestcommit": "最後提交: $1",
 	"wmflabs-poweredby": "由維基媒體實驗室給予技術支援",
-	"wmflabs-testsummary": "已用 $3 的測試版本補充了 $1 個裸露來源連結"
+	"wmflabs-testsummary": "已用 $3 的測試版本補充了 $1 個裸露來源連結",
+	"wikitext-parameter-pages": "頁面"
 }
