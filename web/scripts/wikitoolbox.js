@@ -168,7 +168,7 @@ function ReflinksGadget() {
 	
 	this.init = function() {
 		this.loadMessages( false );
-		this.portletLink = mw.util.addPortletLink( "p-tb", this.getSubmitUrl( true ), this.msg( "appname" ) );
+		this.portletLink = mw.util.addPortletLink( "p-tb", this.getSubmitUrl( true ), this.msg( "appname" ), "t-reflinks" );
 		var obj = this;
 		this.optionsLink = $( "<a>" ).attr( "href", "#" ).text( this.msg( "label-gadgetoptions" ) ).click( function() {
 			obj.setUpForm();
