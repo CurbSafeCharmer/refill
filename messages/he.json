@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Guycn2"
 		]
 	},
 	"tagline": "הרחבת הערות ערומות בקלות",
@@ -65,5 +66,12 @@
 	"wmflabs-thankyoutest": "תודה על בדיקת הגרסה הניסיונית של $1. נא לדווח באגים שמצאת.",
 	"wmflabs-latestcommit": "גרסת קוד אחרונה: $1",
 	"wmflabs-poweredby": "מופעל במעבדות ויקימדיה",
-	"wmflabs-testsummary": "מולאו $1 הערות ערומות עם גרסה ניסיונית של $3"
+	"wmflabs-testsummary": "מולאו $1 הערות ערומות עם גרסה ניסיונית של $3",
+	"fixwikipage-page": "שם הדף",
+	"result": "תוצאה",
+	"state-FAILURE-description": "אירעה שגיאה.",
+	"state-REVOKED": "בוטל",
+	"state-REVOKED-description": "המשימה בוטלה.",
+	"state-BACKEND_ERROR-description": "אירעה שגיאה בלתי ידועה.",
+	"taskinfo-name": "משימה"
 }

@@ -23,5 +23,16 @@
 	"diff-delete": "ہٹا ݙتے",
 	"comingsoon": "جلدی آندا پئے",
 	"uhoh": "او ہو!",
-	"developedby": "$1 کنوں"
+	"developedby": "$1 کنوں",
+	"fixwikipage": "ورقہ ٹھیک کرو",
+	"fixwikipage-page": "ورقے دا ناں",
+	"fixwikipage-code": "کوڈ",
+	"fixwikipage-fam": "خاندان",
+	"result": "نتیجہ",
+	"state-STARTED": "شروع تھیا",
+	"state-SUCCESS": "کامیابی",
+	"state-FAILURE": "ناکام تھیا",
+	"state-REVOKED": "منسوخ تھی ڳیا",
+	"taskinfo-state": "حالت",
+	"taskinfo-percentage": "فیصدی"
 }

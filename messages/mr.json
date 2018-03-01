@@ -1,8 +1,41 @@
 {
 	"@metadata": {
 		"authors": [
-			"V.narsikar"
+			"V.narsikar",
+			"Sureshkhole",
+			"Susheelkasab"
 		]
 	},
-	"label-saveandreturn": "जतन करा व परत चला"
+	"label-saveandreturn": "जतन करा व परत चला",
+	"fixwikipage": "पान निश्चित करा",
+	"fixwikipage-page": "पृष्ठ नाव:",
+	"fixwikipage-code": "संकेत",
+	"fixwikipage-fam": "कूळ",
+	"fixwikicode": "पुरवलेला विकीकोड दुरुस्त करा",
+	"fixwikicode-wikicode": "कच्चा विकीकोड",
+	"fixwikicode-submit": "पाठवा",
+	"apiendpoint": "एपीआय अंतबिंदू",
+	"result": "निकाल",
+	"state-PENDING": "अनिर्णयीत",
+	"state-PENDING-description": "उपलब्ध असलेल्या कामगाराची वाट पाहत आहे",
+	"state-STARTED": "सुरू केले",
+	"state-STARTED-description": "हे काम हातात घेतले गेले आहे.",
+	"state-PROGRESS": "प्रक्रिया करीत आहे",
+	"state-PROGRESS-description": "तुमचे कार्यावर प्रक्रिया होत आहे.",
+	"state-SUCCESS": "यश",
+	"state-SUCCESS-description": "कार्य सफ़ल झाले",
+	"state-FAILURE": "कोसळले",
+	"state-FAILURE-description": "एक त्रुटी घडली",
+	"state-REVOKED": "नाकारले",
+	"state-REVOKED-description": "हे कार्य रद्द करण्यात आलं आहे",
+	"state-BACKEND_ERROR": "अप्रत्यक्ष त्रुटी",
+	"state-BACKEND_ERROR-description": "एक अज्ञात चूक उद्भवली.",
+	"taskinfo": "कार्याची माहिती",
+	"taskinfo-name": "कार्य",
+	"taskinfo-id": "कृती क्रमांक",
+	"taskinfo-state": "स्थिति",
+	"taskinfo-percentage": "टक्केवारी",
+	"taskinfo-running": "चालू आहे",
+	"taskinfo-submiturl": "लक्ष्य URL",
+	"deletetask": "सर्व्हर कॅचे मधून कार्य काढून टाका."
 }

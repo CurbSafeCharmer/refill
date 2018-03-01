@@ -53,6 +53,7 @@
 	"summary": "Udfyldte $1 tomme referencer med $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"option-plainlink": "Brug enkel formatering i stedet for {{cite web}}",
+	"option-plainlink-description": "Hvis valgt, vil bare referencer blive udvidet uden at bruge {{cite web}}. Dette frarådes da citeringsskabeloner tilbyder en konsistent citationsstil og aktiverer nem fortolkning af programmer.",
 	"option-nowatch": "Overvåg ikke siden når Wiki bruges som kilde",
 	"option-noaccessdate": "Tilføj ikke besøgsdatoer",
 	"wmflabs-latestcommit": "Seneste indsendelse: $1"

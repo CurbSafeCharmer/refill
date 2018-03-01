@@ -3,7 +3,8 @@
 		"authors": [
 			"Amire80",
 			"Liuxinyu970226",
-			"Zoranzoki21"
+			"Zoranzoki21",
+			"Robby"
 		]
 	},
 	"appname": "{{Optional|Translate it only if you have a good name that is concise and gives a basic idea of what the tool does in your language.}}",
@@ -57,5 +58,12 @@
 	"wikitext-parameter-publisher": "{{optional}}\n{{Identical|Publisher}}",
 	"wikitext-parameter-date": "{{Identical|Date}}",
 	"wikitext-parameter-journal": "{{Identical|Journal}}",
-	"wikitext-parameter-pages": "{{optional}}\n{{Identical|Page}}"
+	"wikitext-parameter-pages": "{{optional}}\n{{Identical|Page}}",
+	"fixwikipage-code": "{{Identical|Code}}",
+	"fixwikipage-fam": "{{Identical|Family}}",
+	"result": "{{Identical|Result}}",
+	"state-PENDING": "{{Identical|Pending}}",
+	"state-SUCCESS": "{{Identical|Success}}",
+	"taskinfo-name": "{{Identical|Task}}",
+	"taskinfo-percentage": "{{Identical|Percentage}}"
 }
