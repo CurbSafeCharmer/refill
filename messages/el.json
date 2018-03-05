@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Wasilis Mandratzis-Walz",
-			"Fitoschido"
+			"Fitoschido",
+			"Nikosgranturismogt"
 		]
 	},
 	"appname": "reFill",
@@ -63,5 +64,32 @@
 	"wmflabs-thankyoutest": "Σας ευχαριστούμε για τη δοκιμή της πειραματικής έκδοσης του $1. Παρακαλούμε αναφέρετε τα σφάλματα που αντιμετωπίζετε.",
 	"wmflabs-latestcommit": "Τελευταία δεσμεύονται: $1",
 	"wmflabs-poweredby": "Υποστηρίζεται από το Wikimedia Labs",
-	"wmflabs-testsummary": "Συμπληρώνεται $1 γυμνή αναφορά(ες) με τη δοκιμαστική έκδοση του $3"
+	"wmflabs-testsummary": "Συμπληρώνεται $1 γυμνή αναφορά(ες) με τη δοκιμαστική έκδοση του $3",
+	"fixwikipage": "Διόρθωση σελίδας",
+	"fixwikipage-page": "Ονομα σελίδας",
+	"fixwikipage-code": "Κωδικός",
+	"fixwikipage-fam": "Οικογένεια",
+	"fixwikicode": "Διόρθωση παρεχόμενου βικικώδικα",
+	"fixwikicode-wikicode": "Ανεπεξέργαστος βικικώδικας",
+	"fixwikicode-submit": "Υποβολή",
+	"apiendpoint": "Σημείο τέλους API",
+	"result": "Αποτέλεσμα",
+	"state-PENDING": "Σε εκκρεμότητα",
+	"state-PENDING-description": "Περιμένει για έναν διαθέσιμο εργάτη.",
+	"state-STARTED": "Ξεκίνησε",
+	"state-PROGRESS": "Επεξεργασία",
+	"state-SUCCESS": "Επιτυχία",
+	"state-SUCCESS-description": "Η εργασία πέτυχε.",
+	"state-FAILURE": "Απέτυχε",
+	"state-FAILURE-description": "Ενα σφάλμα συνέβη",
+	"state-REVOKED": "Ακυρωμένο",
+	"state-REVOKED-description": "Η εργασία έχει ακυρωθεί.",
+	"state-BACKEND_ERROR-description": "Προέκυψε ένα άγνωστο σφάλμα.",
+	"taskinfo": "Πληροφορίες εργασίας",
+	"taskinfo-name": "Εργασία",
+	"taskinfo-id": "Αναγνωριστικό εργασίας",
+	"taskinfo-state": "Κατάσταση",
+	"taskinfo-percentage": "Ποσοστό",
+	"taskinfo-running": "Εκτελείται",
+	"taskinfo-submiturl": "Στόχος URL"
 }

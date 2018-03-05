@@ -4,7 +4,8 @@
 			"Aftabuzzaman ullah",
 			"Aftabuzzaman",
 			"Bodhisattwa",
-			"আজিজ"
+			"আজিজ",
+			"Sandipan"
 		]
 	},
 	"appname": "সূত্রপূরণ",
@@ -110,10 +111,10 @@
 	"state-BACKEND_ERROR-description": "একটি অজানা ত্রুটি দেখা দিয়েছে।",
 	"taskinfo": "কার্যের তথ্য",
 	"taskinfo-name": "কার্য",
-	"taskinfo-id": "কার্যের ID",
+	"taskinfo-id": "কার্যের আইডি",
 	"taskinfo-state": "অবস্থা",
 	"taskinfo-percentage": "শতাংশ",
 	"taskinfo-running": "চলছে",
-	"taskinfo-submiturl": "লক্ষ্য URL",
+	"taskinfo-submiturl": "লক্ষ্য ইউআরএল",
 	"deletetask": "সার্ভার ক্যাশে থেকে কাজটি মুছুন"
 }
