@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Visem",
-			"Piramidion"
+			"Piramidion",
+			"Movses"
 		]
 	},
 	"tagline": "Розгортайте неоформлені посилання з легкістю",
@@ -66,5 +67,13 @@
 	"wmflabs-thankyoutest": "Дякуємо за тестування експериментальної версії $1. Будь ласка, повідомляйте про баги, з якими зіткнетесь.",
 	"wmflabs-latestcommit": "Останній коміт: $1",
 	"wmflabs-poweredby": "Powered by Wikimedia Labs",
-	"wmflabs-testsummary": "Заповнено {{PLURAL:$1|$1 просте посилання|$1 прості посилання|$1 простих посилань}} за допомогою тестової версії $3"
+	"wmflabs-testsummary": "Заповнено {{PLURAL:$1|$1 просте посилання|$1 прості посилання|$1 простих посилань}} за допомогою тестової версії $3",
+	"fixwikipage-page": "Назва сторінки",
+	"fixwikipage-code": "Код",
+	"fixwikicode-submit": "Надіслати",
+	"apiendpoint": "Кінцева точка API",
+	"result": "Результат",
+	"state-PENDING": "Очікування",
+	"state-PROGRESS": "Обробка",
+	"state-FAILURE-description": "Сталася помилка."
 }

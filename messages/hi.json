@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sfic"
+			"Sfic",
+			"Smtchahal"
 		]
 	},
 	"appname": "रिफिल",
@@ -53,5 +54,22 @@
 	"wikitext-parameter-archiveurl": "पूरालेख यूआरएल",
 	"wikitext-parameter-archivedate": "पुरालेख तिथि",
 	"wikitext-parameter-deadurl": "मृत यूआरएल",
-	"wikitext-parameter-via": "द्वारा"
+	"wikitext-parameter-via": "द्वारा",
+	"fixwikipage": "पृष्ठ ठीक करें",
+	"fixwikipage-page": "पृष्ठ नाम",
+	"fixwikipage-code": "कोड",
+	"fixwikipage-fam": "परिवार",
+	"fixwikicode-submit": "जमा करें",
+	"result": "परिणाम",
+	"state-PENDING": "अपूर्ण",
+	"state-SUCCESS": "सफलता",
+	"state-SUCCESS-description": "कार्य सफल हुआ।",
+	"state-FAILURE": "विफल हुआ",
+	"state-FAILURE-description": "त्रुटि उत्पन्न हुई",
+	"state-BACKEND_ERROR-description": "एक अज्ञात त्रुटि हो गयी है।",
+	"taskinfo": "कार्य जानकारी",
+	"taskinfo-id": "कार्य पहचान",
+	"taskinfo-state": "स्थिति",
+	"taskinfo-percentage": "प्रतिशत",
+	"taskinfo-submiturl": "लक्षित यू॰आर॰एल॰"
 }
