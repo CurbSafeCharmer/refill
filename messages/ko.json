@@ -3,7 +3,8 @@
 		"authors": [
 			"SeoJeongHo",
 			"Ykhwong",
-			"Jonghaya"
+			"Jonghaya",
+			"In2acous"
 		]
 	},
 	"heading-rawwikitext": "위키 마크업 입력",
@@ -47,10 +48,13 @@
 	"apiendpoint": "API 종단점",
 	"result": "결과",
 	"state-PENDING": "보류 중",
+	"state-PENDING-description": "사용 가능한 작업자를 기다리고 있습니다.",
 	"state-STARTED": "시작됨",
+	"state-STARTED-description": "작업이 선택되었습니다.",
 	"state-PROGRESS": "처리 중",
 	"state-PROGRESS-description": "이 작업은 처리 중입니다.",
 	"state-SUCCESS": "성공",
+	"state-SUCCESS-description": "작업이 성공했습니다.",
 	"state-FAILURE": "실패됨",
 	"state-FAILURE-description": "오류가 발생했습니다.",
 	"state-REVOKED": "취소됨",
@@ -58,6 +62,7 @@
 	"state-BACKEND_ERROR": "백엔드 오류",
 	"state-BACKEND_ERROR-description": "알 수 없는 오류가 발생했습니다.",
 	"taskinfo": "작업 정보",
+	"taskinfo-name": "작업",
 	"taskinfo-id": "작업 ID",
 	"taskinfo-state": "상태",
 	"taskinfo-percentage": "백분율",

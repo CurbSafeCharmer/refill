@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Acamicamacaraca"
+			"Acamicamacaraca",
+			"Obsuser"
 		]
 	},
 	"appname": "reFill",
 	"tagline": "Проширите једноставне референце са лакоћом",
-	"heading-fetchfromwiki": "Преузмите садржај из викија",
+	"heading-fetchfromwiki": "Апортирај садржај из викија",
 	"heading-rawwikitext": "Унесите ознаку викија",
 	"heading-options": "Подешавања",
 	"heading-citegen": "Генериши референцу",
@@ -21,7 +22,7 @@
 	"label-fixpage": "Поправи страницу",
 	"label-fixwikitext": "Поправи викитекст",
 	"label-pretendwiki": "Претварај се да је из:",
-	"label-toggleadv": "Пребаците се на напредни унос",
+	"label-toggleadv": "Укључите напредни унос",
 	"label-generate": "Генериши",
 	"label-manual": "Упутство",
 	"label-sourcecode": "Извор",
