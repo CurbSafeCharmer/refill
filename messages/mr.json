@@ -3,7 +3,8 @@
 		"authors": [
 			"V.narsikar",
 			"Sureshkhole",
-			"Susheelkasab"
+			"Susheelkasab",
+			"Tiven2240"
 		]
 	},
 	"tagline": "साध्या संकेतस्थळ दुव्यांचे पुर्ण संदर्भात रुपांतरण करा",
@@ -13,7 +14,7 @@
 	"heading-citegen": "संदर्भ तयार करा",
 	"heading-result": "निकाल",
 	"heading-newwikitext": "नविन विकी मार्कअप",
-	"heading-error": "चूक",
+	"heading-error": "त्रुटी",
 	"heading-manual": "माहिती",
 	"heading-acknowledgements": "आभार",
 	"heading-reportbugs": "गणकदोष अहवाल द्या",
