@@ -3,7 +3,8 @@
 		"authors": [
 			"Iniquity",
 			"Kaganer",
-			"Irus"
+			"Irus",
+			"Patrick Star"
 		]
 	},
 	"tagline": "Заполняйте голые ссылки с легкостью",
@@ -67,5 +68,26 @@
 	"wmflabs-thankyoutest": "Спасибо за тестирование экспериментальной версии $1. Пожалуйста, сообщите ошибки с которыми вы столкнулись.",
 	"wmflabs-latestcommit": "Последний коммит: $1",
 	"wmflabs-poweredby": "Powered by Wikimedia Labs",
-	"wmflabs-testsummary": "{{PLURAL:$1|Заполнена|Заполнены}} $1 {{PLURAL:$1|голая ссылка|голых ссылки|голых ссылок}} с помощью тестовой версии $3"
+	"wmflabs-testsummary": "{{PLURAL:$1|Заполнена|Заполнены}} $1 {{PLURAL:$1|голая ссылка|голых ссылки|голых ссылок}} с помощью тестовой версии $3",
+	"fixwikipage": "Исправить страницу",
+	"fixwikipage-page": "Название страницы",
+	"fixwikipage-code": "Код",
+	"fixwikipage-fam": "Семейство",
+	"fixwikicode-wikicode": "Сырой викикод",
+	"fixwikicode-submit": "Отправить",
+	"apiendpoint": "API конечная точка",
+	"result": "Результат",
+	"state-PENDING": "Ожидание",
+	"state-STARTED": "Началась",
+	"state-PROGRESS": "Обработка",
+	"state-SUCCESS": "Успешно",
+	"state-FAILURE": "Не удалось",
+	"state-REVOKED": "Отменено",
+	"state-BACKEND_ERROR-description": "Произошла неизвестная ошибка.",
+	"taskinfo": "Информация о типе",
+	"taskinfo-name": "Задача",
+	"taskinfo-id": "Тип идентификатора",
+	"taskinfo-state": "Статус",
+	"taskinfo-percentage": "Процент",
+	"taskinfo-submiturl": "Целевой URL"
 }
