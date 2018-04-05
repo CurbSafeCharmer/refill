@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Muhammad Shuaib",
-			"Obaid Raza"
+			"Obaid Raza",
+			"Abdulq",
+			"BukhariSaeed"
 		]
 	},
 	"tagline": "سادہ حوالہ جات کو بآسانی وسیع کریں",
@@ -50,5 +52,24 @@
 	"toollink": "[[:en:WP:REFILL|ری فل]]",
 	"option-plainlink": "{{cite web}} کی بجائے سادہ وضع استعمال کریں",
 	"option-noremovetag": "مردہ ربط کے ٹیگ نہ ہٹائیں",
-	"wmflabs-poweredby": "تقویت یافتہ از ویکیمیڈیا لیبز"
+	"wmflabs-poweredby": "تقویت یافتہ از ویکیمیڈیا لیبز",
+	"fixwikicode-submit": "جمع کرائیں",
+	"result": "نتیجہ",
+	"state-STARTED": "شروع ہوگیا",
+	"state-PROGRESS": "زیر تکمیل",
+	"state-PROGRESS-description": "ٹاسک پر عمل درآمد کیا جا رہا ہے۔",
+	"state-SUCCESS": "کامیاب",
+	"state-SUCCESS-description": "ٹاسک کامیاب ہوگیا ہے۔",
+	"state-FAILURE": "ناکام",
+	"state-FAILURE-description": "ایک خرابی آگئی ہے۔",
+	"state-REVOKED": "منسوخ",
+	"state-REVOKED-description": "ٹاسک منسوخ کر دیا گیا ہے۔",
+	"taskinfo": "ٹاسک کی معلومات",
+	"taskinfo-name": "ٹاسک",
+	"taskinfo-id": "ٹاسک آئی ڈی",
+	"taskinfo-state": "ریاست",
+	"taskinfo-percentage": "فیصد",
+	"taskinfo-running": "جاری ہے",
+	"taskinfo-submiturl": "مقصود یو آر ایل",
+	"deletetask": "سرور کیشے سے ٹاسک حذف کریں"
 }

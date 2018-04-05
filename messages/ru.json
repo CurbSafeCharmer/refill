@@ -4,7 +4,8 @@
 			"Iniquity",
 			"Kaganer",
 			"Irus",
-			"Patrick Star"
+			"Patrick Star",
+			"Okras"
 		]
 	},
 	"tagline": "Заполняйте голые ссылки с легкостью",
@@ -81,8 +82,10 @@
 	"state-STARTED": "Началась",
 	"state-PROGRESS": "Обработка",
 	"state-SUCCESS": "Успешно",
+	"state-SUCCESS-description": "Задание было выполнено успешно.",
 	"state-FAILURE": "Не удалось",
 	"state-REVOKED": "Отменено",
+	"state-REVOKED-description": "Задание было отменено.",
 	"state-BACKEND_ERROR-description": "Произошла неизвестная ошибка.",
 	"taskinfo": "Информация о типе",
 	"taskinfo-name": "Задача",
