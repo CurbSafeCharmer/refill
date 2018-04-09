@@ -5,7 +5,8 @@
 			"Kaganer",
 			"Irus",
 			"Patrick Star",
-			"Okras"
+			"Okras",
+			"Happy13241"
 		]
 	},
 	"tagline": "Заполняйте голые ссылки с легкостью",
@@ -74,23 +75,31 @@
 	"fixwikipage-page": "Название страницы",
 	"fixwikipage-code": "Код",
 	"fixwikipage-fam": "Семейство",
+	"fixwikicode": "Исправлен комплект викикод",
 	"fixwikicode-wikicode": "Сырой викикод",
 	"fixwikicode-submit": "Отправить",
 	"apiendpoint": "API конечная точка",
 	"result": "Результат",
 	"state-PENDING": "Ожидание",
+	"state-PENDING-description": "Ожидание доступного работника.",
 	"state-STARTED": "Началась",
+	"state-STARTED-description": "Задача была поднята.",
 	"state-PROGRESS": "Обработка",
+	"state-PROGRESS-description": "Задача обрабатывается.",
 	"state-SUCCESS": "Успешно",
 	"state-SUCCESS-description": "Задание было выполнено успешно.",
 	"state-FAILURE": "Не удалось",
+	"state-FAILURE-description": "Произошла ошибка.",
 	"state-REVOKED": "Отменено",
 	"state-REVOKED-description": "Задание было отменено.",
+	"state-BACKEND_ERROR": "Исходная ошибка",
 	"state-BACKEND_ERROR-description": "Произошла неизвестная ошибка.",
 	"taskinfo": "Информация о типе",
 	"taskinfo-name": "Задача",
 	"taskinfo-id": "Тип идентификатора",
 	"taskinfo-state": "Статус",
 	"taskinfo-percentage": "Процент",
-	"taskinfo-submiturl": "Целевой URL"
+	"taskinfo-running": "Запуск",
+	"taskinfo-submiturl": "Целевой URL",
+	"deletetask": "Удалить задачу из кеша сервера"
 }
