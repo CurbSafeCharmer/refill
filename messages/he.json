@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Guycn2"
+			"Guycn2",
+			"שניאור זלמן"
 		]
 	},
 	"tagline": "הרחבת הערות ערומות בקלות",
@@ -68,10 +69,19 @@
 	"wmflabs-poweredby": "מופעל במעבדות ויקימדיה",
 	"wmflabs-testsummary": "מולאו $1 הערות ערומות עם גרסה ניסיונית של $3",
 	"fixwikipage-page": "שם הדף",
+	"fixwikipage-code": "קוד",
+	"fixwikipage-fam": "משפחה",
+	"fixwikicode-submit": "שליחה",
 	"result": "תוצאה",
+	"state-STARTED": "התחיל",
+	"state-PROGRESS": "עיבוד",
+	"state-SUCCESS": "הצלחה",
+	"state-FAILURE": "נכשל",
 	"state-FAILURE-description": "אירעה שגיאה.",
 	"state-REVOKED": "בוטל",
 	"state-REVOKED-description": "המשימה בוטלה.",
 	"state-BACKEND_ERROR-description": "אירעה שגיאה בלתי ידועה.",
-	"taskinfo-name": "משימה"
+	"taskinfo-name": "משימה",
+	"taskinfo-state": "מדינה",
+	"taskinfo-percentage": "אחוזים"
 }
