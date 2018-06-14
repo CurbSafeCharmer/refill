@@ -1,12 +1,41 @@
 {
 	"@metadata": {
 		"authors": [
-			"AzorAhai"
+			"AzorAhai",
+			"Dejavu"
 		]
 	},
 	"heading-options": "گزینه‌ها",
+	"heading-result": "نتیجه",
 	"heading-error": "خطا",
+	"heading-manual": "راهنمای کاربر",
 	"heading-reportbugs": "گزارش خطا",
 	"placeholder-pagename": "نام صفحه",
-	"placeholder-url": "نشانی اینترنتی"
+	"placeholder-url": "نشانی اینترنتی",
+	"label-generate": "تولید",
+	"label-sourcecode": "منبع",
+	"label-reportbugs": "گزارش خطا",
+	"label-saveandreturn": "ذخیره و بازگشت",
+	"label-gadgetoptions": "(اختیاری)",
+	"diff-insert": "افزوده شد",
+	"diff-delete": "حذف شد",
+	"loadingoptions": "در حال بارگیری توابع...",
+	"comingsoon": "بزودی ...",
+	"translatedby": "این ابزار توسط ... ترجمه شد.",
+	"option-noaccessdate": "تاریخ دسترسی را اضافه نکنید.",
+	"wmflabs-poweredby": "اجرا در آزمایشگاه‌های ابزار ویکی‌مدیا",
+	"fixwikipage-page": "نام صفحه",
+	"fixwikipage-code": "کد",
+	"fixwikipage-fam": "تیره",
+	"fixwikicode-submit": "ثبت",
+	"apiendpoint": "API پایانی",
+	"result": "نتیجه",
+	"state-PENDING": "در انتظار",
+	"state-PROGRESS": "در حال پردازش",
+	"state-SUCCESS": "موفق",
+	"state-FAILURE": "ناموفق بود",
+	"state-FAILURE-description": "یک خطا رخ داده‌است.",
+	"state-REVOKED": "لغو شد.",
+	"taskinfo": "اطلاعات اولیه",
+	"taskinfo-name": "بحث"
 }
