@@ -83,7 +83,7 @@
 	"result": "Результат",
 	"state-PENDING": "Ожидание",
 	"state-PENDING-description": "Ожидание доступного работника.",
-	"state-STARTED": "Началась",
+	"state-STARTED": "Старт",
 	"state-STARTED-description": "Задача была взята в обработку.",
 	"state-PROGRESS": "Обработка",
 	"state-PROGRESS-description": "Задача обрабатывается.",
