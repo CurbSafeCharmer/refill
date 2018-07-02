@@ -3,7 +3,8 @@
 		"authors": [
 			"Beta16",
 			"Nemo bis",
-			"Wikitoni"
+			"Wikitoni",
+			"Ontsed"
 		]
 	},
 	"tagline": "Espandi riferimenti 'nudi' con facilità",
@@ -68,22 +69,35 @@
 	"wmflabs-latestcommit": "Ultimo commit: $1",
 	"wmflabs-poweredby": "Realizzato con Wikimedia Labs",
 	"wmflabs-testsummary": "Compilati $1 riferimenti 'nudi' con la versione di prova di $3",
+	"fixwikipage": "Correggi una pagina",
 	"fixwikipage-page": "Nome della pagina",
 	"fixwikipage-code": "Codice",
 	"fixwikipage-fam": "Famiglia",
+	"fixwikicode": "Correggi il codice wiki fornito",
+	"fixwikicode-wikicode": "Codice wiki grezzo",
 	"fixwikicode-submit": "Invia",
+	"apiendpoint": "Endpoint API",
 	"result": "Risultato",
 	"state-PENDING": "In attesa",
+	"state-PENDING-description": "In attesa di un collaboratore libero.",
 	"state-STARTED": "Iniziato",
+	"state-STARTED-description": "L’attività è stata acquisita.",
 	"state-PROGRESS": "Elaborazione in corso",
+	"state-PROGRESS-description": "L’attività è in corso d’esecuzione.",
 	"state-SUCCESS": "Successo",
+	"state-SUCCESS-description": "L’attività è riuscita.",
 	"state-FAILURE": "Non riuscito",
 	"state-FAILURE-description": "Si è verificato un errore.",
 	"state-REVOKED": "Annullato",
 	"state-REVOKED-description": "L'attività è stata annullata.",
+	"state-BACKEND_ERROR": "Errore nel backend",
 	"state-BACKEND_ERROR-description": "Si è verificato un errore sconosciuto.",
+	"taskinfo": "Informazioni sull’attività",
 	"taskinfo-name": "Attività",
 	"taskinfo-id": "ID attività",
 	"taskinfo-state": "Stato",
-	"taskinfo-percentage": "Percentuale"
+	"taskinfo-percentage": "Percentuale",
+	"taskinfo-running": "In esecuzione",
+	"taskinfo-submiturl": "URL di destinazione",
+	"deletetask": "Elimina attività dalla cache del server"
 }
