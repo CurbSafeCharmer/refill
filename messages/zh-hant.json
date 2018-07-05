@@ -62,7 +62,7 @@
 	"option-noremovetag-description": "選取的話，即使在過程中沒有引用因錯誤而跳過，失效的標籤也會被保留。",
 	"option-nowatch": "使用維基作為來源的時候不監視頁面",
 	"option-nowatch-description": "選取的話，維基編輯模式的「監視本頁」核取方塊會設定為預設不選取。",
-	"option-addblankmetadata": "資料不可用時新增空白的元資料",
+	"option-addblankmetadata": "當資訊無效時，新增空白的詮釋資料",
 	"option-noaccessdate": "不要新增存取日期",
 	"option-noaccessdate-description": "選取的話，存取日期將在結果中省略。",
 	"option-usedomainaswork": "這個資料不能被解析的時候使用基本網域",
