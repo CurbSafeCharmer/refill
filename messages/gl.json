@@ -62,5 +62,12 @@
 	"option-noaccessdate-description": "Se se selecciona, no resultado omitiranse as datas de acceso.",
 	"wmflabs-thankyoutest": "Grazas por probar a versión experimental de $1. Informe dos erros que atope.",
 	"wmflabs-latestcommit": "Último \"commit\": $1",
-	"wmflabs-poweredby": "Impulsado por Wikimedia Labs"
+	"wmflabs-poweredby": "Impulsado por Wikimedia Labs",
+	"fixwikipage": "Arranxar unha páxina",
+	"fixwikipage-page": "Nome de páxina",
+	"fixwikipage-code": "Código",
+	"fixwikipage-fam": "Familia",
+	"fixwikicode-submit": "Enviar",
+	"result": "Resultado",
+	"state-PENDING": "Pendentes"
 }
