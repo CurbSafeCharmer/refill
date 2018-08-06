@@ -5,7 +5,8 @@
 			"Lemondoge",
 			"Fitoschido",
 			"Archaeodontosaurus",
-			"KATRINE1992"
+			"KATRINE1992",
+			"Pompilos"
 		]
 	},
 	"tagline": "Ampliar las referencias sencillas con facilidad",
@@ -74,9 +75,13 @@
 	"fixwikipage-page": "Nombre de página",
 	"fixwikipage-code": "Código",
 	"fixwikipage-fam": "Familia",
+	"fixwikicode": "Corregir wikicode proporcionado",
+	"fixwikicode-wikicode": "Wikicode puro",
 	"fixwikicode-submit": "Enviar",
+	"apiendpoint": "Punto final de la API",
 	"result": "Resultado",
 	"state-PENDING": "Pendiente",
+	"state-PENDING-description": "Esperando a que haya un trabajador disponible.",
 	"state-STARTED": "Iniciada",
 	"state-STARTED-description": "Se ha retomado la tarea.",
 	"state-PROGRESS": "Procesando",
