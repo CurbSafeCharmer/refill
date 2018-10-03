@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aue Nai"
+		]
+	},
+	"heading-options": "သွက်ဂွံရုဲစှ်ဂမၠိုင်",
+	"heading-result": "လဂွံ",
+	"heading-error": "ဗၠေတ်",
+	"heading-manual": "ဗွဲတဲ",
+	"heading-reportbugs": "ဂရင်ဗ္တီ စၟ",
+	"placeholder-pagename": "ယၟု မုက်လိက်",
+	"placeholder-url": "URL",
+	"label-generate": "ကၠောန်ပ္တိတ်",
+	"label-manual": "ဗွဲတဲ",
+	"label-sourcecode": "တမ်ရိုဟ်",
+	"label-reportbugs": "ဂရင်ဗ္တီ စၟ",
+	"label-switchlang": "အရေဝ်ဘာသာဂမၠိုင်",
+	"colourlegend": "သာ်:",
+	"colour-insert": "သာ်ဍီု",
+	"colour-delete": "လိမ္မော",
+	"diff-insert": "ထပ်လဝ်",
+	"diff-delete": "ပတိတ်",
+	"fixwikipage-page": "ယၟု မုက်လိက်",
+	"fixwikipage-fam": "သ္ၚိကၟိန်",
+	"fixwikicode-submit": "ဗပေင်",
+	"result": "လဂွံ",
+	"taskinfo-name": "ကမၠောန်",
+	"taskinfo-state": "ထမံက်ထ္ၜး",
+	"taskinfo-submiturl": "ပတဝ်ပွန် URI"
+}
