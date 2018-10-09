@@ -19,7 +19,7 @@
 	"heading-acknowledgements": "Захвалности",
 	"heading-reportbugs": "Пријавите грешке",
 	"placeholder-pagename": "Име странице",
-	"placeholder-url": "URL",
+	"placeholder-url": "URL адреса",
 	"label-fixpage": "Поправи страницу",
 	"label-fixwikitext": "Поправи викитекст",
 	"label-pretendwiki": "Претварај се да је из:",
@@ -61,7 +61,7 @@
 	"option-noremovetag-description": "Ако је изабрано, ознаке о мртвим везама ће се сачувати чак и када нема неочекивано прескочених референци током процеса.",
 	"option-nowatch": "Не надгледај страницу када се користи вики као извор",
 	"option-nowatch-description": "Ако је изабрано, поље за потврду „Надгледај ову страницу” на интерфејсу за уређивање на викију ће бити подразумевано отчекирано.",
-	"option-addblankmetadata": "Додавање празних поља метаподатака када информација није доступна",
+	"option-addblankmetadata": "Додај празна поља метаподатака када информација није доступна",
 	"option-noaccessdate": "Не додавај датуме приступа",
 	"option-noaccessdate-description": "Ако је изабрано, датуми приступа ће се изоставити у резултату.",
 	"option-usedomainaswork": "Користи име основног домена као дело када ове информације не могу да буду рашчлањене",
@@ -141,6 +141,6 @@
 	"taskinfo-state": "Стање",
 	"taskinfo-percentage": "Проценат",
 	"taskinfo-running": "Извршава се",
-	"taskinfo-submiturl": "Циљни URL",
+	"taskinfo-submiturl": "Циљна URL адреса",
 	"deletetask": "Избриши задатак из кеш-меморије сервера"
 }
