@@ -35,5 +35,15 @@
 	"loadingoptions": "Carecamènde de le opziune...",
 	"comingsoon": "Stonne arrivane",
 	"uhoh": "Uh-oh!",
-	"developedby": "da $1"
+	"developedby": "da $1",
+	"wmflabs-latestcommit": "Urteme commit: $1",
+	"wmflabs-poweredby": "Realizzate cu Uicchimedie Labs",
+	"fixwikipage-code": "Codece",
+	"fixwikipage-fam": "Famigghie",
+	"fixwikicode-submit": "Conferme",
+	"result": "Resultate",
+	"state-PENDING": "Appese",
+	"state-FAILURE": "Fallite",
+	"state-FAILURE-description": "Ave assute 'n'errore.",
+	"state-REVOKED": "Annullate"
 }
