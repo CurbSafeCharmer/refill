@@ -4,6 +4,8 @@
 			"Joetaras"
 		]
 	},
+	"tagline": "Spanne le refereminde 'anude' facile facile",
+	"heading-fetchfromwiki": "Recupere 'u condenute de 'nu uicchi",
 	"heading-rawwikitext": "Mitte 'nu marcatore uicchi",
 	"heading-options": "Opziune",
 	"heading-citegen": "Gener 'nu referimende",
@@ -17,6 +19,8 @@
 	"placeholder-url": "URL",
 	"label-fixpage": "Corregge 'a pàgene",
 	"label-fixwikitext": "Corregge 'u uicchiteste",
+	"label-pretendwiki": "Face finde ca avène da:",
+	"label-toggleadv": "Fà 'ndrucà/scunne condrolle avanzate",
 	"label-generate": "Genere",
 	"label-manual": "A màne",
 	"label-sourcecode": "Sorgende",

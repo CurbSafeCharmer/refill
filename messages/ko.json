@@ -4,7 +4,8 @@
 			"SeoJeongHo",
 			"Ykhwong",
 			"Jonghaya",
-			"In2acous"
+			"In2acous",
+			"Revi"
 		]
 	},
 	"heading-rawwikitext": "위키 마크업 입력",
@@ -22,6 +23,7 @@
 	"label-sourcecode": "출처",
 	"label-reportbugs": "버그 보고",
 	"label-switchlang": "언어들",
+	"label-save": "미리보기 / 위키에서 저장",
 	"label-saveandreturn": "저장하고 돌아가기",
 	"label-gadgetoptions": "(설정)",
 	"label-homepage": "도구 홈페이지",
