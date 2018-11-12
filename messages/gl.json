@@ -69,5 +69,7 @@
 	"fixwikipage-fam": "Familia",
 	"fixwikicode-submit": "Enviar",
 	"result": "Resultado",
-	"state-PENDING": "Pendentes"
+	"state-PENDING": "Pendentes",
+	"taskinfo-name": "Tarefa",
+	"taskinfo-percentage": "Porcentaxe"
 }
