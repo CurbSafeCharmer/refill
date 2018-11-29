@@ -9,6 +9,7 @@
 	"heading-error": "Virhe",
 	"heading-reportbugs": "Raportoi bugeista",
 	"placeholder-pagename": "Sivun nimi",
+	"placeholder-url": "URL-osoite",
 	"label-fixpage": "Korjaa sivu",
 	"label-fixwikitext": "Korjaa wikiteksti",
 	"label-sourcecode": "Lähde",
@@ -23,5 +24,9 @@
 	"loadingoptions": "Ladataan asetuksia...",
 	"comingsoon": "Tulossa pian",
 	"translatedby": "Tämän työkalun on kääntänyt:",
-	"wmflabs-latestcommit": "Viimeisin muutos: $1"
+	"wmflabs-latestcommit": "Viimeisin muutos: $1",
+	"wmflabs-poweredby": "Palvelun mahdollistaa Wikimedia Labs",
+	"fixwikipage-page": "Sivun nimi",
+	"fixwikipage-code": "Koodi",
+	"state-REVOKED": "Peruutettu"
 }
