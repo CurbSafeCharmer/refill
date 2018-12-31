@@ -3,7 +3,8 @@
 		"authors": [
 			"Sfic",
 			"Smtchahal",
-			"Jayprakash12345"
+			"Jayprakash12345",
+			"Gopalindians"
 		]
 	},
 	"appname": "रिफिल",
@@ -14,7 +15,7 @@
 	"heading-result": "परिणाम",
 	"heading-newwikitext": "नया विकि मार्कअप",
 	"heading-error": "त्रुटि",
-	"heading-manual": "मैन्युअल",
+	"heading-manual": "नियमावली",
 	"heading-acknowledgements": "आभार",
 	"heading-reportbugs": "त्रुटि बताओ",
 	"placeholder-pagename": "पृष्ठ नाम",
@@ -67,18 +68,18 @@
 	"fixwikicode-submit": "जमा करें",
 	"result": "परिणाम",
 	"state-PENDING": "अपूर्ण",
-	"state-PROGRESS": "प्रोसेस हो रहा हैं",
+	"state-PROGRESS": "काम किया जा रहा है",
 	"state-SUCCESS": "सफलता",
 	"state-SUCCESS-description": "कार्य सफल हुआ।",
 	"state-FAILURE": "विफल हुआ",
 	"state-FAILURE-description": "त्रुटि उत्पन्न हुई",
 	"state-BACKEND_ERROR-description": "एक अज्ञात त्रुटि हो गयी है।",
 	"taskinfo": "कार्य जानकारी",
-	"taskinfo-name": "टास्क",
+	"taskinfo-name": "कार्य",
 	"taskinfo-id": "कार्य पहचान",
 	"taskinfo-state": "स्थिति",
 	"taskinfo-percentage": "प्रतिशत",
 	"taskinfo-running": "जारी है",
 	"taskinfo-submiturl": "लक्षित यू॰आर॰एल॰",
-	"deletetask": "सर्वर कैश से टास्क डिलीट करें"
+	"deletetask": "सर्वर कैश से कार्य हटाएं"
 }
