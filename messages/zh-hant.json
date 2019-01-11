@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pak Long Wu",
+			"LNDDYL",
+			"Kly"
+		]
+	},
+	"appname": "reFill",
+	"tagline": "輕鬆補充裸露來源連結",
+	"chancetoreview": "你有機會在儲存之前覆查編輯。",
+	"summary": "已用 $3 補充了 $1 個裸露來源連結",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
+}

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby",
+			"Jon Harald Søby (WMNO)"
+		]
+	},
+	"tagline": "Utvid enkelt bare referanser",
+	"chancetoreview": "Du vil få en mulighet til å gå gjennom redigeringen før den lagres.",
+	"summary": "Fylte inn $1 bare referanser med $3",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
+}

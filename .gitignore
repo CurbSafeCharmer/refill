@@ -1,0 +1,9 @@
+__pycache__
+venv
+/backend/celeryconfig.py
+/backend/pywikibot.lwp
+/backend/apicache*
+/backend/throttle.ctrl
+/web/dist
+/web/config.js
+

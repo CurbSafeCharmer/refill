@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wasilis Mandratzis-Walz",
+			"Metalhead64",
+			"Purodha"
+		]
+	},
+	"appname": "reFill",
+	"tagline": "Erweitern nackte Referenzen mit Leichtigkeit",
+	"chancetoreview": "Sie haben die Möglichkeit, die Bearbeitung zu überprüfen, bevor sie gespeichert wird.",
+	"summary": "Ausgefüllt $1 bloßer Verweis(e) mit $3",
+	"toollink": "[[:w:User:Zhaofeng Li/reFill|reFill]]"
+}

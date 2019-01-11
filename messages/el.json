@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wasilis Mandratzis-Walz",
+			"Fitoschido"
+		]
+	},
+	"appname": "reFill",
+	"tagline": "Ανάπτυξη γυμνων αναφορων με ευκολία",
+	"chancetoreview": "Θα έχετε την ευκαιρία να αναθεωρήσετε την επεξεργασία προτού  σωθεί.",
+	"summary": "Συμπληρώνεται $1 γυμνή αναφορά(ες) με $3"
+}

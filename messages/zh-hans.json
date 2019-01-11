@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Zhaofeng Li",
+			"Pak Long Wu",
+			"Liuxinyu970226"
+		]
+	},
+	"appname": "reFill",
+	"tagline": "轻松填充裸露参考文献",
+	"chancetoreview": "您在保存前将有机会复核编辑。",
+	"summary": "通过$3填充了$1个裸露的参考文献",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
+}

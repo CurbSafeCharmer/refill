@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"appname": "reFill",
+	"tagline": "Лесно проширување на голи наводи",
+	"chancetoreview": "Ќе имате можност да го прегледате уредувањето пред да се зачува.",
+	"summary": "Пополнети $1 прост(и) навод(и) со $3",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Frank Geerlings",
+			"Siebrand",
+			"Jeleniccz"
+		]
+	},
+	"appname": "reFill",
+	"tagline": "Eenvoudig verwijzingen uitbreiden",
+	"chancetoreview": "U hebt de mogelijkheid uw wijzigingen te controleren voor ze worden opgeslagen.",
+	"summary": "$1 verwijzing(en) aangevuld met $3",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
+}

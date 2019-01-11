@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Oli Vier",
+			"Gomoko",
+			"Wladek92",
+			"Trial",
+			"Zetud"
+		]
+	},
+	"appname": "reFill",
+	"tagline": "Résoudre les références vides facilement",
+	"chancetoreview": "Vous pourrez relire la modification avant qu'elle ne soit enregistrée.",
+	"summary": "$1 lien(s) externe(s) mis en forme avec $3",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
+}

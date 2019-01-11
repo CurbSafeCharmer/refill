@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minh Nguyen"
+		]
+	},
+	"tagline": "Dễ dàng mở rộng các chú thích tham khảo",
+	"chancetoreview": "Bạn sẽ có cơ hội để xem lại sửa đổi trước khi lưu.",
+	"summary": "Đã điền vào $1 chú thích trần dùng $1",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
+}

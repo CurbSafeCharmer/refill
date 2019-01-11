@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Liuxinyu970226"
+		]
+	},
+	"appname": "{{Optional|Translate it only if you have a good name that is concise and gives a basic idea of what the tool does in your language.}}",
+	"tagline": "A brief explanation of the tool's purpose. This is displayed below its name on the main page of the tool. Please keep it concise.",
+	"summary": "The default edit summary. $1 will be replaced by the fixed count, $2 by the skipped count and $3 by a wikilink to the manual page",
+	"toollink": "A wikilink to the documentation page"
+}

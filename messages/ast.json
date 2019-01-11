@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu",
+			"Crucifunked",
+			"Fitoschido"
+		]
+	},
+	"tagline": "Espander fácilmente les referencies",
+	"chancetoreview": "Vas tener la oportunidá de revisar la edición antes de guardala.",
+	"summary": "Rellenaes $1 referencies pures con $3",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
+}
