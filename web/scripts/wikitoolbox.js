@@ -35,6 +35,7 @@
 function ReflinksGadget() {
 	this.server = typeof rlServer !== 'undefined' ? rlServer
 	            : "https://tools.wmflabs.org/refill";
+	this.server2 = "https://tools.wmflabs.org/refill/ng";
 	this.wiki = typeof rlWiki !== 'undefined' ? rlWiki
 	          : null;
 
@@ -66,9 +67,9 @@ function ReflinksGadget() {
 		}
 	}
 	
-	this.getSubmitUrl = function( defaults ) {
+	this.getSubmitUrl = function( defaults, server = this.server ) {
 		var pagename = mw.config.get( "wgPageName" );
-		var url = this.server + "/result.php?page=" + encodeURIComponent( pagename );
+		var url = server + "/result.php?page=" + encodeURIComponent( pagename );
 		if ( defaults ) {
 			url += "&defaults=y";
 		}
@@ -168,9 +169,15 @@ function ReflinksGadget() {
 	
 	this.init = function() {
 		this.loadMessages( false );
+		if ( this.wiki === "en" ) {
+			var r2portlet = mw.util.addPortletLink( "p-tb", this.getSubmitUrl( true, this.server2 ), "reFill 2", "t-refill2" );
+			$( r2portlet ).append( ' ', $( "<sup>" ).html( "New!" ) );
+			console.log('Promoting reFill 2');
+		}
 		this.portletLink = mw.util.addPortletLink( "p-tb", this.getSubmitUrl( true ), this.msg( "appname" ), "t-reflinks" );
 		var obj = this;
-		this.optionsLink = $( "<a>" ).attr( "href", "#" ).text( this.msg( "label-gadgetoptions" ) ).click( function() {
+		var optionsText = this.wiki === 'en' ? '(o)' : this.msg( "label-gadgetoptions" );
+		this.optionsLink = $( "<a>" ).attr( "href", "#" ).text( optionsText ).click( function() {
 			obj.setUpForm();
 			obj.loadRemoteOptions();
 			obj.loadMessages( true );
