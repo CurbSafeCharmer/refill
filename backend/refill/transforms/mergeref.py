@@ -20,14 +20,14 @@ class MergeRef(Transform):
 
         self._ctx.reportProgress('MERGING', 0, {})
         uniqueNames = set([e[0] for e in collection if e[0]])
-        uniqueContents = set([e[1] for e in collection])
+        uniqueContents = set([e[1] for e in collection if e[1]])
         allNames = uniqueNames.copy()
 
         for name in uniqueNames:
             # Maybe some distinct references are sharing the same name
             # Let's pick a Rightful Owner (tm) for the name
-            chosenContents = next(iter([e[1] for e in sorted(collection, key=lambda e: len(e[1])) if e[0] == name]))
-            otherTags = [e[2] for e in collection if e[1] != chosenContents and e[0] == name]
+            chosenContents = next(iter([e[1] for e in sorted(collection, key=lambda e: len(e[1])) if e[0] == name and e[1]]))
+            otherTags = [e[2] for e in collection if e[1] != chosenContents and e[0] == name and e[1]]
             for tag in otherTags:
                 self._removeName(tag)
 
