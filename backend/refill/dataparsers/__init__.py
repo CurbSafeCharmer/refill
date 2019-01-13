@@ -7,6 +7,7 @@ from .archiveis import ArchiveIs
 from .citoid import Citoid
 
 from .badauthors import BadAuthors
+from .parsespecial import ParseSpecial
 
 from .doi import DOI
 from .ncbi import NCBI
@@ -30,6 +31,7 @@ DefaultChain = [
 
     # Data cleaning
     BadAuthors(),
+    ParseSpecial(),
 
     # RIS providers
     DOI(),
