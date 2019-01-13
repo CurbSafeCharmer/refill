@@ -111,7 +111,13 @@ class FillRef(Transform):
         endtime = time.time()
         print('took {}'.format(endtime-starttime))
 
-        if 'url' in citation and 'title' in citation:
+        if err:
+            return {
+                "successful": False,
+                "tag": tag,
+                "error": err,
+            }
+        elif 'url' in citation and 'title' in citation:
             old = tag.contents
             new = self.formatter.format(citation)
             tag.contents = new
@@ -126,12 +132,6 @@ class FillRef(Transform):
                 "successful": True,
                 "tag": tag,
                 "change": change,
-            }
-        elif err:
-            return {
-                "successful": False,
-                "tag": tag,
-                "error": err,
             }
         else:
             return {
