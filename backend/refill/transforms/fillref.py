@@ -35,7 +35,7 @@ class FillRef(Transform):
                 continue
 
             citation = Parser.parse(tag.contents)
-            if not citation or 'title' in citation:
+            if not citation:
                 continue
 
             refCount += 1
