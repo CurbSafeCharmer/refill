@@ -39,8 +39,9 @@ class Parser:
                         citation.type = Parser.TEMPLATE_TYPE_MAPPING[tname]
 
                     for param in node.params:
-                        if param in Parser.TEMPLATE_FIELD_MAPPING:
-                            citation[Parser.TEMPLATE_FIELD_MAPPING[param]] = str(node.get(param).value)
+                        pname = str(param.name)
+                        if pname in Parser.TEMPLATE_FIELD_MAPPING:
+                            citation[Parser.TEMPLATE_FIELD_MAPPING[pname]] = str(node.get(pname).value)
                         else:
                             # Do not touch citations with unparsable data
                             return False
