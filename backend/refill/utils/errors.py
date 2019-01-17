@@ -18,6 +18,12 @@ class HomepageRedirectError(Exception):
         super().__init__(url)
         self.type = 'homepageredir'
 
+class FetchError(Exception):
+    def __init__(self, url, info={}):
+        super().__init__(url)
+        self.type = 'fetcherror'
+        self.info = info
+
 class UnknownError(Exception):
     def __init__(self, url):
         super().__init__(url)

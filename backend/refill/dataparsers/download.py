@@ -1,5 +1,7 @@
 from ..models import Citation
 from ..utils import session
+from ..utils.errors import FetchError
+from requests.exceptions import SSLError
 from bs4 import BeautifulSoup
 
 class Download:
@@ -15,7 +17,13 @@ class Download:
         if 'url' not in citation:
             return citation
 
-        response = session.get(citation.url)
+        try:
+            response = session.get(citation.url)
+        except SSLError:
+            raise FetchError(citation.url, {
+                'type': 'SSLError',
+            })
+
         if response.status_code != 200:
             return citation
 
