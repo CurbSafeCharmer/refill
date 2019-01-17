@@ -59,7 +59,10 @@ class Citoid:
 
         for cfield, value in data.items():
             if cfield in mapping:
-                if '\ufffd' in value:
+                def flatten(v):
+                    return ''.join([flatten(e) for e in v]) if isinstance(v, (list,)) else v
+
+                if '\ufffd' in flatten(value):
                     # UTF-8 replacement character - Citoid's codec has removed some information
                     continue
 
