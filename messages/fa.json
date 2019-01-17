@@ -1,7 +1,44 @@
 {
 	"@metadata": {
 		"authors": [
-			"AzorAhai"
+			"AzorAhai",
+			"Dejavu",
+			"Huji"
 		]
-	}
+	},
+	"tagline": "گسترش منابع ناقص به سادگی",
+	"fixwikipage": "درست کردن یک صفحه",
+	"fixwikipage-page": "نام صفحه",
+	"fixwikipage-code": "کد",
+	"fixwikipage-fam": "خانواده",
+	"fixwikicode": "درست کردن ویکی‌کد ارائه شده",
+	"fixwikicode-wikicode": "ویکی‌کد خام",
+	"fixwikicode-submit": "ثبت",
+	"apiendpoint": "پایانه رابط برنامه‌نویسی کاربردی",
+	"result": "نتیجه",
+	"state-PENDING": "در انتظار",
+	"state-PENDING-description": "در انتظار یک کارگر آزاد...",
+	"state-STARTED": "آغاز شد",
+	"state-STARTED-description": "وظیفهٔ شما بر عهده گرفته شد.",
+	"state-PROGRESS": "در حال پردازش",
+	"state-PROGRESS-description": "وظیفهٔ شما پردازش شد.",
+	"state-SUCCESS": "موفق",
+	"state-SUCCESS-description": "وظیفهٔ شما موفق بود.",
+	"state-FAILURE": "ناموفق بود",
+	"state-FAILURE-description": "یک خطا رخ داده‌است.",
+	"state-REVOKED": "لغو شد.",
+	"state-REVOKED-description": "وظیفهٔ شما لغو شد.",
+	"state-BACKEND_ERROR": "خطای پشت صحنه",
+	"state-BACKEND_ERROR-description": "خطایی ناشناخته رخ داد.",
+	"taskinfo": "اطلاعات وظیفه",
+	"taskinfo-name": "وظیفه",
+	"taskinfo-id": "شمارهٔ وظیفه",
+	"taskinfo-state": "وضعیت",
+	"taskinfo-percentage": "درصد",
+	"taskinfo-running": "در حال اجرا",
+	"taskinfo-submiturl": "نشانی اینترنتی هدف",
+	"deletetask": "حذف وظیفه از میانگیر سرور",
+	"chancetoreview": "شما می‌توانید قبل از ذخیره کردن ویرایش‌تان آن را بازبینی کنید.",
+	"summary": "$1 منبع ناقص را توسط $3 کامل کرد",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
 }

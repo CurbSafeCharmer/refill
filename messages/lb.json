@@ -4,5 +4,28 @@
 			"Robby"
 		]
 	},
+	"fixwikipage": "Eng Säit flécken",
+	"fixwikipage-page": "Numm vun der Säit",
+	"fixwikipage-code": "Code",
+	"fixwikipage-fam": "Famill",
+	"fixwikicode-submit": "Schécken",
+	"result": "Resultat",
+	"state-PENDING": "Am Suspens",
+	"state-STARTED": "Ugefaangen",
+	"state-PROGRESS": "Verschaffen",
+	"state-PROGRESS-description": "D'Aufgab gëtt verschafft.",
+	"state-SUCCESS": "Succès",
+	"state-SUCCESS-description": "D'Aufgab gouf mat Succès ofgeschloss.",
+	"state-FAILURE": "Huet net funktionéiert",
+	"state-FAILURE-description": "Et ass e Feeler geschitt.",
+	"state-REVOKED": "Ofgebrach",
+	"state-REVOKED-description": "D'Aufgab gouf ofgebrach.",
+	"state-BACKEND_ERROR-description": "En onbekannte Feeler ass geschitt.",
+	"taskinfo": "Informatiounen iwwer d'Aufgab",
+	"taskinfo-name": "Aufgab",
+	"taskinfo-state": "Status",
+	"taskinfo-percentage": "Prozentsaz",
+	"taskinfo-running": "Leeft",
+	"taskinfo-submiturl": "Zil-URL",
 	"chancetoreview": "Dir kritt d'Méiglechkeet fir d'Ännerung nozekucken ier se gespäichert gëtt."
 }

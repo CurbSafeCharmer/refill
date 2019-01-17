@@ -2,10 +2,41 @@
 	"@metadata": {
 		"authors": [
 			"Muhammad Shuaib",
-			"Obaid Raza"
+			"Obaid Raza",
+			"Abdulq",
+			"BukhariSaeed"
 		]
 	},
-	"tagline": "سادہ حوالہ جات کو بآسانی وسیع کریں",
+	"tagline": "ناقص حوالوں کو بآسانی مکمل کریں",
+	"fixwikipage": "صفحہ درست کریں",
+	"fixwikipage-page": "صفحہ کا نام",
+	"fixwikipage-code": "کوڈ",
+	"fixwikipage-fam": "خاندان",
+	"fixwikicode": "فراہم کردہ ویکی کوڈ کو درست کریں",
+	"fixwikicode-wikicode": "خام ویکی کوڈ",
+	"fixwikicode-submit": "جمع کرائیں",
+	"apiendpoint": "API کا نقطہ اختتام",
+	"result": "نتیجہ",
+	"state-PENDING": "بقید انتظار",
+	"state-STARTED": "شروع ہوگیا",
+	"state-PROGRESS": "زیر تکمیل",
+	"state-PROGRESS-description": "ٹاسک پر عمل درآمد کیا جا رہا ہے۔",
+	"state-SUCCESS": "کامیاب",
+	"state-SUCCESS-description": "ٹاسک کامیاب ہوگیا ہے۔",
+	"state-FAILURE": "ناکام",
+	"state-FAILURE-description": "ایک خرابی آگئی ہے۔",
+	"state-REVOKED": "منسوخ",
+	"state-REVOKED-description": "ٹاسک منسوخ کر دیا گیا ہے۔",
+	"state-BACKEND_ERROR-description": "کوئی نامعلوم نقص واقع ہوا۔",
+	"taskinfo": "ٹاسک کی معلومات",
+	"taskinfo-name": "ٹاسک",
+	"taskinfo-id": "ٹاسک آئی ڈی",
+	"taskinfo-state": "صورت حال",
+	"taskinfo-percentage": "فیصد",
+	"taskinfo-running": "جاری ہے",
+	"taskinfo-submiturl": "مقصود یو آر ایل",
+	"deletetask": "سرور کیش (cache) سے ٹاسک حذف کریں",
 	"chancetoreview": "محفوظ ہونے سے قبل آپ کو اپنی ترمیم پر نظرثانی کا موقع ملے گا۔",
+	"summary": "$3 کی مدد سے $1 ناقص حوالہ(جات) کی تکمیل",
 	"toollink": "[[:en:WP:REFILL|ری فل]]"
 }

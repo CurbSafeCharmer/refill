@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Janezdrilc"
+		]
+	},
+	"fixwikipage-page": "Ime strani",
+	"fixwikipage-code": "Koda",
+	"fixwikipage-fam": "Družina",
+	"fixwikicode-submit": "Pošlji",
+	"result": "Rezultat",
+	"state-PENDING": "V delu",
+	"state-PROGRESS": "Obdelujem",
+	"state-PROGRESS-description": "Opravilo je v teku.",
+	"state-SUCCESS": "Uspešno",
+	"state-SUCCESS-description": "Opravilo je bilo uspešno zaključeno.",
+	"state-FAILURE": "Spodletelo",
+	"state-FAILURE-description": "Zgodila se je napaka.",
+	"state-REVOKED": "Preklicano",
+	"state-REVOKED-description": "Opravilo je bilo preklicano.",
+	"state-BACKEND_ERROR-description": "Prišlo je do neznane napake.",
+	"taskinfo": "Informacije o opravilu",
+	"taskinfo-name": "Opravilo",
+	"taskinfo-id": "ID opravila",
+	"taskinfo-state": "Stanje",
+	"taskinfo-percentage": "Odstotek",
+	"taskinfo-running": "V teku",
+	"taskinfo-submiturl": "Ciljni URL"
+}

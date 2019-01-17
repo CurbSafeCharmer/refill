@@ -3,11 +3,31 @@
 		"authors": [
 			"Frank Geerlings",
 			"Siebrand",
-			"Jeleniccz"
+			"Jeleniccz",
+			"Marcelhospers"
 		]
 	},
 	"appname": "reFill",
 	"tagline": "Eenvoudig verwijzingen uitbreiden",
+	"fixwikipage": "Pagina verbeteren",
+	"fixwikipage-page": "Paginanaam",
+	"fixwikipage-code": "Code",
+	"fixwikipage-fam": "Familie",
+	"fixwikicode-submit": "Opslaan",
+	"result": "Resultaat",
+	"state-PENDING": "In behandeling",
+	"state-STARTED": "Gestart",
+	"state-PROGRESS": "Bezig met verwerken",
+	"state-SUCCESS": "Afgerond",
+	"state-FAILURE": "Mislukt",
+	"state-FAILURE-description": "Er is een fout opgetreden.",
+	"state-REVOKED": "Geannuleerd.",
+	"state-BACKEND_ERROR-description": "Er is een onbekende fout opgetreden.",
+	"taskinfo": "Taak Informatie",
+	"taskinfo-name": "Taak",
+	"taskinfo-state": "Status",
+	"taskinfo-percentage": "Percentage",
+	"taskinfo-submiturl": "Doel-URI",
 	"chancetoreview": "U hebt de mogelijkheid uw wijzigingen te controleren voor ze worden opgeslagen.",
 	"summary": "$1 verwijzing(en) aangevuld met $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]"

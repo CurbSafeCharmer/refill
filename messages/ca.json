@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"fixwikipage-page": "Nom de la pàgina",
+	"fixwikipage-code": "Codi",
+	"fixwikipage-fam": "Família",
+	"fixwikicode-submit": "Envia",
+	"result": "Resultat",
+	"state-PENDING": "Pendent",
+	"state-STARTED": "Iniciada",
+	"state-PROGRESS": "S’està processant",
+	"state-PROGRESS-description": "S’està processant la tasca.",
+	"state-SUCCESS": "Èxit",
+	"state-SUCCESS-description": "La tasca ha estat exitosa.",
+	"state-FAILURE": "Fallida",
+	"state-FAILURE-description": "S’ha produït un error.",
+	"state-REVOKED": "Cancel·lada",
+	"state-REVOKED-description": "S’ha cancel·lat la tasca.",
+	"state-BACKEND_ERROR-description": "S’ha produït un error desconegut.",
+	"taskinfo": "Informació de la pàgina",
+	"taskinfo-name": "Tasca",
+	"taskinfo-id": "Id. de tasca",
+	"taskinfo-state": "Estat",
+	"taskinfo-percentage": "Percentatge",
+	"taskinfo-running": "En execució",
+	"taskinfo-submiturl": "URL de destinació",
+	"deletetask": "Suprimeix la tasca de la memòria cau del servidor"
+}

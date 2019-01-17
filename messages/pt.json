@@ -1,10 +1,43 @@
 {
 	"@metadata": {
 		"authors": [
-			"Victor Lopes"
+			"Victor Lopes",
+			"Athena in Wonderland"
 		]
 	},
 	"tagline": "Formate referências com facilidade",
+	"fixwikipage": "Corrigir página",
+	"fixwikipage-page": "Nome da página",
+	"fixwikipage-code": "Código",
+	"fixwikipage-fam": "Família",
+	"fixwikicode": "Corrigir a notação wiki fornecida",
+	"fixwikicode-wikicode": "Notação wiki em bruto",
+	"fixwikicode-submit": "Enviar",
+	"apiendpoint": "Parâmetro API",
+	"result": "Resultado",
+	"state-PENDING": "Pendente",
+	"state-PENDING-description": "A aguardar um trabalhador disponível.",
+	"state-STARTED": "Iniciado",
+	"state-STARTED-description": "A tarefa foi escolhida.",
+	"state-PROGRESS": "A processar",
+	"state-PROGRESS-description": "A tarefa está a ser processada.",
+	"state-SUCCESS": "Sucesso",
+	"state-SUCCESS-description": "A tarefa foi bem-sucedida.",
+	"state-FAILURE": "Falhou",
+	"state-FAILURE-description": "Ocorreu um erro.",
+	"state-REVOKED": "Cancelado",
+	"state-REVOKED-description": "A tarefa foi cancelada.",
+	"state-BACKEND_ERROR": "Erro do servidor",
+	"state-BACKEND_ERROR-description": "Ocorreu um erro desconhecido.",
+	"taskinfo": "Informação da tarefa",
+	"taskinfo-name": "Tarefa",
+	"taskinfo-id": "Identificador da tarefa",
+	"taskinfo-state": "Estado",
+	"taskinfo-percentage": "Percentagem",
+	"taskinfo-running": "A executar",
+	"taskinfo-submiturl": "URL de destino",
+	"deletetask": "Eliminar tarefa da cache do servidor",
 	"chancetoreview": "Você poderá revisar a edição antes de salvá-la.",
-	"summary": "Formatando $1 referência(s) com $3"
+	"summary": "Formatando $1 referência(s) com $3",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
 }

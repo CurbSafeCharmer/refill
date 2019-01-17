@@ -1,8 +1,40 @@
 {
 	"@metadata": {
 		"authors": [
-			"Martin Urbanec"
+			"Martin Urbanec",
+			"Ilimanaq29"
 		]
 	},
-	"tagline": "Jednoduše rozšiřte holé reference"
+	"tagline": "Jednoduše rozšiřte holé reference",
+	"fixwikipage": "Opravit stránku",
+	"fixwikipage-page": "Název stránky",
+	"fixwikipage-code": "Kód",
+	"fixwikipage-fam": "Rodina",
+	"fixwikicode": "Opravit dodaný wikitext",
+	"fixwikicode-wikicode": "Syrový wikikód",
+	"fixwikicode-submit": "Uložit",
+	"apiendpoint": "Konečný bod API",
+	"result": "Výsledek",
+	"state-PENDING": "Čekání",
+	"state-PENDING-description": "Čekání na dostupného pracovníka.",
+	"state-STARTED": "Zahájeno",
+	"state-STARTED-description": "Váš požadavek byl přijat.",
+	"state-PROGRESS": "Zpracovává se",
+	"state-PROGRESS-description": "Váš požadavek se zpracovává.",
+	"state-SUCCESS": "Štěstí",
+	"state-SUCCESS-description": "Provedení požadavku bylo úspěšné.",
+	"state-FAILURE": "Selhalo",
+	"state-FAILURE-description": "Nastala chyba.",
+	"state-REVOKED": "Zrušeno",
+	"state-REVOKED-description": "Váš požadavek byl zrušen.",
+	"state-BACKEND_ERROR": "Chyba při dokončování",
+	"state-BACKEND_ERROR-description": "Došlo k neznámé chybě.",
+	"taskinfo": "Informace o požadavku",
+	"taskinfo-name": "Požadavek",
+	"taskinfo-id": "Požadavek ID",
+	"taskinfo-state": "Stát",
+	"taskinfo-percentage": "Procento",
+	"taskinfo-running": "Běh",
+	"taskinfo-submiturl": "Cílové URL",
+	"deletetask": "Odstranit požadavek z cache serveru"
 }

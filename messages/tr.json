@@ -2,7 +2,42 @@
 	"@metadata": {
 		"authors": [
 			"Alpkant",
-			"Kumkumuk"
+			"Kumkumuk",
+			"Hedda"
 		]
-	}
+	},
+	"tagline": "Kolaylıkla sade referansları genişletin",
+	"fixwikipage": "Bir sayfayı düzelt",
+	"fixwikipage-page": "Sayfa adı",
+	"fixwikipage-code": "Kod",
+	"fixwikipage-fam": "Aile",
+	"fixwikicode": "Verilen viki kodu düzeltin",
+	"fixwikicode-wikicode": "Ham viki kodu",
+	"fixwikicode-submit": "Gönder",
+	"apiendpoint": "API son noktası",
+	"result": "Sonuç",
+	"state-PENDING": "Beklemede",
+	"state-PENDING-description": "Mevcut bir işçi bekleniyor.",
+	"state-STARTED": "Başlatıldı",
+	"state-STARTED-description": "Görev alındı.",
+	"state-PROGRESS": "İşleniyor...",
+	"state-PROGRESS-description": "Görev işleniyor.",
+	"state-SUCCESS": "Başarılı",
+	"state-SUCCESS-description": "Görev başarılı oldu.",
+	"state-FAILURE": "Başarısız",
+	"state-FAILURE-description": "Bir hata oluştu",
+	"state-REVOKED": "İptal edildi.",
+	"state-REVOKED-description": "Görev iptal edildi.",
+	"state-BACKEND_ERROR": "Arka uç hatası",
+	"state-BACKEND_ERROR-description": "Bilinmeyen bir hata oluştu.",
+	"taskinfo": "Görev bilgisi",
+	"taskinfo-name": "Görev",
+	"taskinfo-id": "Görev kimliği",
+	"taskinfo-state": "Durum",
+	"taskinfo-percentage": "Yüzde",
+	"taskinfo-running": "Çalışıyor",
+	"taskinfo-submiturl": "Hedef URL",
+	"deletetask": "Sunucu önbelleğinden görev sil",
+	"chancetoreview": "Düzenlemeyi kaydetmeden önce gözden geçirme şansınız olacak.",
+	"toollink": "[[:en:WP:REFILL|reFill]]"
 }

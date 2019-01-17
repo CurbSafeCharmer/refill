@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"tagline": "Spanne le refereminde 'anude' facile facile",
+	"fixwikipage": "Corregge 'na pàgene",
+	"fixwikipage-page": "Nome d'a pàgene",
+	"fixwikipage-code": "Codece",
+	"fixwikipage-fam": "Famigghie",
+	"fixwikicode": "Corregge 'u codece uicchi date",
+	"fixwikicode-wikicode": "Uicchicodece grezze",
+	"fixwikicode-submit": "Conferme",
+	"apiendpoint": "Endpoint API",
+	"result": "Resultate",
+	"state-PENDING": "Appese",
+	"state-STARTED": "Accumenzate",
+	"state-PROGRESS": "Stoche a processe",
+	"state-SUCCESS": "Tutte apposte",
+	"state-FAILURE": "Fallite",
+	"state-FAILURE-description": "Ave assute 'n'errore.",
+	"state-REVOKED": "Annullate",
+	"previewandsave": "Andeprime / Reggìstre",
+	"taskinfo": "'Mbormazione de l'attività",
+	"taskinfo-name": "Attività",
+	"taskinfo-id": "ID attività",
+	"taskinfo-state": "State",
+	"taskinfo-percentage": "Percenduale",
+	"taskinfo-running": "In esecuzione",
+	"taskinfo-submiturl": "URL de destinazione",
+	"error-details": "Dettagli de l'errore",
+	"error-type-NoTitleError": "Nisciune titole acchiate",
+	"report-manual-template-taskid": "ID attività",
+	"report-manual-template-old": "Teste vecchie",
+	"deletetask": "Scangìlle l'attività da 'a cache d'u server",
+	"summary": "Anghiute $1 refereminde 'anude' cu $3",
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"yes": "Sìne"
+}
