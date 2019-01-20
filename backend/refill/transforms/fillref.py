@@ -14,7 +14,7 @@ import time
 class FillRef(Transform):
     def __init__(self, ctx=None):
         super().__init__(ctx)
-        self.formatter = CiteTemplate()
+        self.formatter = CiteTemplate(ctx=ctx)
 
     def apply(self, wikicode):
         tags = wikicode.filter_tags()
