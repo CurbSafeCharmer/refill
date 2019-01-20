@@ -1,5 +1,4 @@
 from mwparserfromhell.nodes.template import Template
-from babel.dates import format_date
 from .formatter import Formatter
 from ..models import Context, Citation
 
@@ -65,10 +64,13 @@ class CiteTemplate(Formatter):
         return str(template)
 
     def _fragment_date(self, template, citation, field='date'):
+        fmt = self._ctx.getDateFormat()
         if field in citation:
             page = self._ctx.getPage()
-            locale = 'en' if not page else page.site.lang
-            template.add(field, format_date(citation[field], locale=locale))
+            lang = 'en' if not page else page.site.lang
+            template.add(field, Utils.formatDate(
+                citation[field], lang, fmt
+            ))
 
     def _fragment_archivedate(self, template, citation):
         self._fragment_date(template, citation, field='archivedate')

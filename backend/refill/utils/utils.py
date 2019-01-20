@@ -1,4 +1,6 @@
 from mwparserfromhell.wikicode import Wikicode
+from babel.dates import format_date
+from datetime import date
 import re
 
 class Utils:
@@ -33,3 +35,30 @@ class Utils:
         This method removes markers from supplied wikicode.
         """
         return re.sub(r'RFL(\w\d+)LFR', '', str(wikicode))
+
+    @staticmethod
+    def formatDate(date: date, lang: str, format: str = '') -> str:
+        """Format date
+        This method generates a human-readable representation
+        of a date object. 
+        """
+
+        # reFill provides a platform-independent implementation of a
+        # non-zero-padded day of the month directive, %=d
+        SPECIAL_FORMAT = {
+            'en': {
+                'mdy': '%B %=d, %Y',
+                'dmy': '%=d %B %Y',
+                'numeric': '%Y-%m-%d',
+            },
+        }
+
+        if lang in SPECIAL_FORMAT and format in SPECIAL_FORMAT[lang]:
+            f = SPECIAL_FORMAT[lang][format]
+
+            if callable(f):
+                return f(date)
+            else:
+                return date.strftime(f).replace('%=d', str(date.day))
+        else:
+            return format_date(date, locale=lang)

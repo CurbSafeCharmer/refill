@@ -5,6 +5,7 @@ from uuid import uuid1
 import mwparserfromhell
 import celery.utils.log
 import logging
+import re
 
 
 class Context:
@@ -67,6 +68,23 @@ class Context:
         if self._page:
             return self._page
         return False
+
+    def getDateFormat(self):
+        """Get the preferred date format of the page
+        """
+        page = self.getPage()
+        if not page or page.site.lang != 'en' or not self.wikicode:
+            return False
+
+        try:
+            hint = next(self.wikicode.ifilter_templates(
+                recursive=False,
+                matches=lambda e: re.match(r'^(U|u)se (mdy|dmy) dates$', str(e.name)),
+            ))
+        except StopIteration:
+            return False
+
+        return 'mdy' if 'mdy' in str(hint.name) else 'dmy'
 
     def reportProgress(self, state: str, percentage: float, metadata: dict):
         """Report progress of the current transform
