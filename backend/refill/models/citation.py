@@ -162,6 +162,8 @@ class Citation:
             if not value.isdigit():
                 raise ValueError('Invalid str of int {}'.format(value))
             return int(value)
+        elif type(ftype) is list and value not in ftype:
+            raise ValueError('Invalid value {} - Valid values are {}'.format(value, ftype))
         elif not type(value) is ftype:
             raise ValueError('Invalid value {} for field {}'.format(value, field))
 
