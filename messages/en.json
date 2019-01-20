@@ -9,6 +9,7 @@
 	"fixwikicode": "Fix supplied wikicode",
 	"fixwikicode-wikicode": "Raw wikicode",
 	"fixwikicode-submit": "Submit",
+	"wikicode-toggle": "Use custom wikicode",
 	"apiendpoint": "API endpoint",
 	"result": "Result",
 	"state-PENDING": "Pending",

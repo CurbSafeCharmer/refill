@@ -47,7 +47,7 @@
           </v-card>
           <v-btn flat @click="useCustomWikicode = !useCustomWikicode">
             <v-icon>{{ useCustomWikicode ? 'remove' : 'add' }}</v-icon>
-            Use custom wikicode
+            {{ msg('wikicode-toggle') }}
           </v-btn>
         </v-flex>
       </v-layout>
