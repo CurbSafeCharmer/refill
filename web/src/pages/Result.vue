@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-flex md8 offset-md2 lg6 offset-lg3 align-self-start>
     <h1>{{ msg('result') }}</h1>
 
     <v-card class="progress-card">
@@ -77,7 +77,7 @@
       <input type="hidden" name="wpUltimateParam" value="1">
     </form>
     </div>
-  </div>
+  </v-flex>
 </template>
 <script>
 import oboe from 'oboe';

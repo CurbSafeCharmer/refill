@@ -1,9 +1,11 @@
 <template>
-  <v-card>
-    <v-card-text>
-      {{ msg('legacybridge-submitting') }} {{ error }}
-    </v-card-text>
-  </v-card>
+  <v-flex md8 offset-md2 lg6 offset-lg3 align-self-start>
+    <v-card>
+      <v-card-text>
+        {{ msg('legacybridge-submitting') }} {{ error }}
+      </v-card-text>
+    </v-card>
+  </v-flex>
 </template>
 <script>
 import Utils from '../Utils';

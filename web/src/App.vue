@@ -18,12 +18,10 @@
         </v-toolbar-items>
       </v-toolbar>
 
-      <v-container fluid>
-        <v-flex md8 offset-md2 lg6 offset-lg3>
-          <transition name="slide">
-            <router-view></router-view>
-          </transition>
-        </v-flex>
+      <v-container fluid fill-height>
+        <transition name="slide">
+          <router-view></router-view>
+        </transition>
       </v-container>
     </v-app>
   </div>

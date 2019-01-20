@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-container fluid grid-list-lg>
+  <v-flex md8 offset-md2 lg6 offset-lg3>
+    <v-container fluid grid-list-lg class="mcontainer">
       <v-layout row wrap>
         <v-flex xs12>
           <h1>{{ msg('appname') }}<sup class="ng">&alpha;</sup></h1>
@@ -11,9 +11,6 @@
       <v-layout row wrap>
         <v-flex xs12>
           <v-card>
-            <v-card-title primary-title>
-              <div class="headline">{{ msg('fixwikipage') }}</div>
-            </v-card-title>
             <v-card-text>
               <div class="wikipage-form">
                 <v-text-field
@@ -34,33 +31,24 @@
                   :label="msg('fixwikipage-fam')"
                 ></v-text-field>
 
-                <v-btn fab @click="fixWikipage">
+                <v-btn large flat outline color="primary" icon @click="fixWikipage">
                   <v-icon>arrow_forward</v-icon>
                 </v-btn>
               </div>
+              <v-slide-y-transition>
+                <div v-show="useCustomWikicode">
+                  <v-textarea
+                    v-model="wikicode"
+                    :label="msg('fixwikicode-wikicode')"
+                  ></v-textarea>
+                </div>
+              </v-slide-y-transition>
             </v-card-text>
           </v-card>
-        </v-flex>
-      </v-layout>
-
-      <v-layout>
-        <v-flex xs12>
-          <v-card>
-            <v-card-title>
-              <div class="headline">{{ msg('fixwikicode') }}</div>
-            </v-card-title>
-            <v-card-text>
-              <v-textarea
-                v-model="wikicode"
-                :label="msg('fixwikicode-wikicode')"
-              ></v-textarea>
-            </v-card-text>
-            <v-card-actions>
-              <v-btn flat @click="fixWikicode">
-                {{ msg('fixwikicode-submit') }}
-              </v-btn>
-            </v-card-actions>
-          </v-card>
+          <v-btn flat @click="useCustomWikicode = !useCustomWikicode">
+            <v-icon>{{ useCustomWikicode ? 'remove' : 'add' }}</v-icon>
+            Use custom wikicode
+          </v-btn>
         </v-flex>
       </v-layout>
     </v-container>
@@ -71,7 +59,7 @@
     >
       <span>{{ error }}</span>
     </v-snackbar>
-  </div>
+  </v-flex>
 </template>
 <script>
 import Utils from '../Utils';
@@ -82,6 +70,7 @@ export default {
       fam: 'wikipedia',
       code: 'en',
       page: '',
+      useCustomWikicode: false,
       wikicode: '<ref>http://example.com</ref>',
       error: '',
       showError: false,
@@ -93,14 +82,10 @@ export default {
   methods: {
     fixWikipage() {
       this.submitTask('fixWikipage', {
-        'page': this.page,
-        'fam': this.fam,
-        'code': this.code
-      });
-    },
-    fixWikicode() {
-      this.submitTask('fixWikicode', {
-        'wikicode': this.wikicode
+        page: this.page,
+        fam: this.fam,
+        code: this.code,
+        wikicode: this.useCustomWikicode ? this.wikicode : false,
       });
     },
     async submitTask(action, payload) {
@@ -116,6 +101,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.mcontainer {
+  margin-top: -20%;
+}
 .tagline {
   font-weight: normal;
 }
