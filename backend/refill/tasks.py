@@ -18,22 +18,13 @@ app.config_from_envvar('CELERY_CONFIG_MODULE')
 
 
 @app.task(bind=True)
-def fixWikicode(self, wikicode: str):
-    ctx = Context()
-    ctx.attachTask(self)
-    ctx.transforms = [MergeRef(ctx), FillRef(ctx), FillExternal(ctx)]
-    ctx.applyTransforms(wikicode)
-
-    return ctx.getResult()
-
-
-@app.task(bind=True)
-def fixWikipage(self, page: str, fam='wikipedia', code='en'):
+def fixWikipage(self, page: str, fam: str='wikipedia', code: str='en', wikicode: str=False):
     site = pywikibot.Site(fam=fam, code=code)
     page = pywikibot.Page(site, page)
 
     # Let the exceptions bubble up and cause the task to fail
-    wikicode = page.get()
+    if not wikicode:
+        wikicode = page.get()
 
     ctx = Context()
     ctx.attachTask(self)
@@ -57,7 +48,6 @@ def revoke(self):
 
 
 TASK_MAPPING = {
-    'fixWikicode': fixWikicode,
     'fixWikipage': fixWikipage,
     'fail': fail,
     'revoke': revoke

@@ -8,7 +8,7 @@ from flask_cors import CORS
 from flask_restplus import Resource, Api, fields
 from werkzeug.contrib.fixers import ProxyFix
 
-from refill.tasks import TASK_MAPPING, fixWikicode, fixWikipage
+from refill.tasks import TASK_MAPPING, fixWikipage
 
 
 app = Flask(__name__)
@@ -60,14 +60,6 @@ taskStateModel = api.model('taskState', OrderedDict([
     )),
 ]))
 
-fixWikicodeModel = api.model('fixWikicode', {
-    'wikicode': fields.String(
-        required=True,
-        description='The input wikicode',
-        example='<ref>http://example.org</ref>',
-    ),
-})
-
 fixWikipageModel = api.model('fixWikipage', {
     'page': fields.String(
         required=True,
@@ -84,32 +76,13 @@ fixWikipageModel = api.model('fixWikipage', {
         default='wikipedia',
         example='wikipedia',
     ),
+    'wikicode': fields.String(
+        description='The wikicode. If not specified, content will be fetched from the actual page.',
+        default='',
+        example='<ref>https://www.theverge.com/2013/10/17/4844472/device-6-iphone-ipad-report</ref>',
+    ),
 })
 
-
-@api.route('/fixWikicode', methods=['post'])
-class FixWikicode(Resource):
-    @api.expect(fixWikicodeModel)
-    @api.marshal_with(taskResponseModel, code=202)
-    def post(self, **kwargs):
-        """Fix raw wikicode
-
-        When called, this API fires off a task to fix the citations in the
-        supplied wikicode.
-        """
-        if 'wikicode' not in request.json:
-            abort(400)
-
-        wikicode = request.json['wikicode']
-        result = fixWikicode.delay(wikicode)
-        response = {
-            'taskName': 'fixWikicode',
-            'taskId': result.id,
-            'statusUrl': url_for('status', taskName='fixWikicode', taskId=result.id),
-            'statusStreamUrl': url_for('status_stream', taskName='fixWikicode', taskId=result.id),
-        }, 202, {'X-Accel-Buffering': 'no'}
-
-        return response
 
 
 @api.route('/fixWikipage', methods=['post'])
@@ -123,6 +96,10 @@ class FixWikipage(Resource):
         wiki page. In order to fetch the page, the `fam` and `code`
         parameters are sent to pywikibot to identify the wiki.
 
+        Optionally, `wikicode` may be specified to supply an alternative
+        version of the page for the tool to use. Contents will be fetched
+        from the wiki if this field is not specified.
+
         See https://phabricator.wikimedia.org/diffusion/PWBC/browse/master/pywikibot/families
         for a full list of supported wiki families and codes.
         """
@@ -132,8 +109,9 @@ class FixWikipage(Resource):
         page = api.payload['page']
         code = 'en' if 'code' not in api.payload else api.payload['code']
         fam = 'wikipedia' if 'fam' not in api.payload else api.payload['fam']
+        wikicode = False if 'wikicode' not in api.payload or not api.payload['wikicode'] else api.payload['wikicode']
 
-        result = fixWikipage.delay(page=page, fam=fam, code=code)
+        result = fixWikipage.delay(page=page, fam=fam, code=code, wikicode=wikicode)
         response = {
             'taskName': 'fixWikipage',
             'taskId': result.id,
