@@ -12,5 +12,5 @@ class BadAuthors:
     def _checkList(self, l):
         for name in l:
             if len([c for c in name if c in '|:' + string.digits]):
-                return False
-        return True
+                return True
+        return False
