@@ -46,11 +46,8 @@ class Citation:
     def __init__(self, **kwargs):
         self.__dict__['_data'] = {}
 
-        for field, ftype in Citation.FIELDS.items():
-            if ftype is date:
-                self._data[field] = None
-            else:
-                self._data[field] = ftype()
+        for field in Citation.FIELDS:
+            self.__resetField(field)
 
         self.__dict__['_originalFrozen'] = False
         self.__dict__['_originalFields'] = set()
@@ -93,8 +90,7 @@ class Citation:
 
     def __delattr__(self, field: str):
         self.__assertValidField(field)
-
-        del self._data[field]
+        self.__resetField(field)
 
     def __delitem__(self, field: str):
         return self.__delattr__(field)
@@ -171,3 +167,11 @@ class Citation:
             value = value.strip()
 
         return value
+
+    def __resetField(self, field):
+        ftype = Citation.FIELDS[field]
+
+        if ftype is date:
+            self._data[field] = None
+        else:
+            self._data[field] = ftype()
