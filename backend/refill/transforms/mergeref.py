@@ -1,4 +1,5 @@
 from .transform import Transform
+from ..utils import Utils
 
 
 class MergeRef(Transform):
@@ -15,7 +16,7 @@ class MergeRef(Transform):
                 continue
 
             name = self._getName(tag)
-            contents = str(tag.contents)
+            contents = Utils.unmarkWikicode(str(tag.contents))
             collection.append((name, contents, tag))
 
         self._ctx.reportProgress('MERGING', 0, {})
