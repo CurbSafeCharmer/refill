@@ -29,7 +29,7 @@ def fixWikipage(self, page: str, fam: str='wikipedia', code: str='en', wikicode:
     ctx = Context()
     ctx.attachTask(self)
     ctx.attachPage(page)
-    ctx.transforms = [MergeRef(ctx), FillRef(ctx), FillExternal(ctx)]
+    ctx.transforms = [MergeRef(ctx), FillRef(ctx), MergeRef(ctx), FillExternal(ctx)]
     ctx.applyTransforms(wikicode)
 
     return ctx.getResult()
