@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Janezdrilc"
+			"Janezdrilc",
+			"HairyFotr"
 		]
 	},
 	"fixwikipage-page": "Ime strani",
@@ -25,5 +26,6 @@
 	"taskinfo-state": "Stanje",
 	"taskinfo-percentage": "Odstotek",
 	"taskinfo-running": "V teku",
-	"taskinfo-submiturl": "Ciljni URL"
+	"taskinfo-submiturl": "Ciljni URL",
+	"no": "Ne"
 }

@@ -16,5 +16,7 @@
 	"taskinfo-name": "{{Identical|Task}}",
 	"taskinfo-percentage": "{{Identical|Percentage}}",
 	"summary": "The default edit summary. $1 will be replaced by the fixed count, $2 by the skipped count and $3 by a wikilink to the manual page",
-	"toollink": "A wikilink to the documentation page"
+	"toollink": "A wikilink to the documentation page",
+	"yes": "{{Identical|Yes}}",
+	"no": "{{Identical|No}}"
 }

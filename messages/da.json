@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Joedalton",
-			"Saederup92"
+			"Saederup92",
+			"Palnatoke"
 		]
 	},
 	"tagline": "Udvid enkelt bare referencer",
@@ -37,7 +38,7 @@
 	"taskinfo-submiturl": "Måladresse",
 	"error-type-NoTitleError": "Ingen titel fundet",
 	"error-type-unknown": "Ukendt fejl",
-	"report": "Rapporter et problem",
+	"report": "Rapportér et problem",
 	"report-manual-template-old": "Gammel tekst",
 	"report-manual-template-new": "Ny tekst",
 	"report-link-dead": "Dette link er dødt",
@@ -47,5 +48,6 @@
 	"summary": "Udfyldte $1 tomme referencer med $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"yes": "Ja",
-	"no": "Nej"
+	"no": "Nej",
+	"sandbox-page": "Wikipedia:Sandkasse"
 }

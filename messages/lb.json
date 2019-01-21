@@ -27,5 +27,14 @@
 	"taskinfo-percentage": "Prozentsaz",
 	"taskinfo-running": "Leeft",
 	"taskinfo-submiturl": "Zil-URL",
-	"chancetoreview": "Dir kritt d'Méiglechkeet fir d'Ännerung nozekucken ier se gespäichert gëtt."
+	"error-details": "Detailer vum Feeler",
+	"error-type-NoTitleError": "Keen Titel fonnt",
+	"error-type-unknown": "Onbekannte Feeler",
+	"report": "E Problem mellen",
+	"report-manual-template-old": "Alen Text",
+	"report-manual-template-new": "Neien Text",
+	"report-link-dead": "Dëse Link ass dout",
+	"chancetoreview": "Dir kritt d'Méiglechkeet fir d'Ännerung nozekucken ier se gespäichert gëtt.",
+	"yes": "Jo",
+	"no": "Neen"
 }

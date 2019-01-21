@@ -28,6 +28,7 @@
 	"state-REVOKED-description": "이 작업은 취소되었습니다.",
 	"state-BACKEND_ERROR": "백엔드 오류",
 	"state-BACKEND_ERROR-description": "알 수 없는 오류가 발생했습니다.",
+	"previewandsave": "미리 보기 / 저장",
 	"taskinfo": "작업 정보",
 	"taskinfo-name": "작업",
 	"taskinfo-id": "작업 ID",
@@ -35,6 +36,19 @@
 	"taskinfo-percentage": "백분율",
 	"taskinfo-running": "실행 중",
 	"taskinfo-submiturl": "대상 URL",
+	"error-details": "오류 상세 정보",
+	"error-type-NoTitleError": "제목이 없습니다",
+	"error-type-unknown": "알 수 없는 오류",
+	"report": "문제점 보고",
+	"report-manual-template-new": "새 텍스트",
+	"report-wikicode-na": "위키코드가 생성된 방식에 문제가 없습니다",
+	"report-wikicode-syntax": "도구가 문법 오류를 가져왔습니다 (일치하지 않는 괄호 등)",
+	"report-wikicode-template": "도구가 잘못된 유형의 인용 틀을 선택했습니다",
+	"report-wikicode-template-type": "도구가 웹페이지를 \"$1\" 유형에 속하는 것으로 간주합니다. 정확합니까?",
+	"report-link-dead-error": "오류 페이지 (404, 403 등)",
+	"report-link-dead-homepage": "웹사이트의 홈페이지",
 	"deletetask": "서버 캐시에서 작업 삭제",
-	"toollink": "[[:en:WP:REFILL|reFill]]"
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"yes": "예",
+	"no": "아니오"
 }

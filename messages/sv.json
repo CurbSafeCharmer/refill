@@ -4,7 +4,8 @@
 			"Jopparn",
 			"Lokal Profil",
 			"WikiPhoenix",
-			"Bengtsson96"
+			"Bengtsson96",
+			"Umeaboy"
 		]
 	},
 	"tagline": "Utöka referenser med lätthet",
@@ -15,6 +16,7 @@
 	"fixwikicode": "Fixa angiven wikikod",
 	"fixwikicode-wikicode": "Rå wikikod",
 	"fixwikicode-submit": "Skicka",
+	"wikicode-toggle": "Använd en anpassad wikikod",
 	"apiendpoint": "API-slutpunkt",
 	"result": "Resultat",
 	"state-PENDING": "Pågående",
@@ -38,8 +40,25 @@
 	"taskinfo-percentage": "Procent",
 	"taskinfo-running": "Körs",
 	"taskinfo-submiturl": "Mål-URL",
+	"error-details": "Feldetaljer",
+	"error-type-NoTitleError": "Ingen titel hittades",
+	"error-type-HomepageRedirectError": "Omdirigerades till hemsidan",
+	"error-type-unknown": "Okänt fel",
+	"report": "Rapportera ett problem",
+	"report-manual-template-old": "Gammal text",
+	"report-wikicode-template-type": "Verktyget tror att webbsidan är av typen \"$1\". Är detta riktigt?",
+	"report-link-paywall": "Denna länk är bakom en betalningsvägg",
+	"report-link-dead": "Denna länk är död",
+	"report-link-dead-error": "en fel-sida (404, 403, t.ex)",
+	"report-link-dead-homepage": "webbplatsens hemsida",
+	"report-link-archive": "Denna länk leder till en arkiverad sida",
+	"report-link-archive-url": "Sidans ursprungliga webbadress",
+	"errors": "Verktyget stötte på några fel. Klicka på de röda pennikonerna för detaljer.",
 	"deletetask": "Radera uppgift från servercachen",
 	"chancetoreview": "Du kommer att ha en chans att granska redigeringen innan den sparas.",
 	"summary": "Utökade $1 referenser med $3",
-	"toollink": "[[:en:WP:REFILL|reFill]]"
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"legacybridge-submitting": "Skickar in din uppgift...",
+	"yes": "Ja",
+	"no": "Nej"
 }

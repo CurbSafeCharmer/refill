@@ -3,7 +3,8 @@
 		"authors": [
 			"V.narsikar",
 			"Sureshkhole",
-			"Susheelkasab"
+			"Susheelkasab",
+			"Tiven2240"
 		]
 	},
 	"tagline": "साध्या संकेतस्थळ दुव्यांचे पुर्ण संदर्भात रुपांतरण करा",
@@ -20,7 +21,7 @@
 	"state-PENDING-description": "उपलब्ध असलेल्या कार्यकर्त्याची वाट पाहत आहे.",
 	"state-STARTED": "सुरू केले",
 	"state-STARTED-description": "हे काम हातात घेतले गेले आहे.",
-	"state-PROGRESS": "प्रक्रिया करीत आहे",
+	"state-PROGRESS": "प्रक्रिया चालू आहे",
 	"state-PROGRESS-description": "तुमचे कार्यावर प्रक्रिया होत आहे.",
 	"state-SUCCESS": "यश",
 	"state-SUCCESS-description": "कार्य सफ़ल झाले.",
@@ -73,7 +74,7 @@
 	"chancetoreview": "जतन करण्याआधी तुम्ही केलेले संपादन तुम्हांला पुन्हा एकदा तपासून बघण्यासाठी एक मौका आहे.",
 	"summary": "$3 द्वारे $1 येथील निव्वळ संदर्भात सुधारणा केली",
 	"toollink": "[[:en:WP:REFILL|रिफील]]",
-	"legacybridge-submitting": "तुम्ही केलेले काम जमा करित आहे. . .",
+	"legacybridge-submitting": "तुम्ही केलेले काम जमा करित आहे...",
 	"yes": "होय",
 	"no": "नाही"
 }

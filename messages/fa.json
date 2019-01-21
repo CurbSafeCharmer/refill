@@ -3,7 +3,8 @@
 		"authors": [
 			"AzorAhai",
 			"Dejavu",
-			"Huji"
+			"Huji",
+			"Amirsara"
 		]
 	},
 	"tagline": "گسترش منابع ناقص به سادگی",
@@ -40,5 +41,7 @@
 	"deletetask": "حذف وظیفه از میانگیر سرور",
 	"chancetoreview": "شما می‌توانید قبل از ذخیره کردن ویرایش‌تان آن را بازبینی کنید.",
 	"summary": "$1 منبع ناقص را توسط $3 کامل کرد",
-	"toollink": "[[:en:WP:REFILL|reFill]]"
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"yes": "بله",
+	"no": "خیر"
 }

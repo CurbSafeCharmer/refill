@@ -4,7 +4,8 @@
 			"Sfic",
 			"Gopalindians",
 			"Jayprakash12345",
-			"Smtchahal"
+			"Smtchahal",
+			"Prong$31"
 		]
 	},
 	"appname": "रिफिल",
@@ -30,5 +31,6 @@
 	"taskinfo-submiturl": "लक्षित यू॰आर॰एल॰",
 	"deletetask": "सर्वर कैश से कार्य हटाएं",
 	"chancetoreview": "आपको सहेजने से पहले एक बार उसकी समीक्षा करनी पड़ेगी।",
-	"toollink": "[[:en:WP:REFILL|reFill]]"
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"sandbox-page": "विकिपीडिया:प्रयोगपृष्ठ"
 }
