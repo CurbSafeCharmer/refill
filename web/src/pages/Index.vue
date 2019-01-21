@@ -40,6 +40,7 @@
                   <v-textarea
                     v-model="wikicode"
                     :label="msg('fixwikicode-wikicode')"
+                    @focus="onWikicodeFocus"
                   ></v-textarea>
                 </div>
               </v-slide-y-transition>
@@ -87,6 +88,11 @@ export default {
         code: this.code,
         wikicode: this.useCustomWikicode ? this.wikicode : false,
       });
+    },
+    onWikicodeFocus() {
+      if (!this.page.length) {
+        this.page = this.msg('sandbox-page');
+      }
     },
     async submitTask(action, payload) {
       try {
