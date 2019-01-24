@@ -8,6 +8,7 @@ from ..utils import Parser, NoTitleError
 
 from concurrent.futures import as_completed
 from urllib.parse import urlparse
+from datetime import date
 
 import time
 
@@ -118,6 +119,9 @@ class FillRef(Transform):
                 "error": err,
             }
         elif 'url' in citation and 'title' in citation:
+            if self._ctx.getPreference('addAccessDates', False):
+                citation.accessdate = date.today()
+
             old = tag.contents
             new = self.formatter.format(citation)
             tag.contents = new

@@ -76,6 +76,9 @@ class CiteTemplate(Formatter):
     def _fragment_archivedate(self, template, citation):
         self._fragment_date(template, citation, field='archivedate')
 
+    def _fragment_accessdate(self, template, citation):
+        self._fragment_date(template, citation, field='accessdate')
+
     def _fragment_deadurl(self, template, citation):
         if 'archiveurl' in citation:
             template.add('deadurl', 'y')
