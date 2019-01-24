@@ -83,19 +83,29 @@ class Context:
     def getDateFormat(self):
         """Get the preferred date format of the page
         """
+
         page = self.getPage()
-        if not page or page.site.lang != 'en' or not self.wikicode:
+        if not page:
             return False
 
-        try:
-            hint = next(self.wikicode.ifilter_templates(
-                recursive=False,
-                matches=lambda e: re.match(r'^(U|u)se (mdy|dmy) dates$', str(e.name)),
-            ))
-        except StopIteration:
-            return False
+        lang = page.site.lang
+        userPreference = self.getPreference('dateFormat', {}).get(lang, False)
 
-        return 'mdy' if 'mdy' in str(hint.name) else 'dmy'
+        if not self.wikicode:
+            return userPreference
+
+        if lang == 'en':
+            try:
+                hint = next(self.wikicode.ifilter_templates(
+                    recursive=False,
+                    matches=lambda e: re.match(r'^(U|u)se (mdy|dmy) dates$', str(e.name)),
+                ))
+            except StopIteration:
+                return userPreference
+
+            return 'mdy' if 'mdy' in str(hint.name) else 'dmy'
+
+        return userPreference
 
     def reportProgress(self, state: str, percentage: float, metadata: dict):
         """Report progress of the current transform
