@@ -19,6 +19,7 @@ class Context:
         self._task = None
         self._page = None
 
+        self.preferences = {}
         self.changes = []
         self.errors = []
         self.transforms = []
@@ -45,6 +46,16 @@ class Context:
         """Attach a pywikibot page
         """
         self._page = page
+
+    def setPreferences(self, preferences):
+        """Set user preferences
+        """
+        self.preferences = preferences
+
+    def getPreference(self, preference: str, default: str = None):
+        """Get user preference
+        """
+        return self.preferences.get(preference, default)
 
     def applyTransforms(self, wikicode: str):
         """Apply scheduled transforms on the wikicode

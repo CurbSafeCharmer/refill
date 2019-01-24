@@ -18,7 +18,7 @@ app.config_from_envvar('CELERY_CONFIG_MODULE')
 
 
 @app.task(bind=True)
-def fixWikipage(self, page: str, fam: str='wikipedia', code: str='en', wikicode: str=False):
+def fixWikipage(self, page: str, fam: str = 'wikipedia', code: str = 'en', wikicode: str = False, preferences: dict = {}):
     site = pywikibot.Site(fam=fam, code=code)
     page = pywikibot.Page(site, page)
 
@@ -29,6 +29,7 @@ def fixWikipage(self, page: str, fam: str='wikipedia', code: str='en', wikicode:
     ctx = Context()
     ctx.attachTask(self)
     ctx.attachPage(page)
+    ctx.setPreferences(preferences)
     ctx.transforms = [MergeRef(ctx), FillRef(ctx), MergeRef(ctx), FillExternal(ctx)]
     ctx.applyTransforms(wikicode)
 

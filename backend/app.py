@@ -60,6 +60,22 @@ taskStateModel = api.model('taskState', OrderedDict([
     )),
 ]))
 
+preferencesModel = api.model('preferences', {
+    'dateFormat': fields.Raw(
+        description='Default format to use for dates',
+        default={
+            'en': 'mdy',
+        },
+        example={
+            'en': 'mdy',
+        },
+    ),
+    'addAccessDates': fields.Boolean(
+        description='Add access dates for citations',
+        default=False,
+    ),
+})
+
 fixWikipageModel = api.model('fixWikipage', {
     'page': fields.String(
         required=True,
@@ -81,9 +97,21 @@ fixWikipageModel = api.model('fixWikipage', {
         default='',
         example='<ref>https://www.theverge.com/2013/10/17/4844472/device-6-iphone-ipad-report</ref>',
     ),
+    'preferences': fields.Nested(
+        description='User preferences',
+        model=preferencesModel,
+    ),
 })
 
 
+def set_defaults(model, payload):
+    for field, info in model.items():
+        if field not in payload or not payload[field]:
+            if info.default:
+                payload[field] = info.default
+            elif isinstance(info, (fields.Nested,)) and info.model:
+                payload[field] = {}
+                set_defaults(info.model, payload[field])
 
 @api.route('/fixWikipage', methods=['post'])
 class FixWikipage(Resource):
@@ -103,15 +131,19 @@ class FixWikipage(Resource):
         See https://phabricator.wikimedia.org/diffusion/PWBC/browse/master/pywikibot/families
         for a full list of supported wiki families and codes.
         """
+        set_defaults(fixWikipageModel, api.payload)
+        print(api.payload)
+
         if 'page' not in api.payload or not api.payload['page']:
             abort(400)
 
-        page = api.payload['page']
-        code = 'en' if 'code' not in api.payload else api.payload['code']
-        fam = 'wikipedia' if 'fam' not in api.payload else api.payload['fam']
-        wikicode = False if 'wikicode' not in api.payload or not api.payload['wikicode'] else api.payload['wikicode']
-
-        result = fixWikipage.delay(page=page, fam=fam, code=code, wikicode=wikicode)
+        result = fixWikipage.delay(
+            page=api.payload['page'],
+            fam=api.payload['fam'],
+            code=api.payload['code'],
+            wikicode=api.payload['wikicode'],
+            preferences=api.payload['preferences'],
+        )
         response = {
             'taskName': 'fixWikipage',
             'taskId': result.id,
