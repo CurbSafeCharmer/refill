@@ -47,8 +47,12 @@
             </v-card-text>
           </v-card>
           <v-btn flat @click="useCustomWikicode = !useCustomWikicode">
-            <v-icon>{{ useCustomWikicode ? 'remove' : 'add' }}</v-icon>
+            <v-icon left>{{ useCustomWikicode ? 'remove' : 'add' }}</v-icon>
             {{ msg('wikicode-toggle') }}
+          </v-btn>
+          <v-btn flat @click="$refs.preferences.show()">
+            <v-icon left>settings</v-icon>
+            {{ msg('preferences-button') }}
           </v-btn>
         </v-flex>
       </v-layout>
@@ -60,12 +64,17 @@
     >
       <span>{{ error }}</span>
     </v-snackbar>
+    <PreferencesEditor ref="preferences"/>
   </v-flex>
 </template>
 <script>
 import Utils from '../Utils';
+import PreferencesEditor from '../components/PreferencesEditor';
 
 export default {
+  components: {
+    PreferencesEditor,
+  },
   data () {
     return {
       fam: 'wikipedia',
