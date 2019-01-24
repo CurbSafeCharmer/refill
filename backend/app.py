@@ -107,7 +107,7 @@ fixWikipageModel = api.model('fixWikipage', {
 def set_defaults(model, payload):
     for field, info in model.items():
         if field not in payload or not payload[field]:
-            if info.default:
+            if info.default != None:
                 payload[field] = info.default
             elif isinstance(info, (fields.Nested,)) and info.model:
                 payload[field] = {}
