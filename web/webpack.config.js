@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: config.publicPath,
-    filename: '[name].[contenthash].js'
+    filename: '[name].[hash].js',
   },
   resolve: {
     extensions: ['.js', '.vue'],
