@@ -15,6 +15,7 @@
 	"fixwikicode-submit": "Indsend",
 	"apiendpoint": "API-slutpunkt",
 	"result": "Resultat",
+	"preferences-dateFormat": "Standard datoformat",
 	"state-PENDING": "Igangværende",
 	"state-PENDING-description": "Venter på en tilgængelig arbejder.",
 	"state-STARTED": "Startet",

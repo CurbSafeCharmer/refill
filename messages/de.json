@@ -15,8 +15,15 @@
 	"fixwikicode": "Eingegebenen Wikicode korrigieren",
 	"fixwikicode-wikicode": "Roher Wikicode",
 	"fixwikicode-submit": "Absenden",
+	"wikicode-toggle": "Benutzerdefinierten Wikicode verwenden",
 	"apiendpoint": "API-Endpunkt",
 	"result": "Ergebnis",
+	"preferences": "Einstellungen",
+	"preferences-button": "Einstellungen",
+	"preferences-addAccessDates": "Den Zitaten Zugriffsdaten hinzufügen",
+	"preferences-dateFormat": "Standard-Datumsformat",
+	"preferences-dateFormatEn": "Standard-Datumsformat (nur Englisch)",
+	"preferences-save": "Einstellungen speichern",
 	"state-PENDING": "Ausstehend",
 	"state-PENDING-description": "Warte auf einen verfügbaren Arbeiter.",
 	"state-STARTED": "Begonnen",
@@ -76,5 +83,6 @@
 	"toollink": "[[:w:User:Zhaofeng Li/reFill|reFill]]",
 	"legacybridge-submitting": "Speichere deine Aufgabe …",
 	"yes": "Ja",
-	"no": "Nein"
+	"no": "Nein",
+	"sandbox-page": "Wikipedia:Spielwiese"
 }

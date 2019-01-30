@@ -3,7 +3,8 @@
 		"authors": [
 			"Amire80",
 			"Guycn2",
-			"שניאור זלמן"
+			"שניאור זלמן",
+			"Strayblues"
 		]
 	},
 	"tagline": "הרחבת הערות ערומות בקלות",
@@ -16,6 +17,8 @@
 	"fixwikicode-submit": "שליחה",
 	"apiendpoint": "נקודת קצה של API",
 	"result": "תוצאה",
+	"preferences-button": "העדפות",
+	"preferences-save": "שמירת ההעדפות",
 	"state-PENDING": "ממתין",
 	"state-PENDING-description": "ממתין למתווך זמין.",
 	"state-STARTED": "התחיל",

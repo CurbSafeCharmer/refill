@@ -4,7 +4,8 @@
 			"Frank Geerlings",
 			"Siebrand",
 			"Jeleniccz",
-			"Marcelhospers"
+			"Marcelhospers",
+			"Elroy"
 		]
 	},
 	"appname": "reFill",
@@ -13,8 +14,16 @@
 	"fixwikipage-page": "Paginanaam",
 	"fixwikipage-code": "Code",
 	"fixwikipage-fam": "Familie",
+	"fixwikicode-wikicode": "Ruwe wikicode",
 	"fixwikicode-submit": "Opslaan",
+	"apiendpoint": "API eindpunt",
 	"result": "Resultaat",
+	"preferences": "Voorkeuren",
+	"preferences-button": "Voorkeuren",
+	"preferences-addAccessDates": "Data van toegang tot vermeldingen toevoegen",
+	"preferences-dateFormat": "Standaarddatumnotatie",
+	"preferences-dateFormatEn": "Standaarddatumnotatie (alleen voor Engels)",
+	"preferences-save": "Voorkeuren opslaan",
 	"state-PENDING": "In behandeling",
 	"state-STARTED": "Gestart",
 	"state-PROGRESS": "Bezig met verwerken",
@@ -23,12 +32,15 @@
 	"state-FAILURE-description": "Er is een fout opgetreden.",
 	"state-REVOKED": "Geannuleerd.",
 	"state-BACKEND_ERROR-description": "Er is een onbekende fout opgetreden.",
+	"previewandsave": "Voorbeeld en opslaan",
 	"taskinfo": "Taak Informatie",
 	"taskinfo-name": "Taak",
 	"taskinfo-state": "Status",
 	"taskinfo-percentage": "Percentage",
 	"taskinfo-submiturl": "Doel-URI",
+	"error-details": "Foutgegevens",
 	"chancetoreview": "U hebt de mogelijkheid uw wijzigingen te controleren voor ze worden opgeslagen.",
 	"summary": "$1 verwijzing(en) aangevuld met $3",
-	"toollink": "[[:en:WP:REFILL|reFill]]"
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"sandbox-page": "Wikipedia:Zandbak"
 }

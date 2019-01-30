@@ -15,6 +15,9 @@
 	"fixwikipage-fam": "परिवार",
 	"fixwikicode-submit": "जमा करें",
 	"result": "परिणाम",
+	"preferences": "पसंद",
+	"preferences-button": "पसंद",
+	"preferences-save": "पसंद सहेजें",
 	"state-PENDING": "अपूर्ण",
 	"state-PROGRESS": "काम किया जा रहा है",
 	"state-SUCCESS": "सफलता",
@@ -29,8 +32,12 @@
 	"taskinfo-percentage": "प्रतिशत",
 	"taskinfo-running": "जारी है",
 	"taskinfo-submiturl": "लक्षित यू॰आर॰एल॰",
+	"error-type-unknown": "अज्ञात त्रुटि",
+	"report-link-archive-url": "पृष्ठ का मूल यूआरएल",
 	"deletetask": "सर्वर कैश से कार्य हटाएं",
 	"chancetoreview": "आपको सहेजने से पहले एक बार उसकी समीक्षा करनी पड़ेगी।",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"yes": "हाँ",
+	"no": "नहीं",
 	"sandbox-page": "विकिपीडिया:प्रयोगपृष्ठ"
 }

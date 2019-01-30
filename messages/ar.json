@@ -15,8 +15,15 @@
 	"fixwikicode": "إصلاح كود الويكي المورد",
 	"fixwikicode-wikicode": "كود الويكي الخام",
 	"fixwikicode-submit": "إرسال",
+	"wikicode-toggle": "استخدام كود ويكي مخصص",
 	"apiendpoint": "نقطة نهاية API",
 	"result": "النتيجة",
+	"preferences": "تفضيلات",
+	"preferences-button": "تفضيلات",
+	"preferences-addAccessDates": "أضف تواريخ الوصول إلى الاستشهادات",
+	"preferences-dateFormat": "تنسيق التاريخ الافتراضي",
+	"preferences-dateFormatEn": "تنسيق التاريخ الافتراضي (الإنجليزية فقط)",
+	"preferences-save": "حفظ التفضيلات",
 	"state-PENDING": "قيد الانتظار",
 	"state-PENDING-description": "في انتظار عامل متاح.",
 	"state-STARTED": "بدأ",
@@ -76,5 +83,6 @@
 	"toollink": "[[:ar:مستخدم:Zhaofeng Li/reFill|reFill]]",
 	"legacybridge-submitting": "جارٍ تقديم مهمتك...",
 	"yes": "نعم",
-	"no": "لا"
+	"no": "لا",
+	"sandbox-page": "ويكيبيديا:ملعب"
 }

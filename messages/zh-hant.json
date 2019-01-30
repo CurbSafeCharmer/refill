@@ -15,8 +15,15 @@
 	"fixwikicode": "修正提供的 wiki 代碼",
 	"fixwikicode-wikicode": "原始 wiki 代碼",
 	"fixwikicode-submit": "提交",
+	"wikicode-toggle": "使用自訂 wiki 代碼",
 	"apiendpoint": "API 端點",
 	"result": "結果",
+	"preferences": "偏好設定",
+	"preferences-button": "偏好設定",
+	"preferences-addAccessDates": "添加引用的參照日期",
+	"preferences-dateFormat": "預設日期格式",
+	"preferences-dateFormatEn": "預設日期格式（僅適用英語）",
+	"preferences-save": "儲存偏好設定",
 	"state-PENDING": "待辦",
 	"state-PENDING-description": "等待可用的執行者。",
 	"state-STARTED": "已開始",
@@ -76,5 +83,6 @@
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"legacybridge-submitting": "提交您的任務…",
 	"yes": "是",
-	"no": "否"
+	"no": "否",
+	"sandbox-page": "Wikipedia:Sandbox"
 }

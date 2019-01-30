@@ -17,8 +17,15 @@
 	"fixwikicode": "Corriger le texte wiki fourni",
 	"fixwikicode-wikicode": "Texte wiki brut",
 	"fixwikicode-submit": "Soumettre",
+	"wikicode-toggle": "Utiliser du code wiki personnalisé",
 	"apiendpoint": "Point de terminaison de l'API",
 	"result": "Résultat",
+	"preferences": "Préférences",
+	"preferences-button": "Préférences",
+	"preferences-addAccessDates": "Ajouter les dates d’accès aux citations",
+	"preferences-dateFormat": "Format de date par défaut",
+	"preferences-dateFormatEn": "Format de date par défaut (anglais seulement)",
+	"preferences-save": "Enregistrer les préférences",
 	"state-PENDING": "En attente",
 	"state-PENDING-description": "Attente d'un collaborateur disponible.",
 	"state-STARTED": "Démarré",
@@ -78,5 +85,6 @@
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"legacybridge-submitting": "Tâche soumise...",
 	"yes": "Oui",
-	"no": "Non"
+	"no": "Non",
+	"sandbox-page": "Wikipedia:Sandbox"
 }

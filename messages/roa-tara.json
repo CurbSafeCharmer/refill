@@ -12,8 +12,13 @@
 	"fixwikicode": "Corregge 'u codece uicchi date",
 	"fixwikicode-wikicode": "Uicchicodece grezze",
 	"fixwikicode-submit": "Conferme",
+	"wikicode-toggle": "Ause 'nu uicchicodece personalizzate",
 	"apiendpoint": "Endpoint API",
 	"result": "Resultate",
+	"preferences": "Me piace accussì",
+	"preferences-button": "Me piace accussì",
+	"preferences-dateFormat": "Formate date predefinite",
+	"preferences-save": "Reggistre le preferenze",
 	"state-PENDING": "Appese",
 	"state-STARTED": "Accumenzate",
 	"state-PROGRESS": "Stoche a processe",
@@ -36,5 +41,6 @@
 	"deletetask": "Scangìlle l'attività da 'a cache d'u server",
 	"summary": "Anghiute $1 refereminde 'anude' cu $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
-	"yes": "Sìne"
+	"yes": "Sìne",
+	"sandbox-page": "Wikipedia:Sandbox"
 }

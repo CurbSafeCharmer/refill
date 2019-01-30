@@ -17,6 +17,8 @@
 	"fixwikicode-submit": "ثبت",
 	"apiendpoint": "پایانه رابط برنامه‌نویسی کاربردی",
 	"result": "نتیجه",
+	"preferences": "ترجیحات",
+	"preferences-button": "ترجیحات",
 	"state-PENDING": "در انتظار",
 	"state-PENDING-description": "در انتظار یک کارگر آزاد...",
 	"state-STARTED": "آغاز شد",

@@ -14,8 +14,15 @@
 	"fixwikicode": "Corrigir a notação wiki fornecida",
 	"fixwikicode-wikicode": "Notação wiki em bruto",
 	"fixwikicode-submit": "Enviar",
+	"wikicode-toggle": "Use wikicode personalizado",
 	"apiendpoint": "Parâmetro API",
 	"result": "Resultado",
+	"preferences": "Preferências",
+	"preferences-button": "Preferências",
+	"preferences-addAccessDates": "Adicionar datas de acesso a citações",
+	"preferences-dateFormat": "Formato de data padrão",
+	"preferences-dateFormatEn": "Formato de data padrão (somente em inglês)",
+	"preferences-save": "Salvar preferências",
 	"state-PENDING": "Pendente",
 	"state-PENDING-description": "Aguardando um trabalhador disponível.",
 	"state-STARTED": "Iniciado",
@@ -75,5 +82,6 @@
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"legacybridge-submitting": "Enviando sua tarefa...",
 	"yes": "Sim",
-	"no": "Não"
+	"no": "Não",
+	"sandbox-page": "Wikipédia:Página de testes"
 }

@@ -10,6 +10,9 @@
 	"fixwikipage-fam": "Famill",
 	"fixwikicode-submit": "Schécken",
 	"result": "Resultat",
+	"preferences": "Astellungen",
+	"preferences-button": "Astellungen",
+	"preferences-save": "Astellunge späicheren",
 	"state-PENDING": "Am Suspens",
 	"state-STARTED": "Ugefaangen",
 	"state-PROGRESS": "Verschaffen",
@@ -36,5 +39,6 @@
 	"report-link-dead": "Dëse Link ass dout",
 	"chancetoreview": "Dir kritt d'Méiglechkeet fir d'Ännerung nozekucken ier se gespäichert gëtt.",
 	"yes": "Jo",
-	"no": "Neen"
+	"no": "Neen",
+	"sandbox-page": "Wikipedia:Sandkëscht"
 }
