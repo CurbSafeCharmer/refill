@@ -5,7 +5,8 @@
 			"Kaganer",
 			"Irus",
 			"Movses",
-			"Okras"
+			"Okras",
+			"Athena Atterdag"
 		]
 	},
 	"tagline": "Заполняйте голые ссылки с легкостью",
@@ -18,6 +19,10 @@
 	"fixwikicode-submit": "Отправить",
 	"apiendpoint": "API endpoint",
 	"result": "Результат",
+	"preferences": "Настройки",
+	"preferences-button": "Настройки",
+	"preferences-dateFormat": "Формат даты по умолчанию",
+	"preferences-save": "Сохранить настройки",
 	"state-PENDING": "Ожидание",
 	"state-PENDING-description": "Ожидание доступного работника.",
 	"state-STARTED": "Старт",

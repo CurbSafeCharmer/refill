@@ -5,7 +5,8 @@
 			"Lemondoge",
 			"Fitoschido",
 			"Archaeodontosaurus",
-			"Pompilos"
+			"Pompilos",
+			"Carlosmg.dg"
 		]
 	},
 	"tagline": "Ampliar las referencias sencillas con facilidad",
@@ -18,6 +19,10 @@
 	"fixwikicode-submit": "Enviar",
 	"apiendpoint": "Punto final de la API",
 	"result": "Resultado",
+	"preferences": "Preferencias",
+	"preferences-button": "Preferencias",
+	"preferences-addAccessDates": "Añade fechas de acceso a citas",
+	"preferences-save": "Guardar preferencias",
 	"state-PENDING": "Pendiente",
 	"state-PENDING-description": "Esperando a que haya un trabajador disponible.",
 	"state-STARTED": "Iniciada",

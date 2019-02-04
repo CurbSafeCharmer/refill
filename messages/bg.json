@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"wikicode-toggle": "Използване на персонализиран уикикод",
+	"preferences": "Настройки",
+	"preferences-button": "Настройки",
+	"preferences-addAccessDates": "Добавяне на дати на проверка към цитатите",
+	"preferences-dateFormat": "Формат за дата по подразбиране",
+	"preferences-dateFormatEn": "Формат за дата по подразбиране (само на английски)",
+	"preferences-save": "Съхраняване на настройките",
+	"previewandsave": "Преглед / Съхраняване",
+	"error-details": "Подробности за грешката",
+	"error-type-NoTitleError": "Не намерих заглавия",
+	"error-type-HomepageRedirectError": "Пренасочено към началната страница",
+	"error-type-unknown": "Неизвестна грешка",
+	"report": "Заявете проблем",
+	"report-manual-template-taskname": "Име на задачата",
+	"report-manual-template-taskid": "Идентификация на задачата",
+	"report-manual-template-changeid": "Идентификация на промяната",
+	"report-manual-template-old": "Стар текст",
+	"report-manual-template-new": "Нов текст",
+	"report-intro": "Вие посочихте, че промяната е дефектена. Защо?",
+	"report-wikicode-na": "Няма проблем в начина на създаване на уикикода",
+	"report-wikicode-syntax": "Инструментът е направил синтактична грешка (непоследователни скоби и т.н.)",
+	"report-wikicode-removal": "Инструментът изтрива информацията, присъстваща в изходния текст",
+	"report-wikicode-template": "Инструментът е избрал грешен вид на шаблон за насочване",
+	"report-wikicode-template-type": "Инструментът смята, че сайтът е от вида „$1“. Вярно ли е това?",
+	"report-wikicode-template-mapinfo": "Инструментът е използвал страницата $1, за да разбере кой шаблон за насочване да се използва. Заявете тази грешка на съответната страница за беседа.",
+	"report-link-na": "Няма проблем с връзката",
+	"report-link-dead-error": "страница за грешка (404, 403 и тн.)",
+	"report-link-dead-homepage": "началната страница на уикито",
+	"report-link-dead-other": "някоя друга страница",
+	"report-link-archive-url": "Изходният URL на страницата",
+	"errors": "Инструментът срещна някои грешки. Кликните на червените икони, за да разберете повече.",
+	"yes": "Да",
+	"no": "Не",
+	"sandbox-page": "Уикипедия:Пясъчник"
+}
