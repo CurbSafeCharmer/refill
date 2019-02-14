@@ -4,7 +4,8 @@
 			"Amire80",
 			"Guycn2",
 			"שניאור זלמן",
-			"Strayblues"
+			"Strayblues",
+			"YaronSh"
 		]
 	},
 	"tagline": "הרחבת הערות ערומות בקלות",
@@ -17,7 +18,11 @@
 	"fixwikicode-submit": "שליחה",
 	"apiendpoint": "נקודת קצה של API",
 	"result": "תוצאה",
+	"preferences": "העדפות",
 	"preferences-button": "העדפות",
+	"preferences-addAccessDates": "הוספת מועדי גישה לציטוטים",
+	"preferences-dateFormat": "תצורת התאריך כבררת מחדל",
+	"preferences-dateFormatEn": "תצורת תאריך כבררת מחדל (אנגלית בלבד)",
 	"preferences-save": "שמירת ההעדפות",
 	"state-PENDING": "ממתין",
 	"state-PENDING-description": "ממתין למתווך זמין.",
@@ -40,6 +45,7 @@
 	"taskinfo-percentage": "אחוזים",
 	"taskinfo-running": "רץ",
 	"taskinfo-submiturl": "כתובת יעד",
+	"error-transform-FillExternal": "השגיאה התרחשה כאשר הכלי השלים קישור חיצוני חשוף.",
 	"deletetask": "מחק משימה ממטמון השרת",
 	"chancetoreview": "יהיה לך סיכוי לבדוק את העריכה לפני שהיא תישמר.",
 	"summary": "מולאו $1 הערות ערומות באמצעות $3",

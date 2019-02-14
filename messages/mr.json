@@ -15,8 +15,15 @@
 	"fixwikicode": "पुरवलेला विकीसंकेत दुरुस्त करा",
 	"fixwikicode-wikicode": "कच्चा विकीसंकेत",
 	"fixwikicode-submit": "सादर करा",
+	"wikicode-toggle": "आपला स्वत:चा विकिकोड वापरा",
 	"apiendpoint": "एपीआय अंतबिंदू",
 	"result": "निकाल",
+	"preferences": "आवडी-निवडी",
+	"preferences-button": "आवडी-निवडी",
+	"preferences-addAccessDates": "जेव्हा पाहिले त्याच्या तारखा संदर्भात जोडा",
+	"preferences-dateFormat": "नेहमीच्या वापराची तारीख लिहिण्याची पध्दत",
+	"preferences-dateFormatEn": "नेहमीच्या वापराची तारीख लिहिण्याची पध्दत (फक्त इंग्रजीसाठी)",
+	"preferences-save": "माझ्या आवडी-निवडी जतन करा",
 	"state-PENDING": "प्रलंबीत",
 	"state-PENDING-description": "उपलब्ध असलेल्या कार्यकर्त्याची वाट पाहत आहे.",
 	"state-STARTED": "सुरू केले",
@@ -76,5 +83,6 @@
 	"toollink": "[[:en:WP:REFILL|रिफील]]",
 	"legacybridge-submitting": "तुम्ही केलेले काम जमा करित आहे...",
 	"yes": "होय",
-	"no": "नाही"
+	"no": "नाही",
+	"sandbox-page": "विकिपीडिया:धुळपाटी"
 }
