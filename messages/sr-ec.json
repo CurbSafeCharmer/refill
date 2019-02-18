@@ -16,6 +16,7 @@
 	"fixwikicode-submit": "Пошаљи",
 	"apiendpoint": "Крајња тачка API-ја",
 	"result": "Резултат",
+	"preferences": "Подешавања",
 	"state-PENDING": "На чекању",
 	"state-PENDING-description": "Чекање доступног радника.",
 	"state-STARTED": "Започето",
