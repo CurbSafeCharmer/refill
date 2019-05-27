@@ -7,7 +7,8 @@
 			"Archaeodontosaurus",
 			"Pompilos",
 			"Carlosmg.dg",
-			"Ciencia Al Poder"
+			"Ciencia Al Poder",
+			"Harvest"
 		]
 	},
 	"tagline": "Ampliar las referencias sencillas con facilidad",
@@ -18,6 +19,7 @@
 	"fixwikicode": "Corregir wikicode proporcionado",
 	"fixwikicode-wikicode": "Wikicode puro",
 	"fixwikicode-submit": "Enviar",
+	"wikicode-toggle": "Usar wikicode personalizado",
 	"apiendpoint": "Punto final de la API",
 	"result": "Resultado",
 	"preferences": "Preferencias",
