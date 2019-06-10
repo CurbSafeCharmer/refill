@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"StanProg"
 		]
 	},
+	"fixwikicode-submit": "Изпращане",
 	"wikicode-toggle": "Използване на персонализиран уикикод",
 	"preferences": "Настройки",
 	"preferences-button": "Настройки",
