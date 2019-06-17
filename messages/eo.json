@@ -22,6 +22,7 @@
 	"preferences-dateFormatEn": "Implicita aranĝo de dato (nur anglalingve)",
 	"preferences-save": "Konservi Preferojn",
 	"state-PENDING": "Envicigite",
+	"state-STARTED": "Komencita",
 	"state-PROGRESS": "Traktante",
 	"state-SUCCESS": "Sukcesis",
 	"state-SUCCESS-description": "La tasko sukcesis.",
