@@ -4,7 +4,8 @@
 			"Zhaofeng Li",
 			"Pak Long Wu",
 			"Liuxinyu970226",
-			"A Chinese Wikipedian"
+			"A Chinese Wikipedian",
+			"神樂坂秀吉"
 		]
 	},
 	"appname": "reFill",
@@ -67,5 +68,7 @@
 	"chancetoreview": "您在保存前将有机会复核编辑。",
 	"summary": "通过$3填充了$1个裸露的参考文献",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
-	"yes": "是"
+	"yes": "是",
+	"no": "否",
+	"sandbox-page": "Wikipedia:Sandbox"
 }
