@@ -47,7 +47,7 @@
 	"taskinfo-percentage": "Porcentaje",
 	"taskinfo-running": "En ejecución",
 	"taskinfo-submiturl": "URL de destino",
-	"deletetask": "Eliminar la tarea de la caché del servidor",
+	"deletetask": "Eliminar la tarea de la antememoria del servidor",
 	"chancetoreview": "Tendrás la oportunidad de revisar la edición antes de guardarla.",
 	"summary": "Se completaron $1 referencias sencillas mediante $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]"
