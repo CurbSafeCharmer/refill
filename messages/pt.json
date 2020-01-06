@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Victor Lopes",
-			"Athena in Wonderland"
+			"Athena in Wonderland",
+			"Mansil"
 		]
 	},
 	"tagline": "Formate referências com facilidade",
@@ -15,6 +16,12 @@
 	"fixwikicode-submit": "Enviar",
 	"apiendpoint": "Parâmetro API",
 	"result": "Resultado",
+	"preferences": "Preferências",
+	"preferences-button": "Preferências",
+	"preferences-addAccessDates": "Adicionar datas de acesso às citações",
+	"preferences-dateFormat": "Formato de data predefinido",
+	"preferences-dateFormatEn": "Formato de data predefinido (apenas inglês)",
+	"preferences-save": "Guardar Preferências",
 	"state-PENDING": "Pendente",
 	"state-PENDING-description": "A aguardar um trabalhador disponível.",
 	"state-STARTED": "Iniciado",
@@ -29,6 +36,7 @@
 	"state-REVOKED-description": "A tarefa foi cancelada.",
 	"state-BACKEND_ERROR": "Erro do servidor",
 	"state-BACKEND_ERROR-description": "Ocorreu um erro desconhecido.",
+	"previewandsave": "Pré-visualizar / Guardar",
 	"taskinfo": "Informação da tarefa",
 	"taskinfo-name": "Tarefa",
 	"taskinfo-id": "Identificador da tarefa",
@@ -36,8 +44,27 @@
 	"taskinfo-percentage": "Percentagem",
 	"taskinfo-running": "A executar",
 	"taskinfo-submiturl": "URL de destino",
+	"error-details": "Detalhes de Erro",
+	"error-type-NoTitleError": "Nenhum título encontrado",
+	"error-type-HomepageRedirectError": "Redirecionado para a página inicial",
+	"error-type-unknown": "Erro desconhecido",
+	"report": "Reportar Um Problema",
+	"report-manual-template-taskname": "Nome da Tarefa",
+	"report-manual-template-taskid": "Id. da Tarefa",
+	"report-manual-template-changeid": "Id. da Alteração",
+	"report-manual-template-old": "Texto Antigo",
+	"report-manual-template-new": "Novo Texto",
+	"report-link-na": "Não existe nenhum problema com a hiperligação em questão",
+	"report-link-dead": "Esta hiperligação está com problemas",
+	"report-link-dead-error": "um página de erro (404, 403, etc...)",
+	"report-link-dead-homepage": "a página inicial do ''site'' da Web",
+	"report-link-dead-other": "alguma outra página",
 	"deletetask": "Eliminar tarefa da cache do servidor",
 	"chancetoreview": "Você poderá revisar a edição antes de salvá-la.",
 	"summary": "Formatando $1 referência(s) com $3",
-	"toollink": "[[:en:WP:REFILL|reFill]]"
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"legacybridge-submitting": "A submeter a sua tarefa...",
+	"yes": "Sim",
+	"no": "Não",
+	"sandbox-page": "Wikipédia:Área de Testes"
 }
