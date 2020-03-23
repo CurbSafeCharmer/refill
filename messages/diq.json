@@ -3,8 +3,35 @@
 		"authors": [
 			"Kumkumuk",
 			"Asmen",
-			"Gırd"
+			"Gırd",
+			"Mirzali",
+			"Orbot707"
 		]
 	},
-	"toollink": "[[:en:WP:REFILL|reFill]]"
+	"fixwikipage": "Yew pela bıvurnê",
+	"fixwikipage-page": "Namey pela",
+	"fixwikipage-code": "Kode",
+	"fixwikipage-fam": "Aile",
+	"fixwikicode-wikicode": "Xem kodê wiki",
+	"fixwikicode-submit": "Bırışe",
+	"result": "Netice",
+	"preferences": "Eyari",
+	"preferences-button": "Eyari",
+	"preferences-save": "Eyaran qeyd ke",
+	"state-REVOKED": "Texelna",
+	"taskinfo-name": "Wezife",
+	"taskinfo-id": "Kamiya wezifey",
+	"taskinfo-state": "Weziyet",
+	"taskinfo-percentage": "Sey sera",
+	"taskinfo-running": "Guriyeno",
+	"taskinfo-submiturl": "Hedef URL",
+	"error-details": "Melumatê xeta",
+	"error-type-NoTitleError": "Serek nêvineya",
+	"error-type-unknown": "Xetaya nêzanıtiye",
+	"report": "Perse rapor ke",
+	"report-manual-template-taskname": "Nameyê kari",
+	"report-manual-template-new": "Metno newe",
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"yes": "Eya",
+	"no": "Nê"
 }
