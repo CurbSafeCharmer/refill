@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Elroy",
 			"Frank Geerlings",
-			"Siebrand",
 			"Jeleniccz",
 			"Marcelhospers",
-			"Elroy"
+			"Siebrand"
 		]
 	},
 	"appname": "reFill",
