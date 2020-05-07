@@ -46,6 +46,7 @@
 	"taskinfo-submiturl": "Целевой URL",
 	"error-details": "Подробности ошибки",
 	"error-type-NoTitleError": "Заголовок не найден",
+	"error-type-unknown": "Неизвестная ошибка",
 	"report": "Сообщить о проблеме",
 	"report-manual-template-old": "Старый текст",
 	"report-manual-template-new": "Новый текст",
@@ -55,5 +56,6 @@
 	"summary": "{{PLURAL:$1|Заполнена|Заполнены}} $1 {{PLURAL:$1|голая ссылка|голых ссылки|голых ссылок}} с помощью $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"yes": "Да",
-	"no": "Нет"
+	"no": "Нет",
+	"sandbox-page": "Википедия:Песочница"
 }
