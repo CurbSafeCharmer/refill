@@ -17,7 +17,7 @@ class Citation:
         'website': str,
         'archiveurl': str,
         'archivedate': date,
-        'deadurl': bool,
+        'url-status': str,
         'via': str,
         'journal': str,
         'volume': str,
