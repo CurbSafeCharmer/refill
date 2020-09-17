@@ -1,12 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Mguix"
 		]
 	},
+	"tagline": "Resol fàcilment les referències buides",
+	"fixwikipage": "Corregeix una pàgina",
 	"fixwikipage-page": "Nom de la pàgina",
 	"fixwikipage-code": "Codi",
 	"fixwikipage-fam": "Família",
+	"fixwikicode": "Esmena el codi wiki proporcionat",
+	"fixwikicode-wikicode": "Wikicode en brut",
 	"fixwikicode-submit": "Envia",
 	"result": "Resultat",
 	"preferences": "Preferències",
