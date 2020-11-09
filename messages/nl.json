@@ -5,6 +5,7 @@
 			"Frank Geerlings",
 			"Jeleniccz",
 			"Marcelhospers",
+			"Optilete",
 			"Siebrand"
 		]
 	},
@@ -28,6 +29,7 @@
 	"state-STARTED": "Gestart",
 	"state-PROGRESS": "Bezig met verwerken",
 	"state-SUCCESS": "Afgerond",
+	"state-SUCCESS-description": "De taak is afgerond.",
 	"state-FAILURE": "Mislukt",
 	"state-FAILURE-description": "Er is een fout opgetreden.",
 	"state-REVOKED": "Geannuleerd.",
