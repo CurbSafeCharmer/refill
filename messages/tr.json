@@ -4,7 +4,8 @@
 			"Alpkant",
 			"BaRaN6161 TURK",
 			"Hedda",
-			"Kumkumuk"
+			"Kumkumuk",
+			"MuratTheTurkish"
 		]
 	},
 	"tagline": "Kolaylıkla sade referansları genişletin",
@@ -76,7 +77,7 @@
 	"report-link-dead-other": "başka bir sayfa",
 	"report-link-archive": "Bu bağlantı bir arşiv sayfasına yönlendirir",
 	"report-link-archive-url": "Sayfanın orijinal URL'si",
-	"errors": "Araç bazı hatalarla karşılaştı. Detaylar için kırmızı kalem ikonlarına tıklayın.",
+	"errors": "Araç bazı hatalarla karşılaştı. Ayrıntılar için kırmızı kalem simgelerine tıklayın.",
 	"deletetask": "Sunucu önbelleğinden görev sil",
 	"chancetoreview": "Düzenlemeyi kaydetmeden önce gözden geçirme şansınız olacak.",
 	"summary": "$1 referansda $3 ile dolduruldu",
