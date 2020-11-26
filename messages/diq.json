@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"1917 Ekim Devrimi",
 			"Asmen",
 			"Gırd",
 			"Kumkumuk",
@@ -19,6 +20,8 @@
 	"preferences-button": "Eyari",
 	"preferences-save": "Eyaran qeyd ke",
 	"state-REVOKED": "Texelna",
+	"previewandsave": "Verqayt / Qeyd ke",
+	"taskinfo": "Melumatê wezifeyi",
 	"taskinfo-name": "Wezife",
 	"taskinfo-id": "Kamiya wezifeyi",
 	"taskinfo-state": "Weziyet",
@@ -27,6 +30,7 @@
 	"taskinfo-submiturl": "Hedef URL",
 	"error-details": "Melumatê xeta",
 	"error-type-NoTitleError": "Serek nêvineya",
+	"error-type-HomepageRedirectError": "Serşıkıyao pela seri",
 	"error-type-unknown": "Xetaya nêzanıtiye",
 	"report": "Perse rapor ke",
 	"report-manual-template-taskname": "Nameyê kari",
@@ -34,7 +38,12 @@
 	"report-manual-template-changeid": "Kamiye bıvurne",
 	"report-manual-template-old": "Metıno kıhan",
 	"report-manual-template-new": "Metno newe",
+	"report-link-dead": "No gıre merdeyo",
+	"report-link-dead-error": "Pela xetay (404, 403, çb.)",
+	"report-link-dead-homepage": "Pela seriya websitey",
+	"report-link-dead-other": "Pela bin",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"yes": "Eya",
-	"no": "Nê"
+	"no": "Nê",
+	"sandbox-page": "Wikipedia:Sandbox"
 }
