@@ -62,7 +62,7 @@
 	"report-manual-template-old": "Eski Metin",
 	"report-manual-template-new": "Yeni Metin",
 	"report-intro": "Bu değişikliğin hatalı olduğunu belirttiniz. Neden?",
-	"report-wikicode-na": "Viki kodunun oluşturulmasında herhangi bir problem yok",
+	"report-wikicode-na": "Vikikodun üretilme biçiminde bir sorun yok",
 	"report-wikicode-syntax": "Araç bir sözdizimi hatası verdi (uyumsuz parantez, vb.)",
 	"report-wikicode-removal": "Araç orijinal metinde mevcut olan bilgileri kaldırdı",
 	"report-wikicode-template": "Araç yanlış tür alıntı şablonu seçti",
