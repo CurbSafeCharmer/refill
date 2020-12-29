@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bjankuloski06",
 			"StanProg",
 			"Vlad5250"
 		]
@@ -32,7 +33,7 @@
 	"report-wikicode-template-type": "Инструментът смята, че сайтът е от вида „$1“. Вярно ли е това?",
 	"report-wikicode-template-mapinfo": "Инструментът е използвал страницата $1, за да разбере кой шаблон за насочване да се използва. Заявете тази грешка на съответната страница за беседа.",
 	"report-link-na": "Няма проблем с връзката",
-	"report-link-dead-error": "страница за грешка (404, 403 и тн.)",
+	"report-link-dead-error": "страница за грешка (404, 403 итн.)",
 	"report-link-dead-homepage": "началната страница на уикито",
 	"report-link-dead-other": "някоя друга страница",
 	"report-link-archive-url": "Изходният URL на страницата",
