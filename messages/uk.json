@@ -1,11 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Visem",
-			"Piramidion"
+			"Movses",
+			"Piramidion",
+			"Visem"
 		]
 	},
 	"tagline": "Розгортайте неоформлені посилання з легкістю",
+	"fixwikipage-page": "Назва сторінки",
+	"fixwikipage-code": "Код",
+	"fixwikicode-submit": "Надіслати",
+	"apiendpoint": "Кінцева точка API",
+	"result": "Результат",
+	"state-PENDING": "Очікування",
+	"state-PROGRESS": "Обробка",
+	"state-FAILURE-description": "Сталася помилка.",
 	"chancetoreview": "Ви матимете шанс переглянути редагування перед тим, як його буде збережено.",
 	"summary": "Заповнено {{PLURAL:$1|$1 просте посилання|$1 прості посилання|$1 простих посилань}} за допоомогою $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]"

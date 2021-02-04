@@ -1,9 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Banjo"
+			"Banjo",
+			"Elisardojm"
 		]
 	},
+	"tagline": "Formate referencias con facilidade",
+	"fixwikipage": "Arranxar unha páxina",
+	"fixwikipage-page": "Nome de páxina",
+	"fixwikipage-code": "Código",
+	"fixwikipage-fam": "Familia",
+	"fixwikicode-submit": "Enviar",
+	"result": "Resultado",
+	"state-PENDING": "Pendentes",
+	"taskinfo-name": "Tarefa",
+	"taskinfo-percentage": "Porcentaxe",
 	"chancetoreview": "Terás oportunidade de revisar a edición antes de gardala.",
+	"summary": "Formatando $1 referencia(s) con $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]"
 }
