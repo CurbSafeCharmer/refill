@@ -16,7 +16,6 @@ class NCBI:
         else:
             return citation
 
-        print(idType, identifier)
         response = session.get(NCBI.ENDPOINT + '/' + idType, params={
             'format': 'ris',
             'id': identifier,

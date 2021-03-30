@@ -110,7 +110,6 @@ class FillRef(Transform):
                 break
 
         endtime = time.time()
-        print('took {}'.format(endtime-starttime))
 
         if err:
             return {

@@ -44,9 +44,5 @@ class RIS:
                 else:
                     citation[RIS.MAPPING[tag]] = value
 
-                print(field, value)
-
-        print(citation.pages)
-
         return citation
 
