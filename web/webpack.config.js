@@ -63,16 +63,6 @@ module.exports = {
           name: '[name].[ext]?[hash]',
         },
       },
-      {
-        test: /wdiff\.js$/,
-        include: [
-          path.resolve(__dirname, "libs/")
-        ],
-        loader: 'exports-loader',
-        options: {
-          exports: 'WikEdDiff',
-        },
-      },
     ],
   },
   devServer: {

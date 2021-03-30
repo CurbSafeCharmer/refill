@@ -83,7 +83,7 @@
 import oboe from 'oboe';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
-import WikEdDiff from 'wdiff';
+import { WikEdDiff } from 'wdiff';
 import URI from 'urijs';
 import ChangeDetails from '../components/ChangeDetails';
 import ErrorDetails from '../components/ErrorDetails';
