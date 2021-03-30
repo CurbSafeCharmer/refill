@@ -31,11 +31,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader',
+        use: [ 'style-loader', 'css-loader' ],
       },
       {
         test: /\.scss$/,
-        loader: 'style-loader!css-loader!sass-loader',
+        use: [ 'style-loader', 'css-loader', 'sass-loader' ],
       },
       {
         test: /\.vue$/,
@@ -45,8 +45,8 @@ module.exports = {
             // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
             // the "scss" and "sass" values for the lang attribute to the right configs here.
             // other preprocessors should work out of the box, no loader config like this necessary.
-            'scss': 'vue-style-loader!css-loader!sass-loader',
-            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+            scss: [ 'vue-style-loader', 'css-loader', 'sass-loader' ],
+            sass: [ 'vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax' ],
           },
           // other vue-loader options go here
         },
@@ -68,14 +68,27 @@ module.exports = {
         include: [
           path.resolve(__dirname, "libs/")
         ],
-        use: 'exports-loader?WikEdDiff',
+        loader: 'exports-loader',
+        options: {
+          exports: 'WikEdDiff',
+        },
       },
       {
         test: /\.js$/,
         include: [
           path.resolve(__dirname, "node_modules/@wikimedia/jquery.i18n/src")
         ],
-        use: 'imports-loader?$=jquery/src/core,jQuery=jquery/src/core',
+        use: [
+          {
+            loader: 'imports-loader',
+            options: {
+              imports: [
+                'default jquery $',
+                'default jquery jQuery',
+              ],
+            },
+          }
+        ],
       },
     ],
   },
@@ -91,7 +104,7 @@ module.exports = {
   performance: {
     hints: false,
   },
-  devtool: '#eval-source-map',
+  devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: 'template.html',
@@ -105,7 +118,7 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map';
+  module.exports.devtool = 'source-map';
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
