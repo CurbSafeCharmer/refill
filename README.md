@@ -7,9 +7,9 @@ This README gives you all the details needed to set up a reFill instance for tes
 ## Quick start
 
 You will need to install:
-- Python 3.6 (3.7 is currently not supported by Celery)
+- Python 3.8
 - [Pipenv](https://github.com/pypa/pipenv)
-- Node.js 11
+- Node.js 14
 - Redis (or any other broker [supported by Celery](http://docs.celeryproject.org/en/latest/getting-started/brokers/))
 
 1. `git clone https://github.com/zhaofengli/refill`

@@ -30,29 +30,17 @@ import VueResource from 'vue-resource';
 Vue.use(VueResource);
 
 // == I18N ==
-// It's waste of space to import the whole jQuery that we
-// won't use in other places
-import $ from 'jquery/src/core';
-import 'jquery/src/selector';
-import 'jquery/src/deferred';
-import 'jquery/src/data';
-import 'jquery/src/attributes';
-
-import '@wikimedia/jquery.i18n/src/jquery.i18n';
-import '@wikimedia/jquery.i18n/src/jquery.i18n.messagestore';
-import '@wikimedia/jquery.i18n/src/jquery.i18n.fallbacks';
-import '@wikimedia/jquery.i18n/src/jquery.i18n.parser';
-import '@wikimedia/jquery.i18n/src/jquery.i18n.emitter';
-import '@wikimedia/jquery.i18n/src/jquery.i18n.language';
+import Banana from 'banana-i18n';
+const banana = new Banana('en');
 
 let req = require.context('../../messages', false, /\.json$/);
 req.keys().forEach(function(key){
-  $.i18n().load(req(key), key.replace(/\.[^/.]+$/, '').slice(2));
+  banana.load(req(key), key.replace(/\.[^/.]+$/, '').slice(2));
 });
 Vue.mixin({
   methods: {
     msg(...args) {
-      return $.i18n(...args);
+      return banana.i18n(...args);
     }
   }
 });
@@ -60,7 +48,7 @@ Vue.mixin({
 import Cookies from 'js-cookie';
 let ts = Cookies.get('TsIntuition_userlang');
 if (ts) {
-  $.i18n().locale = ts;
+  banana.setLocale(ts);
 }
 
 // == Routing ==

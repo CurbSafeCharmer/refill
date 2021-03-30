@@ -166,7 +166,7 @@ class Context:
                 'path': site.path(),
                 'protocol': site.protocol(),
                 'editTime': self._page.editTime().totimestampformat(),
-                'startTime': site.getcurrenttime().totimestampformat(),
+                'startTime': site.getcurrenttimestamp(),
             }
         else:
             wikipage = {}
