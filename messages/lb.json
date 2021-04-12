@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Soued031"
 		]
 	},
 	"fixwikipage": "Eng Säit flécken",
@@ -33,7 +34,7 @@
 	"error-details": "Detailer vum Feeler",
 	"error-type-NoTitleError": "Keen Titel fonnt",
 	"error-type-unknown": "Onbekannte Feeler",
-	"report": "E Problem mellen",
+	"report": "E Probleem mellen",
 	"report-manual-template-old": "Alen Text",
 	"report-manual-template-new": "Neien Text",
 	"report-link-dead": "Dëse Link ass dout",
