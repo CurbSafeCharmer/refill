@@ -6,13 +6,13 @@
         <v-spacer></v-spacer>
 
         <v-toolbar-items class="hidden-sm-and-down">
-          <v-btn icon href="https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill">
+          <v-btn icon href="https://en.wikipedia.org/wiki/Wikipedia:ReFill">
             <v-icon>help</v-icon>
           </v-btn>
-          <v-btn icon href="https://en.wikipedia.org/wiki/User_talk:Zhaofeng_Li">
+          <v-btn icon href="https://en.wikipedia.org/wiki/Wikipedia_talk:ReFill">
             <v-icon>bug_report</v-icon>
           </v-btn>
-          <v-btn icon href="https://github.com/zhaofengli/refill">
+          <v-btn icon href="https://github.com/curbsafecharmer/refill">
             <v-icon>code</v-icon>
           </v-btn>
         </v-toolbar-items>
