@@ -14,6 +14,7 @@
 	"preferences-button": "Prifirenzi",
 	"preferences-save": "Sarva prifirenzi",
 	"state-REVOKED": "Annullatu",
+	"previewandsave": "Antiprima / Sarva",
 	"taskinfo-state": "Statu",
 	"taskinfo-percentage": "Pircintuali",
 	"error-details": "Dittagghî erruri",
@@ -28,5 +29,6 @@
 	"report-link-dead-other": "quarchi àutri pàggini",
 	"report-link-archive-url": "URL orìgginali dâ pàggina",
 	"yes": "Sì",
-	"no": "No"
+	"no": "No",
+	"sandbox-page": "Wikipedia:Fogghiu di prova"
 }
