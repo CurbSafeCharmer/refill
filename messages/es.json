@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AnupamM",
 			"Archaeodontosaurus",
 			"Carlosmg.dg",
 			"Ciencia Al Poder",
@@ -75,8 +76,11 @@
 	"report-link-na": "No hay ningún problema con el enlace en cuestión.",
 	"report-link-paywall": "Este enlace está detrás de un muro de pago",
 	"report-link-dead": "Este enlace esta muerto",
+	"report-link-dead-other": "Alguna otra página",
 	"deletetask": "Eliminar la tarea de la antememoria del servidor",
 	"chancetoreview": "Tendrás la oportunidad de revisar la edición antes de guardarla.",
 	"summary": "Se completaron $1 referencias sencillas mediante $3",
-	"toollink": "[[:en:WP:REFILL|reFill]]"
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"yes": "Sí",
+	"no": "No"
 }
