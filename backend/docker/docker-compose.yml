@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: ../
+      dockerfile: ./docker/refill-api/Dockerfile
+    ports:
+      - "8001:8001"
+  worker:
+    build:
+      context: ../
+      dockerfile: ./docker/refill-worker/Dockerfile
+  redis:
+    image: "redis:alpine"

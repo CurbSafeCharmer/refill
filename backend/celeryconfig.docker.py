@@ -2,10 +2,10 @@
 imports = ('refill.tasks',)
 
 ## Broker settings.
-broker_url = 'redis://localhost'
+broker_url = 'redis://redis'
 
 ## Using the database to store task state and results.
-result_backend = 'redis://localhost'
+result_backend = 'redis://redis'
 
 ## Autoscaling
 max_concurrency = 100
