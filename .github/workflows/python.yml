@@ -12,9 +12,15 @@ jobs:
   build:
     name: tox
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
     strategy:
+      fail-fast: true
       matrix:
-        python: ["3.8", "3.9", "3.10"]
+        python: ["3.8", "3.9"]
+        experimental: [false]
+        include:
+          - python: "3.10"
+            experimental: true
 
     steps:
       - uses: actions/checkout@v3
@@ -30,4 +36,4 @@ jobs:
           pip install -r backend/requirements.txt
       - name: Run tox
         # Skip tox for now!
-        run: tox --notest
+        run: tox -v

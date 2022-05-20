@@ -1,11 +1,8 @@
-import re
+from concurrent.futures import as_completed
 
-from .transform import Transform
 from ..dataparsers import DefaultChain
 from ..models import Citation
-
-from concurrent.futures import as_completed
-from urllib.parse import urlparse
+from .transform import Transform
 
 
 class FillExternal(Transform):
@@ -19,7 +16,7 @@ class FillExternal(Transform):
         completeCount = 0
         errors = []
 
-        self._ctx.reportProgress('SCANNING', 0, {})
+        self._ctx.reportProgress("SCANNING", 0, {})
         for tag in wikicode.ifilter_external_links(recursive=False):
             if tag.title:
                 continue
@@ -38,9 +35,9 @@ class FillExternal(Transform):
             else:
                 completeCount += 1
 
-            self._ctx.reportProgress('FETCHING', completeCount / linkCount, {
-                'errors': errors
-            })
+            self._ctx.reportProgress(
+                "FETCHING", completeCount / linkCount, {"errors": errors}
+            )
 
         return wikicode
 

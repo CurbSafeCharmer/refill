@@ -1,5 +1,5 @@
-from .transform import Transform
 from ..utils import Utils
+from .transform import Transform
 
 
 class MergeRef(Transform):
@@ -10,16 +10,16 @@ class MergeRef(Transform):
     def apply(self, wikicode):
         collection = []
 
-        self._ctx.reportProgress('SCANNING', 0, {})
+        self._ctx.reportProgress("SCANNING", 0, {})
         for tag in wikicode.ifilter_tags():
-            if tag.tag != 'ref' or tag.self_closing:
+            if tag.tag != "ref" or tag.self_closing:
                 continue
 
             name = self._getName(tag)
             contents = Utils.unmarkWikicode(str(tag.contents))
             collection.append((name, contents, tag))
 
-        self._ctx.reportProgress('MERGING', 0, {})
+        self._ctx.reportProgress("MERGING", 0, {})
         uniqueNames = set([e[0] for e in collection if e[0]])
         uniqueContents = set([e[1] for e in collection if e[1]])
         allNames = uniqueNames.copy()
@@ -27,8 +27,20 @@ class MergeRef(Transform):
         for name in uniqueNames:
             # Maybe some distinct references are sharing the same name
             # Let's pick a Rightful Owner (tm) for the name
-            chosenContents = next(iter([e[1] for e in sorted(collection, key=lambda e: len(e[1])) if e[0] == name and e[1]]))
-            otherTags = [e[2] for e in collection if e[1] != chosenContents and e[0] == name and e[1]]
+            chosenContents = next(
+                iter(
+                    [
+                        e[1]
+                        for e in sorted(collection, key=lambda e: len(e[1]))
+                        if e[0] == name and e[1]
+                    ]
+                )
+            )
+            otherTags = [
+                e[2]
+                for e in collection
+                if e[1] != chosenContents and e[0] == name and e[1]
+            ]
             for tag in otherTags:
                 self._removeName(tag)
 
@@ -57,12 +69,12 @@ class MergeRef(Transform):
 
                 self._setName(tag, name)
 
-        self._ctx.reportProgress('SUCCESS', 1, {})
+        self._ctx.reportProgress("SUCCESS", 1, {})
         return wikicode
 
     def _getName(self, tag):
-        if tag.has('name'):
-            return str(tag.get('name').value)
+        if tag.has("name"):
+            return str(tag.get("name").value)
 
         return False
 
@@ -77,14 +89,14 @@ class MergeRef(Transform):
         return result
 
     def _removeName(self, tag):
-        if tag.has('name'):
-            tag.remove('name')
+        if tag.has("name"):
+            tag.remove("name")
 
     def _setName(self, tag, name):
         self._removeName(tag)
-        tag.add('name', name)
+        tag.add("name", name)
 
-    def _generateName(self, existing, prefix='auto'):
+    def _generateName(self, existing, prefix="auto"):
         name = prefix
 
         while name in existing:

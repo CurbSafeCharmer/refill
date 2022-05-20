@@ -1,16 +1,11 @@
-import re
-
-from .transform import Transform
-from ..formatters import CiteTemplate
-from ..dataparsers import DefaultChain
-from ..models import Citation
-from ..utils import Parser, NoTitleError
-
 from concurrent.futures import as_completed
-from urllib.parse import urlparse
 from datetime import date
 
-import time
+from ..dataparsers import DefaultChain
+from ..formatters import CiteTemplate
+from ..utils import NoTitleError, Parser
+from .transform import Transform
+
 
 class FillRef(Transform):
     def __init__(self, ctx=None):
@@ -26,12 +21,12 @@ class FillRef(Transform):
         completeCount = 0
         errored = False
 
-        self._ctx.reportProgress('SCANNING', 0, {})
+        self._ctx.reportProgress("SCANNING", 0, {})
         for tag in tags:
-            if tag.tag != 'ref' or tag.self_closing or not tag.contents:
+            if tag.tag != "ref" or tag.self_closing or not tag.contents:
                 continue
 
-            if 'Retrieved' in tag.contents:
+            if "Retrieved" in tag.contents:
                 # Do not touch such citations
                 continue
 
@@ -46,48 +41,56 @@ class FillRef(Transform):
         for future in as_completed(futures):
             try:
                 result = future.result()
-                if result['successful']:
+                if result["successful"]:
                     completeCount += 1
-                    changeId = self._ctx.reportChange(result['change'])
+                    changeId = self._ctx.reportChange(result["change"])
 
-                    changeMarker = 'RFLc%dLFR' % changeId
-                    result['tag'].contents = changeMarker + str(result['tag'].contents)
+                    changeMarker = "RFLc%dLFR" % changeId
+                    result["tag"].contents = changeMarker + str(result["tag"].contents)
                 else:
                     errored = True
-                    errorId = self._ctx.reportError({
-                        'type': type(result['error']).__name__,
-                        'traceback': str(result['error'].__traceback__),
-                    })
+                    errorId = self._ctx.reportError(
+                        {
+                            "type": type(result["error"]).__name__,
+                            "traceback": str(result["error"].__traceback__),
+                        }
+                    )
 
-                    errorMarker = 'RFLe%dLFR' % errorId
-                    result['tag'].contents = errorMarker + str(result['tag'].contents)
+                    errorMarker = "RFLe%dLFR" % errorId
+                    result["tag"].contents = errorMarker + str(result["tag"].contents)
             except Exception as e:
                 errored = True
-                errorId = self._ctx.reportError({
-                    'type': 'unknown',
-                    'message': str(e),
-                })
+                errorId = self._ctx.reportError(
+                    {
+                        "type": "unknown",
+                        "message": str(e),
+                    }
+                )
 
-            self._ctx.reportProgress('FETCHING', completeCount / refCount, {
-                'count': completeCount,
-            })
+            self._ctx.reportProgress(
+                "FETCHING",
+                completeCount / refCount,
+                {
+                    "count": completeCount,
+                },
+            )
 
         if not errored:
             linkrot_templates = [
-                'bare',
-                'bare links',
-                'barelinks',
-                'bare url',
-                'bare references',
-                'bare refs',
-                'bare urls',
-                'cleanup link rot',
-                'cleanup link-rot',
-                'cleanup-link-rot',
-                'cleanup-linkrot',
-                'link rot',
-                'linkrot',
-                'cleanup-bare urls',
+                "bare",
+                "bare links",
+                "barelinks",
+                "bare url",
+                "bare references",
+                "bare refs",
+                "bare urls",
+                "cleanup link rot",
+                "cleanup link-rot",
+                "cleanup-link-rot",
+                "cleanup-linkrot",
+                "link rot",
+                "linkrot",
+                "cleanup-bare urls",
             ]
             for template in wikicode.ifilter_templates():
                 if template.name.lower() in linkrot_templates:
@@ -101,7 +104,6 @@ class FillRef(Transform):
 
         citation.freezeOriginal()
 
-        starttime = time.time()
         for p in DefaultChain:
             try:
                 p.apply(citation)
@@ -109,16 +111,14 @@ class FillRef(Transform):
                 err = e
                 break
 
-        endtime = time.time()
-
         if err:
             return {
                 "successful": False,
                 "tag": tag,
                 "error": err,
             }
-        elif 'url' in citation and 'title' in citation:
-            if self._ctx.getPreference('addAccessDates', False):
+        elif "url" in citation and "title" in citation:
+            if self._ctx.getPreference("addAccessDates", False):
                 citation.accessdate = date.today()
 
             old = tag.contents
