@@ -10,7 +10,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: theresnotime/refill-
+  CONTEXT: /home/runner/work/refill/refill/backend
 
 jobs:
   build-api:
@@ -35,13 +36,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}api
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: /home/runner/work/refill/refill/backend
-          file: /home/runner/work/refill/refill/backend/docker/refill-api/Dockerfile
+          context: ${{ env.CONTEXT }}
+          file: ${{ env.CONTEXT }}/backend/docker/refill-api/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -68,13 +69,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}worker
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: /home/runner/work/refill/refill/backend
-          file: /home/runner/work/refill/refill/backend/docker/refill-worker/Dockerfile
+          context: ${{ env.CONTEXT }}
+          file: ${{ env.CONTEXT }}/docker/refill-worker/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
