@@ -1,3 +1,4 @@
+/* eslint-disable vue/multi-word-component-names */
 <template>
   <v-flex md8 offset-md2 lg6 offset-lg3>
     <v-container fluid grid-list-lg class="mcontainer">
