@@ -1,4 +1,4 @@
-import "@babel/polyfill";
+import "core-js/stable";
 
 import Vue from 'vue';
 
@@ -73,6 +73,7 @@ const router = new VueRouter({
 
 window.app = new Vue({
   el: '#app',
+  vuetify : new Vuetify(),
   render: h => h(App),
   router: router
 });

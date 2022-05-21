@@ -8,3 +8,4 @@ venv
 /web/config.js
 .tox/
 node_modules/
+.vscode/
