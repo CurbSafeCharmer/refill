@@ -1,4 +1,5 @@
-import "@babel/polyfill";
+/* eslint-disable no-undef */
+import "core-js/stable";
 
 import Vue from 'vue';
 
@@ -6,11 +7,7 @@ import Vue from 'vue';
 import VueConfig from 'vue-config';
 Vue.use(VueConfig, staticConfig);
 
-// == Helpers ==
-function requireAll(r) { r.keys().forEach(r); }
-
 // == Imports ==
-
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
@@ -73,6 +70,7 @@ const router = new VueRouter({
 
 window.app = new Vue({
   el: '#app',
+  vuetify : new Vuetify(),
   render: h => h(App),
   router: router
 });

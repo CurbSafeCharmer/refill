@@ -14,4 +14,3 @@ updates:
     directory: "/web"
     schedule:
       interval: "daily"
-

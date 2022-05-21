@@ -1,14 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VueLoaderPlugin = require('vue-loader-plugin');
 const config = require(`./config.${process.env.NODE_ENV}.js`);
 
 module.exports = {
   entry: {
     app: [
-      './src/main.js',
-      'webpack-material-design-icons'
+      './src/main.js'
     ]
   },
   output: {
@@ -52,11 +51,6 @@ module.exports = {
         },
       },
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-      },
-      {
         test: /\.(png|jpe?g|gif|svg|eot|woff2|woff|ttf)$/,
         loader: 'file-loader',
         options: {
@@ -72,7 +66,6 @@ module.exports = {
         { from: /./, to: '/index.html' },
       ],
     },
-    noInfo: true,
   },
   performance: {
     hints: false,

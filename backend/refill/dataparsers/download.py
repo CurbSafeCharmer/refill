@@ -1,8 +1,10 @@
+from bs4 import BeautifulSoup
+from requests.exceptions import SSLError
+
 from ..models import Citation
 from ..utils import session
 from ..utils.errors import FetchError
-from requests.exceptions import SSLError
-from bs4 import BeautifulSoup
+
 
 class Download:
     def __init__(self):
@@ -14,20 +16,23 @@ class Download:
         in place.
         """
 
-        if 'url' not in citation:
+        if "url" not in citation:
             return citation
 
         try:
             response = session.get(citation.url)
         except SSLError:
-            raise FetchError(citation.url, {
-                'type': 'SSLError',
-            })
+            raise FetchError(
+                citation.url,
+                {
+                    "type": "SSLError",
+                },
+            )
 
         if response.status_code != 200:
             return citation
 
-        citation.raw['downloaded'] = response
-        citation.raw['soup'] = BeautifulSoup(response.text, 'html.parser')
+        citation.raw["downloaded"] = response
+        citation.raw["soup"] = BeautifulSoup(response.text, "html.parser")
 
         return citation
