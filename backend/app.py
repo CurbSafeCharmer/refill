@@ -1,4 +1,5 @@
 import json
+import sys
 import time
 from collections import OrderedDict
 
@@ -139,6 +140,14 @@ fixWikipageModel = api.model(
         ),
     },
 )
+
+
+def test():
+    sys.exit(0)
+
+
+if __name__ == "__main__":
+    test()
 
 
 def set_defaults(model, payload):
