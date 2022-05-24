@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: theresnotime/refill-
+  IMAGE_NAME: ${{ github.repository_owner }}/refill-
   CONTEXT: /home/runner/work/refill/refill/backend
 
 jobs:
