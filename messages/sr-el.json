@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"appname": "reFill",
 	"tagline": "Širenje golih referenci sa lakoćom",
 	"fixwikipage": "Popravi stranicu",

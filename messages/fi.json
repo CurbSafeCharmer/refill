@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Moj",
 			"Nike",
 			"Pyscowicz"
 		]
-	}
+	},
+	"tagline": "Laajenna paljaat viitteet helposti",
+	"fixwikipage-page": "Sivun nimi",
+	"fixwikipage-code": "Koodi",
+	"wikicode-toggle": "Käytä mukautettua wikikoodia",
+	"state-REVOKED": "Peruutettu",
+	"yes": "Kyllä",
+	"no": "Ei",
+	"sandbox-page": "Wikipedia:Hiekkalaatikko"
 }

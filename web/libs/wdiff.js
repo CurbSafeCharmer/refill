@@ -1,3 +1,4 @@
+/* eslint-disable no-redeclare */
 // <syntaxhighlight lang="JavaScript">
 
 // ==UserScript==
@@ -140,8 +141,6 @@
 
 /** Define global objects. */
 var wikEdDiffConfig;
-var WED;
-
 
 /**
  * wikEd diff main class.
@@ -4023,7 +4022,7 @@ var WikEdDiff = function () {
 			}
 			title = this.htmlEscape( title );
 			title = title.replace( /\t/g, '&nbsp;&nbsp;');
-			title = title.replace( /  /g, '&nbsp;&nbsp;');
+			title = title.replace( / {2}/g, '&nbsp;&nbsp;');
 			html = html.replace( /\{title\}/, title);
 		}
 		return html;

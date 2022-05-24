@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Olve Utne"
+		]
+	},
+	"fixwikipage-page": "Biellenamma",
+	"fixwikipage-code": "Kuvvda",
+	"fixwikicode-submit": "Säddi",
+	"state-STARTED": "Állgám",
+	"state-STARTED-description": "Dat dahkamus l duostoduvvum.",
+	"state-PROGRESS-description": "Dat dahkamus l båhtemin.",
+	"state-SUCCESS-description": "Dat dahkamus lä ållånam.",
+	"state-REVOKED": "Buŧŧkim",
+	"state-REVOKED-description": "Dat dahkamus lä buŧŧkiduvvum.",
+	"previewandsave": "Åvvdåvuoseda / Vurrki",
+	"taskinfo": "Dahkamusdiedo",
+	"taskinfo-name": "Barrgo",
+	"taskinfo-id": "Dahkamus-ID",
+	"taskinfo-running": "Vuojjemin",
+	"report-manual-template-taskname": "Dahkamusnamma",
+	"report-manual-template-taskid": "Barrgo-ID",
+	"report-manual-template-changeid": "Målso ID",
+	"report-manual-template-old": "Åvdep täkksta",
+	"report-manual-template-new": "Åđđå täkksta",
+	"report-link-dead-other": "nágan ietjá bielle",
+	"deletetask": "Gádoda dahkamusav dievnárånesájjgemujtost.",
+	"legacybridge-submitting": "Säddi duv dahkamusav...",
+	"sandbox-page": "Wikipedia:Sáddelåđđå"
+}

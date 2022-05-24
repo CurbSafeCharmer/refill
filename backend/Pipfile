@@ -6,7 +6,11 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+# FIXME: Dead project
+# https://github.com/noirbizarre/flask-restplus/issues/777
 flask-restplus = "*"
+Werkzeug = "==0.16.1"
+
 celery = "*"
 redis = "*"
 dateparser = "*"
@@ -21,4 +25,4 @@ Babel = "*"
 pymongo = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.8"

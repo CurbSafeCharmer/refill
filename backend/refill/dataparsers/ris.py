@@ -1,52 +1,48 @@
 from ..models import Citation
 
+
 class RIS:
     # https://en.wikipedia.org/wiki/RIS_(file_format)
     MAPPING = {
-        'UR': 'url',
-        'TI': 'title',
-        'T1': 'title',
-        'T2': 'journal',
-        'DO': 'doi',
-        'AU': 'authors',
-        'ED': 'editors',
-        'SP': 'pagefrom',
-        'EP': 'pageto',
-        'VL': 'volume',
-        'IS': 'issue',
-        'DB': 'via',
-        'PY': 'year',
+        "UR": "url",
+        "TI": "title",
+        "T1": "title",
+        "T2": "journal",
+        "DO": "doi",
+        "AU": "authors",
+        "ED": "editors",
+        "SP": "pagefrom",
+        "EP": "pageto",
+        "VL": "volume",
+        "IS": "issue",
+        "DB": "via",
+        "PY": "year",
     }
 
     def __init__(self):
         pass
 
     def apply(self, citation: Citation) -> Citation:
-        if 'ris' not in citation.raw:
+        if "ris" not in citation.raw:
             return citation
 
-        for l in citation.raw['ris'].split('\n'):
-            l = l.strip().split('-', 1)
-            if len(l) < 2:
+        for line in citation.raw["ris"].split("\n"):
+            line = line.strip().split("-", 1)
+            if len(line) < 2:
                 continue
 
-            tag = l[0].strip()
-            value = l[1].strip()
-            if tag == 'ER':
+            tag = line[0].strip()
+            value = line[1].strip()
+            if tag == "ER":
                 break
 
             if tag in RIS.MAPPING:
                 field = RIS.MAPPING[tag]
-                if field == 'editors':
+                if field == "editors":
                     citation.editors.append(value)
-                elif field == 'authors':
+                elif field == "authors":
                     citation.authors.append(value)
                 else:
                     citation[RIS.MAPPING[tag]] = value
 
-                print(field, value)
-
-        print(citation.pages)
-
         return citation
-

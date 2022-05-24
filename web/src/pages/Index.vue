@@ -1,3 +1,4 @@
+/* eslint-disable vue/multi-word-component-names */
 <template>
   <v-flex md8 offset-md2 lg6 offset-lg3>
     <v-container fluid grid-list-lg class="mcontainer">
@@ -31,7 +32,7 @@
                   :label="msg('fixwikipage-fam')"
                 ></v-text-field>
 
-                <v-btn large flat outline color="primary" icon @click="fixWikipage">
+                <v-btn large text outlined color="primary" icon @click="fixWikipage">
                   <v-icon>arrow_forward</v-icon>
                 </v-btn>
               </div>
@@ -46,11 +47,11 @@
               </v-slide-y-transition>
             </v-card-text>
           </v-card>
-          <v-btn flat @click="useCustomWikicode = !useCustomWikicode">
+          <v-btn text @click="useCustomWikicode = !useCustomWikicode">
             <v-icon left>{{ useCustomWikicode ? 'remove' : 'add' }}</v-icon>
             {{ msg('wikicode-toggle') }}
           </v-btn>
-          <v-btn flat @click="$refs.preferences.show()">
+          <v-btn text @click="$refs.preferences.show()">
             <v-icon left>settings</v-icon>
             {{ msg('preferences-button') }}
           </v-btn>

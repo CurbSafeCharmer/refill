@@ -3,9 +3,9 @@
 		"authors": [
 			"Amire80",
 			"Guycn2",
-			"שניאור זלמן",
 			"Strayblues",
-			"YaronSh"
+			"YaronSh",
+			"שניאור זלמן"
 		]
 	},
 	"tagline": "הרחבת הערות ערומות בקלות",
@@ -55,7 +55,7 @@
 	"error-transform-FillExternal": "השגיאה התרחשה כאשר הכלי השלים קישור חיצוני חשוף.",
 	"error-transform-MergeRef": "שגיאה זו קרתה כאשר הכלי מיזג הפניות זהות.",
 	"report": "דיווח על תקלה",
-	"report-manual-template-intro": "האם הכלי הציע שינוי פגום? נא לכלול את כל הפרטים הבאים בעת דיווח על התקלה הזו:",
+	"report-manual-template-intro": "האם הכלי הציע שינוי פגום? נא לכלול את כל הפרטים הבאים בעת דיווח על התקלה הזאת:",
 	"report-manual-template-taskname": "שם משימה",
 	"report-manual-template-taskid": "מזהה משימה",
 	"report-manual-template-changeid": "מזהה שינוי",

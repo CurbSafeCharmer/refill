@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajeje Brazorf"
+		]
+	},
+	"fixwikipage": "Curreggi na pàggina",
+	"fixwikipage-page": "Nomu dâ pàggina",
+	"fixwikipage-code": "Còdici",
+	"fixwikipage-fam": "Famigghia",
+	"fixwikicode-submit": "Manna",
+	"wikicode-toggle": "Usa lu wikicòdici pirsunalizzatu",
+	"preferences": "Prifirenzi",
+	"preferences-button": "Prifirenzi",
+	"preferences-save": "Sarva prifirenzi",
+	"state-REVOKED": "Annullatu",
+	"previewandsave": "Antiprima / Sarva",
+	"taskinfo-state": "Statu",
+	"taskinfo-percentage": "Pircintuali",
+	"error-details": "Dittagghî erruri",
+	"error-type-NoTitleError": "Nuddu tìtulu attruvatu",
+	"error-type-HomepageRedirectError": "Rimannatu â pàggina principali",
+	"error-type-unknown": "Erruri scanusciutu",
+	"report-manual-template-changeid": "Cancia ID",
+	"report-manual-template-old": "Testu vecchiu",
+	"report-manual-template-new": "Testu novu",
+	"report-link-dead-error": "na pàggina di erruri (404, 403, ecc.)",
+	"report-link-dead-homepage": "la pàggina principali dû situ web",
+	"report-link-dead-other": "quarchi àutri pàggini",
+	"report-link-archive-url": "URL orìgginali dâ pàggina",
+	"yes": "Sì",
+	"no": "No",
+	"sandbox-page": "Wikipedia:Fogghiu di prova"
+}

@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Elroy",
 			"Frank Geerlings",
-			"Siebrand",
 			"Jeleniccz",
 			"Marcelhospers",
-			"Elroy"
+			"Optilete",
+			"Siebrand"
 		]
 	},
 	"appname": "reFill",
@@ -28,6 +29,7 @@
 	"state-STARTED": "Gestart",
 	"state-PROGRESS": "Bezig met verwerken",
 	"state-SUCCESS": "Afgerond",
+	"state-SUCCESS-description": "De taak is afgerond.",
 	"state-FAILURE": "Mislukt",
 	"state-FAILURE-description": "Er is een fout opgetreden.",
 	"state-REVOKED": "Geannuleerd.",

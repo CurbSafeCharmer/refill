@@ -1,32 +1,33 @@
 from mwparserfromhell.nodes.template import Template
-from .formatter import Formatter
-from ..models import Context, Citation
+
+from ..models import Citation, Context
 from ..utils import Utils
+from .formatter import Formatter
 
 
 class CiteTemplate(Formatter):
     ORDER = [
-        'url',
-        'archiveurl',
-        'deadurl',
-        'title',
-        'authors',
-        'editors',
-        'date',
-        'year',
-        'archivedate',
-        'publisher',
-        'website',
-        'journal',
-        'volume',
-        'issue',
-        'pages',
-        'accessdate',
-        'via',
-        'doi',
-        'pmid',
-        'pmc',
-        'arxiv',
+        "url",
+        "archiveurl",
+        "deadurl",
+        "title",
+        "authors",
+        "editors",
+        "date",
+        "year",
+        "archivedate",
+        "publisher",
+        "website",
+        "journal",
+        "volume",
+        "issue",
+        "pages",
+        "accessdate",
+        "via",
+        "doi",
+        "pmid",
+        "pmc",
+        "arxiv",
     ]
 
     """
@@ -39,24 +40,23 @@ class CiteTemplate(Formatter):
     not considering other WMF projects here).
     """
     TEMPLATE_FALLBACK = {
-        'webpage': 'Cite web',
-        'bookSection': 'Cite book',
-        'default': 'Cite web',
-        'journalArticle': 'Cite journal',
+        "webpage": "Cite web",
+        "bookSection": "Cite book",
+        "default": "Cite web",
+        "journalArticle": "Cite journal",
     }
 
-    def __init__(self, ctx: Context=None):
+    def __init__(self, ctx: Context = None):
         super().__init__(ctx)
 
     def format(self, citation: Citation):
         tname = CiteTemplate.TEMPLATE_FALLBACK.get(
-            citation.type,
-            CiteTemplate.TEMPLATE_FALLBACK['default']
+            citation.type, CiteTemplate.TEMPLATE_FALLBACK["default"]
         )
         template = Template(tname)
 
         for fragment in CiteTemplate.ORDER:
-            func = getattr(self, '_fragment_' + fragment, None)
+            func = getattr(self, "_fragment_" + fragment, None)
             if func:
                 func(template, citation)
             elif fragment in citation:
@@ -64,31 +64,29 @@ class CiteTemplate(Formatter):
 
         return str(template)
 
-    def _fragment_date(self, template, citation, field='date'):
+    def _fragment_date(self, template, citation, field="date"):
         fmt = self._ctx.getDateFormat()
         if field in citation:
             page = self._ctx.getPage()
-            lang = 'en' if not page else page.site.lang
-            template.add(field, Utils.formatDate(
-                citation[field], lang, fmt
-            ))
+            lang = "en" if not page else page.site.lang
+            template.add(field, Utils.formatDate(citation[field], lang, fmt))
 
     def _fragment_archivedate(self, template, citation):
-        self._fragment_date(template, citation, field='archivedate')
+        self._fragment_date(template, citation, field="archivedate")
 
     def _fragment_accessdate(self, template, citation):
-        self._fragment_date(template, citation, field='accessdate')
+        self._fragment_date(template, citation, field="accessdate")
 
     def _fragment_deadurl(self, template, citation):
-        if 'archiveurl' in citation:
-            template.add('deadurl', 'y')
+        if "archiveurl" in citation:
+            template.add("deadurl", "y")
 
-    def _fragment_authors(self, template, citation, field='authors'):
-        para = 'editor' if field == 'editors' else 'author'
-        multiprefix = 'editor-' if field == 'editors' else ''
+    def _fragment_authors(self, template, citation, field="authors"):
+        para = "editor" if field == "editors" else "author"
+        multiprefix = "editor-" if field == "editors" else ""
 
         if field not in citation:
-            return ''
+            return ""
         elif len(citation[field]) > 1:
             for index, name in enumerate(citation[field]):
                 self._generateAuthor(template, name, para, multiprefix, index + 1)
@@ -96,13 +94,15 @@ class CiteTemplate(Formatter):
             self._generateAuthor(template, citation[field][0], para, multiprefix)
 
     def _fragment_editors(self, template, citation):
-        return self._fragment_authors(template, citation, field='editors')
+        return self._fragment_authors(template, citation, field="editors")
 
-    def _generateAuthor(self, template, name, para='author', multiprefix='', index=None):
-        istr = str(index) if index else ''
+    def _generateAuthor(
+        self, template, name, para="author", multiprefix="", index=None
+    ):
+        istr = str(index) if index else ""
 
         if type(name) is list:
-            template.add(multiprefix + 'first' + istr, name[0])
-            template.add(multiprefix + 'last' + istr, name[1])
+            template.add(multiprefix + "first" + istr, name[0])
+            template.add(multiprefix + "last" + istr, name[1])
         else:
             template.add(para + istr, name)

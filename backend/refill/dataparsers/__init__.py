@@ -1,45 +1,35 @@
-from .parseurl import ParseURL
-from .download import Download
-from .detectdeadlink import DetectDeadLink
-
-from .title import Title
 from .archiveis import ArchiveIs
-from .citoid import Citoid
-
+from .arxiv import ArXiv
 from .badauthors import BadAuthors
 from .baddates import BadDates
-from .parsespecial import ParseSpecial
-
+from .citoid import Citoid
+from .detectdeadlink import DetectDeadLink
 from .doi import DOI
-from .ncbi import NCBI
+from .download import Download
 from .jstor import JSTOR
+from .ncbi import NCBI
+from .parsespecial import ParseSpecial
+from .parseurl import ParseURL
 from .ris import RIS
-
-from .arxiv import ArXiv
+from .title import Title
 
 DefaultChain = [
     ParseURL(),
     Download(),
     DetectDeadLink(),
-
     Title(),
-
     # Archives
-    ArchiveIs(), # archive.is and friends
-
+    ArchiveIs(),  # archive.is and friends
     # Citoid
     Citoid(),
-
     # Data cleaning
     BadAuthors(),
     BadDates(),
     ParseSpecial(),
-
     # RIS providers
     DOI(),
     NCBI(),
     JSTOR(),
     RIS(),
-
     ArXiv(),
 ]

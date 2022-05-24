@@ -6,4 +6,6 @@ venv
 /backend/throttle.ctrl
 /web/dist
 /web/config.js
-
+.tox/
+node_modules/
+.vscode/

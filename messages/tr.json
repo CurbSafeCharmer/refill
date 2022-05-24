@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Alpkant",
-			"Kumkumuk",
+			"BaRaN6161 TURK",
 			"Hedda",
-			"BaRaN6161 TURK"
+			"Kumkumuk",
+			"MuratTheTurkish"
 		]
 	},
 	"tagline": "Kolaylıkla sade referansları genişletin",
@@ -15,7 +16,7 @@
 	"fixwikicode": "Verilen viki kodu düzeltin",
 	"fixwikicode-wikicode": "Ham viki kodu",
 	"fixwikicode-submit": "Gönder",
-	"wikicode-toggle": "Özel wiki kodu kullan",
+	"wikicode-toggle": "Özel viki kodu kullan",
 	"apiendpoint": "API son noktası",
 	"result": "Sonuç",
 	"preferences": "Tercihler",
@@ -34,7 +35,7 @@
 	"state-SUCCESS-description": "Görev başarılı oldu.",
 	"state-FAILURE": "Başarısız",
 	"state-FAILURE-description": "Bir hata oluştu",
-	"state-REVOKED": "İptal edildi.",
+	"state-REVOKED": "İptal edildi",
 	"state-REVOKED-description": "Görev iptal edildi.",
 	"state-BACKEND_ERROR": "Arka uç hatası",
 	"state-BACKEND_ERROR-description": "Bilinmeyen bir hata oluştu.",
@@ -61,7 +62,7 @@
 	"report-manual-template-old": "Eski Metin",
 	"report-manual-template-new": "Yeni Metin",
 	"report-intro": "Bu değişikliğin hatalı olduğunu belirttiniz. Neden?",
-	"report-wikicode-na": "Wiki kodunun oluşturulmasında herhangi bir problem yok",
+	"report-wikicode-na": "Vikikodun üretilme biçiminde bir sorun yok",
 	"report-wikicode-syntax": "Araç bir sözdizimi hatası verdi (uyumsuz parantez, vb.)",
 	"report-wikicode-removal": "Araç orijinal metinde mevcut olan bilgileri kaldırdı",
 	"report-wikicode-template": "Araç yanlış tür alıntı şablonu seçti",
@@ -76,7 +77,7 @@
 	"report-link-dead-other": "başka bir sayfa",
 	"report-link-archive": "Bu bağlantı bir arşiv sayfasına yönlendirir",
 	"report-link-archive-url": "Sayfanın orijinal URL'si",
-	"errors": "Araç bazı hatalarla karşılaştı. Detaylar için kırmızı kalem ikonlarına tıklayın.",
+	"errors": "Araç bazı hatalarla karşılaştı. Ayrıntılar için kırmızı kalem simgelerine tıklayın.",
 	"deletetask": "Sunucu önbelleğinden görev sil",
 	"chancetoreview": "Düzenlemeyi kaydetmeden önce gözden geçirme şansınız olacak.",
 	"summary": "$1 referansda $3 ile dolduruldu",

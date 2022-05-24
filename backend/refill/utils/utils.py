@@ -1,7 +1,9 @@
-from mwparserfromhell.wikicode import Wikicode
-from babel.dates import format_date
-from datetime import date
 import re
+from datetime import date
+
+from babel.dates import format_date
+from mwparserfromhell.wikicode import Wikicode
+
 
 class Utils:
     @staticmethod
@@ -17,7 +19,7 @@ class Utils:
         This method protects existing markers present in the
         text so that reFill does not try to modify them.
         """
-        return re.sub(r'RFL(\w\d+)LFR', r'RPFL%s=\1LFPR' % unique, str(wikicode))
+        return re.sub(r"RFL(\w\d+)LFR", r"RPFL%s=\1LFPR" % unique, str(wikicode))
 
     @staticmethod
     def unprotectMarkers(wikicode: str or Wikicode, unique: str) -> str:
@@ -26,7 +28,7 @@ class Utils:
         in the original wikicode that are not supposed to be
         modified/interpreted by the tool.
         """
-        return re.sub(r'RPFL%s=(\w\d+)LFPR' % unique, r'RFL\1LFR', str(wikicode))
+        return re.sub(r"RPFL%s=(\w\d+)LFPR" % unique, r"RFL\1LFR", str(wikicode))
 
     @staticmethod
     def unmarkWikicode(wikicode: str or Wikicode) -> str:
@@ -34,22 +36,22 @@ class Utils:
 
         This method removes markers from supplied wikicode.
         """
-        return re.sub(r'RFL(\w\d+)LFR', '', str(wikicode))
+        return re.sub(r"RFL(\w\d+)LFR", "", str(wikicode))
 
     @staticmethod
-    def formatDate(date: date, lang: str, format: str = '') -> str:
+    def formatDate(date: date, lang: str, format: str = "") -> str:
         """Format date
         This method generates a human-readable representation
-        of a date object. 
+        of a date object.
         """
 
         # reFill provides a platform-independent implementation of a
         # non-zero-padded day of the month directive, %=d
         SPECIAL_FORMAT = {
-            'en': {
-                'mdy': '%B %=d, %Y',
-                'dmy': '%=d %B %Y',
-                'numeric': '%Y-%m-%d',
+            "en": {
+                "mdy": "%B %=d, %Y",
+                "dmy": "%=d %B %Y",
+                "numeric": "%Y-%m-%d",
             },
         }
 
@@ -59,6 +61,6 @@ class Utils:
             if callable(f):
                 return f(date)
             else:
-                return date.strftime(f).replace('%=d', str(date.day))
+                return date.strftime(f).replace("%=d", str(date.day))
         else:
             return format_date(date, locale=lang)
