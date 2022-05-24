@@ -14,13 +14,13 @@ class ArchiveIs:
             return citation
 
         supportedDomains = [
-            'archive.fo',
-            'archive.is',
-            'archive.li',
-            'archive.md',
-            'archive.ph',
-            'archive.today',
-            'archive.vn',
+            "archive.fo",
+            "archive.is",
+            "archive.li",
+            "archive.md",
+            "archive.ph",
+            "archive.today",
+            "archive.vn",
         ]
 
         if citation.raw["parsedUrl"].netloc not in supportedDomains:
