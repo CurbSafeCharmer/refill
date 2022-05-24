@@ -5,9 +5,9 @@ from collections import OrderedDict
 
 from flask import Flask, Response, abort, url_for
 from flask_cors import CORS
-from flask_restplus import Api, Resource, fields
+from flask_restx import Api, Resource, fields
 from refill.tasks import TASK_MAPPING, fixWikipage
-from werkzeug.contrib.fixers import ProxyFix
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = Flask(__name__)
 app.config.SWAGGER_UI_DOC_EXPANSION = "list"
@@ -143,6 +143,7 @@ fixWikipageModel = api.model(
 
 
 def test():
+    print("ok!")
     sys.exit(0)
 
 

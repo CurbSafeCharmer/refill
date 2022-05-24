@@ -1,5 +1,5 @@
 from ..utils import Utils
-from .transform import Transform
+from .Transform import Transform
 
 
 class MergeRef(Transform):

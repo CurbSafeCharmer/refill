@@ -2,7 +2,7 @@ from concurrent.futures import as_completed
 
 from ..dataparsers import DefaultChain
 from ..models import Citation
-from .transform import Transform
+from .Transform import Transform
 
 
 class FillExternal(Transform):

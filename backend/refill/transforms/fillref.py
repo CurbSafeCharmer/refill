@@ -3,8 +3,9 @@ from datetime import date
 
 from ..dataparsers import DefaultChain
 from ..formatters import CiteTemplate
-from ..utils import NoTitleError, Parser
-from .transform import Transform
+from ..utils import Parser
+from ..utils.errors import NoTitleError
+from .Transform import Transform
 
 
 class FillRef(Transform):
