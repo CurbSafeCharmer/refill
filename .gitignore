@@ -9,3 +9,4 @@ venv
 .tox/
 node_modules/
 .vscode/
+pywikibot.lwp

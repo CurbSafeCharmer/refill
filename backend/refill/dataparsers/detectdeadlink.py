@@ -1,7 +1,7 @@
 from furl import furl
 
 from ..models import Citation
-from ..utils import HomepageRedirectError
+from ..utils.errors import HomepageRedirectError
 
 
 class DetectDeadLink:

@@ -2,7 +2,6 @@ name: Python
 
 on:
   push:
-    branches: [ master ]
   pull_request:
 
 permissions:
@@ -14,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         python: ["3.7", "3.8", "3.9"]
         experimental: [false]
@@ -35,5 +34,6 @@ jobs:
           pip install tox
           pip install -r backend/requirements.txt
       - name: Run tox
-        # Skip tox for now!
         run: tox -v
+      - name: Run application
+        run: python backend/app.py
