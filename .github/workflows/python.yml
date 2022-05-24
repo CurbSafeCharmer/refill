@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         python: ["3.7", "3.8", "3.9"]
         experimental: [false]
