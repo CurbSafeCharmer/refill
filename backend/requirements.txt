@@ -1,6 +1,6 @@
 Babel==2.10.1
 beautifulsoup4==4.11.1
-celery==5.2.6
+celery==5.2.7
 dateparser==1.1.1
 Flask==2.1.2
 Flask_Cors==3.0.10
