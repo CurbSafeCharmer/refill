@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cumbril"
+			"Cumbril",
+			"Pikne"
 		]
 	},
 	"tagline": "Täida kergesti paljad viited",
@@ -62,7 +63,7 @@
 	"report-wikicode-syntax": "Tööriist tekitas süntaksivea (paariliseta sulumärk vms)",
 	"report-wikicode-removal": "Tööriist eemaldas lähtetekstis olnud infot",
 	"report-wikicode-template": "Tööriist valis valet tüüpi viitemalli",
-	"report-wikicode-template-type": "Tööriista meelest on veebilehe tüüp \"$\". Kas see vastab töele?",
+	"report-wikicode-template-type": "Tööriista meelest on veebilehe tüüp \"$1\". Kas see vastab tõele?",
 	"report-wikicode-template-mapinfo": "Tööriist kasutas sobiva viitemalli valimiseks lehekülge $1. Palun anna probleemist vastaval arutelulehel teada.",
 	"report-wikicode-template-input": "Sobiv viitemall",
 	"report-link-na": "Kõne all oleva lingiga pole probleeme",
