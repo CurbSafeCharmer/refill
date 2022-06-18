@@ -34,7 +34,7 @@
 
 function ReflinksGadget() {
 	this.server = typeof rlServer !== 'undefined' ? rlServer
-	            : "https://tools.wmflabs.org/refill";
+	            : "https://refill.toolforge.org";
 	this.wiki = typeof rlWiki !== 'undefined' ? rlWiki
 	          : null;
 

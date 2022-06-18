@@ -22,6 +22,15 @@
 */
 
 namespace Reflinks;
+
+// HACK
+$options = array_merge($_POST, $_GET);
+
+if ( !$options['wiki'] || $options['wiki'] == 'en' ) {
+       header( 'Location: /ng/result.php?' . http_build_query($options) );
+       exit;
+}
+
 require_once __DIR__ . "/../src/bootstrap.php";
 
 set_time_limit( $config['maxtime'] );
