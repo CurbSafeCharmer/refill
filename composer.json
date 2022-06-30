@@ -17,7 +17,7 @@
 		"masterminds/html5": "2.*",
 		"twig/twig": "~1.0",
 		"beelab/bowerphp": "0.2.*@alpha",
-		"Krinkle/intuition": "^0.2.2",
+		"krinkle/intuition": "^0.2.2",
 		"jenssegers/date": "^3.0",
 		"jwage/purl": "^0.0.7"
 	},
