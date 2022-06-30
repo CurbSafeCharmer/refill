@@ -14,3 +14,9 @@ updates:
     directory: "/web"
     schedule:
       interval: "daily"
+ 
+  - package-ecosystem: "composer" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    target-branch: "labs-stable"
