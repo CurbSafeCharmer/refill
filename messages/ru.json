@@ -66,6 +66,6 @@
 	"option-usedomainaswork": "Использовать основное имя домена, как значение для |work=, если информация не может быть проанализирована",
 	"wmflabs-thankyoutest": "Спасибо за тестирование экспериментальной версии $1. Пожалуйста, сообщите ошибки с которыми вы столкнулись.",
 	"wmflabs-latestcommit": "Последний коммит: $1",
-	"wmflabs-poweredby": "Powered by Wikimedia Labs",
+	"wmflabs-poweredby": "Powered by Toolforge",
 	"wmflabs-testsummary": "{{PLURAL:$1|Заполнена|Заполнены}} $1 {{PLURAL:$1|голая ссылка|голых ссылки|голых ссылок}} с помощью тестовой версии $3"
 }

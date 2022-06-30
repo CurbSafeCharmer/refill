@@ -65,6 +65,6 @@
 	"option-usedomainaswork": "Використовувати базове ім'я домену для |work=, якщо інформацію неможливо парсити",
 	"wmflabs-thankyoutest": "Дякуємо за тестування експериментальної версії $1. Будь ласка, повідомляйте про баги, з якими зіткнетесь.",
 	"wmflabs-latestcommit": "Останній коміт: $1",
-	"wmflabs-poweredby": "Powered by Wikimedia Labs",
+	"wmflabs-poweredby": "Powered by Toolforge",
 	"wmflabs-testsummary": "Заповнено {{PLURAL:$1|$1 просте посилання|$1 прості посилання|$1 простих посилань}} за допомогою тестової версії $3"
 }

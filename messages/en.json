@@ -61,7 +61,7 @@
 	"option-usedomainaswork": "Use the base domain name as work when this information cannot be parsed",
 	"wmflabs-thankyoutest": "Thank you for testing the experimental version of $1. Please report the bugs you encounter.",
 	"wmflabs-latestcommit": "Latest commit: $1",
-	"wmflabs-poweredby": "Powered by Wikimedia Labs",
+	"wmflabs-poweredby": "Powered by Toolforge",
 	"wmflabs-testsummary": "Filled in $1 bare reference(s) with the test version of $3",
 	"wikitext-template-web": "cite web",
 	"wikitext-template-book": "cite book",
