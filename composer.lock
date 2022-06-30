@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e841c8862229d934e54412fab776171",
+    "content-hash": "52b320cfc19ff4c1282d07a15fb35d3d",
     "packages": [
         {
             "name": "beelab/bowerphp",
@@ -424,75 +424,51 @@
         },
         {
             "name": "krinkle/intuition",
-            "version": "v0.2.3",
+            "version": "v0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Krinkle/intuition.git",
-                "reference": "ca8f1ea389091592ba1e249ab4c1ac804c0b80ec"
+                "reference": "294105af4c7f0b62f9ce4703bbd35b129ac5a889"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Krinkle/intuition/zipball/ca8f1ea389091592ba1e249ab4c1ac804c0b80ec",
-                "reference": "ca8f1ea389091592ba1e249ab4c1ac804c0b80ec",
+                "url": "https://api.github.com/repos/Krinkle/intuition/zipball/294105af4c7f0b62f9ce4703bbd35b129ac5a889",
+                "reference": "294105af4c7f0b62f9ce4703bbd35b129ac5a889",
                 "shasum": ""
             },
             "require": {
-                "krinkle/toollabs-base": "~0.7.0",
                 "php": ">=5.5"
             },
             "require-dev": {
-                "jakub-onderka/php-parallel-lint": "0.*",
-                "mediawiki/mediawiki-codesniffer": "0.1.0",
-                "phpunit/phpunit": "3.7.*",
-                "squizlabs/php_codesniffer": "2.1.*"
+                "jakub-onderka/php-parallel-lint": "0.9.*",
+                "mediawiki/mediawiki-codesniffer": "0.5.0",
+                "phpunit/phpunit": "4.8.*",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "2.3.*"
             },
             "type": "library",
             "autoload": {
                 "files": [
-                    "ToolStart.php"
-                ]
+                    "src/defines.php",
+                    "src/compat.php"
+                ],
+                "psr-0": {
+                    "MessagesFunctions": "language/"
+                },
+                "psr-4": {
+                    "Krinkle\\Intuition\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "CC-BY-3.0"
             ],
             "description": "Framework for localisation in PHP.",
-            "time": "2016-03-16T22:52:37+00:00"
-        },
-        {
-            "name": "krinkle/toollabs-base",
-            "version": "v0.7.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Krinkle/toollabs-base.git",
-                "reference": "f81ffd9225db095a840022191be699ca337ebb72"
+            "support": {
+                "issues": "https://github.com/Krinkle/intuition/issues",
+                "source": "https://github.com/Krinkle/intuition/tree/master"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Krinkle/toollabs-base/zipball/f81ffd9225db095a840022191be699ca337ebb72",
-                "reference": "f81ffd9225db095a840022191be699ca337ebb72",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "jakub-onderka/php-parallel-lint": "0.8.*",
-                "mikey179/vfsstream": "1.*",
-                "phpunit/phpunit": "4.1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "InitTool.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Unlicense"
-            ],
-            "description": "Framework for web apps in Wikimedia's Tool Labs environment.",
-            "time": "2015-09-12T21:24:58+00:00"
+            "time": "2018-04-09T22:47:53+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -2353,5 +2329,6 @@
         "ext-mbstring": "*",
         "ext-iconv": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
