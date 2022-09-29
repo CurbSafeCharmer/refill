@@ -44,7 +44,7 @@
 	"previewandsave": "Prévisualiser / Enregistrer",
 	"taskinfo": "Informations sur une tâche",
 	"taskinfo-name": "Tâche",
-	"taskinfo-id": "ID de tâche",
+	"taskinfo-id": "Identifiant de la tâche",
 	"taskinfo-state": "État",
 	"taskinfo-percentage": "Pourcentage",
 	"taskinfo-running": "Exécution en cours",
