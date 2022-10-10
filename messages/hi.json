@@ -35,7 +35,7 @@
 	"state-PROGRESS-description": "कार्य को प्रोसेस किया जा रहा है।",
 	"state-SUCCESS": "सफलता",
 	"state-SUCCESS-description": "कार्य सफल हुआ।",
-	"state-FAILURE": "विफल हुआ",
+	"state-FAILURE": "असफलता",
 	"state-FAILURE-description": "एक त्रुटि आई।",
 	"state-REVOKED": "रद्द",
 	"state-REVOKED-description": "कार्य रद्द कर दिया गया है।",
