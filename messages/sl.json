@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Eleassar",
 			"HairyFotr",
 			"Janezdrilc"
 		]
@@ -16,7 +17,7 @@
 	"state-SUCCESS": "Uspešno",
 	"state-SUCCESS-description": "Opravilo je bilo uspešno zaključeno.",
 	"state-FAILURE": "Spodletelo",
-	"state-FAILURE-description": "Zgodila se je napaka.",
+	"state-FAILURE-description": "Prišlo je do napake.",
 	"state-REVOKED": "Preklicano",
 	"state-REVOKED-description": "Opravilo je bilo preklicano.",
 	"state-BACKEND_ERROR-description": "Prišlo je do neznane napake.",
