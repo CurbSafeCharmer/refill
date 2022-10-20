@@ -15,7 +15,7 @@
 	"state-PROGRESS": "Obdelujem",
 	"state-PROGRESS-description": "Opravilo je v teku.",
 	"state-SUCCESS": "Uspešno",
-	"state-SUCCESS-description": "Opravilo je bilo uspešno zaključeno.",
+	"state-SUCCESS-description": "Opravilo je bilo uspešno.",
 	"state-FAILURE": "Spodletelo",
 	"state-FAILURE-description": "Prišlo je do napake.",
 	"state-REVOKED": "Preklicano",
