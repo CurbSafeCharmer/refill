@@ -3,7 +3,8 @@
 		"authors": [
 			"Kly",
 			"LNDDYL",
-			"Pak Long Wu"
+			"Pak Long Wu",
+			"捍粵者"
 		]
 	},
 	"appname": "reFill",
@@ -27,15 +28,15 @@
 	"state-PENDING": "待辦",
 	"state-PENDING-description": "等待可用的執行者。",
 	"state-STARTED": "已開始",
-	"state-STARTED-description": "任務已被挑起。",
+	"state-STARTED-description": "任務已挑起",
 	"state-PROGRESS": "處理中",
-	"state-PROGRESS-description": "任務已進行處理。",
+	"state-PROGRESS-description": "任務已處理",
 	"state-SUCCESS": "成功",
 	"state-SUCCESS-description": "任務已成功。",
 	"state-FAILURE": "失敗",
 	"state-FAILURE-description": "發生錯誤。",
 	"state-REVOKED": "已取消",
-	"state-REVOKED-description": "任務已被取消。",
+	"state-REVOKED-description": "任務已取消",
 	"state-BACKEND_ERROR": "後端錯誤",
 	"state-BACKEND_ERROR-description": "發生不明錯誤。",
 	"previewandsave": "預覽/儲存",
