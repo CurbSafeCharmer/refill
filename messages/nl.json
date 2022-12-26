@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bdijkstra",
 			"Elroy",
 			"Frank Geerlings",
 			"Jeleniccz",
@@ -41,8 +42,16 @@
 	"taskinfo-percentage": "Percentage",
 	"taskinfo-submiturl": "Doel-URI",
 	"error-details": "Foutgegevens",
+	"error-type-unknown": "Onbekende fout",
+	"report-manual-template-taskname": "Naam van taak",
+	"report-manual-template-old": "Oude tekst",
+	"report-manual-template-new": "Nieuwe tekst",
+	"report-link-dead": "Deze link is dood",
+	"report-link-dead-other": "een andere pagina",
 	"chancetoreview": "U hebt de mogelijkheid uw wijzigingen te controleren voor ze worden opgeslagen.",
 	"summary": "$1 verwijzing(en) aangevuld met $3",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"yes": "Ja",
+	"no": "Nee",
 	"sandbox-page": "Wikipedia:Zandbak"
 }
