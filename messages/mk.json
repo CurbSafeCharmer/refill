@@ -24,7 +24,7 @@
 	"preferences-dateFormatEn": "Стандарден датумски формат (само англиски)",
 	"preferences-save": "Зачувај нагодувања",
 	"state-PENDING": "Во исчекување",
-	"state-PENDING-description": "Се чека расположив работник.",
+	"state-PENDING-description": "Се чека расположлив работник.",
 	"state-STARTED": "Започнато",
 	"state-STARTED-description": "Задачата е преземена.",
 	"state-PROGRESS": "Обработувам",
