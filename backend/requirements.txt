@@ -1,5 +1,5 @@
 Babel==2.10.1
-beautifulsoup4==4.11.1
+beautifulsoup4==4.11.2
 celery==5.2.7
 dateparser==1.1.1
 Flask==2.1.2
