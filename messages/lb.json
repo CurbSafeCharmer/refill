@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"fixwikipage": "Eng Säit flécken",
@@ -33,11 +34,17 @@
 	"taskinfo-submiturl": "Zil-URL",
 	"error-details": "Detailer vum Feeler",
 	"error-type-NoTitleError": "Keen Titel fonnt",
+	"error-type-HomepageRedirectError": "Op d'Homepage virugeleet",
 	"error-type-unknown": "Onbekannte Feeler",
 	"report": "E Probleem mellen",
 	"report-manual-template-old": "Alen Text",
 	"report-manual-template-new": "Neien Text",
 	"report-link-dead": "Dëse Link ass dout",
+	"report-link-dead-error": "eng Feelersäit (404, 403, etc.)",
+	"report-link-dead-homepage": "d'Homepage vun der Websäit",
+	"report-link-dead-other": "eng aner Säit",
+	"report-link-archive": "Dëse Link féiert op eng Archivsäit",
+	"report-link-archive-url": "Original-URL vun der Säit",
 	"chancetoreview": "Dir kritt d'Méiglechkeet fir d'Ännerung nozekucken ier se gespäichert gëtt.",
 	"yes": "Jo",
 	"no": "Neen",
