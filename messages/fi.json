@@ -12,6 +12,9 @@
 	"wikicode-toggle": "Käytä mukautettua wikikoodia",
 	"state-REVOKED": "Peruutettu",
 	"error-type-unknown": "Tuntematon virhe",
+	"report-link-dead": "Tämä linkki on kuollut",
+	"report-link-dead-error": "virhesivu (404, 403 jne.)",
+	"report-link-archive-url": "Sivun alkuperäinen URL-osoite",
 	"yes": "Kyllä",
 	"no": "Ei",
 	"sandbox-page": "Wikipedia:Hiekkalaatikko"
