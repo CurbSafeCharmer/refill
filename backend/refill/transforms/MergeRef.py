@@ -70,7 +70,7 @@ class MergeRef(Transform):
 
                 old_name = self._getName(tag)
                 self._setName(tag, name)
-                if old_name != name :
+                if old_name != name:
                     changed.append(old_name)
 
             all_tags = [e[2] for e in collection]
