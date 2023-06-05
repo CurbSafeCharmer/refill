@@ -74,9 +74,9 @@ class MergeRef(Transform):
                     changed.append(old_name)
 
             all_tags = [e[2] for e in collection]
-                for tag in all_tags:
-                    if (self._getName(tag) in changed):  # We just changed <ref name=X>stuff</ref>, now do <ref name=X/>
-                        self._setName(tag, name)
+            for tag in all_tags:
+                if (self._getName(tag) in changed):  # We just changed <ref name=X>stuff</ref>, now do <ref name=X/>
+                    self._setName(tag, name)
 
 
         self._ctx.reportProgress("SUCCESS", 1, {})
