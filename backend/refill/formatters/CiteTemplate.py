@@ -9,7 +9,7 @@ class CiteTemplate(Formatter):
     ORDER = [
         "url",
         "archiveurl",
-        "deadurl",
+        "url-status",
         "title",
         "authors",
         "editors",
@@ -79,7 +79,7 @@ class CiteTemplate(Formatter):
 
     def _fragment_deadurl(self, template, citation):
         if "archiveurl" in citation:
-            template.add("deadurl", "y")
+            template.add("url-status", "dead")
 
     def _fragment_authors(self, template, citation, field="authors"):
         para = "editor" if field == "editors" else "author"
