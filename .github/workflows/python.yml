@@ -15,10 +15,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ["3.7", "3.8", "3.9"]sdsd
+        python: ["3.8", "3.9", "3.10"]
         experimental: [false]
         include:
-          - python: "3.10"
+          - python: "3.11"
             experimental: true
 
     steps:
