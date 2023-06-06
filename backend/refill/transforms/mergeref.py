@@ -75,7 +75,7 @@ class MergeRef(Transform):
 
             all_tags = [e[2] for e in collection]
             for tag in all_tags:
-                if (self._getName(tag) in changed):
+                if self._getName(tag) in changed:
                     self._setName(tag, name)
 
         self._ctx.reportProgress("SUCCESS", 1, {})
