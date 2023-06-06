@@ -78,7 +78,6 @@ class MergeRef(Transform):
                 if (self._getName(tag) in changed):
                     self._setName(tag, name)
 
-
         self._ctx.reportProgress("SUCCESS", 1, {})
         return wikicode
 
