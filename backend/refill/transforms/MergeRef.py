@@ -12,7 +12,7 @@ class MergeRef(Transform):
 
         self._ctx.reportProgress("SCANNING", 0, {})
         for tag in wikicode.ifilter_tags():
-            if tag.tag != "ref": # or tag.self_closing:
+            if tag.tag != "ref":  # or tag.self_closing:
                 continue
 
             name = self._getName(tag)
