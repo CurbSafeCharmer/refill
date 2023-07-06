@@ -8,8 +8,10 @@
 	"fixwikipage-page": "ورقے دا ناں",
 	"fixwikipage-code": "کوڈ",
 	"fixwikipage-fam": "خاندان",
+	"fixwikicode-wikicode": "کچا وکی کوڈ",
 	"fixwikicode-submit": "جمع کرواؤ",
 	"result": "نتیجہ",
+	"preferences": "ترجیحاں",
 	"preferences-button": "ترجیحاں",
 	"preferences-save": "ترجیحاں محفوظ کرو",
 	"state-PENDING": "تانگھ وچ",
@@ -29,6 +31,10 @@
 	"error-type-unknown": "نامعلوم غلطی",
 	"report-manual-template-taskname": "ٹاسک ناں",
 	"report-manual-template-taskid": "ٹاسک آئی ڈی",
+	"report-manual-template-old": "پراݨی عبارت",
+	"report-manual-template-new": "نویں عبارت",
+	"report-link-dead": "ایہ لنک مُردہ ہے",
+	"report-link-dead-homepage": "ویب سائٹ دا مکھ پناں",
 	"yes": "جیا",
 	"no": "کو"
 }
