@@ -84,7 +84,7 @@ class Citoid:
 
         if citation.url == citation.title:
             citation.title = ""
-        if citation.title.lower() in Citoid.BADDATA
+        if citation.title.lower() in Citoid.BADDATA:
             citation.title = ""
 
         return citation
