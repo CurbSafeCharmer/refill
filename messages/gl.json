@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Banjo",
-			"Elisardojm"
+			"Elisardojm",
+			"Toliño"
 		]
 	},
 	"tagline": "Formate referencias con facilidade",
@@ -17,5 +18,8 @@
 	"taskinfo-percentage": "Porcentaxe",
 	"chancetoreview": "Terás oportunidade de revisar a edición antes de gardala.",
 	"summary": "Formatando $1 referencia(s) con $3",
-	"toollink": "[[:en:WP:REFILL|reFill]]"
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"yes": "Si",
+	"no": "Non",
+	"sandbox-page": "Wikipedia:Zona de probas"
 }
