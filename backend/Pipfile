@@ -9,7 +9,7 @@ verify_ssl = true
 # FIXME: Dead project
 # https://github.com/noirbizarre/flask-restplus/issues/777
 flask-restplus = "*"
-Werkzeug = "==0.16.1"
+Werkzeug = "==2.3.7"
 
 celery = "*"
 redis = "*"
