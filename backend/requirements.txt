@@ -9,6 +9,6 @@ furl==2.1.3
 mwparserfromhell==0.6.4
 pywikibot==7.3.0
 requests==2.27.1
-redis==4.3.3
+redis==5.0.0
 pymongo==4.1.1
 Werkzeug==2.1.2
