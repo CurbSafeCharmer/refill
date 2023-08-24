@@ -213,6 +213,7 @@ class CitoidLinkHandler extends LinkHandler {
         "404",
         "error - lexisnexis® publisher",
         "optica publishing group",
+	"validate user"
         ];
 	private $spider = null;
 	public $api = "https://en.wikipedia.org/api/rest_v1/data/citation";
