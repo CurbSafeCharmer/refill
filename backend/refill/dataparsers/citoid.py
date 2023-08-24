@@ -182,6 +182,7 @@ class Citoid:
         "404",
         "error - lexisnexis® publisher",
         "optica publishing group",
+        "validate user"
     )
     ENDPOINT = "https://en.wikipedia.org/api/rest_v1/data/citation"
     MAPPING = {
