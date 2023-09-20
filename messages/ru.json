@@ -24,6 +24,7 @@
 	"preferences": "Настройки",
 	"preferences-button": "Настройки",
 	"preferences-dateFormat": "Формат даты по умолчанию",
+	"preferences-dateFormatEn": "Формат даты по умолчанию (только на английском языке)",
 	"preferences-save": "Сохранить настройки",
 	"state-PENDING": "Ожидание",
 	"state-PENDING-description": "Ожидание доступного работника.",
