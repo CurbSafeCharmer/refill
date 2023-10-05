@@ -3,6 +3,7 @@
 		"authors": [
 			"A Chinese Wikipedian",
 			"A Retired User",
+			"LittlePaw365",
 			"Liuxinyu970226",
 			"Pak Long Wu",
 			"Zhaofeng Li",
@@ -41,7 +42,7 @@
 	"state-REVOKED": "已取消",
 	"state-REVOKED-description": "任务已取消。",
 	"state-BACKEND_ERROR": "后端错误",
-	"state-BACKEND_ERROR-description": "发生未知错误。",
+	"state-BACKEND_ERROR-description": "出现未知错误。",
 	"previewandsave": "预览/保存",
 	"taskinfo": "任务信息",
 	"taskinfo-name": "任务",
