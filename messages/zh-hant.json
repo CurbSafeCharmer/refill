@@ -4,6 +4,7 @@
 			"Kly",
 			"LNDDYL",
 			"Pak Long Wu",
+			"Winston Sung",
 			"捍粵者"
 		]
 	},
@@ -40,7 +41,7 @@
 	"state-BACKEND_ERROR": "後端錯誤",
 	"state-BACKEND_ERROR-description": "發生不明錯誤。",
 	"previewandsave": "預覽/儲存",
-	"taskinfo": "任務訊息",
+	"taskinfo": "工單資訊",
 	"taskinfo-name": "任務",
 	"taskinfo-id": "任務 ID",
 	"taskinfo-state": "狀態",
