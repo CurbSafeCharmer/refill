@@ -23,7 +23,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Build
-      working-directory: ./web
+      working-directory: ./version2ng/web
       run: |
         npm ci
         npm test
