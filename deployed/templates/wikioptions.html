@@ -1,0 +1,10 @@
+{% for wiki in wikis %}
+	<option value='{{ wiki }}' {% if wikiname == wiki %} selected="selected" {% endif %}>
+		{% if wikinames[wiki] is defined %}
+			{{ wikinames[wiki] }} ({{ wiki }})
+		{% else %}
+			{{ wiki }}
+		{% endif %}
+	</option>
+{% endfor %}
+
