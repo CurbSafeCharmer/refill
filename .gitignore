@@ -1,0 +1,12 @@
+__pycache__
+venv
+/undeployed-rewrite/backend/celeryconfig.py
+/undeployed-rewrite/backend/pywikibot.lwp
+/undeployed-rewrite/backend/apicache*
+/undeployed-rewrite/backend/throttle.ctrl
+/undeployed-rewrite/web/dist
+/undeployed-rewrite/web/config.js
+.tox/
+/undeployed-rewritenode_modules/
+.vscode/
+pywikibot.lwp
