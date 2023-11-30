@@ -32,7 +32,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install --upgrade wheel setuptools
           pip install tox
-          pip install -r backend/requirements.txt
+          pip install -r version2ng/backend/requirements.txt
       - name: Run tox
         run: tox -v
       - name: Run application
