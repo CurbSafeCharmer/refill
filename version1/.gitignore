@@ -1,0 +1,9 @@
+*~
+*.swp
+/config/
+/vendor/
+/scripts/diff.js
+/bower_components
+/web/components
+/build
+phpunit.xml

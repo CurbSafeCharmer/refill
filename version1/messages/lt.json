@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"heading-options": "Nustatymai",
+	"heading-citegen": "Generuoti nuorodą",
+	"heading-result": "Rezultatas",
+	"heading-error": "Klaida",
+	"heading-manual": "Instrukcija",
+	"heading-acknowledgements": "Padėkos",
+	"heading-reportbugs": "Pranešti apie klaidas",
+	"placeholder-pagename": "Puslapio pavadinimas",
+	"placeholder-url": "URL",
+	"label-fixpage": "Tvarkyti puslapį",
+	"label-pretendwiki": "Apsimesti, kad tai iš:",
+	"label-generate": "Generuoti",
+	"label-manual": "Instrukcija",
+	"label-sourcecode": "Šaltinis",
+	"label-acknowledgements": "Padėkos",
+	"label-reportbugs": "Pranešti apie klaidas",
+	"label-switchlang": "Kalbos",
+	"label-save": "Peržiūrėti / Išsaugoti Viki",
+	"label-saveandreturn": "Išsaugoti ir Grįžti",
+	"label-gadgetoptions": "(nustatymai)",
+	"label-homepage": "Įrankių pagrindinis puslapis",
+	"fixed": "$1 nuoroda(-os) sutvarkyta(-os)!",
+	"nofixed": "Jokios nuorodos nebuvo sutvarkytos.",
+	"chancetoreview": "Galėsite peržiūrėti pakeitimą prieš jį išsaugant.",
+	"colourlegend": "Spalvos:",
+	"colour-insert": "Mėlyna",
+	"colour-delete": "Oranžinė",
+	"diff-insert": "Pridėta",
+	"diff-delete": "Pašalinta",
+	"loadingoptions": "Įkeliami pasirinkimai...",
+	"comingsoon": "Netrukus",
+	"uhoh": "Oi!",
+	"developedby": "sukūrė $1",
+	"translatedby": "Įrankį išvertė:"
+}

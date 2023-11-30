@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tow"
+		]
+	},
+	"heading-options": "ਵਿਕਲਪ",
+	"heading-result": "ਨਤੀਜਾ",
+	"heading-error": "ਗ਼ਲਤੀ",
+	"heading-manual": "ਦਸਤਾਵੇਜ਼",
+	"heading-acknowledgements": "ਪਰਵਾਨਗੀ",
+	"placeholder-pagename": "ਟੈਗ ਦਾ ਨਾੰ",
+	"placeholder-url": "ਯੂ.ਆਰ.ਐੱਲ.",
+	"label-fixpage": "ਸਫਾ ਠੀਕ ਕਰੋ",
+	"label-fixwikitext": "ਵਿਕੀਪਾਠ ਠੀਕ ਕਰੋ",
+	"label-manual": "ਦਸਤਾਵੇਜ਼",
+	"label-sourcecode": "ਸਰੋਤ",
+	"label-acknowledgements": "ਪਰਵਾਨਗੀ",
+	"label-switchlang": "ਭਾਸ਼ਾਵਾਂ",
+	"label-gadgetoptions": "(ਵਿਕਲਪ)",
+	"nofixed": "ਕੋਈ ਹਵਾਲੇ ਠੀਕ ਨਹੀੰ ਕੀਤੇ ਗਏ",
+	"colourlegend": "ਰੰਗ:",
+	"colour-insert": "ਨੀਲਾ",
+	"colour-delete": "ਨਾਰੰਗੀ",
+	"comingsoon": "ਛੇਤੀ ਆ ਰੇਹਾ ਹੈ",
+	"uhoh": "ਓਹ!",
+	"developedby": "$1 ਦੁਆਰਾ"
+}

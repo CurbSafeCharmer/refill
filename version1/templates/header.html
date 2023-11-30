@@ -1,0 +1,27 @@
+<header>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.php">{% include "logo.svg" %}</a>
+				<a class="navbar-brand" href="index.php">{{ msg( 'appname' ) }}</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar">
+				<ul class="nav navbar-nav">
+					{# Should be dynamic #}
+					<li><a href="https://en.wikipedia.org/wiki/Wikipedia:ReFill">{{ msg( 'label-manual' ) }}</a></li>
+					<li><a href="https://github.com/CurbSafeCharmer/refill">{{ msg( 'label-sourcecode' ) }}</a></li>
+					<li><a href="https://phabricator.wikimedia.org/tag/tool-refill/">{{ msg( 'label-reportbugs' ) }}</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{{ getI18nDashboard() }}">{{ msg( 'label-switchlang' ) }}</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
