@@ -6,4 +6,8 @@ This README gives you all the details needed to set up a reFill instance for tes
 
 The code is divided into 3 main folders. Please see the readmes in each folder for more details.
 
+- /version1/ - The original jQuery front end of reFill that is deployed at https://refill.toolforge.org/.
+- /version2ng/ - The new Vue front end of reFill that is deployed at https://refill.toolforge.org/ng
+- /labs-config/ - Files used on ToolForge.
+
 Please report issues on Phabricator (https://phabricator.wikimedia.org/project/board/5013/).
