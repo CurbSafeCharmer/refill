@@ -60,6 +60,7 @@
 	"report-manual-template-changeid": "Идентификатор изменения",
 	"report-manual-template-old": "Старый текст",
 	"report-manual-template-new": "Новый текст",
+	"report-intro": "Вы указали, что это изменение ошибочно. Почему?",
 	"report-wikicode-syntax": "Этот инструмент показывает синтаксические ошибки (несоответствующие скобки и т. д.)",
 	"report-wikicode-template": "Инструмент выбрал неправильный тип шаблона цитирования",
 	"report-wikicode-template-type": "Инструмент считает, что веб-страница относится к типу «$1». Это правильно?",
