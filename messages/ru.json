@@ -23,6 +23,7 @@
 	"result": "Результат",
 	"preferences": "Настройки",
 	"preferences-button": "Настройки",
+	"preferences-addAccessDates": "Добавлять даты доступа к цитированиям",
 	"preferences-dateFormat": "Формат даты по умолчанию",
 	"preferences-dateFormatEn": "Формат даты по умолчанию (только на английском языке)",
 	"preferences-save": "Сохранить настройки",
