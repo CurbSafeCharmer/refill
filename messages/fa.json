@@ -5,6 +5,7 @@
 			"Amirsara",
 			"AzorAhai",
 			"Dejavu",
+			"Ebraminio",
 			"Huji"
 		]
 	},
@@ -34,7 +35,7 @@
 	"state-SUCCESS": "موفق",
 	"state-SUCCESS-description": "وظیفهٔ شما موفق بود.",
 	"state-FAILURE": "ناموفق بود",
-	"state-FAILURE-description": "یک خطا رخ داده‌است.",
+	"state-FAILURE-description": "یک خطا رخ داده است.",
 	"state-REVOKED": "لغو شد.",
 	"state-REVOKED-description": "وظیفهٔ شما لغو شد.",
 	"state-BACKEND_ERROR": "خطای پشت صحنه",
