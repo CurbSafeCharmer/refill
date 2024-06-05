@@ -1,0 +1,6 @@
+<!-- Copyright (c) 2011-2014 VisualEditor Team and others under the terms of The MIT License (MIT) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; margin-top:-3px;">
+    <g id="reference">
+        <path style="fill: #fff" id="bookmark" d="M5 4v17h12c1 0 2-1 2-2v-15h-14zm12 14c0 1-1 1-1 1h-8v-13h2v6l2-2 2 2v-6h3v12z"/>
+    </g>
+</svg>

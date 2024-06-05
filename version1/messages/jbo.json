@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Olwe519"
+		]
+	},
+	"placeholder-pagename": "lo cmene pe papri",
+	"label-switchlang": "lo bangu",
+	"colour-insert": "lo ka blanu",
+	"colour-delete": "lo ka narju",
+	"diff-insert": "te jmina",
+	"diff-delete": "se vimcu",
+	"developedby": "se finti $1"
+}

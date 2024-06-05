@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Martin Urbanec"
+		]
+	},
+	"tagline": "Jednoduše rozšiřte holé reference",
+	"heading-fetchfromwiki": "Načíst obsah z wiki",
+	"heading-options": "Nastavení",
+	"heading-citegen": "Vygenerovat referenci",
+	"heading-result": "Výsledek",
+	"heading-newwikitext": "Nový wiki kód",
+	"heading-error": "Chyba",
+	"heading-manual": "N8vod",
+	"heading-reportbugs": "Nahlašte chybu",
+	"placeholder-pagename": "Název stránky",
+	"placeholder-url": "URL",
+	"label-fixpage": "Opravit stránku",
+	"label-fixwikitext": "Opravit wikitext",
+	"label-generate": "Vygenerovat",
+	"label-manual": "Návod",
+	"label-sourcecode": "Zdroj",
+	"label-reportbugs": "Nahlašte chybu",
+	"label-switchlang": "Jazyky",
+	"label-save": "Náhled / Uložit na wiki",
+	"label-saveandreturn": "Uložit a vrátit se",
+	"label-gadgetoptions": "(volitelné)",
+	"label-homepage": "Domovská stránka"
+}

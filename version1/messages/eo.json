@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robin van der Vliet"
+		]
+	},
+	"heading-options": "Opcioj",
+	"heading-error": "Eraro",
+	"heading-reportbugs": "Raporti cimojn",
+	"label-sourcecode": "Fonto",
+	"label-acknowledgements": "Agnoskoj",
+	"label-reportbugs": "Raporti cimojn",
+	"label-switchlang": "Lingvoj",
+	"label-gadgetoptions": "(opcioj)",
+	"colourlegend": "Koloroj:",
+	"colour-insert": "Blua",
+	"colour-delete": "Oranĝkolora",
+	"diff-insert": "Aldonita",
+	"diff-delete": "Forigita",
+	"uhoh": "Ho ve!",
+	"developedby": "de $1"
+}
