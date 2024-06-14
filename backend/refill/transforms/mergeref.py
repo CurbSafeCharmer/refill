@@ -12,7 +12,7 @@ class MergeRef(Transform):
 
         self._ctx.reportProgress("SCANNING", 0, {})
         for tag in wikicode.ifilter_tags():
-            if tag.tag != "ref" or tag.self_closing:
+            if tag.tag != "ref":  # or tag.self_closing:
                 continue
 
             name = self._getName(tag)
@@ -60,6 +60,7 @@ class MergeRef(Transform):
             else:
                 name = names[0]
 
+            changed = []
             first = True
             for tag in tags:
                 if first:
@@ -67,7 +68,15 @@ class MergeRef(Transform):
                 else:
                     tag.self_closing = True
 
+                old_name = self._getName(tag)
                 self._setName(tag, name)
+                if old_name != name and old_name is not False:
+                    changed.append(old_name)
+
+            all_tags = [e[2] for e in collection]
+            for tag in all_tags:
+                if self._getName(tag) in changed:
+                    self._setName(tag, name)
 
         self._ctx.reportProgress("SUCCESS", 1, {})
         return wikicode
