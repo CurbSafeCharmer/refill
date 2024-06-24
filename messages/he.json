@@ -3,6 +3,7 @@
 		"authors": [
 			"Amire80",
 			"Guycn2",
+			"Neriah",
 			"Strayblues",
 			"YaronSh",
 			"שניאור זלמן"
@@ -30,7 +31,7 @@
 	"state-STARTED": "התחיל",
 	"state-STARTED-description": "המשימה נלקחה.",
 	"state-PROGRESS": "עיבוד",
-	"state-PROGRESS-description": "j",
+	"state-PROGRESS-description": "המשימה נמצאת בעיבוד.",
 	"state-SUCCESS": "הצלחה",
 	"state-SUCCESS-description": "המשימה הצליחה.",
 	"state-FAILURE": "נכשל",
