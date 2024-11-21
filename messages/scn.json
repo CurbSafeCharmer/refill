@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"GianAntonucci"
 		]
 	},
 	"fixwikipage": "Curreggi na pàggina",
@@ -19,13 +20,13 @@
 	"taskinfo-percentage": "Pircintuali",
 	"error-details": "Dittagghî erruri",
 	"error-type-NoTitleError": "Nuḍḍu tìtulu attruvatu",
-	"error-type-HomepageRedirectError": "Rimannatu â pàggina principali",
+	"error-type-HomepageRedirectError": "Rimannatu â pàggina mastra",
 	"error-type-unknown": "Erruri scanusciutu",
 	"report-manual-template-changeid": "Cancia ID",
 	"report-manual-template-old": "Testu vecchiu",
 	"report-manual-template-new": "Testu novu",
 	"report-link-dead-error": "na pàggina di erruri (404, 403, ecc.)",
-	"report-link-dead-homepage": "la pàggina principali dû situ web",
+	"report-link-dead-homepage": "a pàggina mastra dû situ web",
 	"report-link-dead-other": "quarchi àutri pàggini",
 	"report-link-archive-url": "URL orìgginali dâ pàggina",
 	"yes": "Sì",
