@@ -7,6 +7,7 @@
 			"Obaid Raza"
 		]
 	},
+	"appname": "ری فِل",
 	"tagline": "ناقص حوالوں کو بآسانی مکمل کریں",
 	"fixwikipage": "صفحہ درست کریں",
 	"fixwikipage-page": "صفحہ کا نام",
@@ -20,6 +21,7 @@
 	"preferences": "ترجیحات",
 	"preferences-button": "ترجیحات",
 	"preferences-addAccessDates": "حوالوں تک کس دن رسائی ہوئی؟ اس کی تاریخ درج کریں۔",
+	"preferences-save": "ترجیحات محفوظ کریں",
 	"state-PENDING": "بقید انتظار",
 	"state-STARTED": "شروع ہوگیا",
 	"state-PROGRESS": "زیر تکمیل",
