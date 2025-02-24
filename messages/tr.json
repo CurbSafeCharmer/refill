@@ -5,7 +5,8 @@
 			"BaRaN6161 TURK",
 			"Hedda",
 			"Kumkumuk",
-			"MuratTheTurkish"
+			"MuratTheTurkish",
+			"Pedian4169"
 		]
 	},
 	"tagline": "Kolaylıkla sade referansları genişletin",
@@ -73,7 +74,7 @@
 	"report-link-paywall": "Bu bağlantı bir ödeme duvarının arkasında",
 	"report-link-dead": "Bu bağlantı öldü",
 	"report-link-dead-error": "bir hata sayfası (404, 403, vb.)",
-	"report-link-dead-homepage": "web sitesinin ana sayfası",
+	"report-link-dead-homepage": "web sitesinin anasayfası",
 	"report-link-dead-other": "başka bir sayfa",
 	"report-link-archive": "Bu bağlantı bir arşiv sayfasına yönlendirir",
 	"report-link-archive-url": "Sayfanın orijinal URL'si",
