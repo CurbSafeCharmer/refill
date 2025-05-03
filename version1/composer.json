@@ -1,0 +1,42 @@
+{
+	"name": "zhaofengli/reflinks",
+	"description": "Wikipedia tool that expands bare references",
+	"license": "BSD-2-Clause",
+	"authors": [
+		{
+			"name": "Zhaofeng Li",
+			"email": "hello@zhaofeng.li"
+		}
+	],
+	"require": {
+		"php": ">=5.5.0",
+		"ext-curl": "*",
+		"ext-mbstring": "*",
+		"ext-iconv": "*",
+		"jeremykendall/php-domain-parser": "1.3.1",
+		"masterminds/html5": "2.*",
+		"twig/twig": "~1.0",
+		"beelab/bowerphp": "0.2.*@alpha",
+		"krinkle/intuition": "^0.2.2",
+		"jenssegers/date": "^3.0",
+		"jwage/purl": "^0.0.7"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "4.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"Reflinks": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-0": {
+			"Reflinks": "tests/"
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"vendor/bin/bowerphp install"
+		]
+	}
+}

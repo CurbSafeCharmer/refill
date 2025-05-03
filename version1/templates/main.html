@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block banner %}{% endblock %}
+{% block foot %}
+	{{ parent() }}
+	<script src="scripts/index.js"></script>
+{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="jumbotron row">
+		<div class="col-md-5">
+			<h1>{{ msg( 'appname' ) }}</h1>
+			<p>{{ msg( 'tagline' ) }}</p>
+		</div>
+		<div class="col-md-7 visible-md-block visible-lg-block" style="font-size: 23px;">
+			<code>&lt;ref&gt;http://example.com&lt;/ref&gt;</code><br>
+			→<code>&lt;ref&gt;{{ '{{cite web|url=http://example.com|title=Example Domain|publisher=}}' }}&lt;/ref&gt;</code>
+		</div>
+	</div>
+	{{ banner() | raw }}
+	<div class="row">
+		<div class="col-md-6">
+			<div id="source-wiki">
+				<h2>{{ msg( 'heading-fetchfromwiki' ) }}</h2>
+				<form id="form-wiki" method="post" action="result.php">
+					<div class="form-group form-inline">
+						<span id="validation-page">
+							<input name="page" type="text" class="form-control" placeholder="{{ msg( 'placeholder-pagename' ) }}" {% if pagename %} value="{{ pagename }}" {% endif %}/>
+						</span>
+						<select name="wiki" data-placeholder="Wiki" class="form-control">
+							{% include 'wikioptions.html' %}
+						</select>
+						<input name="method-wiki" type="submit" class="btn btn-primary" value="{{ msg( 'label-fixpage' ) }}"/>
+					</div>
+					<h3>{{ msg( 'heading-options' ) }}</h3>
+					<div class="form-group">
+						{{ options_regular | raw }}
+					</div>
+				</form>
+			</div>
+			<a data-toggle="collapse" href="#source-wikitext" aria-expanded="false" aria-controls="source-wikitext">{{ msg( 'label-toggleadv' ) }}</a>
+			<div id="source-wikitext" class="collapse">
+				<h2>{{ msg( 'heading-rawwikitext' ) }}</h2>
+				<form id="form-wikitext" method="post" action="result.php">
+					<div class="form-group">
+						<span id="validation-wikitext">
+							<textarea name="text" class="form-control"></textarea>
+						</span>
+						<div class="form-group form-inline">
+							<label for="fakewiki">{{ msg( 'label-pretendwiki' ) }}</label>
+							<select id="fakewiki" name="wiki" data-placeholder="Wiki" class="form-control">
+								{% include 'wikioptions.html' %}
+							</select>
+							<input name="method-wikitext" type="submit" class="btn btn-primary" value="{{ msg( 'label-fixwikitext' ) }}"/>
+						</div>
+					</div>
+					<h3>{{ msg( 'heading-options' ) }}</h3>
+					<div class="form-group">
+						{{ options_advanced | raw }}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

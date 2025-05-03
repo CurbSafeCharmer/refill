@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"label-saveandreturn": "Salveguardar & retornar",
+	"tooltip-saveandreturn": "Aperir le interfacie de modification in un nove scheda/fenestra, alora retornar tranquillemente al pagina principal."
+}
