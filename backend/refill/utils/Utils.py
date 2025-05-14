@@ -1,7 +1,6 @@
 import re
 from datetime import date
 
-from babel.dates import format_date
 from mwparserfromhell.wikicode import Wikicode
 
 
@@ -63,4 +62,4 @@ class Utils:
             else:
                 return date.strftime(f).replace("%=d", str(date.day))
         else:
-            return format_date(date, locale=lang)
+            return f"{date.year}-{date.month:02}-{date.day:02}"
