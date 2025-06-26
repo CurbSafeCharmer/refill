@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Marcelo Ghelman"
+		]
+	},
+	"appname": "reFill",
+	"heading-options": "Opções",
+	"heading-result": "Resultado",
+	"heading-error": "Erro",
+	"heading-manual": "Manual",
+	"placeholder-url": "URL",
+	"label-generate": "Gerar",
+	"label-manual": "Manual",
+	"label-switchlang": "Idiomas",
+	"label-gadgetoptions": "(opções)",
+	"colourlegend": "Cores:",
+	"colour-insert": "Azul",
+	"colour-delete": "Laranja",
+	"diff-insert": "Adicionado",
+	"diff-delete": "Removido",
+	"loadingoptions": "Carregando opções...",
+	"developedby": "por $1",
+	"translatedby": "Esta ferramenta é traduzida por:"
+}

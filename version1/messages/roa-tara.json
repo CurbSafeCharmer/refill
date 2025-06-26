@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"heading-rawwikitext": "Mitte 'nu marcatore uicchi",
+	"heading-options": "Opziune",
+	"heading-citegen": "Gener 'nu referimende",
+	"heading-result": "Resultate",
+	"heading-newwikitext": "Nuève uicchi marcatore",
+	"heading-error": "Errore",
+	"heading-manual": "A màne",
+	"heading-acknowledgements": "Recanusceminde",
+	"heading-reportbugs": "Segnale le errore",
+	"placeholder-pagename": "Nome d'a pàgene",
+	"placeholder-url": "URL",
+	"label-fixpage": "Corregge 'a pàgene",
+	"label-fixwikitext": "Corregge 'u uicchiteste",
+	"label-generate": "Genere",
+	"label-manual": "A màne",
+	"label-sourcecode": "Sorgende",
+	"label-acknowledgements": "Recanusceminde",
+	"label-reportbugs": "Segnale le errore",
+	"label-switchlang": "Lènghe",
+	"label-save": "Andeprime / Reggìstre sus a Uicchi",
+	"label-saveandreturn": "Reggìstre e tuèrne",
+	"label-gadgetoptions": "(opziune)",
+	"label-homepage": "Pàgena prengepàle d'u strumende",
+	"colourlegend": "Culure:",
+	"colour-insert": "Blu",
+	"colour-delete": "Arangione",
+	"diff-insert": "Aggiunde",
+	"diff-delete": "Luate",
+	"loadingoptions": "Carecamènde de le opziune...",
+	"comingsoon": "Stonne arrivane",
+	"uhoh": "Uh-oh!",
+	"developedby": "da $1"
+}
