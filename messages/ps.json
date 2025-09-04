@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"appname": "بیا‌ډکول",
+	"tagline": "په اسانۍ سره د نيمگړو سرچينو غځول",
+	"fixwikipage": "يوه پاڼه سمول",
+	"fixwikipage-page": "مخ نوم",
+	"fixwikipage-code": "کوډ",
+	"fixwikipage-fam": "کورنۍ",
+	"fixwikicode": "ورکړل‌شوی ويکي‌کوډ سمول",
+	"fixwikicode-wikicode": "اومه ويکي‌کوډ",
+	"fixwikicode-submit": "سپارل",
+	"wikicode-toggle": "دودیز ویکي کوډ کارول",
+	"apiendpoint": "ای‌پي‌آی پای‌ټکی",
+	"result": "پايله",
+	"preferences": "غوره‌توبونه",
+	"preferences-button": "غوره‌توبونه",
+	"preferences-addAccessDates": "اخځونو ته د لاسرسي نېټه ورگډول",
+	"preferences-dateFormat": "د نېټې تلواله بڼه",
+	"preferences-dateFormatEn": "د نېټې تلواله بڼه (يوازې انگلېسي)",
+	"preferences-save": "غوره‌توبونه خوندي‌کول",
+	"state-PENDING": "په تمه",
+	"state-PENDING-description": "د لاسرسي وړ کارگر ته په تمه.",
+	"state-STARTED": "پیل شو",
+	"state-STARTED-description": "دنده په غاړه اخيستل‌شوې ده.",
+	"state-PROGRESS": "بهير",
+	"state-PROGRESS-description": "دنده تر کار لاندې ده.",
+	"state-SUCCESS": "بریالیتوب",
+	"state-SUCCESS-description": "دنده بریالۍ شوه.",
+	"state-FAILURE": "پاتې راغلی",
+	"state-FAILURE-description": "یوه تېروتنه رامنځته شوې.",
+	"state-REVOKED": "ناگارل شوی",
+	"state-REVOKED-description": "دنده لغوه شوې ده.",
+	"state-BACKEND_ERROR": "شاپای تېروتنه",
+	"report-link-dead": "دا تړونی مړشوی دی"
+}
