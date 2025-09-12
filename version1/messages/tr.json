@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alpkant",
+			"Kumkumuk"
+		]
+	},
+	"heading-options": "Ayarlar",
+	"heading-citegen": "Referans oluştur",
+	"heading-result": "Sonuç",
+	"heading-error": "Hata",
+	"heading-manual": "Kılavuz",
+	"heading-reportbugs": "Hataları bildir",
+	"placeholder-pagename": "Sayfa adı",
+	"placeholder-url": "Link",
+	"label-fixpage": "Sayfayı düzelt",
+	"label-fixwikitext": "Vikimetin düzelt",
+	"label-generate": "Oluştur",
+	"wikitext-parameter-pages": "sayfalar"
+}

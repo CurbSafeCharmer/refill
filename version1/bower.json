@@ -1,0 +1,24 @@
+{
+	"name": "Reflinks",
+	"version": "0.0.0",
+	"homepage": "https://github.com/zhaofengli/reflinks",
+	"authors": [
+		"Zhaofeng Li <hello@zhaofeng.li>"
+	],
+	"description": "Wikipedia tool that expands bare references",
+	"license": "BSD-2-Clause",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"web/components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"jquery": "~2.1.1",
+		"bootstrap": "4.0.0-alpha",
+		"chosen": "~1.4.2"
+	}
+}

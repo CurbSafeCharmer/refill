@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"SeoJeongHo",
+			"Ykhwong",
+			"Jonghaya"
+		]
+	},
+	"heading-rawwikitext": "위키 마크업 입력",
+	"heading-options": "옵션",
+	"heading-result": "결과",
+	"heading-newwikitext": "새로운 위키 마크업",
+	"heading-error": "오류",
+	"heading-manual": "매뉴얼",
+	"heading-reportbugs": "버그 보고",
+	"placeholder-pagename": "페이지 이름",
+	"placeholder-url": "URL 주소",
+	"label-fixpage": "페이지 고치기",
+	"label-generate": "생성하기",
+	"label-manual": "매뉴얼",
+	"label-sourcecode": "출처",
+	"label-reportbugs": "버그 보고",
+	"label-switchlang": "언어들",
+	"label-saveandreturn": "저장하고 돌아가기",
+	"label-gadgetoptions": "(설정)",
+	"label-homepage": "도구 홈페이지",
+	"tooltip-saveandreturn": "새 창이나 탭에 편집 인터페이스를 엽니다. 그러고 조용히 메인페이지로 돌아갑니다.",
+	"responsibility": "당신은 당신이 한 모든 수정에 대해 책임이 있습니다.",
+	"pleasedoublecheck": "저장하기 전에 편집을 두 번 확인하세요!",
+	"colourlegend": "색:",
+	"colour-insert": "파란색",
+	"colour-delete": "오렌지색",
+	"diff-insert": "추가됨",
+	"diff-delete": "제거됨",
+	"loadingoptions": "설정 가져오는 중...",
+	"comingsoon": "준비 중",
+	"uhoh": "이런!",
+	"developedby": "$1에 의해 개발되었음.",
+	"translatedby": "이 도구의 번역자:",
+	"toollink": "[[:en:WP:REFILL|reFill]]",
+	"option-plainlink": "{{웹 인용}} 대신 순수 서식 사용"
+}

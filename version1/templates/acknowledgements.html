@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ msg( 'heading-acknowledgements') }}{% endblock %}
+{% block foot %}
+	{{ parent() }}
+{% endblock %}
+{% block content %}
+<div class="container">
+	<h1>{{ msg( 'heading-acknowledgements') }}</h1>
+	<p>The author, <a href="https://zhaofeng.li">Zhaofeng Li</a>, would like to thank everyone who has contributed to the project. Their help is essential to the project.</p>
+	<p>This project aims to provide an open-source rewrite of the old web-based tool maintained by <a href="https://en.wikipedia.org/wiki/User:Dispenser">Dispenser</a>. The original Reflinks script is a part of <a href="http://svn.wikimedia.org/viewvc/pywikipedia/trunk/pywikipedia/">the pywikipedia suite</a> by NicDumZ et al.</p>
+	{% if translators is not empty %}
+		<p>
+			{{ msg( "translatedby" ) }}
+			<ul>
+				{% for translator in translators %}
+					{% if translator.url is empty %}
+						<li>{{ translator.name }}</li>
+					{% else %}
+						<li><a href="{{ translator.url }}">{{ translator.name }}</a></li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</p>
+	{% endif %}
+</div>
+{% endblock %}

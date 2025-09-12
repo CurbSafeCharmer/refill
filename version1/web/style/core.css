@@ -1,0 +1,156 @@
+/*
+	Copyright (c) 2014, Zhaofeng Li
+	All rights reserved.
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+	* Redistributions of source code must retain the above copyright notice, this
+	list of conditions and the following disclaimer.
+	* Redistributions in binary form must reproduce the above copyright notice,
+	this list of conditions and the following disclaimer in the documentation
+	and/or other materials provided with the distribution.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+	IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+	DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+	FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+	DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+	SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+	OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/*
+	Legacy theme
+*/
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	border-left: 4px solid #a7d7f9;
+	padding: 10px 50px 10px 10px;
+	margin: 0 0 0 50px;
+	max-width: 1000px;
+}
+
+h1, h2, h3, h4 {
+	color: #555;
+	margin-left: -10px;
+	padding-left: 10px;
+}
+
+h1 {
+	padding: 10px;
+	background: #a7d7f9;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+h2 {
+	border-bottom: 2px solid #a7d7f9;
+}
+
+footer {
+	margin-top: 10px;
+}
+
+footer, footer a {
+	color: #888;
+}
+
+input, textarea {
+	border: 1px solid #ccc;
+	background: #eee;
+	border-radius: 2px;
+	padding: 7px;
+	transition: background .1s, border .1s;
+	-moz-transition: background .1s, border .1s;
+	-webkit-transition: background .1s, border .1s;
+	-o-transition: background .1s, border .1s;
+}
+
+input:hover, input:focus, textarea:hover, textarea:focus {
+	border: 1px solid #aaa;
+	background: #ddd;
+}
+
+input[name=page] {
+	min-width: 250px;
+}
+
+.wikitext {
+	margin-bottom: 5px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 70%;
+        height: 250px;
+        margin: 3px;
+}
+
+label {
+	color: #555;
+}
+
+#form-wikitext input[type="submit"] {
+	display: block;
+}
+
+#or {
+	font-style: italic;
+	font-weight: bolder;
+	color: #555;
+}
+
+#wikitext-new {
+	margin-top: 5px;
+}
+
+#footerlinks {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+#footerlinks li {
+	display: inline;
+	margin-bottom: 0;
+}
+
+#footerlinks li:after {
+	content: " \2666 ";
+}
+
+#footerlinks li:last-child:after {
+	content: none;
+}
+
+.back {
+	font-style: italic;
+	font-weight: bolder;
+	color: #555;
+}
+
+.notice {
+	font-style: italic;
+	font-weight: bolder;
+}
+
+.optionul {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.inputerror {
+	border: 1px solid red;
+}
+
+.banner {
+	border: 2px solid #a7d7f9;
+	padding: 5px;
+	border-radius: 2px;
+	margin-bottom: 5px;
+}
+
+.showadv {
+	color: #777;
+}

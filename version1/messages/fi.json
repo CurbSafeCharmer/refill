@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nike",
+			"Pyscowicz"
+		]
+	},
+	"heading-options": "Asetukset",
+	"heading-error": "Virhe",
+	"label-sourcecode": "Lähde",
+	"label-switchlang": "Kielet",
+	"colour-insert": "Sininen",
+	"colour-delete": "Oranssi",
+	"diff-insert": "Lisätty",
+	"diff-delete": "Poistettu",
+	"loadingoptions": "Ladataan asetuksia...",
+	"comingsoon": "Tulossa pian",
+	"translatedby": "Tämän työkalun on kääntänyt:",
+	"wmflabs-latestcommit": "Viimeisin muutos: $1"
+}
