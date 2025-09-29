@@ -3,6 +3,7 @@
 		"authors": [
 			"967Bytes",
 			"Meno25",
+			"Mohammed Qays",
 			"ديفيد",
 			"علاء"
 		]
@@ -49,7 +50,7 @@
 	"taskinfo-submiturl": "المسار الهدف",
 	"error-details": "تفاصيل الخطأ",
 	"error-type-NoTitleError": "لم يتم العثور على عنوان",
-	"error-type-HomepageRedirectError": "تم التحويل إلى الصفحة الرئيسية",
+	"error-type-HomepageRedirectError": "حُوِّلَت إلى الصفحة الرئيسية",
 	"error-type-unknown": "خطأ غير معروف",
 	"error-transform-FillRef": "حدث هذا الخطأ عندما كانت الأداة تستكمل مرجعا مجردا.",
 	"error-transform-FillExternal": "حدث هذا الخطأ عندما كانت الأداة تكمل رابطا خارجيا خالصا.",
