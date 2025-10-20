@@ -7,7 +7,8 @@
 			"Dejavu",
 			"Ebrahim",
 			"Ebraminio",
-			"Huji"
+			"Huji",
+			"LordProfo"
 		]
 	},
 	"tagline": "گسترش منابع ناقص به سادگی",
@@ -81,7 +82,7 @@
 	"report-link-archive-url": "پیوند اصلی صفحه",
 	"errors": "ابزار با خطا مواجه شد. برای مشاهدهٔ جزئیات، روی آیکون مداد قرمز کلیک کنید.",
 	"deletetask": "حذف وظیفه از میانگیر سرور",
-	"chancetoreview": "شما می‌توانید قبل از ذخیره کردن ویرایش‌تان آن را بازبینی کنید.",
+	"chancetoreview": "شما می‌توانید پیش از ذخیره کردن ویرایش‌تان آن را بازبینی کنید.",
 	"summary": "$1 منبع ناقص را توسط $3 کامل کرد",
 	"toollink": "[[:en:WP:REFILL|reFill]]",
 	"legacybridge-submitting": "ثبت درخواست شما...",
