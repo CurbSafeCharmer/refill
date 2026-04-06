@@ -23,7 +23,7 @@ module.exports = {
     ],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      'messages': path.resolve(__dirname, '../../../messages'),
+      'messages': path.resolve(__dirname, '../../../../../messages'),
     },
   },
   module: {
