@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
       <v-toolbar color="primary" dark>
-        <v-toolbar-title>{{ msg('appname') }}</v-toolbar-title>
+        <v-toolbar-title><a :href="$config.absolutePath">{{ msg('appname') }}</a></v-toolbar-title>
         <v-spacer></v-spacer>
 
         <v-toolbar-items class="hidden-sm-and-down">
@@ -40,6 +40,10 @@ export default {
 <style lang="scss">
 .nl {
   color: inherit !important;
+  text-decoration: none !important;
+}
+.v-toolbar__title a {
+  color: white !important;
   text-decoration: none !important;
 }
 </style>
