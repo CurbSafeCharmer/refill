@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
       <v-toolbar color="primary" dark>
-        <v-toolbar-title>{{ msg('appname') }}<sup>&alpha;</sup></v-toolbar-title>
+        <v-toolbar-title>{{ msg('appname') }}</v-toolbar-title>
         <v-spacer></v-spacer>
 
         <v-toolbar-items class="hidden-sm-and-down">

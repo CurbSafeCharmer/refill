@@ -4,7 +4,7 @@
     <v-container fluid grid-list-lg class="mcontainer">
       <v-layout row wrap>
         <v-flex xs12>
-          <h1>{{ msg('appname') }}<sup class="ng">&alpha;</sup></h1>
+          <h1>{{ msg('appname') }}</h1>
           <h2 class="tagline">{{ msg('tagline') }}</h2>
         </v-flex>
       </v-layout>
@@ -122,9 +122,6 @@ export default {
 }
 .tagline {
   font-weight: normal;
-}
-.ng {
-  color: #666;
 }
 .wikipage-form {
   display: flex;
