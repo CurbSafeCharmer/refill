@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
       <v-toolbar color="primary" dark>
-        <v-toolbar-title><a :href="$config.absolutePath">{{ msg('appname') }}</a></v-toolbar-title>
+        <v-toolbar-title><a :href="$config.publicPath">{{ msg('appname') }}</a></v-toolbar-title>
         <v-spacer></v-spacer>
 
         <v-toolbar-items class="hidden-sm-and-down">
