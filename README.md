@@ -37,7 +37,7 @@ npm install
 npm run dev
 ```
 
-Then visit http://localhost:8081/
+Then visit http://localhost:8087/
 
 You will need to cancel (Ctrl-C) and then re-run `npm run dev` when modifying certain files (such as config.development.js).
 

@@ -5,7 +5,7 @@
   "author": "Zhaofeng Li <hello@zhaofeng.li>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack serve --hot",
+    "dev": "cross-env NODE_ENV=development webpack serve --hot --port 8087",
     "build": "cross-env NODE_ENV=production webpack --progress",
     "test": "eslint src"
   },

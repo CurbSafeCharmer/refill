@@ -58,6 +58,7 @@ module.exports = {
     ],
   },
   devServer: {
+    port: 8087,
     historyApiFallback: {
       rewrites: [
         { from: /\/app\.js$/, to: '/app.js' },
