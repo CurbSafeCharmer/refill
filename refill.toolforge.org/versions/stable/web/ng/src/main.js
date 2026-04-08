@@ -28,7 +28,7 @@ import VueResource from 'vue-resource';
 Vue.use(VueResource);
 
 // == I18N ==
-import Banana from 'banana-i18n/dist/cjs/banana-i18n.cjs';
+import Banana from 'banana-i18n';
 const banana = new Banana('en');
 
 let req = require.context('../../../../../../messages', false, /\.json$/);
