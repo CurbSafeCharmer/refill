@@ -68,10 +68,11 @@ There are efforts to write a deploy.sh script at [T422570: create a deploy.sh sc
 - SSH into ToolForge and run the following commands to start the webserver:
 
 ```
-become YOUR-TOOLFORGE-NAME
+ssh login.toolforge.org
+become refill
 toolforge webservice status
 toolforge webservice stop
-toolforge webservice php8.2 start
+toolforge webservice php8.4 start
 ```
 
 ### How to restart if it gets stuck
