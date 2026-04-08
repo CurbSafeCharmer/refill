@@ -57,7 +57,7 @@ Then...
 - delete all the files in the /versions/stable/web/ng/ directory
 - copy paste the contents of your local /dist/ directory into the /ng/ directory
 
-You will need to hard refresh your browser (Ctrl+F5) when visiting the front end right after a deploy.
+You may need to hard refresh your browser (Ctrl+F5) when visiting the front end right after a deploy.
 
 There are efforts to write a deploy.sh script at [T422570: create a deploy.sh script for the front end](https://phabricator.wikimedia.org/T422570).
 
