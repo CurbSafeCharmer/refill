@@ -1,73 +1,143 @@
-# reFill 2
+# reFill
 
-**reFill** fixes [bare URLs](https://en.wikipedia.org/wiki/Wikipedia:Bare_URLs) on Wikipedia articles, semi-automatically. It extracts bibliographical information from web pages referenced by bare URL citations, generates complete references and finally inserts them back onto the original page.
+**reFill** fixes [bare URLs](https://en.wikipedia.org/wiki/Wikipedia:Bare_URLs) in Wikipedia articles. In other words, it turns refs that look like this...
 
-This README gives you all the details needed to set up a reFill instance for testing and development. If you only intend to use reFill, [the manual](https://en.wikipedia.org/wiki/WP:reFill) may be more helpful.
+```
+<ref>https://www.bbc.com/culture/article/20260403-the-best-tv-shows-of-2026</ref>
+```
 
-## Quick start
+into refs that look like this:
 
-You will need to install:
-- Python 3.8
-- [Pipenv](https://github.com/pypa/pipenv)
-- Node.js 14
-- Redis (or any other broker [supported by Celery](http://docs.celeryproject.org/en/latest/getting-started/brokers/))
+```
+<ref>{{Cite web|url=https://www.bbc.com/culture/article/20260403-the-best-tv-shows-of-2026|title=10 of the best TV shows of 2026 so far|date=April 7, 2026|website=www.bbc.com}}</ref>
+```
 
-1. `git clone https://github.com/CurbSafeCharmer/refill`
-1. `cd refill`
-1. `make setup`
-1. `make start`
-1. Voila! reFill is now running on your machine.
+ReFill does everything except publish the edit, including setting up an on-wiki diff of the edit for you to review. It is up to you, the user, to check the diff and make sure that the generated citation templates are accurate.
 
-## Overview
+* [Documentation for users](https://en.wikipedia.org/wiki/Wikipedia:ReFill)
+* [File bugs and feature requests on Phabricator](https://phabricator.wikimedia.org/maniphest/task/create/?projects=Tool-refill)
+* [Talk page](https://en.wikipedia.org/wiki/Wikipedia_talk:ReFill)
+* [Discord channel](https://discord.com/channels/221049808784326656/1123258346045198366)
 
-The tool consists of three parts:
+## Front end (https://refill.toolforge.org/)
 
-- APIs: A set of APIs that allow the user to submit tasks and retrieve their results. Tasks may be initiated by a human user or a script.
-- Workers: Long-running processes that complete tasks received through the broker, orchestrated by Celery.
-- Web UI: A single-page web app powered by Vue.js. It's the reference implementation of an API consumer.
+[![Screenshot of ReFill homepage](screenshot.png)](screenshot.png)
 
-## Navigating the source
+Our front end is written in the Vue.js JavaScript framework. It is fairly simple. The first screen asks for a wiki page or wikicode, then the second page loads that wikicode and sends it to the back end (https://refill-api.toolforge.org/) via an API query, then streams the response. The user can then click a button that takes them to Wikipedia to preview an edit containing ReFill's suggested changes.
 
-Most interesting stuff happens in `backend/refill`, where you can find the individual parsers that extract information from webpages.
+### Entry points
 
-- `backend`: APIs and worker
-    - `app.py`: Flask-based APIs
-    - `refill`
-        - `dataparsers`: Metadata parsers
-        - `formatters`: Wikicode generators
-        - `transforms`: Wikicode transformations
-            - `fillref.py`: Complete bare references
-            - `fillexternal.py`: Complete bare external links
-            - `mergeref.py`: Merge duplicate citations
-        - `models`: Models
-            - `citation.py`: Citation
-            - `context.py`: Task context
-        - `utils`: Utilities
-- `web`: Web UI
-    - `libs`: External libraries
-        - `wdiff.js`: A modified version of wDiff by [User:Cacycle](https://en.wikipedia.org/wiki/User:Cacycle), with additional code to display reFill markers
-    - `src`: Source code
+/result.php, and the entire /ng/ directory, use .lighttpd.conf or PHP to redirect to /ng/index.html, which loads the Vue app, which has been minified by Webpack.
 
-## Hints
+### How to get it running on localhost
 
-### Result expiration
+```
+cd refill.toolforge.org/versions/stable/web/ng
+npm install
+npm run dev
+```
 
-By default, tasks on Celery [expire in a day](http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-result_expires). If you are using a database backend, be sure to have `celery beat` running in order to clear the old results. This is especially important if you are running a public instance.
+Then visit http://localhost:8081/
 
-## Contributing
+You will need to cancel (Ctrl-C) and then re-run `npm run dev` when modifying certain files (such as config.development.js).
 
-Patches are always welcome! To contribute, simply create a fork of the repo, make your changes and submit a pull request. Your contributions are appreciated. It would be great to have some new maintainers!
+### How to deploy
 
-Please report issues on Phabricator (https://phabricator.wikimedia.org/project/board/5013/).
+Locally...
 
-Localization of the tool is powered by [Intuition](https://github.com/Krinkle/intuition) and handled on [translatewiki.net](https://translatewiki.net/wiki/Special:Translate?group=int-refill). To start translating the tool, please register at translatewiki.net and request to become a Translator. You can also submit your translations manually via GitHub pull requests or even [on-wiki](https://en.wikipedia.org/wiki/User_talk:Zhaofeng_Li/reFill).
+```
+cd refill.toolforge.org/versions/stable/web/ng
+npm install
+npm run build
+```
 
-## Licensing
+Then...
 
-reFill is licensed under the BSD 2-Clause License. See `LICENSE` for details.
+- log into ToolForge
+- delete all the files in the /versions/stable/web/ng/ directory
+- copy paste the contents of your local /dist/ directory into the /ng/ directory
 
-### External libraries
+You will need to hard refresh your browser (Ctrl+F5) when visiting the front end right after a deploy.
 
-This program uses [wDiff](https://en.wikipedia.org/wiki/User:Cacycle/diff) by [Cacycle](https://en.wikipedia.org/wiki/User:Cacycle), released into public domain.
+There are efforts to write a deploy.sh script at [T422570: create a deploy.sh script for the front end](https://phabricator.wikimedia.org/T422570).
 
-Licenses of NPM and PyPI dependencies may be viewed using third-party tools including [license-checker](https://github.com/davglass/license-checker) (for NPM) and [python-license-check](https://github.com/dhatim/python-license-check) (for PyPI).
+### How to set up ToolForge from scratch again
+
+- Copy over the folder structure and settings files located in this repo's /refill.toolforge.org/ directory.
+- Delete the contents of the /ng/ directory, then follow the "How to deploy" directions above.
+- SSH into ToolForge and run the following commands to start the webserver:
+
+```
+become YOUR-TOOLFORGE-NAME
+toolforge webservice status
+toolforge webservice stop
+toolforge webservice php8.2 start
+```
+
+### How to restart if it gets stuck
+
+```
+ssh login.toolforge.org
+become refill
+webservice restart
+```
+
+### Third party libraries
+
+* [wikEd diff](https://en.wikipedia.org/wiki/User:Cacycle/diff) - Last updated upstream in 2014. ReFill's copy is lightly modified.
+
+## Back end (https://refill-api.toolforge.org/)
+
+The ReFill API is a REST API running in Flask, a Python framework. It uses Celery and Redis to create asynchronous jobs. It gets information about how to parse each URL from Wikimedia's Citoid, which uses Zotero.
+
+TODO. This section will be updated as part of the ticket [T422439: figure out how to deploy the back end](https://phabricator.wikimedia.org/T422439). See "Links -> Documentation for developers" below for the old documentation on this.
+
+The back end files currently reside in the directory /backend/, but that will eventually be [renamed to /refill-api.toolforge.org/](https://phabricator.wikimedia.org/T422436).
+
+### How to get it running on localhost
+
+TODO
+
+### How to deploy
+
+TODO
+
+### How to set up ToolForge from scratch again
+
+TODO
+
+### How to restart if it gets stuck
+
+```
+ssh login.toolforge.org
+become refill-api
+webservice restart
+./restart.sh
+```
+
+If that doesn't work, also try...
+
+```
+kubectl delete -f worker-deployment.yml
+kubectl apply -f worker-deployment.yml
+```
+
+## Links
+
+* Documentation for developers:
+    * This README.md
+    * [README_OLD.md](README_OLD.md)
+    * https://en.wikipedia.org/wiki/Wikipedia:ReFill/technical
+    * https://en.wikipedia.org/wiki/Wikipedia:Refill/Windows
+    * https://en.wikipedia.org/wiki/User:Curb_Safe_Charmer/Refilldev
+    * https://en.wikipedia.org/wiki/Wikipedia:Refill/restart
+* Other GitHubs:
+    * https://github.com/theresnotime/refill
+    * https://github.com/zhaofengli/refill-labsconf
+    * https://github.com/refill-ng/refill-labsconf
+    * https://github.com/theresnotime/refill-labsconf
+* Other Toolforges:
+    * https://toolsadmin.wikimedia.org/tools/id/refill-api-test
+    * https://toolsadmin.wikimedia.org/tools/id/refill-tnt
+
+There is documentation for developers scattered in several different places. We are working on consolidating the most important and up-to-date info from these docs into this one README file.
