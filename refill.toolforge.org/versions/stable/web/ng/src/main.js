@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import "core-js/stable";
 
 import Vue from 'vue';

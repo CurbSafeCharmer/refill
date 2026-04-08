@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import Axios from 'axios';
 import Store from './Store';
 
