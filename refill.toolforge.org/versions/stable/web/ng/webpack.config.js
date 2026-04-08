@@ -14,6 +14,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     publicPath: config.publicPath,
     filename: '[name].[hash].js',
+    assetModuleFilename: '[name].[hash][ext]',
   },
   resolve: {
     extensions: ['.js', '.vue'],
@@ -52,10 +53,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg|eot|woff2|woff|ttf)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[hash]',
-        },
+        type: 'asset/resource'
       },
     ],
   },

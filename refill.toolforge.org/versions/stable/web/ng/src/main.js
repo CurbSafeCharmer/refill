@@ -13,6 +13,7 @@ Vue.use(VueRouter);
 
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
+import './fonts/material-icons.css';
 Vue.use(Vuetify);
 /*
 Vue.material.registerTheme('default', {
