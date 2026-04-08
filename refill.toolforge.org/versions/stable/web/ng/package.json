@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve --hot",
     "build": "cross-env NODE_ENV=production webpack --progress",
-    "test": "eslint src libs"
+    "test": "eslint src"
   },
   "dependencies": {
     "@vue/compiler-sfc": "^3.2.35",
