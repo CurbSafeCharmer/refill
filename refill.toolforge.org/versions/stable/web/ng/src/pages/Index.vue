@@ -1,16 +1,16 @@
 /* eslint-disable vue/multi-word-component-names */
 <template>
-  <v-flex md8 offset-md2 lg6 offset-lg3>
-    <v-container fluid grid-list-lg class="mcontainer">
-      <v-layout row wrap>
-        <v-flex xs12>
+  <v-col md="8" offset-md="2" lg="6" offset-lg="3">
+    <v-container fluid class="mcontainer">
+      <v-row class="flex-wrap">
+        <v-col cols="12">
           <h1>{{ msg('appname') }}</h1>
           <h2 class="tagline">{{ msg('tagline') }}</h2>
-        </v-flex>
-      </v-layout>
+        </v-col>
+      </v-row>
 
-      <v-layout row wrap>
-        <v-flex xs12>
+      <v-row class="flex-wrap">
+        <v-col cols="12">
           <v-card>
             <v-card-text>
               <div class="wikipage-form">
@@ -20,20 +20,23 @@
                   placeholder=""
                   @keyup.enter="fixWikipage"
                   :label="msg('fixwikipage-page')"
+                  variant="outlined"
                 ></v-text-field>
                 <v-text-field
                   v-model="code"
                   class="code"
                   :label="msg('fixwikipage-code')"
+                  variant="outlined"
                 ></v-text-field>
                 <v-text-field
                   v-model="fam"
                   class="fam"
                   :label="msg('fixwikipage-fam')"
+                  variant="outlined"
                 ></v-text-field>
 
-                <v-btn large text outlined color="primary" icon @click="fixWikipage">
-                  <v-icon>arrow_forward</v-icon>
+                <v-btn size="large" variant="outlined" color="primary" icon @click="fixWikipage">
+                  <span class="material-icons">arrow_forward</span>
                 </v-btn>
               </div>
               <v-slide-y-transition>
@@ -42,21 +45,22 @@
                     v-model="wikicode"
                     :label="msg('fixwikicode-wikicode')"
                     @focus="onWikicodeFocus"
+                    variant="outlined"
                   ></v-textarea>
                 </div>
               </v-slide-y-transition>
             </v-card-text>
           </v-card>
-          <v-btn text @click="useCustomWikicode = !useCustomWikicode">
-            <v-icon left>{{ useCustomWikicode ? 'remove' : 'add' }}</v-icon>
+          <v-btn variant="text" @click="useCustomWikicode = !useCustomWikicode">
+            <span class="material-icons left">{{ useCustomWikicode ? 'remove' : 'add' }}</span>
             {{ msg('wikicode-toggle') }}
           </v-btn>
-          <v-btn text @click="$refs.preferences.show()">
-            <v-icon left>settings</v-icon>
+          <v-btn variant="text" @click="$refs.preferences.show()">
+            <span class="material-icons left">settings</span>
             {{ msg('preferences-button') }}
           </v-btn>
-        </v-flex>
-      </v-layout>
+        </v-col>
+      </v-row>
     </v-container>
 
     <v-snackbar
@@ -66,7 +70,7 @@
       <span>{{ error }}</span>
     </v-snackbar>
     <PreferencesEditor ref="preferences"/>
-  </v-flex>
+  </v-col>
 </template>
 <script>
 import Utils from '../Utils';

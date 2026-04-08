@@ -4,9 +4,9 @@
     width="500"
   >
     <v-card> 
-      <v-toolbar color="primary" dark>
-        {{ msg('preferences') }}
-      </v-toolbar>
+      <v-app-bar color="primary" dark>
+        <div class="v-toolbar__title">{{ msg('preferences') }}</div>
+      </v-app-bar>
       <v-card-text v-if="!loading"> 
         <v-checkbox
           :label="msg('preferences-addAccessDates')"
@@ -16,12 +16,13 @@
           :label="msg('preferences-dateFormatEn')"
           :items="enDateFormats"
           v-model="preferences.dateFormat.en"
+          variant="outlined"
         ></v-select>
       </v-card-text>
       <v-progress-linear v-else :indeterminate="true"></v-progress-linear>
 
       <v-card-actions>
-        <v-btn flat @click="save">{{ msg('preferences-save') }}</v-btn>
+        <v-btn variant="text" @click="save">{{ msg('preferences-save') }}</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

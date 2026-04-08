@@ -4,9 +4,9 @@
     width="800px"
   >
     <v-card v-if="dialog">
-      <v-toolbar color="primary" dark>
-        {{ msg('error-details') }}
-      </v-toolbar>
+      <v-app-bar color="primary" dark>
+        <div class="v-toolbar__title">{{ msg('error-details') }}</div>
+      </v-app-bar>
       <div class="shade">
         {{ msg('error-type-' + errors[id].type) }}
       </div>

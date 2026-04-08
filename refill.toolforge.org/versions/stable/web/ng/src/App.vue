@@ -1,22 +1,22 @@
 <template>
   <div id="app">
     <v-app>
-      <v-toolbar color="primary" dark>
-        <v-toolbar-title><a :href="$config.publicPath">{{ msg('appname') }}</a></v-toolbar-title>
+      <v-app-bar color="primary" dark>
+        <div class="v-toolbar__title"><a :href="$config.publicPath">{{ msg('appname') }}</a></div>
         <v-spacer></v-spacer>
 
-        <v-toolbar-items class="hidden-sm-and-down">
+        <div class="v-toolbar-items hidden-sm-and-down">
           <v-btn icon href="https://en.wikipedia.org/wiki/Wikipedia:ReFill">
-            <v-icon>help</v-icon>
+            <span class="material-icons">help</span>
           </v-btn>
           <v-btn icon href="https://en.wikipedia.org/wiki/Wikipedia_talk:ReFill">
-            <v-icon>bug_report</v-icon>
+            <span class="material-icons">bug_report</span>
           </v-btn>
           <v-btn icon href="https://github.com/curbsafecharmer/refill">
-            <v-icon>code</v-icon>
+            <span class="material-icons">code</span>
           </v-btn>
-        </v-toolbar-items>
-      </v-toolbar>
+        </div>
+      </v-app-bar>
 
       <v-container fluid fill-height>
         <transition name="slide">

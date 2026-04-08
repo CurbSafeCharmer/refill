@@ -1,5 +1,5 @@
 <template>
-  <v-flex md8 offset-md2 lg6 offset-lg3 align-self-start>
+  <v-col md="8" offset-md="2" lg="6" offset-lg="3" class="align-self-start">
     <h1>{{ msg('result') }}</h1>
 
     <v-card class="progress-card">
@@ -10,12 +10,12 @@
             color="primary"
             v-if="!loaded || running"
           ></v-progress-circular>
-          <v-icon v-else-if="state == 'PENDING'">hourglass_empty</v-icon>
-          <v-icon v-else-if="state == 'SUCCESS'" class="successful">done</v-icon>
-          <v-icon v-else-if="state == 'FAILURE'" class="unsuccessful">error</v-icon>
-          <v-icon v-else-if="state == 'REVOKED'" class="unsuccessful">cancel</v-icon>
-          <v-icon v-else-if="state == 'BACKEND_ERROR'" class="unsuccessful">cloud_off</v-icon>
-          <v-icon v-else>help</v-icon>
+          <span v-else-if="state == 'PENDING'" class="material-icons">hourglass_empty</span>
+          <span v-else-if="state == 'SUCCESS'" class="material-icons successful">done</span>
+          <span v-else-if="state == 'FAILURE'" class="material-icons unsuccessful">error</span>
+          <span v-else-if="state == 'REVOKED'" class="material-icons unsuccessful">cancel</span>
+          <span v-else-if="state == 'BACKEND_ERROR'" class="material-icons unsuccessful">cloud_off</span>
+          <span v-else class="material-icons">help</span>
         </div>
         <div v-if="loaded" class="progress-wrapper">
           {{ msg('state-' + state) }}
@@ -36,7 +36,7 @@
       </div>
       <v-textarea
         v-model="wikicode"
-        outline
+        variant="outlined"
       ></v-textarea>
 
       <ChangeDetails ref="changeDialog" :changes="changes" :taskName="taskName" :taskId="taskId"/>
@@ -46,9 +46,9 @@
         <v-card-actions>
           <span class="tip">{{ msg('chancetoreview') }}</span>
           <v-spacer></v-spacer>
-          <v-btn color="primary" @click.native="savePage" :disabled="!wikiAction">{{ msg('previewandsave') }}</v-btn>
+          <v-btn color="primary" @click="savePage" :disabled="!wikiAction">{{ msg('previewandsave') }}</v-btn>
           <v-btn icon @click="showTaskInfo = !showTaskInfo">
-            <v-icon>keyboard_arrow_down</v-icon>
+            <span class="material-icons">keyboard_arrow_down</span>
           </v-btn>
         </v-card-actions>
         <v-slide-y-transition>
@@ -76,8 +76,7 @@
       <input type="hidden" name="wpWatchthis" value="n">
       <input type="hidden" name="wpUltimateParam" value="1">
     </form>
-    </div>
-  </v-flex>
+  </v-col>
 </template>
 <script>
 import oboe from 'oboe';

@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 const config = require(`./config.${process.env.NODE_ENV}.js`);
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
       'libs',
     ],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      'vue$': 'vue/dist/vue.esm-bundler.js',
       'messages': path.resolve(__dirname, '../../../../../messages'),
     },
   },
@@ -35,7 +35,19 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [ 'style-loader', 'css-loader', 'sass-loader' ],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+              sassOptions: {
+                quietDeps: true
+              }
+            }
+          }
+        ],
       },
       {
         test: /\.vue$/,
@@ -45,8 +57,20 @@ module.exports = {
             // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
             // the "scss" and "sass" values for the lang attribute to the right configs here.
             // other preprocessors should work out of the box, no loader config like this necessary.
-            scss: [ 'vue-style-loader', 'css-loader', 'sass-loader' ],
-            sass: [ 'vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax' ],
+            scss: [ 'vue-style-loader', 'css-loader', {
+              loader: 'sass-loader',
+              options: {
+                implementation: require('sass'),
+                sassOptions: { quietDeps: true }
+              }
+            } ],
+            sass: [ 'vue-style-loader', 'css-loader', {
+              loader: 'sass-loader',
+              options: {
+                implementation: require('sass'),
+                sassOptions: { indentedSyntax: true, quietDeps: true }
+              }
+            } ],
           },
           // other vue-loader options go here
         },
@@ -66,6 +90,16 @@ module.exports = {
       ],
     },
   },
+  // Suppress deprecation warnings emitted by Dart Sass legacy JS API
+  ignoreWarnings: [
+    warning => {
+      try {
+        return typeof warning.message === 'string' && /The legacy JS API is deprecated/.test(warning.message);
+      } catch (e) {
+        return false;
+      }
+    }
+  ],
   performance: {
     hints: false,
   },

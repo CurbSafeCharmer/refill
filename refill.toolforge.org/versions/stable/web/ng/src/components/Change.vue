@@ -1,15 +1,15 @@
 <template>
-  <v-layout row wrap>
-    <v-flex xs5>
+  <v-row class="flex-wrap">
+    <v-col cols="5">
       <span class="wikicode">{{ change.old }}</span>
-    </v-flex>
-    <v-flex xs2>
+    </v-col>
+    <v-col cols="2">
       <span class="arrow">➡</span>
-    </v-flex>
-    <v-flex xs5>
+    </v-col>
+    <v-col cols="5">
       <span class="wikicode">{{ change.new }}</span>
-    </v-flex>
-  </v-layout>
+    </v-col>
+  </v-row>
 </template>
 <script>
 export default {
