@@ -48,6 +48,7 @@ Locally...
 ```
 cd refill.toolforge.org/versions/stable/web/ng
 npm install
+# delete the /dist/ directory so old files don't get mixed in
 npm run build
 ```
 
