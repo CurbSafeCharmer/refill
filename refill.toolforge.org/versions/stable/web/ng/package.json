@@ -5,8 +5,9 @@
   "author": "Zhaofeng Li <hello@zhaofeng.li>",
   "private": true,
   "scripts": {
+    "delete-dist-directory": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
     "dev": "cross-env NODE_ENV=development webpack serve --hot --port 8087",
-    "build": "cross-env NODE_ENV=production webpack --progress",
+    "build": "npm run delete-dist-directory && cross-env NODE_ENV=production webpack --progress",
     "test": "eslint src"
   },
   "dependencies": {
