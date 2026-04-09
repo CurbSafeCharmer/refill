@@ -27,7 +27,9 @@ Our front end is written in the Vue.js JavaScript framework. It is fairly simple
 
 ### Entry points
 
-/result.php, and the entire /ng/ directory, use .lighttpd.conf or PHP to redirect to /ng/index.html, which loads the Vue app, which has been minified by Webpack.
+The PHP webservice image uses /public_html/ as the entry point. At the moment, this is a symlink to the directory /versions/stable/web/.
+
+The entire website uses a URL rewrite rule in a .lighttpd.conf config file to redirect all traffic regardless of path to /ng/index.html, which loads the Vue app, which has been minified by Webpack.
 
 ### How to get it running on localhost
 
@@ -91,11 +93,18 @@ webservice restart
 
 ## Back end (https://refill-api.toolforge.org/)
 
-The ReFill API is a REST API running in Flask, a Python framework. It uses Celery and Redis to create asynchronous jobs. It gets information about how to parse each URL from Wikimedia's Citoid, which uses Zotero.
+The "scheduler": The ReFill API is a REST API running in Flask, a Python framework. It creates workers (see below).
 
-TODO. This section will be updated as part of the ticket [T422439: figure out how to deploy the back end](https://phabricator.wikimedia.org/T422439). See "Links -> Documentation for developers" below for the old documentation on this.
+The "worker": Python code that uses [Celery](https://github.com/celery/celery) and Redis to store and execute asynchronous jobs. The jobs get information about how to parse each URL from Wikimedia's Citoid API (https://en.wikipedia.org/api/rest_v1/data/citation), which uses Zotero.
+
+Kubernetes is used in production to spawn multiple processes: one for the scheduler and one for the worker. See worker-deployment.yml.
+
 
 The back end files currently reside in the directory /backend/, but that will eventually be [renamed to /refill-api.toolforge.org/](https://phabricator.wikimedia.org/T422436).
+
+### Entry points
+
+The Python webservice image uses /www/python/src/app.py as the web entry point, and loads libraries from /www/python/venv/. Unlike a PHP webservice, there is not a 1:1 mapping between files on the server and the URL. [More info.](https://wikitech.wikimedia.org/wiki/Help:Toolforge/Web/Python)
 
 ### How to get it running on localhost
 
@@ -124,6 +133,10 @@ If that doesn't work, also try...
 kubectl delete -f worker-deployment.yml
 kubectl apply -f worker-deployment.yml
 ```
+
+## Docker
+
+There are some Docker files in the repo. Docker is used purely for CI jobs, and those CI jobs are [currently broken](https://phabricator.wikimedia.org/T367026). We may expand it in the future to also handle [running the back end on localhost](https://phabricator.wikimedia.org/T422451).
 
 ## Links
 
