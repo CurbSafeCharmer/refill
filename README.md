@@ -76,6 +76,8 @@ toolforge webservice stop
 toolforge webservice php8.4 start
 ```
 
+Keep in mind that anytime you add/modify/delete the .lighttpd.conf file, you'll need to restart the webservice for the changes to take effect.
+
 ### How to restart if it gets stuck
 
 ```
