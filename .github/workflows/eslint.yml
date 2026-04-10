@@ -19,7 +19,7 @@ jobs:
         node-version: 20.x
 
     - name: Build
-      working-directory: ./refill.toolforge.org/versions/stable/web/ng
+      working-directory: ./refill.toolforge.org/public_html
       run: |
         npm ci
         npm test

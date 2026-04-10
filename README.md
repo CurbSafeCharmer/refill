@@ -27,14 +27,14 @@ Our front end is written in the Vue.js JavaScript framework. It is fairly simple
 
 ### Entry points
 
-The PHP webservice image uses /public_html/ as the entry point. At the moment, this is a symlink to the directory /versions/stable/web/.
+The PHP webservice image uses /public_html/ as the entry point.
 
-The entire website uses a URL rewrite rule in a .lighttpd.conf config file to redirect all traffic regardless of path to /ng/index.html, which loads the Vue app, which has been minified by Webpack.
+The entire website uses a URL rewrite rule in a .lighttpd.conf config file to redirect all traffic regardless of path to /index.html, which loads the Vue app, which has been minified by Webpack.
 
 ### How to get it running on localhost
 
 ```
-cd refill.toolforge.org/versions/stable/web/ng
+cd refill.toolforge.org/public_html
 npm install
 npm run dev
 ```
@@ -48,7 +48,7 @@ You will need to cancel (Ctrl-C) and then re-run `npm run dev` when modifying ce
 Locally...
 
 ```
-cd refill.toolforge.org/versions/stable/web/ng
+cd refill.toolforge.org/public_html
 npm install
 npm run build
 ```
@@ -56,25 +56,23 @@ npm run build
 Then...
 
 - log into ToolForge
-- delete all the files in the /versions/stable/web/ng/ directory
-- copy paste the contents of your local /dist/ directory into the /ng/ directory
+- delete all the files in the /public_html/ directory
+- copy paste the contents of your local /dist/ directory into the /public_html/ directory
 
 You may need to hard refresh your browser (Ctrl+F5) when visiting the front end right after a deploy.
 
 There are efforts to write a deploy.sh script at [T422570: create a deploy.sh script for the front end](https://phabricator.wikimedia.org/T422570).
 
-### How to set up ToolForge from scratch again
+### How to set up ToolForge from scratch
 
 - Copy over the folder structure and settings files located in this repo's /refill.toolforge.org/ directory.
-- Delete the contents of the /ng/ directory, then follow the "How to deploy" directions above.
+- Follow the "How to deploy" directions above.
 - SSH into ToolForge and run the following commands to start the webserver:
 
 ```
 ssh login.toolforge.org
 become refill
-toolforge webservice status
-toolforge webservice stop
-toolforge webservice php8.4 start
+webservice php8.4 start
 ```
 
 Keep in mind that anytime you add/modify/delete the .lighttpd.conf file, you'll need to restart the webservice for the changes to take effect.
@@ -98,7 +96,6 @@ The "scheduler": The ReFill API is a REST API running in Flask, a Python framewo
 The "worker": Python code that uses [Celery](https://github.com/celery/celery) and Redis to store and execute asynchronous jobs. The jobs get information about how to parse each URL from Wikimedia's Citoid API (https://en.wikipedia.org/api/rest_v1/data/citation), which uses Zotero.
 
 Kubernetes is used in production to spawn multiple processes: one for the scheduler and one for the worker. See worker-deployment.yml.
-
 
 The back end files currently reside in the directory /backend/, but that will eventually be [renamed to /refill-api.toolforge.org/](https://phabricator.wikimedia.org/T422436).
 

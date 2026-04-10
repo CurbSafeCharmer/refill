@@ -30,7 +30,7 @@ Vue.use(VueResource);
 import Banana from 'banana-i18n';
 const banana = new Banana('en');
 
-let req = require.context('../../../../../../messages', false, /\.json$/);
+let req = require.context('../../../messages', false, /\.json$/);
 req.keys().forEach(function(key){
   banana.load(req(key), key.replace(/\.[^/.]+$/, '').slice(2));
 });
