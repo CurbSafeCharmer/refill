@@ -1,5 +1,5 @@
 module.exports = {
-    publicPath: '/ng/',
+    publicPath: '/',
     // api: 'http://localhost:5000'
     api: 'https://refill-api.toolforge.org'
 }
