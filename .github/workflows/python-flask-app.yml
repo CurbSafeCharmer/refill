@@ -26,12 +26,17 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python }}
-      - name: Install tox and any other packages
+      - name: Create venv and install deps
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install --upgrade wheel setuptools
+          python -m venv .venv
+          . .venv/bin/activate
+          python -m pip install --upgrade pip setuptools wheel
           pip install tox
           pip install -r backend/requirements.txt
       # tox is a test suite, but it's configured just to lint. see tox.ini. it lints with the libraries black and isort.
       - name: Run application
-        run: python backend/app.py
+        run: |
+          . .venv/bin/activate
+          # verify pkg_resources is available (pywikibot depends on it)
+          python -c "import pkg_resources; print('pkg_resources ok')"
+          python backend/app.py
