@@ -11,15 +11,10 @@ jobs:
   build:
     name: tox
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental }}
     strategy:
       fail-fast: false
       matrix:
-        python: ["3.8", "3.9", "3.10"]
-        experimental: [false]
-        include:
-          - python: "3.11"
-            experimental: true
+        python: ["3.7", "3.9", "3.11", "3.13"]
 
     steps:
       - uses: actions/checkout@v3
