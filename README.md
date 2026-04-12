@@ -133,7 +133,9 @@ kubectl apply -f worker-deployment.yml
 
 ## Docker
 
-There are some Docker files in the repo. Docker is used purely for CI jobs, and those CI jobs are [currently broken](https://phabricator.wikimedia.org/T367026). We may expand it in the future to also handle [running the back end on localhost](https://phabricator.wikimedia.org/T422451).
+There are some Docker files in the repo. 
+
+TODO
 
 ## Links
 
