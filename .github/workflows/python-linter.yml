@@ -19,8 +19,8 @@ jobs:
         python: ["3.9"]
 
     steps:
-      - run: cd refill-api.toolforge.org/refill
       - uses: actions/checkout@v3
+      - run: cd refill-api.toolforge.org/refill
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
