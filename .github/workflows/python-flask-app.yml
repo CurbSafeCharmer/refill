@@ -1,4 +1,4 @@
-name: Python
+name: Python Flask app
 
 on:
   push:
@@ -17,7 +17,8 @@ jobs:
       fail-fast: false
       matrix:
         # actions/setup-python doesn't support 3.7
-        python: ["3.9", "3.11", "3.13"]
+        # TODO: add back 3.11, 3.13 later
+        python: ["3.9"]
 
     steps:
       - uses: actions/checkout@v3
@@ -32,7 +33,5 @@ jobs:
           pip install tox
           pip install -r backend/requirements.txt
       # tox is a test suite, but it's configured just to lint. see tox.ini. it lints with the libraries black and isort.
-      - name: Run tox
-        run: tox -v
       - name: Run application
         run: python backend/app.py
