@@ -35,9 +35,26 @@ jobs:
           # diagnostics: show setuptools presence
           .venv/bin/python -m pip show setuptools || true
           .venv/bin/python -m pip list
-      # tox is a test suite, but it's configured just to lint. see tox.ini. it lints with the libraries black and isort.
+      - name: Diagnostic: show python internals
+        run: |
+          echo "--- which python ---"
+          .venv/bin/python -c "import sys; print(sys.executable)"
+          echo "--- sys.path ---"
+          .venv/bin/python -c "import sys; print('\n'.join(sys.path))"
+          echo "--- site.getsitepackages() ---"
+          .venv/bin/python -c "import site, pprint; pprint.pprint(site.getsitepackages())"
+          echo "--- find pkg_resources spec ---"
+          .venv/bin/python - <<'PY'
+import importlib.util, pprint, sys
+spec = importlib.util.find_spec('pkg_resources')
+pprint.pprint(spec)
+print('PYTHONPATH=' + (os.environ.get('PYTHONPATH') or ''))
+import os
+sp = os.path.join(os.getcwd(), '.venv', 'lib')
+print('site lib dir listing:')
+import glob
+print('\n'.join(glob.glob(os.path.join(sp, '**', 'pkg*'), recursive=True)[:50]))
+PY
       - name: Run application
         run: |
-          # verify pkg_resources is available (pywikibot depends on it)
-          .venv/bin/python -c "import pkg_resources; print('pkg_resources ok')"
           .venv/bin/python backend/app.py
