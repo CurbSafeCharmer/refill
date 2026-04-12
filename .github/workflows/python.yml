@@ -16,7 +16,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ["3.7", "3.9", "3.11", "3.13"]
+        # actions/setup-python doesn't support 3.7
+        python: ["3.9", "3.11", "3.13"]
 
     steps:
       - uses: actions/checkout@v3
