@@ -1,4 +1,4 @@
-name: eslint
+name: JavaScript Linter
 
 on:
   push:
