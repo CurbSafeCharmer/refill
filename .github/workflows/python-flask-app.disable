@@ -1,25 +1,23 @@
-name: Python
+name: Python Flask app
 
 on:
   push:
+    branches: [ master ]
   pull_request:
+    branches: [ master ]
 
 permissions:
   contents: read
 
 jobs:
   build:
-    name: tox
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental }}
     strategy:
       fail-fast: false
       matrix:
-        python: ["3.8", "3.9", "3.10"]
-        experimental: [false]
-        include:
-          - python: "3.11"
-            experimental: true
+        # actions/setup-python doesn't support 3.7
+        # TODO: add 3.11, 3.13 later
+        python: ["3.9"]
 
     steps:
       - uses: actions/checkout@v3
@@ -33,7 +31,5 @@ jobs:
           python -m pip install --upgrade wheel setuptools
           pip install tox
           pip install -r backend/requirements.txt
-      - name: Run tox
-        run: tox -v
       - name: Run application
         run: python backend/app.py

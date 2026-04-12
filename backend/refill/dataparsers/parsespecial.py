@@ -33,9 +33,9 @@ class ParseSpecial:
                     "element": lambda e: e.name == "aside"
                     and "block" in e.get("class", [])
                     and e.findChildren("img"),
-                    "value": lambda e: "radioBroadcast"
-                    if "radio" in e.text
-                    else "tvBroadcast",
+                    "value": lambda e: (
+                        "radioBroadcast" if "radio" in e.text else "tvBroadcast"
+                    ),
                 },
             },
         },

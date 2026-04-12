@@ -3,9 +3,9 @@ import functools
 import requests as _requests
 
 session = _requests.Session()
-session.headers[
-    "User-Agent"
-] = "reFill/2 (https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill)"
+session.headers["User-Agent"] = (
+    "reFill/2 (https://en.wikipedia.org/wiki/User:Zhaofeng_Li/reFill)"
+)
 
 # Ugly hack to set default timeouts
 # https://stackoverflow.com/a/55841818
