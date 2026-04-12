@@ -1,4 +1,4 @@
-name: JavaScript Linter
+name: JavaScript linter
 
 on:
   push:
