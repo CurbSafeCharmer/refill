@@ -27,10 +27,14 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Create venv and install deps
         run: |
-          python -m venv .venv
-          .venv/bin/python -m pip install --upgrade pip setuptools wheel
+          # Create venv and install/upgrade pip and setuptools into it
+          python -m venv --upgrade-deps .venv
+          .venv/bin/python -m pip install --upgrade pip
           .venv/bin/python -m pip install tox
           .venv/bin/python -m pip install -r backend/requirements.txt
+          # diagnostics: show setuptools presence
+          .venv/bin/python -m pip show setuptools || true
+          .venv/bin/python -m pip list
       # tox is a test suite, but it's configured just to lint. see tox.ini. it lints with the libraries black and isort.
       - name: Run application
         run: |
