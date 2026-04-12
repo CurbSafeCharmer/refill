@@ -1,0 +1,142 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    toolforge: tool
+    name: refill-api-worker
+    tools.wmflabs.org/webservice: "true"
+    tools.wmflabs.org/webservice-version: "1"
+  name: refill-api-worker
+  namespace: tool-refill-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: refill-api-worker
+      tools.wmflabs.org/webservice: "true"
+      tools.wmflabs.org/webservice-version: "1"
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        toolforge: tool
+        name: refill-api-worker
+        tools.wmflabs.org/webservice: "true"
+        tools.wmflabs.org/webservice-version: "1"
+    spec:
+      containers:
+      - name: celery
+        image: docker-registry.tools.wmflabs.org/toolforge-python37-sssd-base:latest
+        command: [ "/data/project/refill-api/worker.sh" ]
+        env:
+        - name: HOME
+          value: /data/project/refill-api/
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "1.0"
+            memory: 2Gi
+          requests:
+            cpu: 125m
+            memory: 256Mi
+        terminationMessagePath: /data/project/refill-api/termination-log-refill-api-worker
+        terminationMessagePolicy: FallbackToLogsOnError
+#        volumeMounts:
+#        - mountPath: /public/dumps/
+#          name: dumps
+#          readOnly: true
+#        - mountPath: /data/project/
+#          name: home
+#        - mountPath: /etc/wmcs-project
+#          name: wmcs-project
+#          readOnly: true
+#        - mountPath: /data/scratch/
+#          name: scratch
+        workingDir: /data/project/refill-api/
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+#      volumes:
+#      - hostPath:
+#          path: /public/dumps/
+#        name: dumps
+#      - hostPath:
+#          path: /data/project/
+#        name: home
+#      - hostPath:
+#          path: /etc/wmcs-project
+#        name: wmcs-project
+#      - hostPath:
+#          path: /data/scratch/
+#        name: scratch
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    toolforge: tool
+    name: refill-api-scheduler
+  name: refill-api-scheduler
+  namespace: tool-refill-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: refill-api-scheduler
+  template:
+    metadata:
+      labels:
+        toolforge: tool
+        name: refill-api-scheduler
+    spec:
+      containers:
+      - name: celery
+        image: docker-registry.tools.wmflabs.org/toolforge-python37-sssd-base:latest
+        command: [ "/data/project/refill-api/scheduler.sh" ]
+        env:
+        - name: HOME
+          value: /data/project/refill-api/
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: 1Gi
+          requests:
+            cpu: 125m
+            memory: 256Mi
+        terminationMessagePath: /data/project/refill-api/termination-log-refill-api-scheduler
+        terminationMessagePolicy: FallbackToLogsOnError
+#        volumeMounts:
+#        - mountPath: /public/dumps/
+#          name: dumps
+#          readOnly: true
+#        - mountPath: /data/project/
+#          name: home
+#        - mountPath: /etc/wmcs-project
+#          name: wmcs-project
+#          readOnly: true
+#        - mountPath: /data/scratch/
+#          name: scratch
+        workingDir: /data/project/refill-api/
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+#      volumes:
+#      - hostPath:
+#          path: /public/dumps/
+#        name: dumps
+#      - hostPath:
+#          path: /data/project/
+#        name: home
+#      - hostPath:
+#          path: /etc/wmcs-project
+#        name: wmcs-project
+#      - hostPath:
+#          path: /data/scratch/
+#        name: scratch

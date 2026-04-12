@@ -97,8 +97,6 @@ The "worker": Python code that uses [Celery](https://github.com/celery/celery) a
 
 Kubernetes is used in production to spawn multiple processes: one for the scheduler and one for the worker. See worker-deployment.yml.
 
-The back end files currently reside in the directory /backend/, but that will eventually be [renamed to /refill-api.toolforge.org/](https://phabricator.wikimedia.org/T422436).
-
 ### Entry points
 
 The Python webservice image uses /www/python/src/app.py as the web entry point, and loads libraries from /www/python/venv/. Unlike a PHP webservice, there is not a 1:1 mapping between files on the server and the URL. [More info.](https://wikitech.wikimedia.org/wiki/Help:Toolforge/Web/Python)

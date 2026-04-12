@@ -2,7 +2,7 @@ default: start
 
 .PHONY: setup
 setup:
-	pushd backend/ && pipenv install --dev && cp celeryconfig.example.py celeryconfig.py && popd
+	pushd refill-api.toolforge.org/refill/backend/ && pipenv install --dev && cp celeryconfig.example.py celeryconfig.py && popd
 	pushd web/ && npm install && popd
 
 .PHONY: start
@@ -15,8 +15,8 @@ web:
 
 .PHONY: celery
 celery:
-	cd backend/ && celery --autoscale=100,10 worker
+	cd refill-api.toolforge.org/refill/backend/ && celery --autoscale=100,10 worker
 
 .PHONY: flask
 flask:
-	cd backend/ && FLASK_APP=app.py FLASK_DEBUG=1 flask run
+	cd refill-api.toolforge.org/refill/backend/ && FLASK_APP=app.py FLASK_DEBUG=1 flask run

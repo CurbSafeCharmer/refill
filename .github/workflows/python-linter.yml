@@ -29,7 +29,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install --upgrade wheel setuptools
           pip install tox
-          pip install -r backend/requirements.txt
+          pip install -r refill-api.toolforge.org/refill/backend/requirements.txt
       # tox is a test suite, but it's configured just to lint. see tox.ini. it lints with the libraries black and isort.
       - name: Run tox
         run: tox -v

@@ -30,6 +30,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install --upgrade wheel setuptools
           pip install tox
-          pip install -r backend/requirements.txt
+          pip install -r refill-api.toolforge.org/refill/backend/requirements.txt
       - name: Run application
-        run: python backend/app.py
+        run: python refill-api.toolforge.org/refill/backend/app.py
