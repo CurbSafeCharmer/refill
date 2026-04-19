@@ -1,0 +1,35 @@
+name: Selenium tests for refill.toolforge.org
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: refill.toolforge.org/public_html
+        run: npm ci
+
+      - name: Start dev server
+        working-directory: refill.toolforge.org/public_html
+        run: |
+          npm run dev &
+
+      - name: Wait for server
+        working-directory: refill.toolforge.org/public_html
+        run: npx wait-on http://localhost:8087 -t 30000
+
+      - name: Run WebdriverIO tests
+        working-directory: refill.toolforge.org/public_html
+        run: npx wdio run wdio.conf.js
