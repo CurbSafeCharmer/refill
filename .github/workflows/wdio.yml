@@ -1,4 +1,4 @@
-name: Selenium tests for refill.toolforge.org
+name: Selenium tests
 
 on:
   push:
