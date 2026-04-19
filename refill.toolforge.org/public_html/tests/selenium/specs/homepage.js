@@ -6,6 +6,7 @@ describe('Homepage', () => {
     await tagline.waitForExist();
     await expect(tagline).toHaveTextContaining('Expand bare references with ease');
   });
+
   it('loads the Vue app in Spanish', async () => {
     await browser.setCookies({ name: 'TsIntuition_userlang', value: 'es' });
     await browser.url('/?_=' + Date.now());
@@ -13,6 +14,7 @@ describe('Homepage', () => {
     await tagline.waitForExist();
     await expect(tagline).toHaveTextContaining('Ampliar las referencias sencillas con facilidad');
   });
+
   it('no Webpack runtime errors', async () => {
     await browser.url('/?_=' + Date.now());
     const runtimeError = await $('#webpack-dev-server-client-overlay');

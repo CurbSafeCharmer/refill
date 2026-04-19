@@ -1,11 +1,5 @@
 describe('Results page', () => {
-  const sample = `Testing 123.<ref>https://apnews.com/article/iran-us-israel-war-ap-visit-daily-life-712a964141a72724971765850ca675ca</ref>
-
-== References ==
-{{Reflist}}
-`;
-
-  it('sends pasted wikicode to refill-api and gets success message', async () => {
+  beforeEach(async () => {
     await browser.url('/?_=' + Date.now());
 
     // open the custom wikicode textarea
@@ -18,6 +12,11 @@ describe('Results page', () => {
     await ta.waitForExist();
     // ensure it's focused and set the value
     await ta.click();
+    const sample = `Testing 123.<ref>https://apnews.com/article/iran-us-israel-war-ap-visit-daily-life-712a964141a72724971765850ca675ca</ref>
+
+== References ==
+{{Reflist}}
+`;
     await ta.setValue(sample);
 
     // submit
@@ -27,19 +26,20 @@ describe('Results page', () => {
 
     // wait for navigation to result page
     await browser.waitUntil(async () => (await browser.getUrl()).includes('/result/'), { timeoutMsg: 'expected to navigate to result page' });
+  });
 
-    // === ASSERTS ===
-
-    // assert no Webpack runtime errors
+  it('no Webpack runtime errors', async () => {
     const runtimeError = await $('#webpack-dev-server-client-overlay');
     await expect(runtimeError).not.toBeExisting();
+  });
 
-    // assert the presence of a success message
+  it('shows success message', async () => {
     const progress = await $('.progress-wrapper');
     await progress.waitForExist();
     await expect(progress).toHaveTextContaining('Success');
+  });
 
-    // make sure that wdiff / WikEdDiff is working
+  it('produces a diff with WikEdDiff', async () => {
     const diffInsert = await $('.wikEdDiffInsert');
     await expect(diffInsert).toBeExisting();
   });
