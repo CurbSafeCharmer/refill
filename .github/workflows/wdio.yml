@@ -1,8 +1,10 @@
-name: wdio-e2e
+name: Selenium tests for refill.toolforge.org
 
 on:
   push:
+    branches: [ master ]
   pull_request:
+    branches: [ master ]
 
 jobs:
   e2e:

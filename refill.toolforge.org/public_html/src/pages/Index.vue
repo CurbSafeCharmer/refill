@@ -4,7 +4,6 @@
       <v-layout row wrap>
         <v-flex xs12>
           <h1>{{ msg('appname') }}</h1>
-          <h2 class="tagline">{{ msg('tagline') }}</h2>
         </v-flex>
       </v-layout>
 
