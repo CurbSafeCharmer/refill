@@ -1,4 +1,4 @@
-describe('Home page', () => {
+describe('Homepage', () => {
   it('loads the Vue app', async () => {
     // add the date as a param to prevent caching issues
     await browser.url('/?_=' + Date.now());

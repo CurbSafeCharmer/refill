@@ -31,13 +31,14 @@
                   :label="msg('fixwikipage-fam')"
                 ></v-text-field>
 
-                <v-btn large text outlined color="primary" icon @click="fixWikipage">
+                <v-btn id="submit-btn" large text outlined color="primary" icon @click="fixWikipage">
                   <v-icon>arrow_forward</v-icon>
                 </v-btn>
               </div>
               <v-slide-y-transition>
                 <div v-show="useCustomWikicode">
                   <v-textarea
+                    id="wikicode-textarea"
                     v-model="wikicode"
                     :label="msg('fixwikicode-wikicode')"
                     @focus="onWikicodeFocus"
@@ -46,7 +47,7 @@
               </v-slide-y-transition>
             </v-card-text>
           </v-card>
-          <v-btn text @click="useCustomWikicode = !useCustomWikicode">
+          <v-btn id="toggle-wikicode" text @click="useCustomWikicode = !useCustomWikicode">
             <v-icon left>{{ useCustomWikicode ? 'remove' : 'add' }}</v-icon>
             {{ msg('wikicode-toggle') }}
           </v-btn>
