@@ -52,4 +52,14 @@ describe('Results page', () => {
 		await targetUrl.waitForExist();
 		await expect(targetUrl).toHaveTextContaining('http');
 	});
+
+	it('clicking the pencil icon opens ChangeDetails.vue modal', async () => {
+		const pencilIcon = await $('.wikEdRefillChange');
+		await pencilIcon.waitForExist();
+		await pencilIcon.click();
+
+		const modal = await $('#change-details');
+		await modal.waitForExist();
+		await expect(modal).toBeExisting();
+	});
 });

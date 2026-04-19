@@ -3,7 +3,7 @@
     v-model="dialog"
     width="800px"
   >
-    <v-card v-if="dialog">
+    <v-card v-if="dialog" id="change-details">
       <v-toolbar color="primary" dark>
         {{ msg('report') }}
       </v-toolbar>
