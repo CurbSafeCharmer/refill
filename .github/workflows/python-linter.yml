@@ -9,12 +9,13 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    working-directory: refill-api.toolforge.org/refill
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: refill-api.toolforge.org/refill
     strategy:
       fail-fast: false
       matrix:
