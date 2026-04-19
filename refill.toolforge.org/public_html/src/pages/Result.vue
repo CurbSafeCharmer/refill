@@ -35,6 +35,7 @@
       <div ref="diff" v-if="origWikicode && wikicode" v-html="diff">
       </div>
       <v-textarea
+        id="result-wikicode"
         v-model="wikicode"
         outline
       ></v-textarea>
