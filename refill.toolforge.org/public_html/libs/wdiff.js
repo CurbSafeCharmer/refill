@@ -1,3 +1,8 @@
+// This file is a fork of the November 2014 version of https://en.wikipedia.org/wiki/User:Cacycle/diff.js
+// Various questionably-documented changes relevant to ReFill have been made to this version.
+// Various changes have also been made to the en-wiki version since 2014, however none of them are
+// relevant to the way ReFill uses this file.
+
 // <syntaxhighlight lang="JavaScript">
 
 // ==UserScript==
@@ -4647,3 +4652,4 @@ WikEdDiff.WikEdDiffText = function ( text, parent ) {
 };
 
 // </syntaxhighlight>
+module.exports = { WikEdDiff: WikEdDiff }; // For compatibility with WebPack

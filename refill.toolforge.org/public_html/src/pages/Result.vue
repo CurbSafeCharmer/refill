@@ -198,9 +198,7 @@ export default {
           this.origWikicode = origWikicode;
         }
 
-        // HACK: this works around the error "Uncaught Error: wdiff__WEBPACK_IMPORTED_MODULE_1__.WikEdDiff is not a constructor", which is related to loading the libs/wdiff.js library in webpack
-        // let wdiff = new WikEdDiff();
-        let wdiff = { diff: () => '' };
+        let wdiff = new WikEdDiff();
         this.diff = wdiff.diff(this.origWikicode, this.markedWikicode);
 
         // Construct fake edit form
