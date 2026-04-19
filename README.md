@@ -18,6 +18,7 @@ ReFill does everything except publish the edit, including setting up an on-wiki 
 * [File bugs and feature requests on Phabricator](https://phabricator.wikimedia.org/maniphest/task/create/?projects=Tool-refill)
 * [Talk page](https://en.wikipedia.org/wiki/Wikipedia_talk:ReFill)
 * [Discord channel](https://discord.com/channels/221049808784326656/1123258346045198366)
+* [User script](https://en.wikipedia.org/wiki/User:Novem_Linguae/Scripts/ReFillLink.js) - adds a "Refill" link to the "More" menu on Wikipedia
 
 ## Front end (https://refill.toolforge.org/)
 
