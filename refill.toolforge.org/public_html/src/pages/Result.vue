@@ -61,7 +61,7 @@
               <li>{{ msg('taskinfo-state') }}: {{ state }}</li>
               <li>{{ msg('taskinfo-percentage') }}: {{ percentage }}</li>
               <li>{{ msg('taskinfo-running') }}: {{ running }}</li>
-              <li>{{ msg('taskinfo-submiturl') }}: {{ wikiAction }}</li>
+              <li id="target-url">{{ msg('taskinfo-submiturl') }}: {{ wikiAction }}</li>
             </ul>
           </v-card-text>
         </v-slide-y-transition>

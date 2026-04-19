@@ -13,4 +13,9 @@ describe('Homepage', () => {
     await tagline.waitForExist();
     await expect(tagline).toHaveTextContaining('Ampliar las referencias sencillas con facilidad');
   });
+  it('no Webpack runtime errors', async () => {
+    await browser.url('/?_=' + Date.now());
+    const runtimeError = await $('#webpack-dev-server-client-overlay');
+    await expect(runtimeError).not.toBeExisting();
+  });
 });

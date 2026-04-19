@@ -15,4 +15,9 @@ describe('Legacy page', () => {
     await resultWrapper.waitForExist();
     await expect(resultWrapper).toHaveValueContaining('Main page of the English Wikipedia');
   });
+  it('no Webpack runtime errors', async () => {
+    await browser.url('/result.php?page=Main_Page&defaults=y&nowatch=y&wiki=en&_=' + Date.now());
+    const runtimeError = await $('#webpack-dev-server-client-overlay');
+    await expect(runtimeError).not.toBeExisting();
+  });
 });

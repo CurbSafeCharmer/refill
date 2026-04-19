@@ -28,9 +28,19 @@ describe('Results page', () => {
     // wait for navigation to result page
     await browser.waitUntil(async () => (await browser.getUrl()).includes('/result/'), { timeoutMsg: 'expected to navigate to result page' });
 
-    // wait for the progress wrapper to contain Success
+    // === ASSERTS ===
+
+    // assert no Webpack runtime errors
+    const runtimeError = await $('#webpack-dev-server-client-overlay');
+    await expect(runtimeError).not.toBeExisting();
+
+    // assert the presence of a success message
     const progress = await $('.progress-wrapper');
     await progress.waitForExist();
     await expect(progress).toHaveTextContaining('Success');
+
+    // make sure that wdiff / WikEdDiff is working
+    const diffInsert = await $('.wikEdDiffInsert');
+    await expect(diffInsert).toBeExisting();
   });
 });
