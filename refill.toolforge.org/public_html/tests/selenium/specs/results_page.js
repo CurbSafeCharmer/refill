@@ -44,4 +44,12 @@ describe('Results page', () => {
 		const diffInsert = await $('.wikEdDiffInsert');
 		await expect(diffInsert).toBeExisting();
 	});
+
+	it("make sure there's a target URL", async () => {
+		// this is a regression test. the absence of a target URL will cause the "Preview / Save" button to be gray and disabled
+		$('#show-task-info-btn').click();
+		const targetUrl = await $('#target-url');
+		await targetUrl.waitForExist();
+		await expect(targetUrl).toHaveTextContaining('http');
+	});
 });

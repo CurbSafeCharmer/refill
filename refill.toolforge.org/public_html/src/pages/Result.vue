@@ -48,7 +48,7 @@
           <span class="tip">{{ msg('chancetoreview') }}</span>
           <v-spacer></v-spacer>
           <v-btn color="primary" @click.native="savePage" :disabled="!wikiAction">{{ msg('previewandsave') }}</v-btn>
-          <v-btn icon @click="showTaskInfo = !showTaskInfo">
+          <v-btn icon @click="showTaskInfo = !showTaskInfo" id="show-task-info-btn">
             <v-icon>keyboard_arrow_down</v-icon>
           </v-btn>
         </v-card-actions>
