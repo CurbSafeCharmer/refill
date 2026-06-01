@@ -15,7 +15,7 @@
 	"fixwikipage-code": "코드",
 	"fixwikipage-fam": "가족",
 	"fixwikicode": "제공된 위키코드 수정",
-	"fixwikicode-wikicode": "순수 위키코드",
+	"fixwikicode-wikicode": "원본 위키코드",
 	"fixwikicode-submit": "제출",
 	"wikicode-toggle": "사용자 지정 위키코드 사용",
 	"apiendpoint": "API 종단점",
