@@ -211,7 +211,7 @@ class Citoid:
         "404",
         "error - lexisnexis® publisher",
         "optica publishing group",
-        "validate user"
+        "validate user",
     )
 
     def __init__(self):
