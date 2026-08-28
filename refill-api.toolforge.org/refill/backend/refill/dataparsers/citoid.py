@@ -69,8 +69,10 @@ class Citoid:
                         else v
                     )
 
-                if "\ufffd" in flatten(value):
-                    # UTF-8 replacement character - Citoid's codec has removed some information
+                flat = flatten(value)
+                if "\ufffd" in flat or "{{" in flat or "}}" in flat:
+                    # \ufffd: UTF-8 replacement character - Citoid's codec has removed some information
+                    # {{ / }}: unrendered template markup - almost never good
                     continue
 
                 field = mapping[cfield]
