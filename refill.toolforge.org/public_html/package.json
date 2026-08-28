@@ -16,7 +16,7 @@
     "axios": "^0.31.0",
     "banana-i18n": "^2.3.3",
     "core-js": "^3.30.2",
-    "js-cookie": "^3.0.1",
+    "js-cookie": "^3.0.7",
     "localforage": "^1.10.0",
     "oboe": "^2.1.5",
     "urijs": "^1.19.11",
