@@ -3,6 +3,7 @@
 		"authors": [
 			"Fitoschido",
 			"Fotis A.",
+			"Jimkats",
 			"NikosLikomitros",
 			"Nikosgranturismogt",
 			"Wasilis Mandratzis-Walz"
@@ -35,7 +36,7 @@
 	"state-SUCCESS": "Επιτυχία",
 	"state-SUCCESS-description": "Η εργασία πέτυχε.",
 	"state-FAILURE": "Απέτυχε",
-	"state-FAILURE-description": "Ενα σφάλμα συνέβη",
+	"state-FAILURE-description": "Παρουσιάστηκε ένα σφάλμα.",
 	"state-REVOKED": "Ακυρωμένο",
 	"state-REVOKED-description": "Η εργασία έχει ακυρωθεί.",
 	"state-BACKEND_ERROR": "Σφάλμα backend",
